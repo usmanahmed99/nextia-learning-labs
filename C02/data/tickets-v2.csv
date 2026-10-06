@@ -1,0 +1,21 @@
+﻿id,status,category,priority,channel,subject
+T-2001,open,billing,2,email,Charged twice for April
+T-2002,closed,login,3,chat,Cannot reset password
+T-2003,open,shipping,1,phone,Parcel lost in transit
+T-2004,pending,billing,2,Email ,Refund delayed
+T-2005,open,account,2,fax,Close my account
+T-2006,open,login,1,chat,
+T-2007,open,billing, 3 ,email,Wrong currency on invoice
+T-2008,closed,shipping,2,,Address change
+T-2009,open,login,0,phone,Account locked
+t-2001,open,billing,2,email,Charged twice for April
+T-2011,resolved,account,3,email,Update the billing contact
+T-2012,pending,shipping,1,phone,Delivered to the wrong door
+T-2013,open,account,2,chat,Add a second user
+T-2014,open,LOGIN,2,Chat,Two-factor reset
+T-2015,closed,billing,1,email,Invoice in the wrong language: Rechnung auf Französisch
+,open,billing,3,email,No reference given
+T-2017,open,shipping,two,phone,Box was empty
+T-2018,open,account,3,email,Change the company name to Zoë Ltd
+T-2019,pending,login,2,phone,Single sign-on fails
+T-2020,open,shipping,3,chat,Courier did not ring

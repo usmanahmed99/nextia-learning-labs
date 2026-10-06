@@ -1,0 +1,41 @@
+# Runs every notebook from a fresh start, as the notebook standard requires.
+# Solution notebooks must run without an error. Learner notebooks stop at
+# their unsolved exercises, so they run with --allow-errors: the check is
+# that everything up to the exercises works.
+name: Notebooks
+
+on:
+  pull_request:
+    paths: ["**/*.ipynb", "**/data/**", ".github/workflows/notebooks.yml"]
+  push:
+    branches: [main]
+    paths: ["**/*.ipynb", "**/data/**", ".github/workflows/notebooks.yml"]
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install nbconvert ipykernel
+      - name: Run each notebook
+        run: |
+          set -e
+          for nb in $(git ls-files '*.ipynb'); do
+            dir=$(dirname "$nb")
+            course=${nb%%/*}
+            # Test with the data in this commit. A notebook downloads its data
+            # from main only when the file is not next to it.
+            if [ -d "$course/data" ]; then cp "$course"/data/*.csv "$dir"/; fi
+            echo "::group::$nb"
+            case "$nb" in
+              *-solution.ipynb) jupyter nbconvert --to notebook --execute --output-dir /tmp/out "$nb" ;;
+              *) jupyter nbconvert --to notebook --execute --allow-errors --output-dir /tmp/out "$nb" ;;
+            esac
+            echo "::endgroup::"
+          done
