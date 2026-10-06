@@ -1,0 +1,107 @@
+[
+  {
+    "id": "T-1001",
+    "status": "open",
+    "category": "billing",
+    "priority": 2,
+    "subject": "Charged twice for March"
+  },
+  {
+    "id": "T-1002",
+    "status": "closed",
+    "category": "login",
+    "priority": 3,
+    "subject": "Password reset email is late"
+  },
+  {
+    "id": "T-1003",
+    "status": "open",
+    "category": "login",
+    "priority": 1,
+    "subject": "Cannot sign in after update"
+  },
+  {
+    "id": "T-1004",
+    "status": "pending",
+    "category": "billing",
+    "priority": 2,
+    "subject": "Refund not received"
+  },
+  {
+    "id": "T-1005",
+    "status": "Open ",
+    "category": "billing",
+    "priority": 3,
+    "subject": "Invoice shows the old address"
+  },
+  {
+    "id": "T-1006",
+    "status": "closed",
+    "category": "shipping",
+    "priority": 1,
+    "subject": "Parcel sent to the wrong city"
+  },
+  {
+    "id": "T-1007",
+    "status": "opne",
+    "category": "shipping",
+    "priority": 2,
+    "subject": "Tracking number does not work"
+  },
+  {
+    "id": "",
+    "status": "open",
+    "category": "account",
+    "priority": 2,
+    "subject": "Change the account owner"
+  },
+  {
+    "id": "T-1009",
+    "status": "open",
+    "category": "account",
+    "priority": "high",
+    "subject": "Delete my old account"
+  },
+  {
+    "id": "T-1010",
+    "status": "pending",
+    "category": "LOGIN",
+    "priority": 1,
+    "subject": "Two-factor code never arrives"
+  },
+  {
+    "id": "T-1011",
+    "status": "open",
+    "category": "billing",
+    "priority": 5,
+    "subject": "Discount code rejected"
+  },
+  {
+    "id": "T-1012",
+    "status": "closed",
+    "category": "account",
+    "priority": 3,
+    "subject": "Change the company name to Müller GmbH"
+  },
+  {
+    "id": "T-1003",
+    "status": "open",
+    "category": "login",
+    "priority": 1,
+    "subject": "Cannot sign in after update"
+  },
+  {
+    "id": "T-1014",
+    "status": "open",
+    "category": "",
+    "priority": 2,
+    "subject": "The app is slow"
+  },
+  {
+    "id": "t-1015",
+    "status": "open",
+    "category": "shipping",
+    "priority": 2,
+    "subject": "Box arrived damaged"
+  }
+]

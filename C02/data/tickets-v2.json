@@ -1,0 +1,162 @@
+[
+  {
+    "id": "T-2001",
+    "status": "open",
+    "category": "billing",
+    "priority": 2,
+    "channel": "email",
+    "subject": "Charged twice for April"
+  },
+  {
+    "id": "T-2002",
+    "status": "closed",
+    "category": "login",
+    "priority": 3,
+    "channel": "chat",
+    "subject": "Cannot reset password"
+  },
+  {
+    "id": "T-2003",
+    "status": "open",
+    "category": "shipping",
+    "priority": 1,
+    "channel": "phone",
+    "subject": "Parcel lost in transit"
+  },
+  {
+    "id": "T-2004",
+    "status": "pending",
+    "category": "billing",
+    "priority": 2,
+    "channel": "Email ",
+    "subject": "Refund delayed"
+  },
+  {
+    "id": "T-2005",
+    "status": "open",
+    "category": "account",
+    "priority": 2,
+    "channel": "fax",
+    "subject": "Close my account"
+  },
+  {
+    "id": "T-2006",
+    "status": "open",
+    "category": "login",
+    "priority": 1,
+    "channel": "chat",
+    "subject": ""
+  },
+  {
+    "id": "T-2007",
+    "status": "open",
+    "category": "billing",
+    "priority": " 3 ",
+    "channel": "email",
+    "subject": "Wrong currency on invoice"
+  },
+  {
+    "id": "T-2008",
+    "status": "closed",
+    "category": "shipping",
+    "priority": 2,
+    "channel": "",
+    "subject": "Address change"
+  },
+  {
+    "id": "T-2009",
+    "status": "open",
+    "category": "login",
+    "priority": 0,
+    "channel": "phone",
+    "subject": "Account locked"
+  },
+  {
+    "id": "t-2001",
+    "status": "open",
+    "category": "billing",
+    "priority": 2,
+    "channel": "email",
+    "subject": "Charged twice for April"
+  },
+  {
+    "id": "T-2011",
+    "status": "resolved",
+    "category": "account",
+    "priority": 3,
+    "channel": "email",
+    "subject": "Update the billing contact"
+  },
+  {
+    "id": "T-2012",
+    "status": "pending",
+    "category": "shipping",
+    "priority": 1,
+    "channel": "phone",
+    "subject": "Delivered to the wrong door"
+  },
+  {
+    "id": "T-2013",
+    "status": "open",
+    "category": "account",
+    "priority": 2,
+    "channel": "chat",
+    "subject": "Add a second user"
+  },
+  {
+    "id": "T-2014",
+    "status": "open",
+    "category": "LOGIN",
+    "priority": 2,
+    "channel": "Chat",
+    "subject": "Two-factor reset"
+  },
+  {
+    "id": "T-2015",
+    "status": "closed",
+    "category": "billing",
+    "priority": 1,
+    "channel": "email",
+    "subject": "Invoice in the wrong language: Rechnung auf Französisch"
+  },
+  {
+    "id": "",
+    "status": "open",
+    "category": "billing",
+    "priority": 3,
+    "channel": "email",
+    "subject": "No reference given"
+  },
+  {
+    "id": "T-2017",
+    "status": "open",
+    "category": "shipping",
+    "priority": "two",
+    "channel": "phone",
+    "subject": "Box was empty"
+  },
+  {
+    "id": "T-2018",
+    "status": "open",
+    "category": "account",
+    "priority": 3,
+    "channel": "email",
+    "subject": "Change the company name to Zoë Ltd"
+  },
+  {
+    "id": "T-2019",
+    "status": "pending",
+    "category": "login",
+    "priority": 2,
+    "channel": "phone",
+    "subject": "Single sign-on fails"
+  },
+  {
+    "id": "T-2020",
+    "status": "open",
+    "category": "shipping",
+    "priority": 3,
+    "channel": "chat",
+    "subject": "Courier did not ring"
+  }
+]
