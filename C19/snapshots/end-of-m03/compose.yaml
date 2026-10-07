@@ -1,0 +1,41 @@
+# The ticket API and its database, on your computer.
+# Start:  docker compose up -d --build
+# Stop:   docker compose down          (keeps the data)
+# Reset:  docker compose down --volumes (deletes the data)
+
+services:
+  api:
+    build: .
+    image: ticket-api:1.1.0
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      API_KEY_FILE: /run/secrets/api_key
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+      REQUIRE_API_KEY: "true"
+    secrets:
+      - api_key
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:18.6-trixie
+    environment:
+      POSTGRES_USER: tickets
+      POSTGRES_DB: tickets
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "tickets", "-d", "tickets"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+secrets:
+  api_key:
+    file: ./secrets/api_key.txt
+
+volumes:
+  pgdata:
