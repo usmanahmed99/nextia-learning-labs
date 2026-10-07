@@ -1,0 +1,50 @@
+# One environment (staging or production) on your computer: the API and its
+# own database. The image is given by digest, so every
+# environment runs exactly the same build. Start it with scripts/promote-local.sh.
+name: ticket-api-${ENVIRONMENT:?Set ENVIRONMENT}
+
+services:
+  api:
+    image: ${IMAGE:?Set IMAGE to the image name with its digest}
+    # The pipeline builds for the cloud's processors. On Apple silicon (arm64),
+    # Docker Desktop emulates them, so you run the same build as the cloud.
+    platform: linux/amd64
+    ports:
+      - "127.0.0.1:${PORT:?Set PORT}:8000"
+    environment:
+      API_KEY_FILE: /run/secrets/api_key
+      REQUIRE_API_KEY: "true"
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+      SHOW_DOCS: ${SHOW_DOCS:-false}
+      CLASSIFIER_VERSION: ${CLASSIFIER_VERSION:-1.0}
+    secrets:
+      - api_key
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:18.6-trixie
+    environment:
+      POSTGRES_USER: tickets
+      POSTGRES_DB: tickets
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "tickets", "-d", "tickets"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+secrets:
+  api_key:
+    file: ../../secrets/${ENVIRONMENT}_api_key.txt
+
+volumes:
+  pgdata:
