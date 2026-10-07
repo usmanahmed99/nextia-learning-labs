@@ -1,6 +1,7 @@
 """Report the saved model's results on the test set, once.
 
-Nextia Learning, C05, Module 4 (Validation strategy) and Module 6.
+Nextia Learning, C05, Module 6, lesson 3 (Thresholds and calibration). Module 8
+uses the report again.
 
     python evaluate.py
 
