@@ -1,0 +1,12 @@
+[project]
+name = "ticket-api"
+version = "1.1.0"
+description = "Classifies support tickets into a category and a priority."
+requires-python = ">=3.12"
+dependencies = ["fastapi[standard]==0.142.2", "psycopg[binary]==3.3.6"]
+
+[tool.fastapi]
+entrypoint = "ticket_api.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

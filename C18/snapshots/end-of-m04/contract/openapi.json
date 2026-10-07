@@ -1,0 +1,581 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Ticket Classifier API",
+    "description": "\nClassifies support tickets into a category and a priority.\n\nThe classifier is a deterministic mock: it uses keywords, so the same text\nalways gives the same result. Every error has the same shape:\n`{\"error\": {\"code\": ..., \"message\": ..., \"request_id\": ..., \"fields\": [...]}}`.\n",
+    "version": "1.1.0"
+  },
+  "paths": {
+    "/v1/categories": {
+      "get": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "List the ticket categories",
+        "operationId": "list_categories_v1_categories_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/classify": {
+      "post": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Classify a support ticket",
+        "description": "Predicts the category and priority of one ticket from its subject and body. The same text always gives the same result.",
+        "operationId": "classify_v1_classify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TicketIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The predicted category and priority",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Classification"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The request body is too large.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "A field is missing or not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The classifier is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/history": {
+      "get": {
+        "tags": [
+          "tickets",
+          "history"
+        ],
+        "summary": "List recent classifications",
+        "description": "Returns the newest classifications first. History is off when the server has no DATABASE_URL.",
+        "operationId": "list_history_v1_history_get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "How many to return.",
+              "default": 10,
+              "title": "Limit"
+            },
+            "description": "How many to return."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoryList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "History is off, or the database does not answer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Check that the service runs",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Check that the service can classify tickets",
+        "operationId": "ready_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readiness"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Not ready.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CategoryList": {
+        "properties": {
+          "categories": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "billing",
+                "login",
+                "shipping",
+                "account",
+                "other"
+              ]
+            },
+            "type": "array",
+            "title": "Categories",
+            "description": "Every category that /v1/classify can return."
+          }
+        },
+        "type": "object",
+        "required": [
+          "categories"
+        ],
+        "title": "CategoryList"
+      },
+      "Classification": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Category",
+            "description": "The team that should handle the ticket."
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority",
+            "description": "1 is the most urgent, 3 the least."
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "How sure the classifier is, from 0 to 1."
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version",
+            "description": "The classifier that made the prediction."
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "priority",
+          "confidence",
+          "model_version"
+        ],
+        "title": "Classification",
+        "description": "The predicted category and priority of a ticket.",
+        "examples": [
+          {
+            "category": "billing",
+            "confidence": 0.9,
+            "model_version": "keywords-1.0",
+            "priority": 1
+          }
+        ]
+      },
+      "ErrorDetail": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "A stable code that a program can check."
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "A short explanation for a person."
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id",
+            "description": "Give this ID when you report a problem."
+          },
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Fields",
+            "description": "The request fields that are not valid, if any.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorDetail"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "examples": [
+          {
+            "error": {
+              "code": "invalid_request",
+              "fields": [
+                "subject"
+              ],
+              "message": "The request is not valid."
+            }
+          }
+        ]
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Health": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Health"
+      },
+      "HistoryItem": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id",
+            "description": "The request that made the classification."
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Category"
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "When the API made it (UTC)."
+          }
+        },
+        "type": "object",
+        "required": [
+          "request_id",
+          "category",
+          "priority",
+          "confidence",
+          "model_version",
+          "created_at"
+        ],
+        "title": "HistoryItem",
+        "description": "One classification that the API made. It has no ticket text."
+      },
+      "HistoryList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HistoryItem"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "The newest classification first."
+          }
+        },
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "HistoryList"
+      },
+      "Readiness": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ready",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Readiness"
+      },
+      "TicketIn": {
+        "properties": {
+          "subject": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Subject",
+            "description": "The short title of the ticket."
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 5000,
+            "title": "Body",
+            "description": "The customer's message. Optional.",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "title": "TicketIn",
+        "description": "A support ticket to classify.",
+        "examples": [
+          {
+            "body": "My card was charged two times for the same invoice.",
+            "subject": "Charged twice for March"
+          }
+        ]
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "tickets",
+      "description": "Classify support tickets."
+    },
+    {
+      "name": "history",
+      "description": "See recent classifications."
+    },
+    {
+      "name": "health",
+      "description": "Check that the service runs."
+    }
+  ]
+}
