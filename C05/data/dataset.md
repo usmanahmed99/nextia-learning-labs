@@ -54,4 +54,5 @@ The C04 preparation plan is already applied: one row per ticket, only facts know
 - Synthetic: the patterns are the generator's rules, not facts about real support teams. Do not quote any number as a finding about customer service.
 - The validation and test months come after the policy change, so their escalation rate (15.5% and 15.7%) is higher than in train (11.7%). This is on purpose.
 - About 1 in 4 tickets come from repeat customers with a hidden tendency to escalate. No column shows it directly, which limits how well any model can do.
+- In `july_tickets.csv`, `prior_tickets_90d` counts only the customer's tickets before 1 July, not the earlier July tickets: an export error, on purpose, for the lesson on production checks (C05-M06-L03). The training files do not have it.
 - `customer_escalation_rate` and `priority_now` leak the target. Use them only in the lessons that show why they must not be features.

@@ -290,6 +290,9 @@ for n, t in enumerate(july, start=1):
     t["customer_tenure_days"] = (created - t["joined"]).days if t["joined"] else None
     t["created_hour"] = created.hour
     cid = t["customer_id"]
+    # An export error, on purpose (C05-M06-L03): the July export counts only the
+    # customer's tickets before 1 July, not the earlier July tickets. The feature
+    # is computed differently from training and gets smaller during the month.
     t["prior_tickets_90d"] = count_between(by_customer[cid], created - timedelta(days=90), created) if cid else 0
 # Escalations known before each July ticket: the history up to the snapshot,
 # plus July escalations that happened before the ticket was created.
