@@ -1,0 +1,27 @@
+{
+  "snapshot": "2026-07-01 06:00:00",
+  "rule": "train < 2026-05-01 <= valid < 2026-06-01 <= test; only tickets created at or before 2026-06-28 06:00 (72 hours before the snapshot)",
+  "parts": {
+    "train": {
+      "rows": 16939,
+      "escalated": 1983,
+      "escalated_rate": 0.117,
+      "first_created": "2024-07-01 06:39:08",
+      "last_created": "2026-04-30 22:41:35"
+    },
+    "valid": {
+      "rows": 1179,
+      "escalated": 183,
+      "escalated_rate": 0.155,
+      "first_created": "2026-05-01 03:55:18",
+      "last_created": "2026-05-31 20:18:39"
+    },
+    "test": {
+      "rows": 1002,
+      "escalated": 157,
+      "escalated_rate": 0.157,
+      "first_created": "2026-06-01 03:05:53",
+      "last_created": "2026-06-27 21:52:59"
+    }
+  }
+}
