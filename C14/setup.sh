@@ -10,7 +10,14 @@
 #   c14-lab/ticket-notes      your clone (you work here as Amira)
 #   c14-lab/sam-notes         the clone of your teammate, Sam Okafor
 #
-# Scenarios:
+# Scenarios for Modules 1 and 2 (only ticket-notes, until Module 2, lesson 2
+# adds the remote and Sam's clone):
+#   m01-l03  Module 1, lesson 3: an empty repository with no commits
+#   m02-l01  Module 2, lesson 1: three commits on main
+#   m02-l02  Module 2, lesson 2: main and the branch add-priorities, no remote
+#   m02-l03  Module 2, lesson 3: the remote, Sam's clone and his first ticket
+#
+# Scenarios for Modules 3 to 5:
 #   m03      Module 3: main, Sam's branch add-ticket-104 and the branch add-faq
 #   m04      Module 4: a conflict is ready to happen, and Sam pushed a faulty commit
 #   release  Module 5, lesson 1: main is ready for its first release
@@ -25,6 +32,8 @@
 # is the same as in the lessons. Tested on 2026-10-05 with Git 2.54 on macOS
 # (sh and dash) and Alpine Linux (BusyBox sh): the hashes are the same on each.
 # Not yet tested in Git Bash on Windows. Git 2.40 or later is required.
+# The scenarios for Modules 1 and 2 were added on 2026-10-07 and tested on
+# macOS only (sh and dash, Git 2.54).
 
 set -eu
 
@@ -33,11 +42,12 @@ SCENARIO=${1:-}
 RESET=${2:-}
 
 usage() {
-  echo "Usage: sh setup.sh <m03|m04|release|hotfix|final> [--reset]" >&2
+  echo "Usage: sh setup.sh <m01-l03|m02-l01|m02-l02|m02-l03|m03|m04|release|hotfix|final> [--reset]" >&2
   exit 2
 }
 
 case "$SCENARIO" in
+  m01-l03 | m02-l01 | m02-l02 | m02-l03) ;;
   m03 | m04 | release | hotfix | final) ;;
   *) usage ;;
 esac
@@ -77,7 +87,13 @@ as() { # as <amira|sam> <command...>
   STEP=$((STEP + 1))
   minute=$(printf '%02d' $((STEP % 60)))
   hour=$((9 + STEP / 60))
-  stamp="2026-10-06T$(printf '%02d' $hour):$minute:00-04:00"
+  at "$who" "2026-10-06T$(printf '%02d' $hour):$minute:00-04:00" "$@"
+}
+
+at() { # at <amira|sam> <date> <command...>: the same, at a date that you give
+  who=$1
+  stamp=$2
+  shift 2
   if [ "$who" = sam ]; then
     name="Sam Okafor" email="sam@example.com"
   else
@@ -95,6 +111,77 @@ commit() { # commit <amira|sam> <message>
   g add -A
   as "$1" g commit -q -m "$2"
 }
+
+# --- Modules 1 and 2: the repository that you make in the lessons ----------
+#
+# These scenarios make the state at the start of a lesson in Modules 1 and 2.
+# The commits are the ones in the lessons, with the same hashes (763ec59,
+# 49397ba, d8ae027 and 999a7c4). Sam's "Add ticket 102" in m02-l03 is the
+# exception: in the lesson, the learner makes it, so its hash is different.
+# The history is not the same as the shared start below, which Modules 3 to 5
+# use.
+
+lesson_commits() { # The three commits from "Track a first change".
+  printf '# Ticket notes\n\nNotes about support tickets.\n' > README.md
+  g add README.md
+  at amira 2026-10-05T20:31:22-04:00 g commit -q -m "Add README"
+  printf '# Ticket notes\n\nNotes about support tickets for the help desk.\n' > README.md
+  g add README.md
+  at amira 2026-10-05T20:31:31-04:00 g commit -q -m "Describe who the notes are for"
+  printf 'Ticket 101: printer offline. Restarted the spooler.\n' > tickets.txt
+  g add tickets.txt
+  at amira 2026-10-05T20:31:31-04:00 g commit -q -m "Add first ticket note"
+}
+
+lesson_branch() { # The branch from "Branch basics". You end on main.
+  g switch -q -c add-priorities
+  printf 'Priority levels: low, normal, urgent.\n' > priorities.txt
+  g add priorities.txt
+  at amira 2026-10-06T10:00:00-04:00 g commit -q -m "Add priority levels"
+  g switch -q main
+}
+
+lesson_remote() { # The guided practice of "Synchronize deliberately".
+  g init -q --bare team-remote.git
+  cd ticket-notes
+  g remote add origin ../team-remote.git
+  g config pull.ff only
+  g push -q -u origin main
+  g push -q -u origin add-priorities
+  cd "$ROOT"
+  g clone -q team-remote.git sam-notes
+  g -C sam-notes config user.name "Sam Okafor"
+  g -C sam-notes config user.email "sam@example.com"
+  g -C sam-notes config pull.ff only
+  g -C sam-notes config merge.conflictStyle zdiff3
+  cd sam-notes
+  printf 'Ticket 102: password reset email not received.\n' >> tickets.txt
+  at sam 2026-10-06T10:05:00-04:00 g commit -q -am "Add ticket 102"
+  g push -q
+  cd "$ROOT/ticket-notes"
+  g pull -q
+  cd "$ROOT"
+}
+
+case "$SCENARIO" in
+  m01-l03 | m02-l01 | m02-l02 | m02-l03)
+    g init -q ticket-notes
+    cd ticket-notes
+    case "$SCENARIO" in m02-*) lesson_commits ;; esac
+    case "$SCENARIO" in m02-l02 | m02-l03) lesson_branch ;; esac
+    cd "$ROOT"
+    if [ "$SCENARIO" = m02-l03 ]; then lesson_remote; fi
+    echo "Ready: $ROOT"
+    echo "  ticket-notes     your repository"
+    if [ "$SCENARIO" = m02-l03 ]; then
+      echo "  sam-notes        Sam's clone"
+      echo "  team-remote.git  the shared remote"
+    fi
+    echo "Next: cd $LAB/ticket-notes"
+    echo "To start this scenario again: sh $0 $SCENARIO --reset"
+    exit 0
+    ;;
+esac
 
 # --- Shared start: the history from Modules 1 and 2 -------------------------
 
