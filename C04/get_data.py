@@ -19,6 +19,7 @@ check the keys yourself.
 import csv
 import hashlib
 import sqlite3
+import subprocess
 import sys
 import urllib.request
 from pathlib import Path
@@ -87,7 +88,17 @@ def fetch(name, expected):
     try:
         urllib.request.urlretrieve(BASE + name, path)
     except OSError as error:
-        sys.exit(f"Could not download {name}: {error}\nCheck your internet connection, then run the script again.")
+        # Python from the python.org installer on macOS has no certificates
+        # until you run "Install Certificates.command". curl uses the
+        # computer's own certificates, so try it before giving up. The
+        # checksum below still checks the file.
+        try:
+            subprocess.run(["curl", "-fsSL", "-o", str(path), BASE + name], check=True)
+        except (OSError, subprocess.CalledProcessError):
+            sys.exit(f"Could not download {name}: {error}\n"
+                     "Check your internet connection, then run the script again. On macOS, if the error\n"
+                     "says CERTIFICATE_VERIFY_FAILED, open Applications > Python 3.x and run\n"
+                     "Install Certificates.command.")
     actual = sha256(path)
     if actual != expected:
         sys.exit(f"{name} has the wrong checksum.\n  expected {expected}\n  found    {actual}\n"
