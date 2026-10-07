@@ -1,0 +1,7 @@
+# Needed to run the API
+fastapi[standard]==0.142.2
+psycopg[binary]==3.3.6
+
+# Needed to work on the API
+pytest==9.1.1
+httpx2==2.13.1
