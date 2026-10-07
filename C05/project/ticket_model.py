@@ -1,8 +1,8 @@
 """The shared parts of Larkfield's escalation model: the columns, how to load
 a part of the data, and the preprocessing-plus-model pipeline.
 
-Nextia Learning, C05. You write this file in Module 2, lesson 3 (Preprocess
-consistently), and add prior_escalations_90d in Module 3, lesson 3 (Select
+Nextia Learning, C05. You write this file in Module 4, lesson 3 (Preprocess
+with a pipeline), and add prior_escalations_90d in Module 6, lesson 1 (Select
 useful features). train.py, evaluate.py and predict.py import it.
 """
 

@@ -1,6 +1,6 @@
 """Score new tickets with the saved escalation model.
 
-Nextia Learning, C05, Module 6 (Package artifacts; Plan production checks).
+Nextia Learning, C05, Module 8 (Package artifacts; Plan production checks).
 
     python predict.py data/july_tickets.csv predictions.csv
     python predict.py --check     reload the model and compare the fixed sample

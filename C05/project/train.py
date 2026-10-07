@@ -1,6 +1,6 @@
 """Train the escalation model, choose its threshold, and save the artifact.
 
-Nextia Learning, C05, Module 6, lesson 1 (Package artifacts).
+Nextia Learning, C05, Module 8, lesson 1 (Package artifacts).
 
     python train.py
 
