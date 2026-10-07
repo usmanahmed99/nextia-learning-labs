@@ -11,7 +11,7 @@ The queries and scripts that you write in C04, as they are at the end of the cou
 | `scripts/clean.py` | Module 4, [Handle messy values](https://learning.nextia-ai.com/courses/sql/m04/handle-messy-values/) |
 | `scripts/build_features.py` | Module 5, [Features and target timing](https://learning.nextia-ai.com/courses/sql/m05/features-and-target-timing/) |
 | `scripts/split.py` | Module 5, [Choose a split](https://learning.nextia-ai.com/courses/sql/m05/choose-a-split/) |
-| `scripts/check_input.py`, `scripts/validate.py` | Module 6, [Validation rules](https://learning.nextia-ai.com/courses/sql/m06/validation-rules/) |
-| `run_pipeline.py` | Module 6, [Deliver a reusable dataset](https://learning.nextia-ai.com/courses/sql/m06/deliver-a-reusable-dataset/) |
+| `scripts/validate.py` | Module 6, [Validation rules](https://learning.nextia-ai.com/courses/sql/m06/validation-rules/) |
+| `scripts/check_input.py`, `run_pipeline.py` | Module 6, [Deliver a reusable dataset](https://learning.nextia-ai.com/courses/sql/m06/deliver-a-reusable-dataset/) |
 
-Run them from your project folder, next to `larkfield.db`, with pandas 3.0.6 installed: for example `python scripts/clean.py`.
+Run them from your project folder, next to `larkfield.db`, with pandas 3.0.6 installed: for example `python scripts/clean.py`. Lesson notebooks download them into their own `ticket-data` folder; do not open a notebook inside your own project.

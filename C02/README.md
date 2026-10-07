@@ -12,6 +12,29 @@ Data and notebooks for [Python for Practical AI Engineering](https://learning.ne
 
 The dataset card is [data/dataset.md](data/dataset.md).
 
+## Lesson notebooks
+
+Each folder `Mnn-Lnn-<lesson>/` has the notebook of one lesson, and its solution (`-solution.ipynb`). A notebook has every example, task and check of its lesson. Its first cells make a folder `ticket-cleaner` as at the start of the lesson (with the code of the earlier lessons), download the data files that it needs from this repository with a checksum, and install the packages in the course's versions (httpx 0.28.1, pytest 9.1.1). So you can open any lesson's notebook without the earlier lessons.
+
+| Folder | Lesson |
+|---|---|
+| `M02-L01-basic-values/` | Basic values |
+| `M02-L02-collections/` | Collections |
+| `M02-L03-decisions-and-repetition/` | Decisions and repetition |
+| `M03-L01-function-contracts/` | Function contracts |
+| `M03-L02-modules-and-imports/` | Modules and imports |
+| `M03-L03-structured-records/` | Structured records |
+| `M04-L01-reading-and-writing-files/` | Reading and writing files |
+| `M04-L02-basic-http-client-use/` | Basic HTTP client use |
+| `M04-L03-configuration-and-secrets/` | Configuration and secrets |
+| `M05-L01-read-failures/` | Read failures |
+| `M05-L02-exceptions-and-logging/` | Exceptions and logging |
+| `M05-L03-focused-tests/` | Focused tests |
+| `M06-L01-notebook-discipline/` | Notebook discipline |
+| `M06-L02-command-line-interface/` | Command-line interface |
+
+Module 1 (the terminal, installing Python, virtual environments) and Quality and handoff (ruff, the README, a fresh copy) have no notebook: they are about your own computer. The notebooks are generated; do not edit them by hand.
+
 ## Get a data file
 
 In your project folder, with the terminal in `ticket-cleaner`:
