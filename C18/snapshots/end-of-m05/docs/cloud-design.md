@@ -63,7 +63,7 @@ Serverless is not free: it charges while a replica runs, and requests that I did
 | `rg-ticket-api-practice` | Resource group | Me | No (it is a folder) | `az group delete --name rg-ticket-api-practice --yes`; this deletes everything in it |
 | `ticketapi4821` | Container registry, Basic | Me | **Yes**: US$0.1666 a day while it exists, even if nothing uses it; storage above the 10 GiB included | Delete the registry (or the group) |
 | `id-ticket-api` | User-assigned managed identity | Me | No | Delete it (or the group) |
-| AcrPull for `id-ticket-api` on the registry | Role assignment | Me | No. Not listed by `az resource list` | Nothing to stop: it gives no access after the identity is deleted. It is listed here so that I know it exists |
+| AcrPull for `id-ticket-api` on the registry | Role assignment | Me | No. Not listed by `az resource list` | Nothing to stop: Azure removes it with the registry and the identity (checked with `az role assignment list --all`). It is listed here so that I know it exists |
 | `cae-ticket-api` | Container Apps environment (Consumption) | Me | No charge of its own in this design | Delete it (or the group) |
 | `workspace-rgticketapipractice...` | Log Analytics workspace | **The environment, automatically** | **Yes**: per GB of logs above 5 GB a month (US$2.76 per GB) | Delete it (or the group). I did not ask for it, so I must look for it |
 | `ticket-api` | Container app | Me | **Yes**: vCPU-seconds and GiB-seconds while a replica runs, and requests, above the monthly free grant | Scale to zero stops the compute charge; delete it (or the group) to stop everything |
