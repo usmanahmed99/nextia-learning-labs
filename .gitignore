@@ -1,6 +1,6 @@
-.ipynb_checkpoints/
-__pycache__/
 *.pyc
-.venv/
-.env
 .DS_Store
+.env
+.ipynb_checkpoints/
+.venv/
+__pycache__/
