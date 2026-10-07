@@ -1,0 +1,2 @@
+# Needed to run the API
+fastapi[standard]==0.142.2
