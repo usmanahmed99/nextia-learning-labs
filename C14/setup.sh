@@ -1,5 +1,5 @@
 #!/bin/sh
-# Practice repositories for C14, Git and Team Development Essentials.
+# Practice repositories for Git and Team Development Essentials.
 #
 # Usage:   sh setup.sh <scenario> [--reset]
 # Example: cd ~/projects && sh nextia-learning-labs/C14/setup.sh m03

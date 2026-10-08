@@ -1,6 +1,6 @@
-# C05 project: the course's finished files
+# The machine learning course's project: finished files
 
-The files of your `ticket-model` project as they are at the end of C05. Use them to catch up: copy a file into your project folder if your own version is broken, then continue the lesson.
+The files of your `ticket-model` project as they are at the end of the course. Use them to catch up: copy a file into your project folder if your own version is broken, then continue the lesson.
 
 | File | Written in |
 |---|---|

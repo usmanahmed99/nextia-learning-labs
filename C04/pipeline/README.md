@@ -1,6 +1,6 @@
-# C04 pipeline: the course's finished scripts
+# Pipeline: the course's finished scripts
 
-The queries and scripts that you write in C04, as they are at the end of the course. Use them to:
+The queries and scripts that you write in this course, as they are at the end of the course. Use them to:
 
 - **catch up**: copy a script into your `ticket-data` project if your own version is broken, then continue the lesson;
 - **run a lesson notebook**: the notebooks from Module 4 on download these files to rebuild the steps of earlier lessons.

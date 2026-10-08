@@ -1,6 +1,6 @@
-# Dataset card: Diabetes 130-US hospitals, for C17-M06-L03 *Score hospital readmissions asynchronously*
+# Dataset card: Diabetes 130-US hospitals, for the case study *Score hospital readmissions asynchronously*
 
-Used by: C17-M06-L03 *Score hospital readmissions asynchronously* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/diabetes_130_hospitals.md](../../C05/case-studies/data/diabetes_130_hospitals.md); this card says how this case study uses it.
+Used by: the case study *Score hospital readmissions asynchronously* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/diabetes_130_hospitals.md](../../C05/case-studies/data/diabetes_130_hospitals.md); this card says how this case study uses it.
 
 | Field | Value |
 |---|---|
@@ -13,7 +13,7 @@ Used by: C17-M06-L03 *Score hospital readmissions asynchronously* (`starter.zip`
 
 ## Changes made by Nextia Learning
 
-1. The C05 preparation (as in the case study *Choose a model for hospital readmissions*): the 2,423 stays that ended in death or a hospice discharge are removed; the three code columns are translated to text with `IDS_mapping.csv` (the "unknown" codes become `unknown`); the main diagnosis (`diag_1`) is put in 9 groups as in Strack et al. (2014); the age band becomes its middle year; a missing specialty becomes `missing`, a missing test result `not measured`.
+1. The preparation of the machine learning course (as in the case study *Choose a model for hospital readmissions*): the 2,423 stays that ended in death or a hospice discharge are removed; the three code columns are translated to text with `IDS_mapping.csv` (the "unknown" codes become `unknown`); the main diagnosis (`diag_1`) is put in 9 groups as in Strack et al. (2014); the age band becomes its middle year; a missing specialty becomes `missing`, a missing test result `not measured`.
 2. Split by patient with a fixed seed (60/20/20). The model learns from the train part (59,556 stays); the threshold comes from the valid part (20,179 stays).
 3. The discharge files hold only the **test** part (19,608 stays of 13,852 patients), with the stay's number and the 19 features. They have **no** patient number, race, gender, payer, or target. The target is in a separate file, `outcomes_week.csv`, for checks only.
 4. Two files are broken on purpose to teach partial failure: `discharges_typos.csv` (3 cells changed) and `discharges_hours.csv` (`time_in_hospital` × 24).
@@ -21,7 +21,7 @@ Used by: C17-M06-L03 *Score hospital readmissions asynchronously* (`starter.zip`
 
 ## Checks that the case study runs
 
-- `training/train.py` checks the SHA-256 of both source files, and gives the C05 numbers: test ROC AUC 0.663, average precision 0.217, 1,866 of 19,608 stays called at the threshold 0.18 (9.5%), precision 0.270, recall 0.221.
+- `training/train.py` checks the SHA-256 of both source files, and gives the numbers of the machine learning course: test ROC AUC 0.663, average precision 0.217, 1,866 of 19,608 stays called at the threshold 0.18 (9.5%), precision 0.270, recall 0.221.
 - The model file that it writes is byte for byte `model.joblib` of the bundle (scikit-learn 1.9.1, numpy 2.5.3, pandas 3.0.6, joblib 1.6.0; tested on macOS with Python 3.14.6).
 - The service refuses a bundle with another digest, a changed file, or other package versions, and checks 10 parity cases at start-up.
 
@@ -30,5 +30,5 @@ Used by: C17-M06-L03 *Score hospital readmissions asynchronously* (`starter.zip`
 - **Old data from one country**: US hospitals, 1999 to 2008, ICD-9 codes. Care, coding and insurance have changed since.
 - **A weak signal**: ROC AUC 0.66. Readmission depends on things that the file does not record, such as help at home and follow-up care.
 - **No dates**: the model could not be tested on later months, so we do not know how fast it ages.
-- **Sensitive columns** (race, gender, payer) are not inputs. The C05 case study checks the model for each group; the results differ by age, and a real use needs those checks every month.
+- **Sensitive columns** (race, gender, payer) are not inputs. The case study of the machine learning course checks the model for each group; the results differ by age, and a real use needs those checks every month.
 - **Health data about real people**, de-identified by the source. Do not try to re-identify anyone.

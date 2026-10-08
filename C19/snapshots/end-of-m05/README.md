@@ -1,6 +1,6 @@
 # ticket-api-ci
 
-The reference project of [CI/CD, Testing and Safe Releases](https://learning.nextia-ai.com/courses/) (Nextia Learning, C19): the ticket API from C16 and C18, with a GitHub Actions pipeline that checks every change, builds one image per commit and promotes it to staging and production.
+The reference project of [CI/CD, Testing and Safe Releases](https://learning.nextia-ai.com/courses/) (Nextia Learning): the ticket API from the API course and the Docker course, with a GitHub Actions pipeline that checks every change, builds one image per commit and promotes it to staging and production.
 
 | Path | What it is |
 |---|---|

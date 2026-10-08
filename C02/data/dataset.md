@@ -1,6 +1,6 @@
-# Dataset card: synthetic support tickets (C02)
+# Dataset card: synthetic support tickets
 
-Used by: C02 Modules 4 to 6 and the final assignment, and `C02/M06-L01-notebook-discipline/notebook-discipline.ipynb`
+Used by: Modules 4 to 6 of this course and the final assignment, and `C02/M06-L01-notebook-discipline/notebook-discipline.ipynb`
 
 | Field | Value |
 |---|---|
@@ -19,7 +19,7 @@ One support ticket: its ID, status (`open`, `pending` or `closed`), category, pr
 
 ## Why this dataset
 
-The C02 lessons teach how to read, validate and report on records of mixed quality. The data must contain each kind of problem exactly once, in a file small enough to read completely, so that a learner can predict every result by hand. Public help-desk datasets were considered and rejected: they are large, often contain personal data in free text, and their problems are not controlled.
+The lessons of this course teach how to read, validate and report on records of mixed quality. The data must contain each kind of problem exactly once, in a file small enough to read completely, so that a learner can predict every result by hand. Public help-desk datasets were considered and rejected: they are large, often contain personal data in free text, and their problems are not controlled.
 
 Nine rows are valid, three of them only after cleaning (`Open ` with a space and capital letter, `LOGIN`, and the lower-case ID `t-1015`). Six rows each have one problem:
 
@@ -41,7 +41,7 @@ Nine rows are valid, three of them only after cleaning (`Open ` with a space and
 - One subject contains a non-English letter (`Müller`, row 12), so that reading the file with the wrong text encoding shows a visible error.
 
 - `tickets.json` has the same rows as `tickets.csv`. Numeric priorities are JSON numbers, as a web service would send them; `high` stays a string.
-- `tickets-excel.csv` has the same rows as `tickets.csv`, saved as a spreadsheet program does: with a UTF-8 byte order mark and Windows line endings (CRLF). C02 Module 5 uses it to find a parsing bug.
+- `tickets-excel.csv` has the same rows as `tickets.csv`, saved as a spreadsheet program does: with a UTF-8 byte order mark and Windows line endings (CRLF). Module 5 uses it to find a parsing bug.
 
 ## Limitations and cautions
 

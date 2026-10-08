@@ -1,6 +1,6 @@
 # Dataset card: credit_default_taiwan.csv.gz
 
-Used by C05-M09-L03 *Predict credit-card default* (labs `C05/M09-L03-predict-credit-card-default/`).
+Used by the case study *Predict credit-card default* in the machine learning course (labs `C05/M09-L03-predict-credit-card-default/`).
 
 | | |
 |---|---|

@@ -1,4 +1,4 @@
-# C16: Build and Deploy Your First API
+# Build and Deploy Your First API
 
 Files for [Build and Deploy Your First API](https://learning.nextia-ai.com/courses/api/).
 

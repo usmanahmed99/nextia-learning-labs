@@ -1,6 +1,6 @@
 # Dataset card: Wholesale customers
 
-Used by: C05-M09-L07 *Find wholesale buyer types*, `C05/M09-L07-find-wholesale-buyer-types/find-wholesale-buyer-types.ipynb` (and the solution notebook)
+Used by: the case study *Find wholesale buyer types* in the machine learning course, `C05/M09-L07-find-wholesale-buyer-types/find-wholesale-buyer-types.ipynb` (and the solution notebook)
 
 | Field | Value |
 |---|---|
@@ -29,7 +29,7 @@ One customer of a wholesale food distributor in Portugal, with the customer's sp
 
 ## Why this dataset
 
-It is small and real, the spending is strongly skewed (skew 2.6 to 11.2), and it has an existing label (`Channel`) that clustering can be compared with. This makes the effect of scaling and of a log visible, and it lets the learner see where a cluster agrees with the business's own label and where it does not. Compared with: the UCI Online Retail II data (used in C05-M09-L06, so a second dataset with a different lesson was preferred) and synthetic blobs (no real skew, no real label).
+It is small and real, the spending is strongly skewed (skew 2.6 to 11.2), and it has an existing label (`Channel`) that clustering can be compared with. This makes the effect of scaling and of a log visible, and it lets the learner see where a cluster agrees with the business's own label and where it does not. Compared with: the UCI Online Retail II data (used in the case study *Segment online-shop customers*, so a second dataset with a different lesson was preferred) and synthetic blobs (no real skew, no real label).
 
 ## Changes we made
 

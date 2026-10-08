@@ -1,4 +1,4 @@
-# C07: LLMs: How They Work and How to Choose One
+# LLMs: How They Work and How to Choose One
 
 Files for [LLMs: How They Work and How to Choose One](https://learning.nextia-ai.com/courses/llms/).
 

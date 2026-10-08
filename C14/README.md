@@ -1,4 +1,4 @@
-# C14: Git and Team Development Essentials
+# Git and Team Development Essentials
 
 Practice repositories for every module and the final assignment of [Git and Team Development Essentials](https://learning.nextia-ai.com/courses/git/).
 
