@@ -12,6 +12,6 @@ The setup cells download the three files from the `main` branch of this reposito
 | Field | Value |
 |---|---|
 | Licence | CC0 1.0 (public domain) |
-| Why this dataset | It is the table that the learner builds in C04 Modules 3 to 5, so the notebook's numbers match the lesson. A public dataset would not have known leaky columns or the time split of the course. |
+| Why this dataset | It is the table that the learner builds in Modules 3 to 5 of this course, so the notebook's numbers match the lesson. A public dataset would not have known leaky columns or the time split of the course. |
 
 `../data/tickets_model.csv` (the modelling table with the two leaky columns) has the same rows and values; the notebook does not need it.

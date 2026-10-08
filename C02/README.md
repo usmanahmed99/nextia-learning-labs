@@ -1,4 +1,4 @@
-# C02: Python for Practical AI Engineering
+# Python for Practical AI Engineering
 
 Data and notebooks for [Python for Practical AI Engineering](https://learning.nextia-ai.com/courses/python/).
 

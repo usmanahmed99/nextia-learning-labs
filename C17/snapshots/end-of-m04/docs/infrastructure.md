@@ -1,7 +1,7 @@
 # Infrastructure decision: escalation-service
 
 Where Larkfield's escalation model runs, and why. Written by Amira on 2026-10-08
-(C17 Module 4), with Priya (model), Grace (help desk) and Omar (product).
+(Module 4 of the deployment course), with Priya (model), Grace (help desk) and Omar (product).
 Change this file when one of its numbers changes.
 
 ## What the model needs
@@ -30,7 +30,7 @@ Prices from the Azure Retail Prices API on 2026-10-08, canadacentral, USD, pay-a
 ## The decision
 
 - CPU only.
-- One container on Azure Container Apps, as in C18: 0.5 vCPU and 1 GiB, one worker (`WORKERS=1`).
+- One container on Azure Container Apps, as in the Docker course: 0.5 vCPU and 1 GiB, one worker (`WORKERS=1`).
   Checked on 2026-10-08 after the benchmark: no change (see below).
 - At least one replica from 07:00 to 22:00, so that agents do not wait for a cold start.
 - The bundle is baked into the image: each image holds the code and the model that were tested together.

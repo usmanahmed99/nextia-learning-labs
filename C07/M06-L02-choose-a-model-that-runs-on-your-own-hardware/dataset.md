@@ -1,6 +1,6 @@
 # Dataset card: synthetic home-care visit notes
 
-Used by: C07-M06-L02 *Choose a model that runs on your own hardware* (`starter.zip`, `finished.zip` in this folder, file `local-model-choice/data/notes.jsonl`)
+Used by: the case study *Choose a model that runs on your own hardware* (`starter.zip`, `finished.zip` in this folder, file `local-model-choice/data/notes.jsonl`)
 
 | Field | Value |
 |---|---|

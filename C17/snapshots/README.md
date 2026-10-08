@@ -1,4 +1,4 @@
-# C17 snapshots: escalation-service at the end of each module
+# Snapshots: escalation-service at the end of each module
 
 Each folder here is the `escalation-service` project of [Deploying AI Models for Real Users](https://learning.nextia-ai.com/courses/serving/), as it is after the last lesson of one module. If your project is broken or missing, copy the snapshot of the module that you finished last, and continue with the next lesson.
 

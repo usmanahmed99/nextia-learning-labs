@@ -1,6 +1,6 @@
 # Deployment record: ticket-api 1.1.0
 
-The deployment checklist, the resource inventory and the clean-up record for the practice deployment of C18 Module 5. Every result has a label: **live** (from Azure) or **simulated** (from Docker on this computer). The API key is never written here.
+The deployment checklist, the resource inventory and the clean-up record for the practice deployment of Module 5 of the Docker course. Every result has a label: **live** (from Azure) or **simulated** (from Docker on this computer). The API key is never written here.
 
 - Route: live, Azure Container Apps, region `canadacentral`
 - Date: 2026-10-07

@@ -1,6 +1,6 @@
 # Dataset card: bank_additional_full.csv.gz
 
-Used by C05-M09-L04 *Rank a call list* (labs `C05/M09-L04-rank-a-call-list/`).
+Used by the case study *Rank a call list* in the machine learning course (labs `C05/M09-L04-rank-a-call-list/`).
 
 | | |
 |---|---|

@@ -1,6 +1,6 @@
 # Dataset card: Online Retail II
 
-Used by: C05-M09-L06 *Segment online-shop customers*, `C05/M09-L06-segment-online-shop-customers/segment-online-shop-customers.ipynb` (and the solution notebook)
+Used by: the case study *Segment online-shop customers* in the machine learning course, `C05/M09-L06-segment-online-shop-customers/segment-online-shop-customers.ipynb` (and the solution notebook)
 
 | Field | Value |
 |---|---|

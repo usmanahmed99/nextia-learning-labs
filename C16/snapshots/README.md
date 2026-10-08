@@ -1,4 +1,4 @@
-# C16 snapshots: ticket-api at the end of each module
+# Snapshots: ticket-api at the end of each module
 
 Each folder here is the `ticket-api` project of [Build and Deploy Your First API](https://learning.nextia-ai.com/courses/api/), as it is after the last lesson of one module. If your project is broken or missing, copy the snapshot of the module that you finished last, and continue with the next lesson.
 

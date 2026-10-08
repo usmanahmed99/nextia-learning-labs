@@ -1,6 +1,6 @@
 # Dataset card: Bike Sharing (hourly), Washington, D.C., 2011–2012
 
-Used by: C05-M09-L01 *Forecast bike-share demand*, `C05/M09-L01-forecast-bike-share-demand/forecast-bike-share-demand.ipynb`
+Used by: the case study *Forecast bike-share demand* in the machine learning course, `C05/M09-L01-forecast-bike-share-demand/forecast-bike-share-demand.ipynb`
 
 | Field | Value |
 |---|---|

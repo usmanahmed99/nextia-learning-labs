@@ -1,6 +1,6 @@
 # Dataset card: bilingual government answers
 
-Used by: `starter.zip` and `finished.zip` in this folder. The test material of the case study *Choose a model for bilingual government answers* (Nextia Learning, course C07, lesson C07-M06-L01).
+Used by: `starter.zip` and `finished.zip` in this folder. The test material of the case study *Choose a model for bilingual government answers* (Nextia Learning, Module 6 of this course).
 
 ## What it contains
 

@@ -1,6 +1,6 @@
-# Dataset card: Larkfield help-desk modelling data (C05)
+# Dataset card: Larkfield help-desk modelling data
 
-Used by: every lesson of C05, *Machine Learning: From Problem to Reliable Model*, and the lesson notebooks in `C05/`.
+Used by: every lesson of *Machine Learning: From Problem to Reliable Model*, and the lesson notebooks in `C05/`.
 
 | Field | Value |
 |---|---|
@@ -35,24 +35,24 @@ Columns of the three modelling files: `ticket_id`, `customer_id` (empty for a gu
 - `prior_escalations_90d`: the same customer's escalations that happened in the 90 days before this ticket was created. Known at creation time.
 - `order_value_band`: `none`, `low` (under 50), `mid` (under 200) or `high`. It repeats `order_value` in a coarser form.
 - `customer_escalation_rate`: the customer's escalation rate over **all** labelled tickets, including later ones. **It leaks the target**: it is there for a lesson about misleading features.
-- `priority_now`: the priority at the snapshot, set to 1 when a ticket is escalated. **It leaks the target**, as in C04.
+- `priority_now`: the priority at the snapshot, set to 1 when a ticket is escalated. **It leaks the target**, as in the SQL course.
 
 ## Why this dataset
 
-C05 continues the C04 example, so the learner already knows what each column means and how the table was prepared. The C04 export was a sample of 240 customers over six months: enough to practise data preparation, but its validation month has only 45 escalations, so differences between models were smaller than the noise. This export applies the same rules for escalation and the same preparation to about 1,000 customers over two years, so model comparisons are meaningful. A public dataset was not used, because the course needs a fixed prediction time, known leaky columns and a known change in the escalation rate.
+This course continues the example of *SQL and Data Preparation for AI*, so the learner already knows what each column means and how the table was prepared. The SQL course's export was a sample of 240 customers over six months: enough to practise data preparation, but its validation month has only 45 escalations, so differences between models were smaller than the noise. This export applies the same rules for escalation and the same preparation to about 1,000 customers over two years, so model comparisons are meaningful. A public dataset was not used, because the course needs a fixed prediction time, known leaky columns and a known change in the escalation rate.
 
 ## How it was made
 
-`generate.py` uses the same rule for escalation as C04's generator: priority, team, channel, customer segment, the length of the first message, a large order, a hidden per-customer tendency, and a new warranty policy from 2026-05-01 that makes escalations more likely (most of all for warranty tickets). Ticket volume is higher in the garden season (April to July) and before the holidays, and lower at weekends. From 2026-07-15, some July tickets come from a new channel, `social`, that the training data never shows.
+`generate.py` uses the same rule for escalation as the SQL course's generator: priority, team, channel, customer segment, the length of the first message, a large order, a hidden per-customer tendency, and a new warranty policy from 2026-05-01 that makes escalations more likely (most of all for warranty tickets). Ticket volume is higher in the garden season (April to July) and before the holidays, and lower at weekends. From 2026-07-15, some July tickets come from a new channel, `social`, that the training data never shows.
 
 ## Changes we made
 
-The C04 preparation plan is already applied: one row per ticket, only facts known at creation, a target with a mature 72-hour window, and the split by time. The export problems of C04 (duplicate rows, cents, inconsistent spellings) are not added, because C05 is about models, not cleaning. Missing values that have a meaning stay: `order_value` is empty for `account` tickets, `region` and `channel` can be `unknown`, and guests have no customer ID or tenure.
+The preparation plan of the SQL course is already applied: one row per ticket, only facts known at creation, a target with a mature 72-hour window, and the split by time. The export problems of the SQL course (duplicate rows, cents, inconsistent spellings) are not added, because this course is about models, not cleaning. Missing values that have a meaning stay: `order_value` is empty for `account` tickets, `region` and `channel` can be `unknown`, and guests have no customer ID or tenure.
 
 ## Limitations and cautions
 
 - Synthetic: the patterns are the generator's rules, not facts about real support teams. Do not quote any number as a finding about customer service.
 - The validation and test months come after the policy change, so their escalation rate (15.5% and 15.7%) is higher than in train (11.7%). This is on purpose.
 - About 1 in 4 tickets come from repeat customers with a hidden tendency to escalate. No column shows it directly, which limits how well any model can do.
-- In `july_tickets.csv`, `prior_tickets_90d` counts only the customer's tickets before 1 July, not the earlier July tickets: an export error, on purpose, for the lesson on production checks (C05-M06-L03). The training files do not have it.
+- In `july_tickets.csv`, `prior_tickets_90d` counts only the customer's tickets before 1 July, not the earlier July tickets: an export error, on purpose, for the lesson [Plan production checks](https://learning.nextia-ai.com/courses/ml/m08/plan-production-checks/). The training files do not have it.
 - `customer_escalation_rate` and `priority_now` leak the target. Use them only in the lessons that show why they must not be features.

@@ -1,6 +1,6 @@
-# Dataset card: King County house sales, for C16-M08-L01 *Serve a house-price model*
+# Dataset card: King County house sales, for the case study *Serve a house-price model*
 
-Used by: C16-M08-L01 *Serve a house-price model* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/king_county_house_sales.md](../../C05/case-studies/data/king_county_house_sales.md); this card says how this case study uses it.
+Used by: the case study *Serve a house-price model* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/king_county_house_sales.md](../../C05/case-studies/data/king_county_house_sales.md); this card says how this case study uses it.
 
 | Field | Value |
 |---|---|
@@ -20,7 +20,7 @@ Used by: C16-M08-L01 *Serve a house-price model* (`starter.zip`, `finished.zip` 
 
 ## Checks that the case study runs
 
-- `training/train.py` checks the SHA-256 of the data file and gives the C05 test results: MAPE 12.8%, 50.2% within 10%, 12.6% too high by 10% or more, median error +6.4%.
+- `training/train.py` checks the SHA-256 of the data file and gives the test results of the machine learning course: MAPE 12.8%, 50.2% within 10%, 12.6% too high by 10% or more, median error +6.4%.
 - The API refuses a model file whose SHA-256 is not the reviewed one, and a card that names another file.
 - `tests/golden_houses.json`: three real test-set sales and the estimates that the API must give.
 

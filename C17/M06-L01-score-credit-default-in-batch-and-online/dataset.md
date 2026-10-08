@@ -1,6 +1,6 @@
-# Dataset card: Default of Credit Card Clients, for C17-M06-L01 *Score credit default in batch and online*
+# Dataset card: Default of Credit Card Clients, for the case study *Score credit default in batch and online*
 
-Used by: C17-M06-L01 *Score credit default in batch and online* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/credit_default_taiwan.md](../../C05/case-studies/data/credit_default_taiwan.md); this card says how this case study uses it.
+Used by: the case study *Score credit default in batch and online* (`starter.zip`, `finished.zip` in this folder). The full card of the data is [C05/case-studies/data/credit_default_taiwan.md](../../C05/case-studies/data/credit_default_taiwan.md); this card says how this case study uses it.
 
 | Field | Value |
 |---|---|
@@ -12,7 +12,7 @@ Used by: C17-M06-L01 *Score credit default in batch and online* (`starter.zip`, 
 
 ## How the case study uses it
 
-- `training/train.py` renames `PAY_0` to `PAY_1` (it is September) and splits the clients at random, stratified by `default` (seed 0): train 18,000, validation 6,000, test 6,000, as in the C05 case study *Predict credit-card default*. Inputs: 20 columns (education, six repayment statuses, the credit limit, six bills, six payments). Education codes 0, 5 and 6 become 4 (others) inside the pipeline.
+- `training/train.py` renames `PAY_0` to `PAY_1` (it is September) and splits the clients at random, stratified by `default` (seed 0): train 18,000, validation 6,000, test 6,000, as in the case study *Predict credit-card default* of the machine learning course. Inputs: 20 columns (education, six repayment statuses, the credit limit, six bills, six payments). Education codes 0, 5 and 6 become 4 (others) inside the pipeline.
 - **Not inputs, and not in the monthly file:** `SEX`, `MARRIAGE`, `AGE` (sensitive) and `default` (the target). `scripts/export_month.py` writes only `client_id` and the 20 inputs.
 - **The monthly file** `data/clients-2005-09.csv` holds all 30,000 clients. The data has one statement month, so this "month" contains the clients that the model was trained and tested on; it shows how the serving works, not how well the model does on new clients (the test set did that once).
 - **The contract's ranges** are the smallest and largest values in the 30,000 rows: credit limit 10,000 to 1,000,000; bills -339,603 to 1,664,089 (any month); payments 0 to 1,684,259; statuses -2 to 8 (9 is documented but never occurs); education 0 to 6.
@@ -20,7 +20,7 @@ Used by: C17-M06-L01 *Score credit default in batch and online* (`starter.zip`, 
 
 ## Checks that the case study runs
 
-- `training/train.py` checks the SHA-256 of the data file and gives the C05 results: threshold 0.17 (cost 5 for a missed default, 1 for a false alarm), test ROC AUC 0.770, 38.2% flagged, precision 0.406, recall 0.701.
+- `training/train.py` checks the SHA-256 of the data file and gives the results of the machine learning course: threshold 0.17 (cost 5 for a missed default, 1 for a false alarm), test ROC AUC 0.770, 38.2% flagged, precision 0.406, recall 0.701.
 - The bundle's 12 parity cases (6 real clients, 6 made at the edges of the contract) get the same score from training, the batch job and the API, within 1e-9.
 
 ## Known gaps and biases

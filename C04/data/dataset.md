@@ -1,6 +1,6 @@
-# Dataset card: Larkfield help-desk export (C04)
+# Dataset card: Larkfield help-desk export
 
-Used by: C04 Modules 1 to 6 and the final assignment, and `C04/M05-L03-fit-transformations/fit-transformations.ipynb`
+Used by: Modules 1 to 6 of this course and the final assignment, and `C04/M05-L03-fit-transformations/fit-transformations.ipynb`
 
 | Field | Value |
 |---|---|
@@ -25,7 +25,7 @@ Larkfield is a fictional online shop for home and garden products. The files are
 
 ## Why this dataset
 
-C04 teaches how to query, clean and prepare data without quiet mistakes. The data must contain each kind of mistake, in known amounts, so that every result in a lesson can be checked exactly. Public help-desk datasets were considered and rejected: they are larger than needed, often contain personal data in free text, rarely have a related customer table and outcome history, and their problems are not controlled. The C02 tickets were too small (15 rows) for joins, time-based splits and a model.
+This course teaches how to query, clean and prepare data without quiet mistakes. The data must contain each kind of mistake, in known amounts, so that every result in a lesson can be checked exactly. Public help-desk datasets were considered and rejected: they are larger than needed, often contain personal data in free text, rarely have a related customer table and outcome history, and their problems are not controlled. The tickets of the Python course were too small (15 rows) for joins, time-based splits and a model.
 
 ## Problems added on purpose
 
