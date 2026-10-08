@@ -1,0 +1,7 @@
+# Send only what the image needs. Data, tests, .env and .venv stay out.
+*
+!requirements-run.txt
+!pyproject.toml
+!escalation/
+!bundles/
+**/__pycache__/
