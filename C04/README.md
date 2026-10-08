@@ -12,6 +12,8 @@ Data, tools and notebooks for [SQL and Data Preparation for AI](https://learning
 | `generate.py` | Module 6 (lineage) | The script that generated the data (seed 2026, standard library only). |
 | `pipeline/` | Notebooks, catching up | The course's finished queries and scripts. |
 | `Mnn-Lnn-<lesson>/` | Every lesson | A lesson notebook (and its solution) with every query, task and check of the lesson. Each one downloads the data and rebuilds what earlier lessons made, so it opens on its own in Colab, Kaggle or Jupyter. |
+| `M07-Lnn-<slug>/` | Module 7 (case studies) | The three case studies on real public data: notebooks, or a starter and a finished project as zip files. Complete at least one for the certificate. |
+| `case-studies/data/` | Module 7 (case studies) | The case-study data as fixed copies, each with a dataset card (source, licence, attribution, the changes made) and `SHA256SUMS`. |
 
 The dataset card is [data/dataset.md](data/dataset.md).
 
