@@ -1,0 +1,18 @@
+[project]
+name = "escalation-service"
+version = "1.0.0"
+description = "Scores new support tickets for the risk of escalation within 72 hours."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]==0.142.2",
+    "scikit-learn==1.9.1",
+    "pandas==3.0.6",
+    "numpy==2.5.3",
+    "joblib==1.6.0",
+]
+
+[tool.fastapi]
+entrypoint = "escalation.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,15 @@
+case,ticket_id,channel,team,segment,region,priority,order_value,word_count,customer_tenure_days,prior_tickets_90d,created_hour,prior_escalations_90d,expected_score
+normal,T-116940,chat,payment,trade,east,2,134.44,67,1528,8,3,1,0.19666744148128043
+normal,T-116941,phone,returns,trade,west,3,127.55,57,2323,2,5,0,0.06909162518174113
+normal,T-116942,web_form,payment,trade,east,2,47.36,63,74,5,7,0,0.13089240225991983
+normal,T-116943,email,warranty,home,west,1,12.36,33,1805,3,7,0,0.1967918917549934
+normal,T-116944,web_form,warranty,trade,west,2,549.72,86,1887,2,7,0,0.2654817586433514
+normal,T-116945,web_form,delivery,trade,south,2,473.08,79,968,4,7,0,0.11892725727922739
+missing,T-900001,email,account,home,west,2,,80,500,1,11,0,0.03818050971628526
+missing,T-900002,email,payment,guest,west,2,120.0,80,,0,11,0,0.1427958861372739
+missing,T-900003,email,payment,home,west,2,,80,,1,11,0,0.07107778294551369
+extreme,T-900004,email,payment,home,west,1,5000.0,10000,500,500,23,500,1.0
+extreme,T-900005,email,payment,home,west,3,0.0,0,0,0,0,0,0.03981516771417423
+extreme,T-900006,email,payment,home,west,2,120.0,80,20000,1,0,0,0.17047163205831312
+unknown,T-900007,social,payment,home,west,2,120.0,80,500,1,11,0,0.17604197430710578
+unknown,T-900008,email,installation,home,overseas,2,120.0,80,500,1,11,0,0.11534160494478449

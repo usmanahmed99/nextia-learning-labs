@@ -1,0 +1,22 @@
+# The escalation service on this computer, with the resource limits of a
+# small cloud container. MODEL_SHA256 comes from .env (copy .env.example).
+services:
+  escalation:
+    image: escalation-service:1.0.0
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MODEL_BUNDLE: bundles/escalation-${MODEL_VERSION:-1.0.0}
+      MODEL_SHA256: ${MODEL_SHA256:?Set MODEL_SHA256 in .env}
+      SHOW_DOCS: "true"
+    command: ["fastapi", "run", "--host", "0.0.0.0", "--port", "8000", "--workers", "${WORKERS:-1}"]
+    cpus: ${CPUS:-1.0}
+    mem_limit: ${MEMORY:-512m}
+    memswap_limit: ${MEMORY:-512m}  # the same value: no swap, as in most cloud containers
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 10s

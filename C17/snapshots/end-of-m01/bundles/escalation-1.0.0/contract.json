@@ -1,0 +1,170 @@
+{
+  "model": "escalation",
+  "model_version": "1.0.0",
+  "unit": "one support ticket, scored when it is created",
+  "features": [
+    "channel",
+    "team",
+    "segment",
+    "region",
+    "priority",
+    "order_value",
+    "word_count",
+    "customer_tenure_days",
+    "prior_tickets_90d",
+    "created_hour",
+    "prior_escalations_90d"
+  ],
+  "schema": {
+    "additionalProperties": false,
+    "description": "The 11 features of one ticket, as they are when the ticket is created.",
+    "properties": {
+      "channel": {
+        "description": "How the customer contacted us.",
+        "maxLength": 30,
+        "minLength": 1,
+        "title": "Channel",
+        "type": "string"
+      },
+      "team": {
+        "description": "The team that owns the ticket.",
+        "maxLength": 30,
+        "minLength": 1,
+        "title": "Team",
+        "type": "string"
+      },
+      "segment": {
+        "description": "The kind of customer.",
+        "maxLength": 30,
+        "minLength": 1,
+        "title": "Segment",
+        "type": "string"
+      },
+      "region": {
+        "description": "The customer's region.",
+        "maxLength": 30,
+        "minLength": 1,
+        "title": "Region",
+        "type": "string"
+      },
+      "priority": {
+        "description": "1 is the most urgent, 3 the least.",
+        "maximum": 3,
+        "minimum": 1,
+        "title": "Priority",
+        "type": "integer"
+      },
+      "order_value": {
+        "anyOf": [
+          {
+            "maximum": 5000,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "The order's value in dollars. Null if there is no order.",
+        "title": "Order Value"
+      },
+      "word_count": {
+        "description": "Words in the first message.",
+        "maximum": 10000,
+        "minimum": 0,
+        "title": "Word Count",
+        "type": "integer"
+      },
+      "customer_tenure_days": {
+        "anyOf": [
+          {
+            "maximum": 20000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Days since the customer's first order. Null for a guest.",
+        "title": "Customer Tenure Days"
+      },
+      "prior_tickets_90d": {
+        "description": "The customer's tickets in the last 90 days.",
+        "maximum": 500,
+        "minimum": 0,
+        "title": "Prior Tickets 90D",
+        "type": "integer"
+      },
+      "created_hour": {
+        "description": "The hour the ticket was created (0 to 23).",
+        "maximum": 23,
+        "minimum": 0,
+        "title": "Created Hour",
+        "type": "integer"
+      },
+      "prior_escalations_90d": {
+        "description": "The customer's escalations in the last 90 days.",
+        "maximum": 500,
+        "minimum": 0,
+        "title": "Prior Escalations 90D",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "channel",
+      "team",
+      "segment",
+      "region",
+      "priority",
+      "order_value",
+      "word_count",
+      "customer_tenure_days",
+      "prior_tickets_90d",
+      "created_hour",
+      "prior_escalations_90d"
+    ],
+    "title": "TicketFeatures",
+    "type": "object"
+  },
+  "known_categories": {
+    "channel": [
+      "chat",
+      "email",
+      "phone",
+      "unknown",
+      "web_form"
+    ],
+    "team": [
+      "account",
+      "delivery",
+      "payment",
+      "returns",
+      "warranty"
+    ],
+    "segment": [
+      "business",
+      "guest",
+      "home",
+      "trade"
+    ],
+    "region": [
+      "east",
+      "north",
+      "south",
+      "unknown",
+      "west"
+    ]
+  },
+  "missing_values": {
+    "order_value": "null when the ticket has no order; the pipeline fills the training median",
+    "customer_tenure_days": "null for a guest; the pipeline fills the training median",
+    "other features": "never null: the request is rejected"
+  },
+  "unknown_categories": "allowed; scored as none of the known values; reported as a warning",
+  "output": {
+    "score": "0 to 1; a higher score means a higher risk of escalation; it ranks tickets",
+    "flag": "true if score >= threshold: send the ticket to the senior team",
+    "threshold": 0.19
+  }
+}

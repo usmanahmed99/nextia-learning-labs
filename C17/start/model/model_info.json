@@ -1,0 +1,72 @@
+{
+  "model": "Larkfield ticket escalation: logistic regression in a scikit-learn pipeline",
+  "trained_at": "2026-10-08 13:53:54 UTC",
+  "target": "escalated_72h: 1 if the ticket is escalated within 72 hours of creation",
+  "prediction_time": "when the ticket is created",
+  "features": {
+    "categories": {
+      "channel": [
+        "chat",
+        "email",
+        "phone",
+        "unknown",
+        "web_form"
+      ],
+      "team": [
+        "account",
+        "delivery",
+        "payment",
+        "returns",
+        "warranty"
+      ],
+      "segment": [
+        "business",
+        "guest",
+        "home",
+        "trade"
+      ],
+      "region": [
+        "east",
+        "north",
+        "south",
+        "unknown",
+        "west"
+      ]
+    },
+    "numbers": [
+      "priority",
+      "order_value",
+      "word_count",
+      "customer_tenure_days",
+      "prior_tickets_90d",
+      "created_hour",
+      "prior_escalations_90d"
+    ]
+  },
+  "threshold": 0.19,
+  "review_capacity": 0.2,
+  "valid": {
+    "rows": 1179,
+    "escalated": 183,
+    "roc_auc": 0.752,
+    "average_precision": 0.391,
+    "flagged": 227,
+    "flag_rate": 0.193,
+    "precision": 0.379,
+    "recall": 0.47
+  },
+  "train_rows": 16939,
+  "data_sha256": {
+    "train.csv": "63b8732a28e891189cc28a9bcd505a093a9c4c51c01f3d0e1fba6d4959242d53",
+    "valid.csv": "3604df83ea2ec3cec70c2eedfc7e95cc6d5cb82ccfc3b5cf565e614783e2bde2",
+    "extra_features.csv": "03c6da28bcb347982aa70a7c72b869771a6cb055654d629da924512c6fd56563"
+  },
+  "artifact_sha256": "a4acd259a398e7c84517b98bf50d811197f90b0f2f1ea15f1f9e168ba3aff736",
+  "versions": {
+    "python": "3.14.6",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "joblib": "1.6.0"
+  }
+}
