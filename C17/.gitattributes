@@ -1,0 +1,4 @@
+# Bundles and the start model are checked by their SHA-256. Git must never
+# change their bytes (for example line endings on Windows).
+start/** -text
+snapshots/**/bundles/** -text
