@@ -9,6 +9,8 @@ Practice files for the course at [learning.nextia-ai.com/courses/ml/](https://le
 | `get_data.py` | Downloads `data/` into your project folder and checks every file's SHA-256. |
 | `project/` | The course's finished project files: `ticket_model.py`, `train.py`, `evaluate.py`, `predict.py` and `requirements.txt`. Copy one if your own version is broken, then continue the lesson. |
 | `Mnn-Lnn-<slug>/` | The lesson notebooks. Each one downloads what it needs, so you can open any lesson without the earlier ones. |
+| `M09-Lnn-<slug>/` | The seven case studies: real public datasets, from the raw file to a tested result. Complete at least one for the certificate. |
+| `case-studies/data/` | The case-study datasets as fixed gzip CSV copies, each with a dataset card (source, licence, attribution, the changes we made) and `SHA256SUMS`. |
 
 ## Start a local project
 
