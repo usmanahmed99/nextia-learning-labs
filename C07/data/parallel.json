@@ -1,0 +1,13 @@
+{
+  "note": "One support sentence and its translations, to compare token counts. Translations by the course author; the Urdu, Arabic, Hindi and Chinese lines should be checked by a fluent reader before publication.",
+  "sentences": {
+    "en": "My order arrived late and the ceramic pot was broken. Can I get a replacement or a refund?",
+    "fr": "Ma commande est arrivée en retard et le pot en céramique était cassé. Puis-je obtenir un remplacement ou un remboursement?",
+    "es": "Mi pedido llegó tarde y la maceta de cerámica estaba rota. ¿Puedo obtener un reemplazo o un reembolso?",
+    "de": "Meine Bestellung kam zu spät an und der Keramiktopf war zerbrochen. Kann ich einen Ersatz oder eine Rückerstattung bekommen?",
+    "ur": "میرا آرڈر دیر سے پہنچا اور سرامک کا گملا ٹوٹا ہوا تھا۔ کیا مجھے متبادل یا رقم کی واپسی مل سکتی ہے؟",
+    "ar": "وصل طلبي متأخرًا وكان الأصيص الخزفي مكسورًا. هل يمكنني الحصول على بديل أو استرداد المبلغ؟",
+    "hi": "मेरा ऑर्डर देर से पहुँचा और चीनी मिट्टी का गमला टूटा हुआ था। क्या मुझे बदले में दूसरा या पैसे वापस मिल सकते हैं?",
+    "zh": "我的订单迟到了，陶瓷花盆也碎了。我可以换货或退款吗？"
+  }
+}

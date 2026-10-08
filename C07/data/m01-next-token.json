@@ -1,0 +1,563 @@
+{
+ "generated": "2026-10-08",
+ "model": "gemma3:4b",
+ "ollama": "0.40.1",
+ "prompts": {
+  "en": "The parcel arrived late, so the customer asked for a",
+  "fr": "Le colis est arrivé en retard, alors le client a demandé un"
+ },
+ "first_call": {
+  "seconds": 371.62,
+  "load_duration_s": 371.14
+ },
+ "next": {
+  "en": {
+   "prompt_tokens": 11,
+   "top": [
+    {
+     "t": " refund",
+     "lp": -0.09086
+    },
+    {
+     "t": " full",
+     "lp": -3.3901
+    },
+    {
+     "t": " discount",
+     "lp": -3.94753
+    },
+    {
+     "t": " partial",
+     "lp": -4.02083
+    },
+    {
+     "t": " return",
+     "lp": -5.26906
+    },
+    {
+     "t": " replacement",
+     "lp": -6.49856
+    },
+    {
+     "t": " ",
+     "lp": -6.73344
+    },
+    {
+     "t": " reimbursement",
+     "lp": -7.62527
+    },
+    {
+     "t": " free",
+     "lp": -7.63854
+    },
+    {
+     "t": " price",
+     "lp": -7.64244
+    },
+    {
+     "t": " reduction",
+     "lp": -7.99472
+    },
+    {
+     "t": " response",
+     "lp": -8.07479
+    },
+    {
+     "t": " delay",
+     "lp": -8.12311
+    },
+    {
+     "t": " compensation",
+     "lp": -8.40919
+    },
+    {
+     "t": " credit",
+     "lp": -8.42389
+    },
+    {
+     "t": " complaint",
+     "lp": -8.70787
+    },
+    {
+     "t": " reply",
+     "lp": -8.89091
+    },
+    {
+     "t": " new",
+     "lp": -8.94475
+    },
+    {
+     "t": " cancellation",
+     "lp": -8.97088
+    },
+    {
+     "t": " coupon",
+     "lp": -9.03785
+    }
+   ]
+  },
+  "fr": {
+   "prompt_tokens": 13,
+   "top": [
+    {
+     "t": " remboursement",
+     "lp": -0.00787
+    },
+    {
+     "t": " retour",
+     "lp": -5.66433
+    },
+    {
+     "t": " remplacement",
+     "lp": -7.52214
+    },
+    {
+     "t": " dé",
+     "lp": -7.69884
+    },
+    {
+     "t": " reembolso",
+     "lp": -8.03411
+    },
+    {
+     "t": " rem",
+     "lp": -8.05697
+    },
+    {
+     "t": " rembour",
+     "lp": -8.33369
+    },
+    {
+     "t": " rab",
+     "lp": -8.38496
+    },
+    {
+     "t": " produit",
+     "lp": -8.42691
+    },
+    {
+     "t": " refus",
+     "lp": -8.96345
+    },
+    {
+     "t": " échange",
+     "lp": -9.44721
+    },
+    {
+     "t": "\n",
+     "lp": -9.54826
+    },
+    {
+     "t": " supplément",
+     "lp": -9.76214
+    },
+    {
+     "t": " service",
+     "lp": -9.84038
+    },
+    {
+     "t": " avoir",
+     "lp": -10.03063
+    },
+    {
+     "t": " é",
+     "lp": -10.05064
+    },
+    {
+     "t": " fonds",
+     "lp": -10.09977
+    },
+    {
+     "t": " crédit",
+     "lp": -10.17372
+    },
+    {
+     "t": " délai",
+     "lp": -10.21878
+    },
+    {
+     "t": " moyen",
+     "lp": -10.27805
+    }
+   ]
+  }
+ },
+ "trace": {
+  "text": " refund. The company decided to offer a partial refund",
+  "steps": [
+   {
+    "chosen": " refund",
+    "lp": -0.09086,
+    "top": [
+     {
+      "t": " refund",
+      "lp": -0.09086
+     },
+     {
+      "t": " full",
+      "lp": -3.3901
+     },
+     {
+      "t": " discount",
+      "lp": -3.94753
+     },
+     {
+      "t": " partial",
+      "lp": -4.02083
+     },
+     {
+      "t": " return",
+      "lp": -5.26906
+     }
+    ]
+   },
+   {
+    "chosen": ".",
+    "lp": -0.17978,
+    "top": [
+     {
+      "t": ".",
+      "lp": -0.17978
+     },
+     {
+      "t": " or",
+      "lp": -3.06376
+     },
+     {
+      "t": ",",
+      "lp": -3.38686
+     },
+     {
+      "t": "?",
+      "lp": -4.1567
+     },
+     {
+      "t": " for",
+      "lp": -4.1862
+     }
+    ]
+   },
+   {
+    "chosen": " The",
+    "lp": -1.09725,
+    "top": [
+     {
+      "t": " The",
+      "lp": -1.09725
+     },
+     {
+      "t": "\n\n",
+      "lp": -1.35015
+     },
+     {
+      "t": "\n",
+      "lp": -1.61128
+     },
+     {
+      "t": " ",
+      "lp": -2.23545
+     },
+     {
+      "t": " I",
+      "lp": -4.47882
+     }
+    ]
+   },
+   {
+    "chosen": " company",
+    "lp": -0.98852,
+    "top": [
+     {
+      "t": " company",
+      "lp": -0.98852
+     },
+     {
+      "t": " store",
+      "lp": -1.97653
+     },
+     {
+      "t": " customer",
+      "lp": -2.53616
+     },
+     {
+      "t": " refund",
+      "lp": -2.74863
+     },
+     {
+      "t": " seller",
+      "lp": -2.93773
+     }
+    ]
+   },
+   {
+    "chosen": " decided",
+    "lp": -2.154,
+    "top": [
+     {
+      "t": " decided",
+      "lp": -2.154
+     },
+     {
+      "t": "'",
+      "lp": -2.22748
+     },
+     {
+      "t": " agreed",
+      "lp": -2.54757
+     },
+     {
+      "t": " refused",
+      "lp": -2.58489
+     },
+     {
+      "t": "’",
+      "lp": -2.77197
+     }
+    ]
+   },
+   {
+    "chosen": " to",
+    "lp": -0.03668,
+    "top": [
+     {
+      "t": " to",
+      "lp": -0.03668
+     },
+     {
+      "t": " not",
+      "lp": -3.97327
+     },
+     {
+      "t": " that",
+      "lp": -4.72927
+     },
+     {
+      "t": " the",
+      "lp": -6.33419
+     },
+     {
+      "t": " it",
+      "lp": -6.66209
+     }
+    ]
+   },
+   {
+    "chosen": " offer",
+    "lp": -1.11021,
+    "top": [
+     {
+      "t": " offer",
+      "lp": -1.11021
+     },
+     {
+      "t": " give",
+      "lp": -1.57566
+     },
+     {
+      "t": " honor",
+      "lp": -1.92797
+     },
+     {
+      "t": " issue",
+      "lp": -2.87691
+     },
+     {
+      "t": " grant",
+      "lp": -3.38672
+     }
+    ]
+   },
+   {
+    "chosen": " a",
+    "lp": -0.2781,
+    "top": [
+     {
+      "t": " a",
+      "lp": -0.2781
+     },
+     {
+      "t": " the",
+      "lp": -1.88114
+     },
+     {
+      "t": " him",
+      "lp": -3.16928
+     },
+     {
+      "t": " an",
+      "lp": -4.03266
+     },
+     {
+      "t": " them",
+      "lp": -4.59491
+     }
+    ]
+   },
+   {
+    "chosen": " partial",
+    "lp": -0.23182,
+    "top": [
+     {
+      "t": " partial",
+      "lp": -0.23182
+     },
+     {
+      "t": " discount",
+      "lp": -2.00984
+     },
+     {
+      "t": " ",
+      "lp": -3.15441
+     },
+     {
+      "t": " full",
+      "lp": -4.63618
+     },
+     {
+      "t": " voucher",
+      "lp": -5.1224
+     }
+    ]
+   },
+   {
+    "chosen": " refund",
+    "lp": -0.00216,
+    "top": [
+     {
+      "t": " refund",
+      "lp": -0.00216
+     },
+     {
+      "t": " reimbursement",
+      "lp": -7.51109
+     },
+     {
+      "t": " one",
+      "lp": -8.11283
+     },
+     {
+      "t": " credit",
+      "lp": -8.32436
+     },
+     {
+      "t": " discount",
+      "lp": -8.79381
+     }
+    ]
+   }
+  ]
+ },
+ "samples": [
+  {
+   "temperature": 0,
+   "seed": 1,
+   "text": " refund. The company decided to offer a partial refund instead of"
+  },
+  {
+   "temperature": 0,
+   "seed": 2,
+   "text": " refund. The company decided to offer a partial refund instead of"
+  },
+  {
+   "temperature": 1.0,
+   "seed": 1,
+   "text": " free repair. After reviewing the damage, our repair technician determined"
+  },
+  {
+   "temperature": 1.0,
+   "seed": 2,
+   "text": " refund?</h1>\n\nHere are some ways to respond to a"
+  },
+  {
+   "temperature": 1.0,
+   "seed": 3,
+   "text": " refund. The store owner, Mr. Smith, decided to"
+  },
+  {
+   "temperature": 1.0,
+   "seed": 4,
+   "text": " refund. \nThe customer was dissatisfied with the product,"
+  },
+  {
+   "temperature": 1.0,
+   "seed": 5,
+   "text": " refund.\n\nLet's break down how this situation is"
+  }
+ ],
+ "check": [
+  {
+   "temperature": 1.0,
+   "n": 200,
+   "rows": [
+    {
+     "t": " refund",
+     "expected": 183.5,
+     "observed": 185
+    },
+    {
+     "t": " full",
+     "expected": 6.8,
+     "observed": 6
+    },
+    {
+     "t": " discount",
+     "expected": 3.9,
+     "observed": 2
+    },
+    {
+     "t": " partial",
+     "expected": 3.6,
+     "observed": 2
+    },
+    {
+     "t": " return",
+     "expected": 1.0,
+     "observed": 3
+    },
+    {
+     "t": " replacement",
+     "expected": 0.3,
+     "observed": 0
+    }
+   ],
+   "other_observed": 0
+  },
+  {
+   "temperature": 2.0,
+   "n": 200,
+   "rows": [
+    {
+     "t": " refund",
+     "expected": 108.3,
+     "observed": 103
+    },
+    {
+     "t": " full",
+     "expected": 20.8,
+     "observed": 16
+    },
+    {
+     "t": " discount",
+     "expected": 15.8,
+     "observed": 23
+    },
+    {
+     "t": " partial",
+     "expected": 15.2,
+     "observed": 18
+    },
+    {
+     "t": " return",
+     "expected": 8.1,
+     "observed": 9
+    },
+    {
+     "t": " replacement",
+     "expected": 4.4,
+     "observed": 2
+    }
+   ],
+   "other_observed": 0
+  }
+ ]
+}
