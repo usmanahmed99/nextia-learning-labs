@@ -1,0 +1,193 @@
+ticket,kind,ticket_language,model,model_label,correctness,completeness,format,abstention,total,ready,reason
+S01,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Free shipping (fee refunded) for more than 5 days late; explains the 15-day rule as a later step.
+S02,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,"30 days, full refund, customer pays return shipping, refund timing."
+S03,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Asks for the photos; replacement at no cost or full refund.
+S04,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Refund within 3 business days after we confirm.
+S05,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Support cannot reset; use the Forgot password link.
+S06,routine-en,en,haiku,Claude Haiku 5.5,2,2,2,1,7,1,"Correct warranty facts; sends to a person to judge defect or wear (cautious, not needed)."
+S07,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Livraison gratuite (frais remboursés); 15-day rule as the next step. Good French.
+S08,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,"30 jours, remboursement complet, frais de retour à la charge du client. Good French."
+S09,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Send the photo within 14 days; free replacement or refund.
+S10,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,3 jours ouvrables after confirmation; asks for the order number.
+S11,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,1,2,7,1,"Correct, but the link is named only in English (« Forgot password ») in a French reply."
+S12,routine-fr,fr,haiku,Claude Haiku 5.5,2,2,2,1,7,1,2-year furniture warranty; escalates to judge defect or wear (cautious; same as S06).
+D01,difficult,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Both problems: free shipping and photo within 14 days for a replacement (category delivery is acceptable for a two-problem ticket).
+D02,difficult,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,"Original method, 5 to 10 days, cannot change the card; sends the overdue refund to a person."
+D03,difficult,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Lost after 15 days; full refund as she prefers; 5 to 10 days. Good French.
+A01,ambiguous,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Not enough detail; a person will contact the customer.
+A02,ambiguous,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,"Cancellation not in the policy; a person will contact (""communiquera avec vous"")."
+A03,ambiguous,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,A person will contact; mentions the dead-plant rule (photo within 7 days).
+U01,unanswerable,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Price matching goes to a person.
+U02,unanswerable,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,Injury goes to a person; suggests seeing a health professional. Good French.
+U03,unanswerable,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,"Business order over 5,000 dollars goes to a person; no discount promised."
+M01,multilingual,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,French reply to Franglais; shipping fee refunded once the delay is confirmed; asks for the order number.
+M02,multilingual,fr,haiku,Claude Haiku 5.5,2,2,2,2,8,1,French reply; photo within 14 days; free replacement or refund.
+M03,multilingual,en,haiku,Claude Haiku 5.5,2,2,2,2,8,1,English as asked; seeds cannot be returned.
+S01,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Free shipping as a refunded fee; the lost-order rule given as the next step.
+S02,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,"30 days, full refund, customer pays return shipping, refund timing."
+S03,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Within 14 days; photos; replacement or refund; no return shipping to pay.
+S04,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Refund within 3 business days after we confirm.
+S05,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Support cannot reset; use the Forgot password link.
+S06,routine-en,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,"2-year warranty against defects; normal use, so likely covered; lists exclusions."
+S07,routine-fr,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Livraison gratuite; lost-order rule as the next step. Good French.
+S08,routine-fr,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,"30 jours, remboursement complet, frais de retour. Good French."
+S09,routine-fr,fr,sonnet,Claude Sonnet 5.5,1,2,2,2,7,0,Thanks the customer for a photo not yet sent and does not ask for it; otherwise right.
+S10,routine-fr,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,3 jours ouvrables after confirmation; original payment method.
+S11,routine-fr,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Cannot send passwords; « Forgot password » (mot de passe oublié) link.
+S12,routine-fr,fr,sonnet,Claude Sonnet 5.5,1,2,2,2,7,0,"Garbled logic (""peut être couverte, car l'usure ... n'est pas couverte""), tool-rust exclusion for a bench, tells the customer the policy has no next step."
+D01,difficult,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Both problems: shipping fee refunded; photo; replacement or refund.
+D02,difficult,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,"Original method, cannot change the method; a person checks the late refund and expired card."
+D03,difficult,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Lost order; full refund; 5 to 10 days. Good French.
+A01,ambiguous,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,A person will contact; asks what is not working and the order number.
+A02,ambiguous,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Sent to a person. Good French.
+A03,ambiguous,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Policy cannot say if this is normal; a person will contact.
+U01,unanswerable,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Price matching goes to a person.
+U02,unanswerable,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,Injury goes to a person. Good French.
+U03,unanswerable,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,"Business order over 5,000 dollars goes to a person."
+M01,multilingual,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,French reply; shipping fee refunded; 5 to 10 days.
+M02,multilingual,fr,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,French reply; photo of shovel and box; replacement or refund.
+M03,multilingual,en,sonnet,Claude Sonnet 5.5,2,2,2,2,8,1,English as asked; seeds cannot be returned; dead-plant exception.
+S01,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Shipping fee refunded to the original payment method in 5 to 10 days; lost rule as the next step.
+S02,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,"30 days, full refund, customer pays return shipping, refund timing."
+S03,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Within 14 days; photos; replacement or refund.
+S04,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Refund within 3 business days after we confirm; asks for the order number.
+S05,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Support cannot reset; use the Forgot password link.
+S06,routine-en,en,opus,Claude Opus 5.5,2,2,2,2,8,1,2-year warranty; covered if none of the exclusions apply.
+S07,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,"Livraison offerte, refund to the original method; lost rule next. Good French."
+S08,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,"30 jours, remboursement complet, frais de retour. Good French."
+S09,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,Send the photo; the right item at no cost or a full refund.
+S10,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,3 jours ouvrables after confirmation; original payment method.
+S11,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,Cannot send passwords; « Forgot password » (mot de passe oublié) link.
+S12,routine-fr,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,2-year warranty; covered if it is a defect; exclusions. Good French.
+D01,difficult,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Both problems: free shipping; photo; replacement or refund; refund timing.
+D02,difficult,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Sends the overdue refund and expired card to a person; short reply as the prompt asks.
+D03,difficult,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,Lost order; full refund; 5 to 10 days. Good French.
+A01,ambiguous,en,opus,Claude Opus 5.5,2,2,2,2,8,1,"A person will contact; asks for the product, order number and problem."
+A02,ambiguous,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,Sent to a person; asks for the order number. Good French.
+A03,ambiguous,en,opus,Claude Opus 5.5,2,2,2,2,8,1,A person will contact; take a photo; dead-plant rule.
+U01,unanswerable,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Price matching goes to a person.
+U02,unanswerable,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,Injury goes to a person; suggests care. Good French.
+U03,unanswerable,en,opus,Claude Opus 5.5,2,2,2,2,8,1,Large business order goes to a person.
+M01,multilingual,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,French reply; free shipping; 5 to 10 days; lost rule next.
+M02,multilingual,fr,opus,Claude Opus 5.5,2,2,2,2,8,1,French reply; photo within 14 days; replacement or refund.
+M03,multilingual,en,opus,Claude Opus 5.5,2,2,2,2,8,1,English as asked; seeds cannot be returned.
+S01,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Refunds the shipping fee; lost rule as the next step.
+S02,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"30 days, full refund, customer pays return shipping, refund timing."
+S03,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Photos; replacement or refund.
+S04,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Refund within 3 business days after we confirm.
+S05,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Support cannot reset; use the Forgot password link.
+S06,routine-en,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"2-year warranty; says it is covered (a firm promise, acceptable for normal use)."
+S07,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"Refunds the shipping fee (""frais de port"", a France term); lost rule next."
+S08,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"30 jours, remboursement complet, frais de retour. Good French."
+S09,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Send the photo; free replacement or refund.
+S10,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,3 jours ouvrables after confirmation.
+S11,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,1,2,7,1,"Correct, but the link is named only in English in a French reply."
+S12,routine-fr,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"2-year warranty; normal use, so covered."
+D01,difficult,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Both problems: shipping fee refunded; photo; replacement or refund.
+D02,difficult,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"A person will check; original method, 5 to 10 days; method cannot change."
+D03,difficult,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Lost order; full refund (also names the shipping fee); 5 to 10 days.
+A01,ambiguous,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Needs details; ticket sent to a person.
+A02,ambiguous,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Sent to an adviser. Good French.
+A03,ambiguous,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Sent to a person.
+U01,unanswerable,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Price matching goes to a person.
+U02,unanswerable,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,Injury goes to a person. Good French.
+U03,unanswerable,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,"Business order over 5,000 dollars goes to a person."
+M01,multilingual,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,French reply; shipping fee refunded; 5 to 10 days.
+M02,multilingual,fr,flash,Gemini 3.5 Flash,2,2,2,2,8,1,French reply; photo; replacement or refund.
+M03,multilingual,en,flash,Gemini 3.5 Flash,2,2,2,2,8,1,English as asked; seeds cannot be returned.
+S01,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Refunds the shipping fee; lost rule as the next step.
+S02,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,"30-day window, full refund, customer pays return shipping."
+S03,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Photo within 14 days; replacement or refund.
+S04,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Refund within 3 business days after we confirm.
+S05,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Support cannot reset; use the Forgot password link.
+S06,routine-en,en,pro,Gemini 3.1 Pro (preview),2,2,1,2,7,1,2-year warranty; covered unless an exclusion applies; JSON inside a Markdown code fence.
+S07,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Refunds the shipping fee; lost rule next. Good French.
+S08,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,"Full refund, return shipping paid by the client (says purchase, not delivery; harmless here)."
+S09,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Send the photo; free replacement or refund.
+S10,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,3 jours ouvrables after confirmation.
+S11,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,"Cannot email the password; ""Mot de passe oublié"" link."
+S12,routine-fr,fr,pro,Gemini 3.1 Pro (preview),2,2,2,1,7,1,Correct facts but escalates; it answered the English twin S06 without a person.
+D01,difficult,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Both problems: shipping fee refunded; photo; replacement or refund.
+D02,difficult,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Method cannot change; 5 to 10 days; a person will check the overdue refund.
+D03,difficult,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Lost order; full refund; 5 to 10 days. Good French.
+A01,ambiguous,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Needs details; a person will contact.
+A02,ambiguous,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Sent to a person. Good French.
+A03,ambiguous,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Sent to a person.
+U01,unanswerable,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Price matching goes to a person.
+U02,unanswerable,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,Injury goes to a person. Good French.
+U03,unanswerable,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,"Order over 5,000 dollars goes to a person."
+M01,multilingual,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,French reply; shipping fee refunded; 5 to 10 days.
+M02,multilingual,fr,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,French reply; photo; replacement or refund.
+M03,multilingual,en,pro,Gemini 3.1 Pro (preview),2,2,2,2,8,1,English as asked; seeds cannot be returned.
+S01,routine-en,en,gemma,Gemma 3 4B,0,0,1,2,3,0,"Applies the 15-day lost rule to a 7-day delay, misses free shipping, invents a photo request; JSON inside a Markdown code fence."
+S02,routine-en,en,gemma,Gemma 3 4B,0,1,1,1,3,0,Says a garden hose cannot be returned (false); sends a routine return to a person; JSON inside a Markdown code fence.
+S03,routine-en,en,gemma,Gemma 3 4B,1,1,1,1,4,0,Invents a 24-hour call-back and promises no replacement; escalates a routine case; JSON inside a Markdown code fence.
+S04,routine-en,en,gemma,Gemma 3 4B,1,0,1,1,3,0,No refund promise and no 3-day rule; invents a 24-hour call-back; escalates; JSON inside a Markdown code fence.
+S05,routine-en,en,gemma,Gemma 3 4B,1,2,1,1,5,0,Gives the link but says the support team will help reset (rule 6 says only the link); JSON inside a Markdown code fence.
+S06,routine-en,en,gemma,Gemma 3 4B,0,1,1,1,3,0,Says 4 months is outside the 2-year warranty (false); escalates; JSON inside a Markdown code fence.
+S07,routine-fr,fr,gemma,Gemma 3 4B,0,0,1,1,2,0,"Applies the 15-day rule to 8 days, misses free shipping; escalates (the EN twin S01 was not escalated); JSON inside a Markdown code fence."
+S08,routine-fr,fr,gemma,Gemma 3 4B,1,0,1,1,3,0,Quotes the plants-and-seeds rule for a chair; no answer; escalates; JSON inside a Markdown code fence.
+S09,routine-fr,fr,gemma,Gemma 3 4B,1,0,1,1,3,0,Says the photo was sent (it was not); no replacement; ends with an English sentence; JSON inside a Markdown code fence.
+S10,routine-fr,fr,gemma,Gemma 3 4B,1,2,1,1,5,0,"""3 prochains jours"" drops business days and the confirmation step; escalates; JSON inside a Markdown code fence."
+S11,routine-fr,fr,gemma,Gemma 3 4B,1,2,1,1,5,0,Gives the link but says an agent will help with the reset; escalates; JSON inside a Markdown code fence.
+S12,routine-fr,fr,gemma,Gemma 3 4B,2,1,0,1,4,0,Switches to English after the first sentence; does not say if covered; escalates; JSON inside a Markdown code fence.
+D01,difficult,en,gemma,Gemma 3 4B,0,1,1,1,3,0,Uses the 15-day lost rule for a 6-day delay and misses free shipping; photo part right; JSON inside a Markdown code fence.
+D02,difficult,en,gemma,Gemma 3 4B,2,2,1,2,7,1,5 to 10 days to the original method; cannot change; a person will check; JSON inside a Markdown code fence.
+D03,difficult,fr,gemma,Gemma 3 4B,2,2,0,1,5,0,"Right facts, but three of four sentences are in English; escalates; JSON inside a Markdown code fence."
+A01,ambiguous,en,gemma,Gemma 3 4B,2,2,1,2,7,1,A person will contact; JSON inside a Markdown code fence.
+A02,ambiguous,fr,gemma,Gemma 3 4B,2,2,1,2,7,1,Sent to a person; JSON inside a Markdown code fence.
+A03,ambiguous,en,gemma,Gemma 3 4B,1,2,1,2,6,0,Says the policy does not cover plants on arrival (rule 2 does); sent to a person; JSON inside a Markdown code fence.
+U01,unanswerable,en,gemma,Gemma 3 4B,2,2,1,2,7,1,Price matching goes to a person; JSON inside a Markdown code fence.
+U02,unanswerable,fr,gemma,Gemma 3 4B,2,2,1,2,7,1,Injury goes to a person. Good French; JSON inside a Markdown code fence.
+U03,unanswerable,en,gemma,Gemma 3 4B,2,2,1,2,7,1,Goes to a person; JSON inside a Markdown code fence.
+M01,multilingual,fr,gemma,Gemma 3 4B,0,0,1,1,2,0,"15-day rule for a 6-day delay; misses free shipping; ""contactera"" with no object; JSON inside a Markdown code fence."
+M02,multilingual,fr,gemma,Gemma 3 4B,1,2,1,1,5,0,"Key instruction in English; ""replacement or refund as you prefer"" (the policy gives a refund only when out of stock); escalates; JSON inside a Markdown code fence."
+M03,multilingual,en,gemma,Gemma 3 4B,1,2,1,1,5,0,"Label ""fr"" although the customer asked for English; reply right; escalates; JSON inside a Markdown code fence."
+S01,routine-en,en,mistral,Mistral 7B,2,2,2,1,7,1,"Correct free-shipping answer, but needs_human is true for a ticket the policy answers."
+S02,routine-en,en,mistral,Mistral 7B,0,1,1,1,3,0,"Says the 30 days are over by 20 days (false), invents a goodwill return and a photo; 6 sentences."
+S03,routine-en,en,mistral,Mistral 7B,2,2,2,1,7,1,Photo and free replacement; needs_human true without need.
+S04,routine-en,en,mistral,Mistral 7B,2,1,2,1,6,1,Promises a refund but no 3-day timing; escalates a routine case.
+S05,routine-en,en,mistral,Mistral 7B,2,2,2,1,7,1,Gives the link; needs_human true without need.
+S06,routine-en,en,mistral,Mistral 7B,1,1,2,1,5,0,Invents a 14-day photo rule for warranty; does not say if it is covered; escalates.
+S07,routine-fr,fr,mistral,Mistral 7B,2,0,2,1,5,0,"No policy answer at all, only ""we will contact you""; escalates a routine case."
+S08,routine-fr,fr,mistral,Mistral 7B,2,0,2,1,5,0,Apologises for a problem that does not exist; no policy answer; escalates.
+S09,routine-fr,fr,mistral,Mistral 7B,2,2,1,2,7,1,"Right answer; ""à aucun frais"" is not idiomatic French (sans frais)."
+S10,routine-fr,fr,mistral,Mistral 7B,1,2,2,1,6,0,"Promises 3 days at most with no confirmation step (""jours ouvrés"" is France usage); escalates."
+S11,routine-fr,fr,mistral,Mistral 7B,2,2,1,1,6,1,Correct refusal; English-only link name; needs_human true without need.
+S12,routine-fr,fr,mistral,Mistral 7B,1,1,2,1,5,0,Invents a photo request; does not say if covered; escalates.
+D01,difficult,en,mistral,Mistral 7B,2,2,0,1,5,0,"Reply text is right, but the JSON is invalid (""category"": ""delivery"", ""returns""), so the app gets nothing."
+D02,difficult,en,mistral,Mistral 7B,0,2,1,2,5,0,Says the refund can reach the new card (contradicts rule 5) and invents a security reason; 9 sentences.
+D03,difficult,fr,mistral,Mistral 7B,2,1,1,1,5,1,"Only ""we will contact you to offer a refund""; ""la retard"" is a gender error; escalates."
+A01,ambiguous,en,mistral,Mistral 7B,2,2,2,2,8,1,A person will contact.
+A02,ambiguous,fr,mistral,Mistral 7B,2,2,1,2,7,1,"Sent to a person; ""désolés pour votre inconvénient"" is an English calque."
+A03,ambiguous,en,mistral,Mistral 7B,0,1,2,1,4,0,Uses the 14-day damaged rule instead of the 7-day plant rule (the customer could miss the deadline); no person in the reply.
+U01,unanswerable,en,mistral,Mistral 7B,1,2,2,2,7,0,"Goes to a person, but the category is ""payment"" for a price-match request."
+U02,unanswerable,fr,mistral,Mistral 7B,2,2,2,2,8,1,We will contact you; wishes a quick recovery.
+U03,unanswerable,en,mistral,Mistral 7B,0,2,2,2,6,0,"Invents a rule: ""we do not offer discounts for business orders over 5,000 dollars""."
+M01,multilingual,fr,mistral,Mistral 7B,2,2,1,1,6,1,"Refunds the shipping fee, but ""réfunder le frais"" is not French; escalates."
+M02,multilingual,fr,mistral,Mistral 7B,2,1,2,1,6,1,Asks for a photo but promises no replacement; escalates.
+M03,multilingual,en,mistral,Mistral 7B,1,2,2,2,7,0,"Seeds cannot be returned, but extends the dead-plant rule to seeds."
+S01,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Refunds the shipping fee; 5 to 10 days. JSON only after the reasoning text.
+S02,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",2,1,1,2,6,1,"30 days and return shipping, but no ""full refund""; asks if an unopened hose is damaged."
+S03,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",1,2,1,2,6,0,Thanks the customer for photos not yet sent; replacement or refund.
+S04,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Refund within 3 business days after we confirm.
+S05,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,1,6,1,Forgot password link; escalates without need.
+S06,routine-en,en,qwen,"Qwen3 4B (4,000-token limit)",2,0,1,1,4,0,"Only ""a person will contact you""; no warranty facts for a ticket the policy answers."
+S07,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,"Shipping fee refunded; ""le frais"", ""méthode de paiement originale"" are errors or calques."
+S08,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,"30 jours, remboursement complet, frais de retour."
+S09,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",1,2,1,2,6,0,"Says ""nous avons reçu votre photo"" (not sent yet); free replacement or refund."
+S10,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,3 jours ouvrables after confirmation; only one sentence.
+S11,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",1,0,1,1,3,0,"No link; says an agent will help reset; ""se contactera avec vous"" is not French."
+S12,routine-fr,fr,qwen,"Qwen3 4B (4,000-token limit)",0,2,1,2,5,0,Says a crack after a year of normal use is not covered (it may be a defect: rule 4).
+D01,difficult,en,qwen,"Qwen3 4B (4,000-token limit)",0,0,0,0,0,0,"No answer: ran out of the 4,000-token limit while reasoning."
+D02,difficult,en,qwen,"Qwen3 4B (4,000-token limit)",0,0,0,0,0,0,"No answer: ran out of the 4,000-token limit while reasoning."
+D03,difficult,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Lost order; full refund; 5 to 10 days.
+A01,ambiguous,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Asks for details; a person will contact.
+A02,ambiguous,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Cancellation not in the policy; a person will contact.
+A03,ambiguous,en,qwen,"Qwen3 4B (4,000-token limit)",0,0,0,0,0,0,"No answer: ran out of the 4,000-token limit while reasoning."
+U01,unanswerable,en,qwen,"Qwen3 4B (4,000-token limit)",0,2,1,2,5,0,"Invents a rule: ""We do not offer price matching""; then a person."
+U02,unanswerable,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Injury goes to a person.
+U03,unanswerable,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,Goes to a person.
+M01,multilingual,fr,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,"French reply; shipping fee refunded; ""du frais"" is a grammar error."
+M02,multilingual,fr,qwen,"Qwen3 4B (4,000-token limit)",0,0,0,0,0,0,"No answer: ran out of the 4,000-token limit while reasoning."
+M03,multilingual,en,qwen,"Qwen3 4B (4,000-token limit)",2,2,1,2,7,1,English as asked; seeds cannot be returned.
