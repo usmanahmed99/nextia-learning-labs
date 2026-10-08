@@ -9,4 +9,4 @@ Files for [Deep Learning and Transformers Explained](https://learning.nextia-ai.
 | [`data-source/`](data-source) | Not needed to learn | How the data was made: the scripts, the routing policy and every raw model reply. Rebuild the data with `python build_dataset.py`. |
 | `Mnn-Lnn-<slug>/` | The lessons | Lesson notebooks (learner and solution). They open in Colab or Kaggle and run on a CPU. |
 
-The code is MIT-licensed; the data is CC0.
+The code is MIT-licensed and the data is CC0 (see [LICENSE](LICENSE)).
