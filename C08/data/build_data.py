@@ -2,8 +2,8 @@
 
     python reference/c08/data/build_data.py [C06_VALID_CSV] [OUT_DIR]
 
-Defaults: C06_VALID_CSV = ../c06/labs/C06/data/valid.csv next to this repository's
-parent folder (labs `C06/data/valid.csv`), OUT_DIR = reference/c08/data/out.
+Defaults: C06_VALID_CSV = labs `C06/data/valid.csv`, found inside the labs repository or in a labs
+checkout next to a parent folder, OUT_DIR = reference/c08/data/out.
 The script checks the SHA-256 of valid.csv first. It uses no network and no model.
 Run it twice: every file is identical byte for byte (the SQLite header's library
 version field is fixed, see below).
@@ -33,7 +33,18 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 C06_VALID_SHA256 = "f0c7bfa75e75837cdaf891ac8d007a78a018ba8e3488155cf43f2c6a34a064c8"
-DEFAULT_VALID = HERE.parents[4] / "c06" / "labs" / "C06" / "data" / "valid.csv"
+def _find_valid():
+    """labs C06/data/valid.csv: inside the labs repository (when this script runs from labs C08/data/),
+    or in a labs checkout next to a parent folder (when it runs from the site repository)."""
+    for parent in HERE.parents:
+        for base in (parent, parent / "labs", parent / "nextia-learning-labs"):
+            candidate = base / "C06" / "data" / "valid.csv"
+            if candidate.is_file():
+                return candidate
+    return HERE.parents[4] / "c06" / "labs" / "C06" / "data" / "valid.csv"
+
+
+DEFAULT_VALID = _find_valid()
 SEED = 8
 TEAMS = ["account", "delivery", "payment", "returns", "warranty"]
 QUOTA = {"plain": 2, "boundary": 2, "two_topics": 2, "negation": 1, "short": 1,
