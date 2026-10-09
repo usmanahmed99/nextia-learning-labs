@@ -7,6 +7,7 @@ release decision) or `contaminated` (tickets the prompt was written and tuned on
 """
 
 import hashlib
+import json
 from pathlib import Path
 from typing import Literal
 
