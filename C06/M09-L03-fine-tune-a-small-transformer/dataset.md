@@ -19,7 +19,7 @@ One short message to the online support of a bank (`text`), with the intent that
 
 ## Why this dataset
 
-It is the same task as the course's running example: send a support message to the right handler. Its 77 intents are fine-grained and many share words (`top_up_failed`, `top_up_reverted`, `pending_top_up`), so it tests whether a model reads more than word counts. The messages are short (median 10 words), so a small pretrained encoder can be fine-tuned on a CPU. The licence is clear. Compared with: the US CFPB complaint database (narratives withdrawn from publication in 2026, no explicit licence field), the SMS Spam Collection (CC BY 4.0, but two classes and too easy), MASSIVE (CC BY 4.0, voice-assistant commands, not support messages), and popular review and news datasets (unclear terms). Details: `reference/c06/m08/l03/DATASET-RESEARCH.md` in the course repository.
+It is the same task as the course's running example: send a support message to the right handler. Its 77 intents are fine-grained and many share words (`top_up_failed`, `top_up_reverted`, `pending_top_up`), so it tests whether a model reads more than word counts. The messages are short (median 10 words), so a small pretrained encoder can be fine-tuned on a CPU. The licence is clear. Compared with: the US CFPB complaint database (narratives withdrawn from publication in 2026, no explicit licence field), the SMS Spam Collection (CC BY 4.0, but two classes and too easy), MASSIVE (CC BY 4.0, voice-assistant commands, not support messages), and popular review and news datasets (unclear terms). Details: `reference/c06/m09/l03/DATASET-RESEARCH.md` in the course repository.
 
 ## Changes we made
 

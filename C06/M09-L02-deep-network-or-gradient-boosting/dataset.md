@@ -1,6 +1,6 @@
 # Dataset card: Default of Credit Card Clients (Taiwan, 2005)
 
-Used by: C06-M08-L02 *Deep network or gradient boosting?*, `deep-network-or-gradient-boosting.ipynb` (and the `-solution` notebook)
+Used by: C06-M09-L02 *Deep network or gradient boosting?*, `deep-network-or-gradient-boosting.ipynb` (and the `-solution` notebook)
 
 | Field | Value |
 |---|---|
@@ -19,7 +19,7 @@ One credit-card client of one bank in Taiwan: the credit limit, five personal fa
 
 ## Why this dataset
 
-The case study asks whether a neural network is worth its cost on a **table of facts that people chose**. This table has the three things that make a network work harder than gradient boosting: codes written as numbers, very skewed amounts, and a modest size (30,000 rows). The machine learning course already framed it (split, costs, metric, sensitive columns), so the case study changes only the model and compares with that course's published numbers. Alternatives compared (all CC BY 4.0, UCI): Adult / Census Income (no business decision; used only as a second check in the authors' script), Bank Marketing (its lessons are a leak and drift, which would distract), Covertype (581,012 rows, too large for a 10-minute CPU notebook with many seeds). Details: `nextia-learning/reference/c06/m08/l02/DATASET-RESEARCH.md`.
+The case study asks whether a neural network is worth its cost on a **table of facts that people chose**. This table has the three things that make a network work harder than gradient boosting: codes written as numbers, very skewed amounts, and a modest size (30,000 rows). The machine learning course already framed it (split, costs, metric, sensitive columns), so the case study changes only the model and compares with that course's published numbers. Alternatives compared (all CC BY 4.0, UCI): Adult / Census Income (no business decision; used only as a second check in the authors' script), Bank Marketing (its lessons are a leak and drift, which would distract), Covertype (581,012 rows, too large for a 10-minute CPU notebook with many seeds). Details: `nextia-learning/reference/c06/m09/l02/DATASET-RESEARCH.md`.
 
 ## Changes we made
 

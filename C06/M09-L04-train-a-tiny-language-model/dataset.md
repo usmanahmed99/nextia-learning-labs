@@ -1,6 +1,6 @@
 # Dataset card: Six Shakespeare tragedies (plain text)
 
-Used by: C06-M08-L04 Train a tiny language model, `train-a-tiny-language-model.ipynb` and `train-a-tiny-language-model-solution.ipynb`
+Used by: C06-M09-L04 Train a tiny language model, `train-a-tiny-language-model.ipynb` and `train-a-tiny-language-model-solution.ipynb`
 
 | Field | Value |
 |---|---|
@@ -19,11 +19,11 @@ There are no rows: the data is one continuous text. The model reads windows of 6
 
 ## Why this dataset
 
-A play has a shape that anyone sees at once: a speaker's name in capitals with a full stop on its own line, then short lines of verse. A character-level model learns that shape early in training and the spelling later, so samples at several steps show learning clearly. Compared with *Pride and Prejudice* (#1342: an illustrated 1894 edition that needs cleaning, and long paragraphs that hide the shape), *The Adventures of Sherlock Holmes* (#1661: public-domain status differs between countries, because Doyle died in 1930), *Grimms' Fairy Tales* (#2591: a mixed translation) and the popular "tiny-shakespeare" file (undocumented source and changes), this text is clean, public domain everywhere, and fully documented. Full comparison: `reference/c06/m08/l04/DATASET-RESEARCH.md` in the site repository.
+A play has a shape that anyone sees at once: a speaker's name in capitals with a full stop on its own line, then short lines of verse. A character-level model learns that shape early in training and the spelling later, so samples at several steps show learning clearly. Compared with *Pride and Prejudice* (#1342: an illustrated 1894 edition that needs cleaning, and long paragraphs that hide the shape), *The Adventures of Sherlock Holmes* (#1661: public-domain status differs between countries, because Doyle died in 1930), *Grimms' Fairy Tales* (#2591: a mixed translation) and the popular "tiny-shakespeare" file (undocumented source and changes), this text is clean, public domain everywhere, and fully documented. Full comparison: `reference/c06/m09/l04/DATASET-RESEARCH.md` in the site repository.
 
 ## Changes we made
 
-Kept only six plays, in the order of the Complete Works: *Hamlet*, *Julius Caesar*, *King Lear*, *Macbeth*, *Othello* and *Romeo and Juliet*. Removed everything before the first play and after the last one (the Project Gutenberg header, the table of contents of the Complete Works, the other works, the footer and the licence), so no reference to Project Gutenberg remains in the file. Line endings are `\n`; the plays are joined by three empty lines. Nothing inside a play was changed (spelling, curly quotes, stage directions such as `[_Exit._]` stay as they are). Script: `reference/c06/m08/l04/prepare_corpus.py`.
+Kept only six plays, in the order of the Complete Works: *Hamlet*, *Julius Caesar*, *King Lear*, *Macbeth*, *Othello* and *Romeo and Juliet*. Removed everything before the first play and after the last one (the Project Gutenberg header, the table of contents of the Complete Works, the other works, the footer and the licence), so no reference to Project Gutenberg remains in the file. Line endings are `\n`; the plays are joined by three empty lines. Nothing inside a play was changed (spelling, curly quotes, stage directions such as `[_Exit._]` stay as they are). Script: `reference/c06/m09/l04/prepare_corpus.py`.
 
 ## Limitations and cautions
 
