@@ -13,4 +13,4 @@ The reference project of [CI/CD, Testing and Safe Releases](https://learning.nex
 | `scripts/check.sh`, `scripts/smoke.sh` | The CI checks on your computer; the smoke check of a running API |
 | `docs/release-process.md`, `docs/releases/` | Branches, checks, promotion, hotfix, rollback; the release notes |
 
-The releases [v1.1.0](../../releases/tag/v1.1.0), [v1.2.0](../../releases/tag/v1.2.0) and [v1.2.1](../../releases/tag/v1.2.1), the pull requests and the workflow runs are the real ones that the course shows. The Azure practice resources were deleted after the test run on 2026-10-07, so the deployment URLs in the environments no longer answer.
+The releases [v1.1.0](../../releases/tag/v1.1.0), [v1.2.0](../../releases/tag/v1.2.0) and [v1.2.1](../../releases/tag/v1.2.1), the pull requests and the workflow runs are the real ones that the course shows. The Azure practice resources were deleted after the test run, so the deployment URLs in the environments no longer answer.

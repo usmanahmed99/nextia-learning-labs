@@ -69,4 +69,4 @@ To run the tests too, make a virtual environment and install `requirements-lock.
 
 ## Tested
 
-Tested on 2026-10-07 with Docker Desktop 4.81.0 (Docker Engine 29.6.1, Compose 5.2.0) on macOS, Apple silicon, from a new folder for each snapshot. `end-of-m02`: 17 tests passed, the image built, `/health` and `/v1/classify` answered. `end-of-m03`: 25 tests passed, the image built and answered. `end-of-m05`: `docker compose up -d --build` with the database, a classification and its history; `docker compose down --volumes`; then `deploy/local-cloud.yaml` started, and `/docs` gave `404` as configured. Windows and Linux are not tested.
+Tested with Docker Desktop 4.81.0 (Docker Engine 29.6.1, Compose 5.2.0) on macOS, Apple silicon, from a new folder for each snapshot. `end-of-m02`: 17 tests passed, the image built, `/health` and `/v1/classify` answered. `end-of-m03`: 25 tests passed, the image built and answered. `end-of-m05`: `docker compose up -d --build` with the database, a classification and its history; `docker compose down --volumes`; then `deploy/local-cloud.yaml` started, and `/docs` gave `404` as configured. Windows and Linux are not tested.

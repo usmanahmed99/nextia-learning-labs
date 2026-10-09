@@ -27,4 +27,4 @@ In `end-of-m03` and `end-of-m04`, `deploy/local/compose.yaml` has `platform: lin
 
 ## Tested
 
-The snapshots are exported with `git archive` from the reference repository, whose CI ran green on each of these commits on 2026-10-07 (`end-of-m01` has no pipeline yet).
+The snapshots are exported with `git archive` from the reference repository, whose CI ran green on each of these commits (`end-of-m01` has no pipeline yet).
