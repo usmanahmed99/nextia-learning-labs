@@ -1,0 +1,12 @@
+# Tested on 2026-10-09 with Python 3.12 (macOS, Apple silicon). Latest stable versions on that date.
+# Linux: install the CPU-only PyTorch first, or pip downloads the much larger CUDA build:
+#   python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.3
+openai==3.26.1
+pydantic==2.14.0
+pypdf==6.19.0
+pytest==9.1.1
+sentence-transformers==6.1.0
+torch==2.14.1
+transformers==5.19.0
+huggingface-hub==1.33.0

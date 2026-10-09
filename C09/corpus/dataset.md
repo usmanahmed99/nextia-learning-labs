@@ -38,7 +38,7 @@ The course teaches retrieval-augmented generation with its real difficulties: ve
 ## How it was made
 
 1. The course lead wrote a specification for every document (`reference/c09/corpus/specs.py` in the site repository): the exact section headings and every fact, number, price, period, date, code and rule.
-2. A language model (gpt-6.1-sol, Azure deployment `chat-strong`, 2026-10-09) turned each specification into prose, with the instruction to add no fact. 36 calls, US$0.17 (with one trial call).
+2. A language model (gpt-6.1-sol, Azure deployment `chat-strong`, 2026-10-09) turned each specification into prose, with the instruction to add no fact. 36 calls, US$0.135, plus one trial call, US$0.015.
 3. A script checked every document against its specification (front matter, headings in order, every number and code in the text present in the specification, no specified code missing): 0 problems.
 4. The lead read every document. Three hand edits (below). The front matter was never written by a model.
 5. A build script rendered 4 documents as HTML and PDF (reportlab, fixed dates and IDs) and wrote the inventory and the checksums. Built twice: identical byte for byte.
