@@ -1,6 +1,6 @@
 # Dataset card: Fashion-MNIST
 
-Used by: C06-M08-L01 (case study *Classify clothing images*), `classify-clothing-images.ipynb` and `classify-clothing-images-solution.ipynb`
+Used by: C06-M09-L01 (case study *Classify clothing images*), `classify-clothing-images.ipynb` and `classify-clothing-images-solution.ipynb`
 
 | Field | Value |
 |---|---|
@@ -19,7 +19,7 @@ One image is one product photo from Zalando's online catalogue, shrunk to 28 × 
 
 ## Why this dataset
 
-It is real image data with a clear permissive licence, it is small enough to train on a CPU, and it shows every idea the case study needs: pixels as features, a logistic-regression baseline that a convolutional network beats, confusions that a person understands (shirt, T-shirt/top, pullover, coat), and an augmentation that keeps the label true (a left-right flip). MNIST digits were compared: the original page had no licence statement and no files on 2026-10-08, and the task is too easy. KMNIST was compared: its licence is CC BY-SA 4.0 (share-alike), which is not on the course's list. Details: `reference/c06/m08/l01/DATASET-RESEARCH.md` in the course repository.
+It is real image data with a clear permissive licence, it is small enough to train on a CPU, and it shows every idea the case study needs: pixels as features, a logistic-regression baseline that a convolutional network beats, confusions that a person understands (shirt, T-shirt/top, pullover, coat), and an augmentation that keeps the label true (a left-right flip). MNIST digits were compared: the original page had no licence statement and no files on 2026-10-08, and the task is too easy. KMNIST was compared: its licence is CC BY-SA 4.0 (share-alike), which is not on the course's list. Details: `reference/c06/m09/l01/DATASET-RESEARCH.md` in the course repository.
 
 ## Changes we made
 
