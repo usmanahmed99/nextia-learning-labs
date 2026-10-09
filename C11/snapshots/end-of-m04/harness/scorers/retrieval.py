@@ -1,7 +1,8 @@
 """Ranking measures on saved search results (supplied by the RAG course; no search runs here).
 
 For one question: `ranked` is the list of passage IDs the search returned, best first; `relevant` is
-the set of passages a person marked as answering the question.
+the set of passages marked as answering the question (in this course, by an AI model acting as the RAG
+course's author, then checked by a script).
 
 - hit@k: 1 if at least one relevant passage is in the top k, else 0.
 - recall@k: the share of the relevant passages that are in the top k.
