@@ -1,0 +1,122 @@
+{
+ "R01": {
+  "case_id": "T-65090",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R02": {
+  "case_id": "T-65094",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R03": {
+  "case_id": "T-81002",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R04": {
+  "case_id": "T-81038",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R05": {
+  "case_id": "T-81049",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R06": {
+  "case_id": "T-64709",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R07": {
+  "case_id": "T-81038",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R08": {
+  "case_id": "T-81034",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R09": {
+  "case_id": "T-81034",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R10": {
+  "case_id": "T-81040",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R11": {
+  "case_id": "T-64972",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R12": {
+  "case_id": "T-81046",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R13": {
+  "case_id": "T-81046",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R14": {
+  "case_id": "T-81040",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R15": {
+  "case_id": "T-65090",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R16": {
+  "case_id": "T-65104",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R17": {
+  "case_id": "T-65137",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R18": {
+  "case_id": "T-65753",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R19": {
+  "case_id": "T-81003",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R20": {
+  "case_id": "T-64972",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R21": {
+  "case_id": "T-81003",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R22": {
+  "case_id": "T-64709",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R23": {
+  "case_id": "T-65753",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R24": {
+  "case_id": "T-65137",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R25": {
+  "case_id": "T-65104",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R26": {
+  "case_id": "T-81049",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R27": {
+  "case_id": "T-65094",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R28": {
+  "case_id": "T-65034",
+  "run_id": "candidate-v3-chat-small-r1-31b45f"
+ },
+ "R29": {
+  "case_id": "T-81002",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ },
+ "R30": {
+  "case_id": "T-65034",
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9"
+ }
+}

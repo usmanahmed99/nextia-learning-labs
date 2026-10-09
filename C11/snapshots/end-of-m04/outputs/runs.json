@@ -1,0 +1,60 @@
+[
+ {
+  "run_id": "baseline-v2-chat-small-r1-b6a2b9",
+  "system": "baseline",
+  "prompt": "v2",
+  "prompt_sha256": "728add8f0b0dcb676a5d1968f9d3e0256fbfd1fb30a46d410b32a4c36ac5e390",
+  "model": "chat-small",
+  "model_version": "gpt-6-luna-2026-09-22",
+  "dataset_version": "263bbd4f180d",
+  "inputs_version": "3f90ab808275",
+  "splits": [
+   "contaminated",
+   "dev",
+   "holdout"
+  ],
+  "repeat": 1,
+  "started": "2026-10-09T14:56:12-04:00",
+  "finished": "2026-10-09T15:01:04-04:00",
+  "cases": 271,
+  "note": "The LLM applications course's course-end assistant: prompt v2, structured output."
+ },
+ {
+  "run_id": "candidate-v3-chat-small-r1-31b45f",
+  "system": "candidate",
+  "prompt": "v3",
+  "prompt_sha256": "1f6de460aaf23b39de5a369e008777df5c8aeb77eff153a5a170e210ce57026f",
+  "model": "chat-small",
+  "model_version": "gpt-6-luna-2026-09-22",
+  "dataset_version": "263bbd4f180d",
+  "inputs_version": "3f90ab808275",
+  "splits": [
+   "contaminated",
+   "dev",
+   "holdout"
+  ],
+  "repeat": 1,
+  "started": "2026-10-09T15:01:11-04:00",
+  "finished": "2026-10-09T15:10:01-04:00",
+  "cases": 271,
+  "note": "Omar's change: prompt v3 (warmer, more complete replies; shorter prompt without examples)."
+ },
+ {
+  "run_id": "strong-v2-chat-strong-r1-160302",
+  "system": "strong",
+  "prompt": "v2",
+  "prompt_sha256": "728add8f0b0dcb676a5d1968f9d3e0256fbfd1fb30a46d410b32a4c36ac5e390",
+  "model": "chat-strong",
+  "model_version": "gpt-6.1-sol-2026-09-29",
+  "dataset_version": "263bbd4f180d",
+  "inputs_version": "9b24fa392841",
+  "splits": [
+   "dev"
+  ],
+  "repeat": 1,
+  "started": "2026-10-09T15:34:30-04:00",
+  "finished": "2026-10-09T15:42:20-04:00",
+  "cases": 102,
+  "note": "Prompt v2 on chat-strong (for the judge's self-preference test)."
+ }
+]

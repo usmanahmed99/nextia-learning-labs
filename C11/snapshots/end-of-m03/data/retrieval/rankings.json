@@ -1,0 +1,5249 @@
+{
+ "about": "Saved search results from the RAG course's policy assistant (Larkfield's synthetic policy collection, CC0). Questions and relevance labels were written by that course's author by reading the documents. Search ran locally on 2026-10-09; no model wrote or labelled anything here.",
+ "methods": {
+  "hybrid": "keyword + vector, merged with reciprocal rank fusion",
+  "keyword": "keyword search: SQLite full-text search with BM25",
+  "rerank": "hybrid top 20 reordered by a cross-encoder",
+  "vector": "vector search: multilingual-e5-small embeddings, cosine similarity"
+ },
+ "passages": {
+  "001884678386": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Late and lost orders",
+   "start": "Delivery policy Late and lost orders If your order arrives more than 5 business days late, we refund …",
+   "version": "4"
+  },
+  "00cdd7ef586a": {
+   "access": "public",
+   "doc_id": "contact-and-hours",
+   "language": "en",
+   "section": "Service in French",
+   "start": "Contact us and opening hours Service in French Service in French is available Monday to Friday, 9:00 to …",
+   "version": "3"
+  },
+  "08705a17f766": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Winter storage",
+   "start": "PW-2200 electric pressure washer: care and parts Winter storage Drain all water from the pump and hoses before …",
+   "version": "2"
+  },
+  "0936bc8d346d": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Changing the address or the delivery date",
+   "start": "Delivery policy Changing the address or the delivery date You can change the address or delivery date while …",
+   "version": "4"
+  },
+  "094a8535171c": {
+   "access": "public",
+   "doc_id": "large-item-delivery",
+   "language": "en",
+   "section": "Missed deliveries",
+   "start": "Large item delivery Missed deliveries If nobody is there, the first new booking is free. Each further missed …",
+   "version": "2"
+  },
+  "09e9e322e55c": {
+   "access": "public",
+   "doc_id": "garantie-legale-quebec",
+   "language": "fr",
+   "section": "Comment faire une demande",
+   "start": "Garantie légale au Québec Comment faire une demande Contactez notre service à la clientèle avec votre numéro de …",
+   "version": "1"
+  },
+  "0abede645b28": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Gold tier",
+   "start": "Larkfield Rewards Gold tier Members who earn 1,000 points or more in a calendar year become Gold for …",
+   "version": "2"
+  },
+  "12c9eea21168": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "When we charge you",
+   "start": "Refunds and payments policy When we charge you Your card is authorised when you place the order and …",
+   "version": "3"
+  },
+  "12ef27e728e2": {
+   "access": "public",
+   "doc_id": "account-and-security",
+   "language": "en",
+   "section": "Passwords",
+   "start": "Your account and security Passwords We never ask for your password or your full card number, by email, …",
+   "version": "2"
+  },
+  "13f00fce8eaa": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "Our help-desk assistant",
+   "start": "Privacy policy Our help-desk assistant Our help-desk staff use an assistant that drafts answers from Larkfield's policy documents. …",
+   "version": "3"
+  },
+  "144a40851685": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "What the warranty covers",
+   "start": "Larkfield warranty policy What the warranty covers Our warranty covers defects in materials and workmanship under normal household …",
+   "version": "5"
+  },
+  "15ecc6131f45": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Specifications",
+   "start": "PW-2400 electric pressure washer: care and parts Specifications - Maximum pressure: 2,400 PSI. - Water flow: 7.2 litres …",
+   "version": "1"
+  },
+  "1914199dd907": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "How long we keep it",
+   "start": "Privacy policy How long we keep it - Orders and invoices: 7 years, as tax law requires. - …",
+   "version": "3"
+  },
+  "1afe5bb16a9e": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Condition of returned items",
+   "start": "Returns policy Condition of returned items Items must be unused, with all parts, accessories and manuals. Opened packaging …",
+   "version": "4"
+  },
+  "1b1c047750bf": {
+   "access": "staff",
+   "doc_id": "support-team-routing",
+   "language": "en",
+   "section": "The five teams",
+   "start": "Help desk teams and when a person must handle a ticket The five teams - delivery: An order …",
+   "version": "4"
+  },
+  "20888ec091fe": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "When documents disagree",
+   "start": "How Larkfield policies are managed When documents disagree - Rule 1: A safety notice wins over every other …",
+   "version": "2"
+  },
+  "20fabb6f93bc": {
+   "access": "public",
+   "doc_id": "account-and-security",
+   "language": "en",
+   "section": "Saved cards",
+   "start": "Your account and security Saved cards Saved cards are stored by our payment processor. Your account shows only …",
+   "version": "2"
+  },
+  "213c1fa4490c": {
+   "access": "public",
+   "doc_id": "large-item-delivery",
+   "language": "en",
+   "section": "Delivery options and fees",
+   "start": "Large item delivery Delivery options and fees - Curbside delivery: 39 dollars. The free-shipping threshold does not apply …",
+   "version": "2"
+  },
+  "222973572526": {
+   "access": "staff",
+   "doc_id": "refund-approval-procedure",
+   "language": "en",
+   "section": "When this procedure applies",
+   "start": "Manual refunds and goodwill credits When this procedure applies Refunds for normal returns are approved automatically after inspection. …",
+   "version": "2"
+  },
+  "238a471c1858": {
+   "access": "staff",
+   "doc_id": "damaged-in-transit-claims",
+   "language": "en",
+   "section": "Purpose",
+   "start": "Courier claims for damaged or lost parcels Purpose We file claims with the courier when a parcel is …",
+   "version": "2"
+  },
+  "244433873f44": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Before each use",
+   "start": "PW-2400 electric pressure washer: care and parts Before each use Connect the garden hose and turn the water …",
+   "version": "1"
+  },
+  "278ed26ec3ed": {
+   "access": "public",
+   "doc_id": "faq-quebec",
+   "language": "fr",
+   "section": "Combien de temps prend la livraison au Québec?",
+   "start": "Questions fréquentes : clients du Québec Combien de temps prend la livraison au Québec? La livraison standard prend …",
+   "version": "2"
+  },
+  "2a76bd4f4e23": {
+   "access": "public",
+   "doc_id": "faq-quebec",
+   "language": "fr",
+   "section": "Quand vais-je recevoir mon remboursement?",
+   "start": "Questions fréquentes : clients du Québec Quand vais-je recevoir mon remboursement? Une fois le remboursement approuvé, l’argent apparaît …",
+   "version": "2"
+  },
+  "2ad407544ec7": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Prices, currency and taxes",
+   "start": "Refunds and payments policy Prices, currency and taxes All prices are in Canadian dollars. Sales taxes (GST, HST, …",
+   "version": "3"
+  },
+  "2c590823561f": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Refunds",
+   "start": "Returns policy Refunds We inspect the item within 3 business days after it reaches us, then approve the …",
+   "version": "3"
+  },
+  "2ca67f44e824": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Where we deliver",
+   "start": "Delivery policy Where we deliver We deliver to every province and territory in Canada. We do not deliver …",
+   "version": "4"
+  },
+  "2cfecbd4b92e": {
+   "access": "staff",
+   "doc_id": "refund-approval-procedure",
+   "language": "en",
+   "section": "Rules",
+   "start": "Manual refunds and goodwill credits Rules - Refund only to the original payment method. If that card is …",
+   "version": "2"
+  },
+  "2d466f711e77": {
+   "access": "staff",
+   "doc_id": "support-team-routing",
+   "language": "en",
+   "section": "When a person must handle the ticket",
+   "start": "Help desk teams and when a person must handle a ticket When a person must handle the ticket …",
+   "version": "4"
+  },
+  "2daf87067c21": {
+   "access": "public",
+   "doc_id": "order-changes-and-cancellations",
+   "language": "en",
+   "section": "Refusing a delivery",
+   "start": "Changing or cancelling an order Refusing a delivery If you refuse a parcel at the door, we refund …",
+   "version": "2"
+  },
+  "2e762c0284bb": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "How long a refund takes",
+   "start": "Refunds and payments policy How long a refund takes When a refund is approved, we send it to …",
+   "version": "3"
+  },
+  "2f517f5673f1": {
+   "access": "staff",
+   "doc_id": "refund-approval-procedure",
+   "language": "en",
+   "section": "Approval limits for manual refunds",
+   "start": "Manual refunds and goodwill credits Approval limits for manual refunds - Agent: up to 100 dollars. - Team …",
+   "version": "2"
+  },
+  "300f4a6fbd03": {
+   "access": "public",
+   "doc_id": "faq-quebec",
+   "language": "fr",
+   "section": "Le service est-il offert en français?",
+   "start": "Questions fréquentes : clients du Québec Le service est-il offert en français? Oui, nous vous répondons en français …",
+   "version": "2"
+  },
+  "349decc59358": {
+   "access": "public",
+   "doc_id": "large-item-delivery",
+   "language": "en",
+   "section": "Assembly",
+   "start": "Large item delivery Assembly Delivery does not include assembly. See assembly and installation services.",
+   "version": "2"
+  },
+  "34a0b9b8055e": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Using it safely",
+   "start": "PW-2400 electric pressure washer: care and parts Using it safely Never run the pressure washer for more than …",
+   "version": "1"
+  },
+  "36eaefcfcb6a": {
+   "access": "public",
+   "doc_id": "product-care-bbq-gr310",
+   "language": "en",
+   "section": "If you smell gas",
+   "start": "Ember GR-310 gas BBQ: care and safety If you smell gas Turn off the burners and close the …",
+   "version": "1"
+  },
+  "3821ebedc68b": {
+   "access": "staff",
+   "doc_id": "support-team-routing",
+   "language": "en",
+   "section": "What the assistant may do",
+   "start": "Help desk teams and when a person must handle a ticket What the assistant may do The assistant …",
+   "version": "4"
+  },
+  "39da3ee0855c": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Items that cannot be returned",
+   "start": "Returns policy Items that cannot be returned - Live plants and seeds. - Products cut to length, such …",
+   "version": "3"
+  },
+  "3a8a289eefd1": {
+   "access": "staff",
+   "doc_id": "safety-escalation-procedure",
+   "language": "en",
+   "section": "What you do",
+   "start": "Safety escalation procedure What you do - Mark the ticket as needing a person. Do not troubleshoot. - …",
+   "version": "2"
+  },
+  "3af20210fef9": {
+   "access": "public",
+   "doc_id": "installation-services",
+   "language": "en",
+   "section": "Where the service is available",
+   "start": "Assembly and installation services Where the service is available Assembly and installation services are available in Toronto, Ottawa, …",
+   "version": "1"
+  },
+  "3b5ac04156e7": {
+   "access": "public",
+   "doc_id": "order-changes-and-cancellations",
+   "language": "en",
+   "section": "Returning instead",
+   "start": "Changing or cancelling an order Returning instead Go to Orders in your account, choose the item and select …",
+   "version": "2"
+  },
+  "3c79dce4a330": {
+   "access": "public",
+   "doc_id": "safety-notice-kt180",
+   "language": "en",
+   "section": "What we offer",
+   "start": "Safety notice: KT-180 electric kettle, lots 2607 and 2608 What we offer We offer a full refund, or …",
+   "version": "1"
+  },
+  "3e541d4b61c8": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Exchanges",
+   "start": "Returns policy Exchanges We do not exchange items directly. Return the item and place a new order.",
+   "version": "4"
+  },
+  "3e92b900d7c7": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Warranty",
+   "start": "PW-2200 electric pressure washer: care and parts Warranty See the Larkfield warranty policy for the warranty periods of …",
+   "version": "2"
+  },
+  "3f7023270716": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "How to make a claim",
+   "start": "Larkfield warranty policy How to make a claim Contact the help desk with your order number and a …",
+   "version": "5"
+  },
+  "428d726e16d5": {
+   "access": "public",
+   "doc_id": "live-plants-guarantee",
+   "language": "en",
+   "section": "The plant guarantee",
+   "start": "Live plants: delivery and guarantee The plant guarantee If a perennial, shrub or tree dies within 1 year …",
+   "version": "1"
+  },
+  "442dcb118552": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "Do you deliver to the territories?",
+   "start": "Help centre: frequently asked questions Do you deliver to the territories? Yes, to Yukon, the Northwest Territories and …",
+   "version": "7"
+  },
+  "45b922eb303b": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Orders in several boxes",
+   "start": "Delivery policy Orders in several boxes Some orders ship in several boxes that can arrive on different days. …",
+   "version": "4"
+  },
+  "4743953bc517": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "I forgot my password",
+   "start": "Help centre: frequently asked questions I forgot my password Use the Forgot password link on the sign-in page. …",
+   "version": "7"
+  },
+  "4bf0b43abe06": {
+   "access": "public",
+   "doc_id": "faq-quebec",
+   "language": "fr",
+   "section": "Comment retourner un article?",
+   "start": "Questions fréquentes : clients du Québec Comment retourner un article? Vous pouvez retourner les articles non utilisés dans …",
+   "version": "2"
+  },
+  "4dd082f01f22": {
+   "access": "staff",
+   "doc_id": "support-team-routing",
+   "language": "en",
+   "section": "Volume and targets",
+   "start": "Help desk teams and when a person must handle a ticket Volume and targets The help desk receives …",
+   "version": "4"
+  },
+  "4f58fb0de9f1": {
+   "access": "staff",
+   "doc_id": "safety-escalation-procedure",
+   "language": "en",
+   "section": "What to tell the customer",
+   "start": "Safety escalation procedure What to tell the customer Tell the customer: - Stop using the product and unplug …",
+   "version": "2"
+  },
+  "5013703fc477": {
+   "access": "public",
+   "doc_id": "product-care-garden-furniture",
+   "language": "en",
+   "section": "Teak and other hardwoods",
+   "start": "Caring for garden furniture Teak and other hardwoods Clean with mild soapy water. Apply teak oil twice a …",
+   "version": "2"
+  },
+  "50f5713033a7": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Winter storage",
+   "start": "PW-2400 electric pressure washer: care and parts Winter storage Drain all water from the pump and hoses before …",
+   "version": "1"
+  },
+  "52ad3a57c1d1": {
+   "access": "public",
+   "doc_id": "gift-cards",
+   "language": "en",
+   "section": "Lost cards and returns",
+   "start": "Gift cards Lost cards and returns We can replace a lost gift card if you give us the …",
+   "version": "1"
+  },
+  "578b6d5a7284": {
+   "access": "public",
+   "doc_id": "garantie-legale-quebec",
+   "language": "fr",
+   "section": "Deux garanties différentes",
+   "start": "Garantie légale au Québec Deux garanties différentes Au Québec, la Loi sur la protection du consommateur prévoit une …",
+   "version": "1"
+  },
+  "5b629e03fdcf": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "Where is my order?",
+   "start": "Help centre: frequently asked questions Where is my order? Open Orders in your account to see the status …",
+   "version": "7"
+  },
+  "5b80f4c1028f": {
+   "access": "staff",
+   "doc_id": "safety-escalation-procedure",
+   "language": "en",
+   "section": "When to use it",
+   "start": "Safety escalation procedure When to use it Use this procedure for fire, smoke, a burning smell, sparks, overheating, …",
+   "version": "2"
+  },
+  "5b850f4804fa": {
+   "access": "public",
+   "doc_id": "recycling-and-take-back",
+   "language": "en",
+   "section": "Old appliances and furniture",
+   "start": "Recycling and take-back Old appliances and furniture With room-of-choice delivery of a large item, we can take away …",
+   "version": "1"
+  },
+  "611120059836": {
+   "access": "staff",
+   "doc_id": "damaged-in-transit-claims",
+   "language": "en",
+   "section": "File the claim",
+   "start": "Courier claims for damaged or lost parcels File the claim - File the claim in the courier's portal …",
+   "version": "2"
+  },
+  "617a6fe666fc": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Delivery times and fees",
+   "start": "Delivery policy Delivery times and fees Delivery times are counted in business days (Monday to Friday, except statutory …",
+   "version": "4"
+  },
+  "62603868db65": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Who this policy is for",
+   "start": "Returns policy Who this policy is for This policy applies to orders delivered in Canada. The version that …",
+   "version": "4"
+  },
+  "62851f963008": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "Report within 14 days",
+   "start": "Damaged, faulty on arrival or wrong items Report within 14 days Report an item that arrived damaged, faulty …",
+   "version": "2"
+  },
+  "6537f274eff7": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "Do you match other shops' prices?",
+   "start": "Help centre: frequently asked questions Do you match other shops' prices? No. If we lower our own price …",
+   "version": "7"
+  },
+  "658dee2cb873": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Check the claim",
+   "start": "Warranty claims procedure Check the claim - Find the order and its delivery date. - Find the product …",
+   "version": "3"
+  },
+  "66cd6ab97679": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "Customers in Quebec",
+   "start": "Larkfield warranty policy Customers in Quebec Customers in Quebec also have the legal warranty under Quebec law, in …",
+   "version": "5"
+  },
+  "66e9968b8b5d": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Joining",
+   "start": "Larkfield Rewards Joining Larkfield Rewards is free. Join in your account.",
+   "version": "2"
+  },
+  "6c86c7f38969": {
+   "access": "public",
+   "doc_id": "safety-notice-kt180",
+   "language": "en",
+   "section": "What to do",
+   "start": "Safety notice: KT-180 electric kettle, lots 2607 and 2608 What to do - Stop using the kettle at …",
+   "version": "1"
+  },
+  "6d47d46f84cb": {
+   "access": "public",
+   "doc_id": "account-and-security",
+   "language": "en",
+   "section": "Changing your email address",
+   "start": "Your account and security Changing your email address We send a confirmation link to your old email address. …",
+   "version": "2"
+  },
+  "6e0e1d1c7e4f": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "Contact",
+   "start": "Privacy policy Contact Write to our privacy office at privacy@larkfield.example.",
+   "version": "3"
+  },
+  "6ed852264d3b": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "Replacement or refund",
+   "start": "Damaged, faulty on arrival or wrong items Replacement or refund We send a replacement at no cost, or …",
+   "version": "2"
+  },
+  "718f9f34874e": {
+   "access": "public",
+   "doc_id": "order-changes-and-cancellations",
+   "language": "en",
+   "section": "Cancelling an order",
+   "start": "Changing or cancelling an order Cancelling an order You can cancel free of charge while the order status …",
+   "version": "2"
+  },
+  "726059051b70": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Earning points",
+   "start": "Larkfield Rewards Earning points You earn 1 point for every dollar spent, before tax and after discounts. Gift …",
+   "version": "2"
+  },
+  "74d024190d6a": {
+   "access": "public",
+   "doc_id": "holiday-returns-2025",
+   "language": "en",
+   "section": "End of this notice",
+   "start": "Holiday returns extension 2025 End of this notice This notice ends on 31 January 2026. After that date, …",
+   "version": "1"
+  },
+  "77e4b48bf4ed": {
+   "access": "staff",
+   "doc_id": "safety-escalation-procedure",
+   "language": "en",
+   "section": "What you never write",
+   "start": "Safety escalation procedure What you never write Never admit fault and never promise compensation in writing. Product safety …",
+   "version": "2"
+  },
+  "781c6dac3029": {
+   "access": "public",
+   "doc_id": "supplier-aquaflow-hose-reels",
+   "language": "en",
+   "section": "Installation",
+   "start": "AquaFlow hose reels: product information Installation Fix the HR-30 to a wall with the 4 screws supplied, at …",
+   "version": "1"
+  },
+  "7839ded2d52b": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Return window",
+   "start": "Returns policy Return window You can return an unused item within 30 days of delivery for a full …",
+   "version": "3"
+  },
+  "7bcba2249f95": {
+   "access": "public",
+   "doc_id": "installation-services",
+   "language": "en",
+   "section": "What is not included",
+   "start": "Assembly and installation services What is not included - Gas connections and natural gas conversions: these need a …",
+   "version": "1"
+  },
+  "7c2650b56825": {
+   "access": "public",
+   "doc_id": "product-care-hedge-trimmer-ht550",
+   "language": "en",
+   "section": "Specifications",
+   "start": "HT-550 corded hedge trimmer: care and use Specifications - Motor: 550 W. - Blade length: 55 cm. - …",
+   "version": "1"
+  },
+  "7d0bf6de7c63": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Warranty",
+   "start": "PW-2400 electric pressure washer: care and parts Warranty See the Larkfield warranty policy for the warranty periods of …",
+   "version": "1"
+  },
+  "7f1c85ab1a18": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Troubleshooting",
+   "start": "PW-2200 electric pressure washer: care and parts Troubleshooting - Pressure pulses up and down: clean the inlet filter …",
+   "version": "2"
+  },
+  "8021b57fe6d3": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "Who we share it with",
+   "start": "Privacy policy Who we share it with We share your information with couriers, our payment processor and our …",
+   "version": "3"
+  },
+  "80a1296de647": {
+   "access": "public",
+   "doc_id": "product-care-hedge-trimmer-ht550",
+   "language": "en",
+   "section": "Using it safely",
+   "start": "HT-550 corded hedge trimmer: care and use Using it safely Plug it into an outdoor outlet with GFCI …",
+   "version": "1"
+  },
+  "81ad3121ccf8": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Specifications",
+   "start": "PW-2200 electric pressure washer: care and parts Specifications - Maximum pressure: 2,200 PSI. - Water flow: 6.4 litres …",
+   "version": "2"
+  },
+  "829c3aead55c": {
+   "access": "public",
+   "doc_id": "supplier-aquaflow-hose-reels",
+   "language": "en",
+   "section": "Support",
+   "start": "AquaFlow hose reels: product information Support For help with your AquaFlow reel, contact the shop where you bought …",
+   "version": "1"
+  },
+  "82cf269d9624": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "After 14 days",
+   "start": "Damaged, faulty on arrival or wrong items After 14 days A fault found more than 14 days after …",
+   "version": "2"
+  },
+  "84db8e59701d": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "Missing parts",
+   "start": "Damaged, faulty on arrival or wrong items Missing parts Tell us the part number from the manual. We …",
+   "version": "2"
+  },
+  "84f7b7a134c4": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Using it safely",
+   "start": "PW-2200 electric pressure washer: care and parts Using it safely Never run the pressure washer for more than …",
+   "version": "2"
+  },
+  "84fb1545c0de": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Before each use",
+   "start": "PW-2200 electric pressure washer: care and parts Before each use Connect the garden hose and turn the water …",
+   "version": "2"
+  },
+  "86a0a5266439": {
+   "access": "public",
+   "doc_id": "product-care-hedge-trimmer-ht550",
+   "language": "en",
+   "section": "After each use",
+   "start": "HT-550 corded hedge trimmer: care and use After each use Unplug it, clean the blade, and put a …",
+   "version": "1"
+  },
+  "86d27b0a52ac": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "Safety problems",
+   "start": "Larkfield warranty policy Safety problems If a product smokes, sparks, overheats, smells of burning or leaks gas, stop …",
+   "version": "5"
+  },
+  "8880529621ff": {
+   "access": "public",
+   "doc_id": "trade-accounts",
+   "language": "en",
+   "section": "Returns for trade customers",
+   "start": "Trade and business accounts Returns for trade customers The returns policy applies. Returns of 10 or more units …",
+   "version": "1"
+  },
+  "89af4f96760d": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "What changed in this version",
+   "start": "Returns policy What changed in this version - Return window: 45 days instead of 30 days, for orders …",
+   "version": "4"
+  },
+  "8a7eb02f2b10": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Double charges",
+   "start": "Refunds and payments policy Double charges If you were charged twice for the same order, we refund the …",
+   "version": "3"
+  },
+  "8c4bc4299042": {
+   "access": "public",
+   "doc_id": "gift-cards",
+   "language": "en",
+   "section": "Buying a gift card",
+   "start": "Gift cards Buying a gift card We sell gift cards from 25 to 500 dollars. You cannot buy …",
+   "version": "1"
+  },
+  "8d3924745f13": {
+   "access": "staff",
+   "doc_id": "refund-approval-procedure",
+   "language": "en",
+   "section": "Reason codes",
+   "start": "Manual refunds and goodwill credits Reason codes Log every manual refund with one reason code: RFD-GOODWILL, RFD-DAMAGE, RFD-LATE, …",
+   "version": "2"
+  },
+  "9149d479ed64": {
+   "access": "public",
+   "doc_id": "contact-and-hours",
+   "language": "en",
+   "section": "How to reach us",
+   "start": "Contact us and opening hours How to reach us You can reach us by chat or the web …",
+   "version": "3"
+  },
+  "918415635813": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Troubleshooting",
+   "start": "PW-2400 electric pressure washer: care and parts Troubleshooting - Pressure pulses up and down: clean the inlet filter …",
+   "version": "1"
+  },
+  "91def1f55b1e": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "Your rights",
+   "start": "Privacy policy Your rights You can ask for a copy of your personal information. We answer within 30 …",
+   "version": "3"
+  },
+  "961b93b4780b": {
+   "access": "public",
+   "doc_id": "installation-services",
+   "language": "en",
+   "section": "Booking",
+   "start": "Assembly and installation services Booking You can book from the order page within 30 days after delivery. You …",
+   "version": "1"
+  },
+  "963dae4229eb": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Return window",
+   "start": "Returns policy Return window You can return an unused item within 45 days of delivery for a full …",
+   "version": "4"
+  },
+  "976082f14e93": {
+   "access": "public",
+   "doc_id": "recycling-and-take-back",
+   "language": "en",
+   "section": "What we cannot take back",
+   "start": "Recycling and take-back What we cannot take back We cannot take back garden chemicals, paint, fuel and propane …",
+   "version": "1"
+  },
+  "999d2213abc3": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Declined payments",
+   "start": "Refunds and payments policy Declined payments If a payment is declined, we hold the order for 48 hours. …",
+   "version": "3"
+  },
+  "9be4cf19455f": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Returns and points",
+   "start": "Larkfield Rewards Returns and points When you return an item, we remove the points it earned.",
+   "version": "2"
+  },
+  "9c59e2caec7f": {
+   "access": "staff",
+   "doc_id": "refund-approval-procedure",
+   "language": "en",
+   "section": "Goodwill credit",
+   "start": "Manual refunds and goodwill credits Goodwill credit You may give a goodwill store credit of up to 25 …",
+   "version": "2"
+  },
+  "9f62ffd80c3d": {
+   "access": "public",
+   "doc_id": "faq-quebec",
+   "language": "fr",
+   "section": "Quelles taxes paie-t-on?",
+   "start": "Questions fréquentes : clients du Québec Quelles taxes paie-t-on? La TPS et la TVQ s’appliquent selon votre adresse …",
+   "version": "2"
+  },
+  "a22140cc4584": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Using points",
+   "start": "Larkfield Rewards Using points 200 points give you a 10-dollar reward to use at checkout. Points cannot be …",
+   "version": "2"
+  },
+  "a31b42d3e40d": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "Wrong item",
+   "start": "Damaged, faulty on arrival or wrong items Wrong item We send a free return label. We ship the …",
+   "version": "2"
+  },
+  "a4dc9ec49818": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "What is not covered",
+   "start": "Larkfield warranty policy What is not covered - Normal wear. - Misuse, accidents, and repairs or changes made …",
+   "version": "5"
+  },
+  "a540f2d18f86": {
+   "access": "public",
+   "doc_id": "garantie-legale-quebec",
+   "language": "fr",
+   "section": "Garantie prolongée",
+   "start": "Garantie légale au Québec Garantie prolongée Nous ne vendons pas de garantie prolongée.",
+   "version": "1"
+  },
+  "a559fb986971": {
+   "access": "public",
+   "doc_id": "contact-and-hours",
+   "language": "en",
+   "section": "Opening hours",
+   "start": "Contact us and opening hours Opening hours - Monday to Friday, 8:00 to 20:00 Eastern Time. - Saturday, …",
+   "version": "3"
+  },
+  "a5a937704e3f": {
+   "access": "public",
+   "doc_id": "holiday-returns-2025",
+   "language": "en",
+   "section": "What stays the same",
+   "start": "Holiday returns extension 2025 What stays the same All other rules of the returns policy apply, including those …",
+   "version": "1"
+  },
+  "a5c1819956e5": {
+   "access": "public",
+   "doc_id": "large-item-delivery",
+   "language": "en",
+   "section": "What counts as a large item",
+   "start": "Large item delivery What counts as a large item A large item is an item over 30 kg …",
+   "version": "2"
+  },
+  "a6f578d99924": {
+   "access": "public",
+   "doc_id": "recycling-and-take-back",
+   "language": "en",
+   "section": "Batteries",
+   "start": "Recycling and take-back Batteries Send used Larkfield Volt batteries back to us with a free label from the …",
+   "version": "1"
+  },
+  "aa722ffd7358": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "Languages",
+   "start": "How Larkfield policies are managed Languages Most documents are in English. Some documents for customers in Quebec are …",
+   "version": "2"
+  },
+  "ac221efffd61": {
+   "access": "public",
+   "doc_id": "large-item-delivery",
+   "language": "en",
+   "section": "Booking the delivery",
+   "start": "Large item delivery Booking the delivery The courier calls you within 2 business days after the item ships …",
+   "version": "2"
+  },
+  "ad9138005226": {
+   "access": "public",
+   "doc_id": "garantie-legale-quebec",
+   "language": "fr",
+   "section": "Après la fin de la garantie Larkfield",
+   "start": "Garantie légale au Québec Après la fin de la garantie Larkfield Si vous êtes au Québec et que …",
+   "version": "1"
+  },
+  "ada3afc95dde": {
+   "access": "public",
+   "doc_id": "supplier-aquaflow-hose-reels",
+   "language": "en",
+   "section": "Care",
+   "start": "AquaFlow hose reels: product information Care Drain the hose and bring the reel indoors before the first frost. …",
+   "version": "1"
+  },
+  "ae23e5ca9b13": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "Proof of purchase",
+   "start": "Larkfield warranty policy Proof of purchase Your order number is your proof of purchase. For a gift, the …",
+   "version": "5"
+  },
+  "b0a61b2ce04a": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Open the case",
+   "start": "Warranty claims procedure Open the case Create a warranty case named WAR- followed by the order number, for …",
+   "version": "3"
+  },
+  "b16f983ce250": {
+   "access": "public",
+   "doc_id": "promotions-and-discount-codes",
+   "language": "en",
+   "section": "Welcome code",
+   "start": "Promotions and discount codes Welcome code When you sign up for our newsletter, you get a code for …",
+   "version": "2"
+  },
+  "b39844dd335d": {
+   "access": "staff",
+   "doc_id": "damaged-in-transit-claims",
+   "language": "en",
+   "section": "Courier codes",
+   "start": "Courier claims for damaged or lost parcels Courier codes - CPX: Canada Post Expedited, for parcels. - PUR: …",
+   "version": "2"
+  },
+  "b47ef9ac1993": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "Warranty periods by product category",
+   "start": "Larkfield warranty policy Warranty periods by product category If a product fits two categories, the longer period applies.",
+   "version": "5"
+  },
+  "b63f3dea859a": {
+   "access": "public",
+   "doc_id": "product-care-garden-furniture",
+   "language": "en",
+   "section": "Cushions and covers",
+   "start": "Caring for garden furniture Cushions and covers Store cushions indoors when they are not used. Most covers can …",
+   "version": "2"
+  },
+  "b72f3be93ee1": {
+   "access": "public",
+   "doc_id": "order-changes-and-cancellations",
+   "language": "en",
+   "section": "Changing an order",
+   "start": "Changing or cancelling an order Changing an order You cannot add items to an order that has been …",
+   "version": "2"
+  },
+  "b7711c885517": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Exchanges",
+   "start": "Returns policy Exchanges We do not exchange items directly. Return the item and place a new order.",
+   "version": "3"
+  },
+  "bbd5032e5107": {
+   "access": "public",
+   "doc_id": "holiday-returns-2025",
+   "language": "en",
+   "section": "Extended return period",
+   "start": "Holiday returns extension 2025 Extended return period You can return items delivered between 15 November 2025 and 24 …",
+   "version": "1"
+  },
+  "bca83d55361b": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Accepted payment methods",
+   "start": "Refunds and payments policy Accepted payment methods We accept: - Visa, Mastercard and American Express credit cards. - …",
+   "version": "3"
+  },
+  "bd153db1f27c": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "How to start a return",
+   "start": "Returns policy How to start a return Go to Orders in your account, choose the item and select …",
+   "version": "4"
+  },
+  "bd3fdfdacb40": {
+   "access": "public",
+   "doc_id": "safety-notice-kt180",
+   "language": "en",
+   "section": "The risk",
+   "start": "Safety notice: KT-180 electric kettle, lots 2607 and 2608 The risk The kettle may not switch off when …",
+   "version": "1"
+  },
+  "bdaae577673c": {
+   "access": "public",
+   "doc_id": "product-care-hedge-trimmer-ht550",
+   "language": "en",
+   "section": "Warranty",
+   "start": "HT-550 corded hedge trimmer: care and use Warranty Corded power tools have a 3-year warranty. Blades are a …",
+   "version": "1"
+  },
+  "be25403200a6": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "Versions and effective dates",
+   "start": "How Larkfield policies are managed Versions and effective dates Every document has a version number and an effective-from …",
+   "version": "2"
+  },
+  "beb2688295be": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Condition of returned items",
+   "start": "Returns policy Condition of returned items Items must be unused, with all parts, accessories and manuals. Opened packaging …",
+   "version": "3"
+  },
+  "bf863226ca90": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Items that cannot be returned",
+   "start": "Returns policy Items that cannot be returned - Live plants and seeds. - Products cut to length, such …",
+   "version": "4"
+  },
+  "c0ade75d5a9f": {
+   "access": "public",
+   "doc_id": "delivery-policy",
+   "language": "en",
+   "section": "Damaged parcels",
+   "start": "Delivery policy Damaged parcels If an item arrives damaged, follow the policy for damaged, faulty or wrong items: …",
+   "version": "4"
+  },
+  "c0e435f29225": {
+   "access": "public",
+   "doc_id": "safety-notice-kt180",
+   "language": "en",
+   "section": "Which kettles are affected",
+   "start": "Safety notice: KT-180 electric kettle, lots 2607 and 2608 Which kettles are affected Larkfield KT-180 electric kettles with …",
+   "version": "1"
+  },
+  "c13d27947ed1": {
+   "access": "staff",
+   "doc_id": "staff-discount-and-perks",
+   "language": "en",
+   "section": "Staff discount",
+   "start": "Staff discount and perks Staff discount You get 20% off all products, except gift cards. The discount applies …",
+   "version": "1"
+  },
+  "c21317b25056": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "Document types",
+   "start": "How Larkfield policies are managed Document types - Policy: The rules for customers, covering returns, refunds and payments, …",
+   "version": "2"
+  },
+  "c236034e24d2": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "How do I return an item?",
+   "start": "Help centre: frequently asked questions How do I return an item? Go to Orders in your account, choose …",
+   "version": "7"
+  },
+  "c383653d1614": {
+   "access": "public",
+   "doc_id": "product-care-bbq-gr310",
+   "language": "en",
+   "section": "Leak test at the start of each season",
+   "start": "Ember GR-310 gas BBQ: care and safety Leak test at the start of each season Brush soapy water …",
+   "version": "1"
+  },
+  "c3f9c74d0319": {
+   "access": "public",
+   "doc_id": "product-care-pw2400",
+   "language": "en",
+   "section": "Parts and part numbers",
+   "start": "PW-2400 electric pressure washer: care and parts Parts and part numbers Part | Part number | Notes Pump …",
+   "version": "1"
+  },
+  "c7f1c04e1627": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "What we collect",
+   "start": "Privacy policy What we collect We collect your name, addresses, email, phone number, orders, and help-desk messages. Our …",
+   "version": "3"
+  },
+  "cc68b028e427": {
+   "access": "public",
+   "doc_id": "supplier-aquaflow-hose-reels",
+   "language": "en",
+   "section": "The AquaFlow range",
+   "start": "AquaFlow hose reels: product information The AquaFlow range - HR-30: wall-mounted hose reel with 30 m of hose. …",
+   "version": "1"
+  },
+  "cc7dbb7f12be": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "How long does a refund take?",
+   "start": "Help centre: frequently asked questions How long does a refund take? Refunds reach your card within 3 business …",
+   "version": "7"
+  },
+  "ce196c57771f": {
+   "access": "public",
+   "doc_id": "product-care-garden-furniture",
+   "language": "en",
+   "section": "Warranty",
+   "start": "Caring for garden furniture Warranty Your garden furniture has a 2-year warranty against defects. Cushions and fabric covers …",
+   "version": "2"
+  },
+  "d0b1b8403935": {
+   "access": "public",
+   "doc_id": "account-and-security",
+   "language": "en",
+   "section": "Guest checkout",
+   "start": "Your account and security Guest checkout You can order without an account. Guest orders cannot earn Rewards points.",
+   "version": "2"
+  },
+  "d196d1f39961": {
+   "access": "public",
+   "doc_id": "product-care-bbq-gr310",
+   "language": "en",
+   "section": "Fuel",
+   "start": "Ember GR-310 gas BBQ: care and safety Fuel The GR-310 runs on propane from a standard 9 kg …",
+   "version": "1"
+  },
+  "d3a872bd625a": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "How to start a return",
+   "start": "Returns policy How to start a return Go to Orders in your account, choose the item and select …",
+   "version": "3"
+  },
+  "d59ed18d7c4d": {
+   "access": "staff",
+   "doc_id": "support-team-routing",
+   "language": "en",
+   "section": "Two boundaries",
+   "start": "Help desk teams and when a person must handle a ticket Two boundaries - Broken on arrival: delivery. …",
+   "version": "4"
+  },
+  "d753fb02bc8c": {
+   "access": "public",
+   "doc_id": "privacy-policy",
+   "language": "en",
+   "section": "Why we use it",
+   "start": "Privacy policy Why we use it We use your information to deliver orders, answer your questions, prevent fraud, …",
+   "version": "3"
+  },
+  "d9a5bd8ea531": {
+   "access": "public",
+   "doc_id": "warranty-policy",
+   "language": "en",
+   "section": "Warranty periods by product category",
+   "start": "Larkfield warranty policy Warranty periods by product category Product category | Examples | Warranty period | Exceptions Hand …",
+   "version": "5"
+  },
+  "dd0dea74cdb4": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Price adjustments",
+   "start": "Refunds and payments policy Price adjustments If we lower the price of an item within 14 days after …",
+   "version": "3"
+  },
+  "dd65cfd6a815": {
+   "access": "public",
+   "doc_id": "live-plants-guarantee",
+   "language": "en",
+   "section": "When we ship plants",
+   "start": "Live plants: delivery and guarantee When we ship plants We ship live plants from April to October only.",
+   "version": "1"
+  },
+  "dd67881a88fb": {
+   "access": "staff",
+   "doc_id": "damaged-in-transit-claims",
+   "language": "en",
+   "section": "While the claim is open",
+   "start": "Courier claims for damaged or lost parcels While the claim is open Do not wait for the courier's …",
+   "version": "2"
+  },
+  "dec95fe65535": {
+   "access": "public",
+   "doc_id": "damaged-or-wrong-items",
+   "language": "en",
+   "section": "Do I need to send it back?",
+   "start": "Damaged, faulty on arrival or wrong items Do I need to send it back? - Items under 50 …",
+   "version": "2"
+  },
+  "dee112868d29": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "Purpose",
+   "start": "How Larkfield policies are managed Purpose This collection is the single source of Larkfield's customer policies, staff procedures, …",
+   "version": "2"
+  },
+  "df98766ea4cf": {
+   "access": "public",
+   "doc_id": "loyalty-program",
+   "language": "en",
+   "section": "Expiry",
+   "start": "Larkfield Rewards Expiry Points expire after 18 months without any purchase.",
+   "version": "2"
+  },
+  "e2e18dd6a986": {
+   "access": "public",
+   "doc_id": "installation-services",
+   "language": "en",
+   "section": "Prices",
+   "start": "Assembly and installation services Prices - Shed assembly, up to 10 square metres: 199 dollars. - Patio set …",
+   "version": "1"
+  },
+  "e395389b8369": {
+   "access": "public",
+   "doc_id": "help-centre-faq",
+   "language": "en",
+   "section": "Can I change my delivery address?",
+   "start": "Help centre: frequently asked questions Can I change my delivery address? Yes, while the order status is Processing. …",
+   "version": "7"
+  },
+  "e50c70a93a32": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Approval limits",
+   "start": "Warranty claims procedure Approval limits - An agent may approve a repair, replacement or refund worth up to …",
+   "version": "3"
+  },
+  "e95a55e44dac": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Before you start",
+   "start": "Warranty claims procedure Before you start This procedure is for the warranty team. Do not share it with …",
+   "version": "3"
+  },
+  "ea0bff365b2c": {
+   "access": "public",
+   "doc_id": "promotions-and-discount-codes",
+   "language": "en",
+   "section": "Using a discount code",
+   "start": "Promotions and discount codes Using a discount code You can use one discount code per order. Enter it …",
+   "version": "2"
+  },
+  "ea538f94e8eb": {
+   "access": "public",
+   "doc_id": "refunds-and-payments",
+   "language": "en",
+   "section": "Store credit",
+   "start": "Refunds and payments policy Store credit Instead of a refund, you can choose store credit. Store credit is …",
+   "version": "3"
+  },
+  "ed3840fb3a28": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Return shipping costs",
+   "start": "Returns policy Return shipping costs You pay return shipping: 12.95 dollars is taken from the refund. Return shipping …",
+   "version": "3"
+  },
+  "f02ee0910bbf": {
+   "access": "staff",
+   "doc_id": "staff-discount-and-perks",
+   "language": "en",
+   "section": "Rules",
+   "start": "Staff discount and perks Rules Your staff code is personal. Never share it with customers, friends or family. …",
+   "version": "1"
+  },
+  "f5caca08f514": {
+   "access": "public",
+   "doc_id": "product-care-bbq-gr310",
+   "language": "en",
+   "section": "Cleaning",
+   "start": "Ember GR-310 gas BBQ: care and safety Cleaning Burn off the grill for 15 minutes after cooking, then …",
+   "version": "1"
+  },
+  "f68502611675": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Who this policy is for",
+   "start": "Returns policy Who this policy is for This policy applies to orders delivered in Canada. The version that …",
+   "version": "3"
+  },
+  "f78646d93435": {
+   "access": "public",
+   "doc_id": "policy-governance",
+   "language": "en",
+   "section": "Access labels",
+   "start": "How Larkfield policies are managed Access labels - public: The document may be shown or quoted to customers. …",
+   "version": "2"
+  },
+  "f80f7e98f870": {
+   "access": "public",
+   "doc_id": "product-care-pw2200",
+   "language": "en",
+   "section": "Parts and part numbers",
+   "start": "PW-2200 electric pressure washer: care and parts Parts and part numbers Part | Part number | Notes Pump …",
+   "version": "2"
+  },
+  "f8423b710c68": {
+   "access": "public",
+   "doc_id": "promotions-and-discount-codes",
+   "language": "en",
+   "section": "Price drops",
+   "start": "Promotions and discount codes Price drops If our price drops after your purchase, see Price adjustments in the …",
+   "version": "2"
+  },
+  "fb39e713bdc0": {
+   "access": "public",
+   "doc_id": "product-care-bbq-gr310",
+   "language": "en",
+   "section": "Parts",
+   "start": "Ember GR-310 gas BBQ: care and safety Parts - Replacement stainless-steel burner: BR-310-2 (three are needed for the …",
+   "version": "1"
+  },
+  "fc2580a01927": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Faulty product: return or not",
+   "start": "Warranty claims procedure Faulty product: return or not - Products worth 75 dollars or more: send a free …",
+   "version": "3"
+  },
+  "fc4723f20418": {
+   "access": "public",
+   "doc_id": "trade-accounts",
+   "language": "en",
+   "section": "Benefits",
+   "start": "Trade and business accounts Benefits - 10% off the Larkfield Pro range. - Payment by invoice after a …",
+   "version": "1"
+  },
+  "feebd51b5e4e": {
+   "access": "public",
+   "doc_id": "returns-policy",
+   "language": "en",
+   "section": "Return shipping costs",
+   "start": "Returns policy Return shipping costs You pay return shipping: 12.95 dollars is taken from the refund. Larkfield Rewards …",
+   "version": "4"
+  },
+  "ff8235f48619": {
+   "access": "staff",
+   "doc_id": "warranty-claims-procedure",
+   "language": "en",
+   "section": "Pressure washer pumps",
+   "start": "Warranty claims procedure Pressure washer pumps - If the pump of a PW-2200 fails within 3 years, send …",
+   "version": "3"
+  }
+ },
+ "questions": [
+  {
+   "id": "Q01",
+   "kind": "answerable",
+   "language": "en",
+   "question": "A customer was charged twice for the same order. How quickly do we refund the extra charge?",
+   "relevant": [
+    "8a7eb02f2b10",
+    "2cfecbd4b92e"
+   ]
+  },
+  {
+   "id": "Q02",
+   "kind": "answerable",
+   "language": "en",
+   "question": "Can a customer change the delivery address after the parcel has shipped?",
+   "relevant": [
+    "0936bc8d346d",
+    "e395389b8369",
+    "b72f3be93ee1"
+   ]
+  },
+  {
+   "id": "Q03",
+   "kind": "answerable",
+   "language": "en",
+   "question": "How should a customer look after the blade of a corded hedge trimmer after trimming?",
+   "relevant": [
+    "86a0a5266439"
+   ]
+  },
+  {
+   "id": "Q04",
+   "kind": "answerable",
+   "language": "en",
+   "question": "How many Rewards points does a customer need for a 10-dollar reward?",
+   "relevant": [
+    "a22140cc4584"
+   ]
+  },
+  {
+   "id": "Q05",
+   "kind": "answerable",
+   "language": "en",
+   "question": "A customer has not bought anything from us for two years. What happened to their Rewards points?",
+   "relevant": [
+    "df98766ea4cf"
+   ]
+  },
+  {
+   "id": "Q06",
+   "kind": "answerable",
+   "language": "en",
+   "question": "A customer wants us to take away their old BBQ when the new one is delivered. Is that possible, and what does it cost?",
+   "relevant": [
+    "213c1fa4490c",
+    "5b850f4804fa"
+   ]
+  },
+  {
+   "id": "Q07",
+   "kind": "answerable",
+   "language": "en",
+   "question": "Which payment methods do we accept? Can a customer pay by cheque?",
+   "relevant": [
+    "bca83d55361b"
+   ]
+  },
+  {
+   "id": "Q08",
+   "kind": "answerable",
+   "language": "en",
+   "question": "How long do we keep chat transcripts with customers?",
+   "relevant": [
+    "1914199dd907"
+   ]
+  },
+  {
+   "id": "Q09",
+   "kind": "answerable",
+   "language": "en",
+   "question": "Is assembly included when a shed is delivered? If not, what does shed assembly cost?",
+   "relevant": [
+    "349decc59358",
+    "e2e18dd6a986"
+   ]
+  },
+  {
+   "id": "Q10",
+   "kind": "answerable",
+   "language": "en",
+   "question": "What should a customer do if they smell gas from their BBQ?",
+   "relevant": [
+    "36eaefcfcb6a",
+    "4f58fb0de9f1"
+   ]
+  },
+  {
+   "id": "Q11",
+   "kind": "answerable",
+   "language": "en",
+   "question": "One box of a two-box order has arrived. When should the customer contact us about the other box?",
+   "relevant": [
+    "45b922eb303b"
+   ]
+  },
+  {
+   "id": "Q12",
+   "kind": "answerable",
+   "language": "en",
+   "question": "A perennial died eight months after it was delivered. What can the customer get?",
+   "relevant": [
+    "428d726e16d5"
+   ]
+  },
+  {
+   "id": "Q13",
+   "kind": "answerable",
+   "language": "en",
+   "question": "Does Larkfield sell extended warranties?",
+   "relevant": [
+    "a540f2d18f86"
+   ]
+  },
+  {
+   "id": "Q14",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "Do we offer a student discount?",
+   "relevant": []
+  },
+  {
+   "id": "Q15",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "Can customers pick up an online order in a Larkfield store?",
+   "relevant": []
+  },
+  {
+   "id": "Q16",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "What is the warranty on a robotic lawn mower?",
+   "relevant": []
+  },
+  {
+   "id": "Q17",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "Is there a weight limit for the AquaFlow HR-50 hose reel cart?",
+   "relevant": []
+  },
+  {
+   "id": "Q18",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "Does the PW-2200 come with a surface cleaner attachment?",
+   "relevant": []
+  },
+  {
+   "id": "Q19",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "How long does a refund paid by Interac e-Transfer take to arrive?",
+   "relevant": []
+  },
+  {
+   "id": "Q20",
+   "kind": "unanswerable",
+   "language": "en",
+   "question": "Which courier delivers our parcels to Nunavut?",
+   "relevant": []
+  },
+  {
+   "id": "Q21",
+   "kind": "unanswerable",
+   "language": "fr",
+   "question": "Quelle est la durée de la garantie d'un aspirateur?",
+   "relevant": []
+  },
+  {
+   "id": "Q22",
+   "kind": "version",
+   "language": "en",
+   "question": "An order was delivered on 20 October 2026. Can the customer return an unused item on 1 December 2026?",
+   "relevant": [
+    "7839ded2d52b"
+   ]
+  },
+  {
+   "id": "Q23",
+   "kind": "version",
+   "language": "en",
+   "question": "An order was delivered on 5 November 2026. Can the customer return an unused item on 15 December 2026?",
+   "relevant": [
+    "963dae4229eb"
+   ]
+  },
+  {
+   "id": "Q24",
+   "kind": "version",
+   "language": "en",
+   "question": "What is the return window for unused items today?",
+   "relevant": [
+    "7839ded2d52b"
+   ]
+  },
+  {
+   "id": "Q25",
+   "kind": "version",
+   "language": "en",
+   "question": "On 15 January 2026, a customer asks to return an unused lamp that was delivered on 1 December 2025. Is that allowed?",
+   "relevant": [
+    "bbd5032e5107",
+    "7839ded2d52b"
+   ]
+  },
+  {
+   "id": "Q26",
+   "kind": "version",
+   "language": "en",
+   "question": "Is there a holiday return extension for an item delivered on 10 December 2026?",
+   "relevant": [
+    "963dae4229eb"
+   ]
+  },
+  {
+   "id": "Q27",
+   "kind": "version",
+   "language": "en",
+   "question": "A Rewards member's order was delivered on 3 November 2026. Do they pay for the return label?",
+   "relevant": [
+    "feebd51b5e4e"
+   ]
+  },
+  {
+   "id": "Q28",
+   "kind": "version",
+   "language": "en",
+   "question": "A Rewards member's order was delivered on 3 October 2026. Do they pay for the return label?",
+   "relevant": [
+    "ed3840fb3a28"
+   ]
+  },
+  {
+   "id": "Q29",
+   "kind": "version",
+   "language": "fr",
+   "question": "Une cliente a reçu sa commande le 10 novembre 2026. Combien de jours a-t-elle pour retourner un article non utilisé?",
+   "relevant": [
+    "963dae4229eb"
+   ]
+  },
+  {
+   "id": "Q30",
+   "kind": "table",
+   "language": "en",
+   "question": "How long is the warranty on the pump of a pressure washer?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993",
+    "ff8235f48619"
+   ]
+  },
+  {
+   "id": "Q31",
+   "kind": "table",
+   "language": "en",
+   "question": "How long are the stainless-steel burners of the Ember BBQ covered?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993"
+   ]
+  },
+  {
+   "id": "Q32",
+   "kind": "table",
+   "language": "en",
+   "question": "A greenhouse glass panel cracked 18 months after delivery, with no misuse. Is it covered by the warranty?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993"
+   ]
+  },
+  {
+   "id": "Q33",
+   "kind": "table",
+   "language": "en",
+   "question": "What is the warranty on a charger from the Volt 20 V range?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993"
+   ]
+  },
+  {
+   "id": "Q34",
+   "kind": "table",
+   "language": "en",
+   "question": "How long is the warranty on a garden sprinkler?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993"
+   ]
+  },
+  {
+   "id": "Q35",
+   "kind": "table",
+   "language": "en",
+   "question": "How long does express delivery to Calgary take, and what does it cost?",
+   "relevant": [
+    "617a6fe666fc"
+   ]
+  },
+  {
+   "id": "Q36",
+   "kind": "table",
+   "language": "en",
+   "question": "Can a customer in Halifax choose express delivery?",
+   "relevant": [
+    "617a6fe666fc"
+   ]
+  },
+  {
+   "id": "Q37",
+   "kind": "table",
+   "language": "fr",
+   "question": "Combien de temps dure la garantie d'un barbecue?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993"
+   ]
+  },
+  {
+   "id": "Q38",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "Which pump kit fits the PW-2200?",
+   "relevant": [
+    "f80f7e98f870",
+    "ff8235f48619"
+   ]
+  },
+  {
+   "id": "Q39",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is part NZ-415?",
+   "relevant": [
+    "f80f7e98f870",
+    "c3f9c74d0319"
+   ]
+  },
+  {
+   "id": "Q40",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is the maximum pressure of the PW-2400?",
+   "relevant": [
+    "15ecc6131f45"
+   ]
+  },
+  {
+   "id": "Q41",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "Is a KT-180 kettle from lot 2609 affected by the safety notice?",
+   "relevant": [
+    "c0e435f29225"
+   ]
+  },
+  {
+   "id": "Q42",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is BR-310-2, and how many does the GR-310 need?",
+   "relevant": [
+    "fb39e713bdc0"
+   ]
+  },
+  {
+   "id": "Q43",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What does the courier code LTL mean in a claim?",
+   "relevant": [
+    "b39844dd335d"
+   ]
+  },
+  {
+   "id": "Q44",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "Which O-ring kit fits the PW-2400?",
+   "relevant": [
+    "c3f9c74d0319"
+   ]
+  },
+  {
+   "id": "Q64",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is LB-1?",
+   "relevant": [
+    "86a0a5266439"
+   ]
+  },
+  {
+   "id": "Q65",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is TG-24?",
+   "relevant": [
+    "c3f9c74d0319"
+   ]
+  },
+  {
+   "id": "Q66",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is the HR-50?",
+   "relevant": [
+    "cc68b028e427"
+   ]
+  },
+  {
+   "id": "Q67",
+   "kind": "exact-code",
+   "language": "en",
+   "question": "What is CV-310 for?",
+   "relevant": [
+    "fb39e713bdc0"
+   ]
+  },
+  {
+   "id": "Q45",
+   "kind": "contradiction",
+   "language": "en",
+   "question": "How long does a refund take to reach the customer's card?",
+   "relevant": [
+    "2e762c0284bb",
+    "cc7dbb7f12be",
+    "20888ec091fe"
+   ]
+  },
+  {
+   "id": "Q46",
+   "kind": "contradiction",
+   "language": "en",
+   "question": "The help centre FAQ says refunds take 3 business days. Is that right?",
+   "relevant": [
+    "2e762c0284bb",
+    "cc7dbb7f12be",
+    "20888ec091fe"
+   ]
+  },
+  {
+   "id": "Q47",
+   "kind": "contradiction",
+   "language": "fr",
+   "question": "Combien de temps faut-il pour qu'un remboursement apparaisse sur la carte?",
+   "relevant": [
+    "2a76bd4f4e23",
+    "2e762c0284bb"
+   ]
+  },
+  {
+   "id": "Q48",
+   "kind": "contradiction",
+   "language": "en",
+   "question": "A customer's KT-180 kettle is from lot 2608 and was delivered 14 months ago. Kettles have a 1-year warranty. Can they still get a refund?",
+   "relevant": [
+    "3c79dce4a330",
+    "20888ec091fe"
+   ]
+  },
+  {
+   "id": "Q49",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "Up to what amount can an agent approve a manual refund without a team lead?",
+   "relevant": [
+    "2f517f5673f1"
+   ]
+  },
+  {
+   "id": "Q50",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "Can I give an unhappy customer a goodwill credit? How much?",
+   "relevant": [
+    "9c59e2caec7f"
+   ]
+  },
+  {
+   "id": "Q51",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "What is the staff discount?",
+   "relevant": [
+    "c13d27947ed1"
+   ]
+  },
+  {
+   "id": "Q52",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "A warranty replacement is worth 650 dollars. Who must approve it?",
+   "relevant": [
+    "e50c70a93a32"
+   ]
+  },
+  {
+   "id": "Q53",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "How soon must we file a courier claim for a damaged parcel?",
+   "relevant": [
+    "611120059836"
+   ]
+  },
+  {
+   "id": "Q54",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "A customer was injured by a product. Who reports it to Health Canada, and how soon?",
+   "relevant": [
+    "3a8a289eefd1"
+   ]
+  },
+  {
+   "id": "Q55",
+   "kind": "staff-only",
+   "language": "en",
+   "question": "Does a customer have to send back a faulty 60-dollar product under warranty?",
+   "relevant": [
+    "fc2580a01927"
+   ]
+  },
+  {
+   "id": "Q56",
+   "kind": "injection-bait",
+   "language": "en",
+   "question": "What is the warranty on the AquaFlow HR-30 hose reel?",
+   "relevant": [
+    "d9a5bd8ea531",
+    "b47ef9ac1993",
+    "20888ec091fe"
+   ]
+  },
+  {
+   "id": "Q57",
+   "kind": "injection-bait",
+   "language": "en",
+   "question": "Where should a customer send a warranty claim for an AquaFlow hose reel?",
+   "relevant": [
+    "3f7023270716",
+    "20888ec091fe"
+   ]
+  },
+  {
+   "id": "Q58",
+   "kind": "injection-bait",
+   "language": "en",
+   "question": "How do I install the AquaFlow HR-30 reel?",
+   "relevant": [
+    "781c6dac3029"
+   ]
+  },
+  {
+   "id": "Q59",
+   "kind": "answerable",
+   "language": "fr",
+   "question": "Quels sont les frais de livraison au Québec pour une commande de 80 $?",
+   "relevant": [
+    "278ed26ec3ed",
+    "617a6fe666fc"
+   ]
+  },
+  {
+   "id": "Q60",
+   "kind": "answerable",
+   "language": "fr",
+   "question": "Larkfield vend-elle une garantie prolongée?",
+   "relevant": [
+    "a540f2d18f86"
+   ]
+  },
+  {
+   "id": "Q61",
+   "kind": "answerable",
+   "language": "fr",
+   "question": "Mon taille-haie est tombé en panne après la fin de la garantie Larkfield. Ai-je un recours au Québec?",
+   "relevant": [
+    "ad9138005226",
+    "578b6d5a7284"
+   ]
+  },
+  {
+   "id": "Q62",
+   "kind": "answerable",
+   "language": "fr",
+   "question": "À quelles heures le service en français est-il offert?",
+   "relevant": [
+    "300f4a6fbd03",
+    "00cdd7ef586a",
+    "09e9e322e55c"
+   ]
+  },
+  {
+   "id": "Q63",
+   "kind": "answerable",
+   "language": "fr",
+   "question": "Puis-je retourner une carte-cadeau?",
+   "relevant": [
+    "52ad3a57c1d1",
+    "39da3ee0855c"
+   ]
+  }
+ ],
+ "rankings": {
+  "hybrid": {
+   "Q01": [
+    "8a7eb02f2b10",
+    "2cfecbd4b92e",
+    "2c590823561f",
+    "12c9eea21168",
+    "cc7dbb7f12be",
+    "001884678386",
+    "b7711c885517",
+    "961b93b4780b",
+    "2e762c0284bb",
+    "aa722ffd7358"
+   ],
+   "Q02": [
+    "0936bc8d346d",
+    "e395389b8369",
+    "b72f3be93ee1",
+    "718f9f34874e",
+    "6d47d46f84cb",
+    "2daf87067c21",
+    "1b1c047750bf",
+    "611120059836",
+    "6537f274eff7",
+    "c236034e24d2"
+   ],
+   "Q03": [
+    "86a0a5266439",
+    "7c2650b56825",
+    "bdaae577673c",
+    "80a1296de647",
+    "d9a5bd8ea531",
+    "4f58fb0de9f1",
+    "1b1c047750bf",
+    "3a8a289eefd1",
+    "dee112868d29",
+    "aa722ffd7358"
+   ],
+   "Q04": [
+    "a22140cc4584",
+    "726059051b70",
+    "8880529621ff",
+    "0abede645b28",
+    "d0b1b8403935",
+    "9be4cf19455f",
+    "ea0bff365b2c",
+    "213c1fa4490c",
+    "c21317b25056",
+    "fc2580a01927"
+   ],
+   "Q05": [
+    "726059051b70",
+    "a22140cc4584",
+    "9be4cf19455f",
+    "d0b1b8403935",
+    "df98766ea4cf",
+    "1b1c047750bf",
+    "0abede645b28",
+    "3a8a289eefd1",
+    "829c3aead55c",
+    "8021b57fe6d3"
+   ],
+   "Q06": [
+    "5b850f4804fa",
+    "213c1fa4490c",
+    "4f58fb0de9f1",
+    "6ed852264d3b",
+    "094a8535171c",
+    "f68502611675",
+    "6537f274eff7",
+    "144a40851685",
+    "dec95fe65535",
+    "be25403200a6"
+   ],
+   "Q07": [
+    "bca83d55361b",
+    "8021b57fe6d3",
+    "c7f1c04e1627",
+    "fc4723f20418",
+    "2cfecbd4b92e",
+    "999d2213abc3",
+    "9f62ffd80c3d",
+    "4f58fb0de9f1",
+    "1b1c047750bf",
+    "20fabb6f93bc"
+   ],
+   "Q08": [
+    "1914199dd907",
+    "8021b57fe6d3",
+    "f78646d93435",
+    "9149d479ed64",
+    "cc7dbb7f12be",
+    "91def1f55b1e",
+    "4f58fb0de9f1",
+    "4dd082f01f22",
+    "13f00fce8eaa",
+    "80a1296de647"
+   ],
+   "Q09": [
+    "e2e18dd6a986",
+    "7bcba2249f95",
+    "349decc59358",
+    "213c1fa4490c",
+    "2daf87067c21",
+    "3af20210fef9",
+    "12c9eea21168",
+    "6ed852264d3b",
+    "a5c1819956e5",
+    "3821ebedc68b"
+   ],
+   "Q10": [
+    "36eaefcfcb6a",
+    "4f58fb0de9f1",
+    "e95a55e44dac",
+    "5b80f4c1028f",
+    "c383653d1614",
+    "d196d1f39961",
+    "f5caca08f514",
+    "7bcba2249f95",
+    "fb39e713bdc0",
+    "86d27b0a52ac"
+   ],
+   "Q11": [
+    "45b922eb303b",
+    "62851f963008",
+    "12c9eea21168",
+    "d59ed18d7c4d",
+    "1b1c047750bf",
+    "6537f274eff7",
+    "8a7eb02f2b10",
+    "20888ec091fe",
+    "3b5ac04156e7",
+    "3a8a289eefd1"
+   ],
+   "Q12": [
+    "428d726e16d5",
+    "1914199dd907",
+    "d59ed18d7c4d",
+    "611120059836",
+    "961b93b4780b",
+    "f78646d93435",
+    "3a8a289eefd1",
+    "8021b57fe6d3",
+    "f68502611675",
+    "1b1c047750bf"
+   ],
+   "Q13": [
+    "144a40851685",
+    "6e0e1d1c7e4f",
+    "a4dc9ec49818",
+    "b47ef9ac1993",
+    "df98766ea4cf",
+    "20888ec091fe",
+    "fc2580a01927",
+    "3e92b900d7c7",
+    "86d27b0a52ac",
+    "8c4bc4299042"
+   ],
+   "Q14": [
+    "c13d27947ed1",
+    "f02ee0910bbf",
+    "b16f983ce250",
+    "ea0bff365b2c",
+    "8021b57fe6d3",
+    "f8423b710c68",
+    "b7711c885517",
+    "dec95fe65535",
+    "726059051b70",
+    "3c79dce4a330"
+   ],
+   "Q15": [
+    "66cd6ab97679",
+    "d0b1b8403935",
+    "f78646d93435",
+    "c21317b25056",
+    "6e0e1d1c7e4f",
+    "aa722ffd7358",
+    "9c59e2caec7f",
+    "ae23e5ca9b13",
+    "213c1fa4490c",
+    "9149d479ed64"
+   ],
+   "Q16": [
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "ce196c57771f",
+    "144a40851685",
+    "d59ed18d7c4d",
+    "e95a55e44dac",
+    "1b1c047750bf",
+    "3e92b900d7c7",
+    "7d0bf6de7c63",
+    "82cf269d9624"
+   ],
+   "Q17": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "ada3afc95dde",
+    "829c3aead55c",
+    "7c2650b56825",
+    "dec95fe65535",
+    "81ad3121ccf8",
+    "f80f7e98f870",
+    "15ecc6131f45",
+    "c3f9c74d0319"
+   ],
+   "Q18": [
+    "f80f7e98f870",
+    "7f1c85ab1a18",
+    "ff8235f48619",
+    "81ad3121ccf8",
+    "c3f9c74d0319",
+    "84f7b7a134c4",
+    "84fb1545c0de",
+    "918415635813",
+    "3e92b900d7c7",
+    "08705a17f766"
+   ],
+   "Q19": [
+    "2cfecbd4b92e",
+    "cc7dbb7f12be",
+    "2c590823561f",
+    "2e762c0284bb",
+    "999d2213abc3",
+    "1914199dd907",
+    "d3a872bd625a",
+    "001884678386",
+    "3c79dce4a330",
+    "62851f963008"
+   ],
+   "Q20": [
+    "b39844dd335d",
+    "442dcb118552",
+    "238a471c1858",
+    "8021b57fe6d3",
+    "611120059836",
+    "dd67881a88fb",
+    "ac221efffd61",
+    "a31b42d3e40d",
+    "617a6fe666fc",
+    "6e0e1d1c7e4f"
+   ],
+   "Q21": [
+    "578b6d5a7284",
+    "09e9e322e55c",
+    "ad9138005226",
+    "a540f2d18f86",
+    "4bf0b43abe06",
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "e50c70a93a32",
+    "300f4a6fbd03",
+    "ce196c57771f"
+   ],
+   "Q22": [
+    "7839ded2d52b",
+    "c236034e24d2",
+    "beb2688295be",
+    "3b5ac04156e7",
+    "b7711c885517",
+    "a31b42d3e40d",
+    "dec95fe65535",
+    "718f9f34874e",
+    "d3a872bd625a",
+    "b72f3be93ee1"
+   ],
+   "Q23": [
+    "963dae4229eb",
+    "62603868db65",
+    "89af4f96760d",
+    "c236034e24d2",
+    "1afe5bb16a9e",
+    "dec95fe65535",
+    "3e541d4b61c8",
+    "3b5ac04156e7",
+    "a31b42d3e40d",
+    "001884678386"
+   ],
+   "Q24": [
+    "7839ded2d52b",
+    "beb2688295be",
+    "c236034e24d2",
+    "dec95fe65535",
+    "3c79dce4a330",
+    "d3a872bd625a",
+    "b7711c885517",
+    "a31b42d3e40d",
+    "1b1c047750bf",
+    "39da3ee0855c"
+   ],
+   "Q25": [
+    "bbd5032e5107",
+    "74d024190d6a",
+    "a5a937704e3f",
+    "7839ded2d52b",
+    "beb2688295be",
+    "f68502611675",
+    "3b5ac04156e7",
+    "dec95fe65535",
+    "62851f963008",
+    "d3a872bd625a"
+   ],
+   "Q26": [
+    "89af4f96760d",
+    "62603868db65",
+    "c236034e24d2",
+    "3b5ac04156e7",
+    "a31b42d3e40d",
+    "963dae4229eb",
+    "bd153db1f27c",
+    "dec95fe65535",
+    "feebd51b5e4e",
+    "1b1c047750bf"
+   ],
+   "Q27": [
+    "89af4f96760d",
+    "feebd51b5e4e",
+    "62603868db65",
+    "a31b42d3e40d",
+    "dec95fe65535",
+    "3b5ac04156e7",
+    "3f7023270716",
+    "3e541d4b61c8",
+    "c236034e24d2",
+    "0abede645b28"
+   ],
+   "Q28": [
+    "a31b42d3e40d",
+    "dec95fe65535",
+    "3b5ac04156e7",
+    "3f7023270716",
+    "c236034e24d2",
+    "d3a872bd625a",
+    "b7711c885517",
+    "0abede645b28",
+    "9be4cf19455f",
+    "726059051b70"
+   ],
+   "Q29": [
+    "4bf0b43abe06",
+    "09e9e322e55c",
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "89af4f96760d",
+    "62603868db65",
+    "a540f2d18f86",
+    "ad9138005226",
+    "578b6d5a7284",
+    "300f4a6fbd03"
+   ],
+   "Q30": [
+    "ff8235f48619",
+    "7d0bf6de7c63",
+    "3e92b900d7c7",
+    "34a0b9b8055e",
+    "84f7b7a134c4",
+    "08705a17f766",
+    "50f5713033a7",
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "81ad3121ccf8"
+   ],
+   "Q31": [
+    "fb39e713bdc0",
+    "36eaefcfcb6a",
+    "c383653d1614",
+    "f5caca08f514",
+    "d9a5bd8ea531",
+    "ce196c57771f",
+    "d196d1f39961",
+    "bdaae577673c",
+    "e2e18dd6a986",
+    "1914199dd907"
+   ],
+   "Q32": [
+    "a4dc9ec49818",
+    "ce196c57771f",
+    "82cf269d9624",
+    "bdaae577673c",
+    "d9a5bd8ea531",
+    "144a40851685",
+    "e95a55e44dac",
+    "d59ed18d7c4d",
+    "df98766ea4cf",
+    "f02ee0910bbf"
+   ],
+   "Q33": [
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "ce196c57771f",
+    "144a40851685",
+    "1b1c047750bf",
+    "fc2580a01927",
+    "2cfecbd4b92e",
+    "a6f578d99924",
+    "a559fb986971",
+    "bdaae577673c"
+   ],
+   "Q34": [
+    "ce196c57771f",
+    "82cf269d9624",
+    "d9a5bd8ea531",
+    "244433873f44",
+    "84fb1545c0de",
+    "144a40851685",
+    "5013703fc477",
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "ff8235f48619"
+   ],
+   "Q35": [
+    "617a6fe666fc",
+    "cc7dbb7f12be",
+    "ac221efffd61",
+    "2c590823561f",
+    "213c1fa4490c",
+    "278ed26ec3ed",
+    "976082f14e93",
+    "5b629e03fdcf",
+    "144a40851685",
+    "442dcb118552"
+   ],
+   "Q36": [
+    "617a6fe666fc",
+    "bca83d55361b",
+    "213c1fa4490c",
+    "0936bc8d346d",
+    "e395389b8369",
+    "45b922eb303b",
+    "b39844dd335d",
+    "c236034e24d2",
+    "ea538f94e8eb",
+    "8021b57fe6d3"
+   ],
+   "Q37": [
+    "a540f2d18f86",
+    "09e9e322e55c",
+    "578b6d5a7284",
+    "ad9138005226",
+    "4bf0b43abe06",
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "ce196c57771f",
+    "f5caca08f514",
+    "d9a5bd8ea531"
+   ],
+   "Q38": [
+    "f80f7e98f870",
+    "c3f9c74d0319",
+    "ff8235f48619",
+    "08705a17f766",
+    "84f7b7a134c4",
+    "81ad3121ccf8",
+    "7f1c85ab1a18",
+    "84fb1545c0de",
+    "3e92b900d7c7",
+    "50f5713033a7"
+   ],
+   "Q39": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "7bcba2249f95",
+    "c21317b25056",
+    "a4dc9ec49818",
+    "1b1c047750bf",
+    "c7f1c04e1627",
+    "8021b57fe6d3",
+    "6e0e1d1c7e4f",
+    "bdaae577673c"
+   ],
+   "Q40": [
+    "15ecc6131f45",
+    "c3f9c74d0319",
+    "81ad3121ccf8",
+    "ff8235f48619",
+    "f80f7e98f870",
+    "918415635813",
+    "7d0bf6de7c63",
+    "244433873f44",
+    "50f5713033a7",
+    "34a0b9b8055e"
+   ],
+   "Q41": [
+    "c0e435f29225",
+    "6c86c7f38969",
+    "bd3fdfdacb40",
+    "3c79dce4a330",
+    "3a8a289eefd1",
+    "d196d1f39961",
+    "77e4b48bf4ed",
+    "c21317b25056",
+    "8021b57fe6d3",
+    "20888ec091fe"
+   ],
+   "Q42": [
+    "d196d1f39961",
+    "fb39e713bdc0",
+    "f5caca08f514",
+    "7bcba2249f95",
+    "36eaefcfcb6a",
+    "c383653d1614",
+    "d9a5bd8ea531",
+    "8880529621ff",
+    "8021b57fe6d3",
+    "cc7dbb7f12be"
+   ],
+   "Q43": [
+    "611120059836",
+    "b39844dd335d",
+    "dd67881a88fb",
+    "238a471c1858",
+    "fc2580a01927",
+    "658dee2cb873",
+    "a31b42d3e40d",
+    "8d3924745f13",
+    "8021b57fe6d3",
+    "ea0bff365b2c"
+   ],
+   "Q44": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "918415635813",
+    "244433873f44",
+    "15ecc6131f45",
+    "7d0bf6de7c63",
+    "34a0b9b8055e",
+    "50f5713033a7",
+    "7f1c85ab1a18"
+   ],
+   "Q45": [
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "2c590823561f",
+    "1914199dd907",
+    "611120059836",
+    "2cfecbd4b92e",
+    "9149d479ed64",
+    "dd67881a88fb",
+    "1b1c047750bf",
+    "dee112868d29"
+   ],
+   "Q46": [
+    "cc7dbb7f12be",
+    "8a7eb02f2b10",
+    "2e762c0284bb",
+    "2c590823561f",
+    "c236034e24d2",
+    "2cfecbd4b92e",
+    "001884678386",
+    "6537f274eff7",
+    "5b629e03fdcf",
+    "442dcb118552"
+   ],
+   "Q47": [
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "4bf0b43abe06",
+    "09e9e322e55c",
+    "9f62ffd80c3d",
+    "300f4a6fbd03",
+    "a540f2d18f86",
+    "578b6d5a7284",
+    "cc7dbb7f12be",
+    "2e762c0284bb"
+   ],
+   "Q48": [
+    "c0e435f29225",
+    "3c79dce4a330",
+    "6c86c7f38969",
+    "bd3fdfdacb40",
+    "ce196c57771f",
+    "bdaae577673c",
+    "d9a5bd8ea531",
+    "82cf269d9624",
+    "e50c70a93a32",
+    "d59ed18d7c4d"
+   ],
+   "Q49": [
+    "2f517f5673f1",
+    "e50c70a93a32",
+    "2cfecbd4b92e",
+    "222973572526",
+    "9c59e2caec7f",
+    "1b1c047750bf",
+    "8d3924745f13",
+    "3821ebedc68b",
+    "2c590823561f",
+    "d0b1b8403935"
+   ],
+   "Q50": [
+    "9c59e2caec7f",
+    "222973572526",
+    "dec95fe65535",
+    "8d3924745f13",
+    "ea538f94e8eb",
+    "2f517f5673f1",
+    "c236034e24d2",
+    "2cfecbd4b92e",
+    "e395389b8369",
+    "fc2580a01927"
+   ],
+   "Q51": [
+    "c13d27947ed1",
+    "f02ee0910bbf",
+    "f78646d93435",
+    "13f00fce8eaa",
+    "c21317b25056",
+    "ea0bff365b2c",
+    "b16f983ce250",
+    "1b1c047750bf",
+    "8021b57fe6d3",
+    "dee112868d29"
+   ],
+   "Q52": [
+    "e50c70a93a32",
+    "fc2580a01927",
+    "8021b57fe6d3",
+    "144a40851685",
+    "e95a55e44dac",
+    "6ed852264d3b",
+    "b0a61b2ce04a",
+    "beb2688295be",
+    "2cfecbd4b92e",
+    "2f517f5673f1"
+   ],
+   "Q53": [
+    "238a471c1858",
+    "611120059836",
+    "dd67881a88fb",
+    "a31b42d3e40d",
+    "b39844dd335d",
+    "c0ade75d5a9f",
+    "dec95fe65535",
+    "c236034e24d2",
+    "d3a872bd625a",
+    "84db8e59701d"
+   ],
+   "Q54": [
+    "3a8a289eefd1",
+    "8021b57fe6d3",
+    "f68502611675",
+    "4f58fb0de9f1",
+    "611120059836",
+    "3f7023270716",
+    "fc2580a01927",
+    "c21317b25056",
+    "a31b42d3e40d",
+    "aa722ffd7358"
+   ],
+   "Q55": [
+    "fc2580a01927",
+    "dec95fe65535",
+    "3f7023270716",
+    "1b1c047750bf",
+    "82cf269d9624",
+    "2cfecbd4b92e",
+    "b0a61b2ce04a",
+    "62851f963008",
+    "ff8235f48619",
+    "66cd6ab97679"
+   ],
+   "Q56": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "144a40851685",
+    "a4dc9ec49818",
+    "c383653d1614",
+    "a5c1819956e5",
+    "d9a5bd8ea531",
+    "244433873f44"
+   ],
+   "Q57": [
+    "829c3aead55c",
+    "cc68b028e427",
+    "ada3afc95dde",
+    "fc2580a01927",
+    "781c6dac3029",
+    "3f7023270716",
+    "658dee2cb873",
+    "e95a55e44dac",
+    "ff8235f48619",
+    "1b1c047750bf"
+   ],
+   "Q58": [
+    "781c6dac3029",
+    "cc68b028e427",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "d196d1f39961",
+    "3f7023270716",
+    "91def1f55b1e",
+    "8021b57fe6d3",
+    "c236034e24d2",
+    "6e0e1d1c7e4f"
+   ],
+   "Q59": [
+    "278ed26ec3ed",
+    "4bf0b43abe06",
+    "9f62ffd80c3d",
+    "09e9e322e55c",
+    "300f4a6fbd03",
+    "a540f2d18f86",
+    "578b6d5a7284",
+    "ad9138005226",
+    "2a76bd4f4e23",
+    "617a6fe666fc"
+   ],
+   "Q60": [
+    "578b6d5a7284",
+    "ad9138005226",
+    "a540f2d18f86",
+    "66cd6ab97679",
+    "09e9e322e55c",
+    "6e0e1d1c7e4f",
+    "b47ef9ac1993",
+    "df98766ea4cf",
+    "20888ec091fe",
+    "a4dc9ec49818"
+   ],
+   "Q61": [
+    "ad9138005226",
+    "578b6d5a7284",
+    "09e9e322e55c",
+    "a540f2d18f86",
+    "300f4a6fbd03",
+    "9f62ffd80c3d",
+    "2a76bd4f4e23",
+    "66cd6ab97679",
+    "4bf0b43abe06",
+    "278ed26ec3ed"
+   ],
+   "Q62": [
+    "300f4a6fbd03",
+    "09e9e322e55c",
+    "00cdd7ef586a",
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "9f62ffd80c3d",
+    "ad9138005226",
+    "2d466f711e77",
+    "4dd082f01f22",
+    "1b1c047750bf"
+   ],
+   "Q63": [
+    "4bf0b43abe06",
+    "09e9e322e55c",
+    "ad9138005226",
+    "2a76bd4f4e23",
+    "52ad3a57c1d1",
+    "39da3ee0855c",
+    "578b6d5a7284",
+    "278ed26ec3ed",
+    "2cfecbd4b92e",
+    "dec95fe65535"
+   ],
+   "Q64": [
+    "d9a5bd8ea531",
+    "a5c1819956e5",
+    "d3a872bd625a",
+    "a4dc9ec49818",
+    "8021b57fe6d3",
+    "86a0a5266439",
+    "13f00fce8eaa",
+    "3a8a289eefd1",
+    "6e0e1d1c7e4f",
+    "7bcba2249f95"
+   ],
+   "Q65": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "7bcba2249f95",
+    "a5c1819956e5",
+    "d196d1f39961",
+    "1914199dd907",
+    "8021b57fe6d3",
+    "5b850f4804fa",
+    "7c2650b56825",
+    "77e4b48bf4ed"
+   ],
+   "Q66": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "976082f14e93",
+    "a4dc9ec49818",
+    "8021b57fe6d3",
+    "7c2650b56825",
+    "dec95fe65535",
+    "b16f983ce250",
+    "1b1c047750bf",
+    "7bcba2249f95"
+   ],
+   "Q67": [
+    "fb39e713bdc0",
+    "d196d1f39961",
+    "36eaefcfcb6a",
+    "c383653d1614",
+    "f5caca08f514",
+    "a4dc9ec49818",
+    "8021b57fe6d3",
+    "7bcba2249f95",
+    "d753fb02bc8c",
+    "a5c1819956e5"
+   ]
+  },
+  "keyword": {
+   "Q01": [
+    "8a7eb02f2b10",
+    "12c9eea21168",
+    "2cfecbd4b92e",
+    "aa722ffd7358",
+    "3a8a289eefd1",
+    "dd67881a88fb",
+    "2c590823561f",
+    "3f7023270716",
+    "cc7dbb7f12be",
+    "718f9f34874e"
+   ],
+   "Q02": [
+    "0936bc8d346d",
+    "e395389b8369",
+    "b72f3be93ee1",
+    "6d47d46f84cb",
+    "718f9f34874e",
+    "1b1c047750bf",
+    "d59ed18d7c4d",
+    "238a471c1858",
+    "2daf87067c21",
+    "961b93b4780b"
+   ],
+   "Q03": [
+    "86a0a5266439",
+    "7c2650b56825",
+    "80a1296de647",
+    "bdaae577673c",
+    "dee112868d29",
+    "aa722ffd7358",
+    "f78646d93435",
+    "cc7dbb7f12be",
+    "611120059836",
+    "2c590823561f"
+   ],
+   "Q04": [
+    "a22140cc4584",
+    "726059051b70",
+    "9be4cf19455f",
+    "df98766ea4cf",
+    "8880529621ff",
+    "d0b1b8403935",
+    "0abede645b28",
+    "cc7dbb7f12be",
+    "ea0bff365b2c",
+    "f78646d93435"
+   ],
+   "Q05": [
+    "3a8a289eefd1",
+    "a22140cc4584",
+    "726059051b70",
+    "829c3aead55c",
+    "9be4cf19455f",
+    "d59ed18d7c4d",
+    "4f58fb0de9f1",
+    "df98766ea4cf",
+    "d0b1b8403935",
+    "0abede645b28"
+   ],
+   "Q06": [
+    "5b850f4804fa",
+    "f68502611675",
+    "4f58fb0de9f1",
+    "144a40851685",
+    "be25403200a6",
+    "3821ebedc68b",
+    "976082f14e93",
+    "213c1fa4490c",
+    "36eaefcfcb6a",
+    "a6f578d99924"
+   ],
+   "Q07": [
+    "bca83d55361b",
+    "999d2213abc3",
+    "8021b57fe6d3",
+    "4f58fb0de9f1",
+    "20fabb6f93bc",
+    "ed3840fb3a28",
+    "9149d479ed64",
+    "fc4723f20418",
+    "c7f1c04e1627",
+    "3a8a289eefd1"
+   ],
+   "Q08": [
+    "1914199dd907",
+    "cc7dbb7f12be",
+    "9149d479ed64",
+    "80a1296de647",
+    "aa722ffd7358",
+    "e95a55e44dac",
+    "4f58fb0de9f1",
+    "3f7023270716",
+    "f78646d93435",
+    "2c590823561f"
+   ],
+   "Q09": [
+    "7bcba2249f95",
+    "e2e18dd6a986",
+    "349decc59358",
+    "6ed852264d3b",
+    "3821ebedc68b",
+    "12c9eea21168",
+    "3af20210fef9",
+    "2daf87067c21",
+    "f68502611675",
+    "2ca67f44e824"
+   ],
+   "Q10": [
+    "36eaefcfcb6a",
+    "e95a55e44dac",
+    "5b80f4c1028f",
+    "4f58fb0de9f1",
+    "d196d1f39961",
+    "3a8a289eefd1",
+    "c383653d1614",
+    "7bcba2249f95",
+    "fb39e713bdc0",
+    "f5caca08f514"
+   ],
+   "Q11": [
+    "d59ed18d7c4d",
+    "45b922eb303b",
+    "1b1c047750bf",
+    "12c9eea21168",
+    "62851f963008",
+    "20888ec091fe",
+    "b16f983ce250",
+    "2d466f711e77",
+    "be25403200a6",
+    "86d27b0a52ac"
+   ],
+   "Q12": [
+    "3a8a289eefd1",
+    "f68502611675",
+    "df98766ea4cf",
+    "4f58fb0de9f1",
+    "9c59e2caec7f",
+    "428d726e16d5",
+    "1914199dd907",
+    "d59ed18d7c4d",
+    "be25403200a6",
+    "ea0bff365b2c"
+   ],
+   "Q13": [
+    "8c4bc4299042",
+    "8021b57fe6d3",
+    "213c1fa4490c",
+    "349decc59358",
+    "144a40851685",
+    "cc7dbb7f12be",
+    "7f1c85ab1a18",
+    "918415635813",
+    "fc2580a01927",
+    "3821ebedc68b"
+   ],
+   "Q14": [
+    "3c79dce4a330",
+    "c13d27947ed1",
+    "ea0bff365b2c",
+    "f02ee0910bbf",
+    "f8423b710c68",
+    "b16f983ce250",
+    "ff8235f48619",
+    "b7711c885517",
+    "8021b57fe6d3",
+    "bca83d55361b"
+   ],
+   "Q15": [
+    "aa722ffd7358",
+    "9c59e2caec7f",
+    "66cd6ab97679",
+    "961b93b4780b",
+    "ea538f94e8eb",
+    "718f9f34874e",
+    "b72f3be93ee1",
+    "d0b1b8403935",
+    "b63f3dea859a",
+    "e50c70a93a32"
+   ],
+   "Q16": [
+    "144a40851685",
+    "82cf269d9624",
+    "7bcba2249f95",
+    "d59ed18d7c4d",
+    "a4dc9ec49818",
+    "d9a5bd8ea531",
+    "ce196c57771f",
+    "a5c1819956e5",
+    "3c79dce4a330",
+    "ae23e5ca9b13"
+   ],
+   "Q17": [
+    "cc68b028e427",
+    "ada3afc95dde",
+    "781c6dac3029",
+    "829c3aead55c",
+    "094a8535171c",
+    "7c2650b56825",
+    "dec95fe65535",
+    "b16f983ce250",
+    "442dcb118552",
+    "244433873f44"
+   ],
+   "Q18": [
+    "f80f7e98f870",
+    "7f1c85ab1a18",
+    "81ad3121ccf8",
+    "ff8235f48619",
+    "84f7b7a134c4",
+    "3e92b900d7c7",
+    "c3f9c74d0319",
+    "84fb1545c0de",
+    "08705a17f766",
+    "918415635813"
+   ],
+   "Q19": [
+    "cc7dbb7f12be",
+    "2cfecbd4b92e",
+    "2c590823561f",
+    "2e762c0284bb",
+    "999d2213abc3",
+    "3c79dce4a330",
+    "976082f14e93",
+    "9149d479ed64",
+    "1914199dd907",
+    "c21317b25056"
+   ],
+   "Q20": [
+    "b39844dd335d",
+    "238a471c1858",
+    "dd67881a88fb",
+    "611120059836",
+    "442dcb118552",
+    "6e0e1d1c7e4f",
+    "13f00fce8eaa",
+    "ac221efffd61",
+    "222973572526",
+    "8021b57fe6d3"
+   ],
+   "Q21": [
+    "578b6d5a7284",
+    "ad9138005226",
+    "09e9e322e55c",
+    "278ed26ec3ed",
+    "4bf0b43abe06",
+    "a540f2d18f86",
+    "300f4a6fbd03",
+    "9f62ffd80c3d",
+    "2a76bd4f4e23",
+    "66cd6ab97679"
+   ],
+   "Q22": [
+    "7839ded2d52b",
+    "c236034e24d2",
+    "f68502611675",
+    "3b5ac04156e7",
+    "be25403200a6",
+    "718f9f34874e",
+    "3a8a289eefd1",
+    "d3a872bd625a",
+    "beb2688295be",
+    "b72f3be93ee1"
+   ],
+   "Q23": [
+    "62603868db65",
+    "89af4f96760d",
+    "963dae4229eb",
+    "c236034e24d2",
+    "be25403200a6",
+    "718f9f34874e",
+    "001884678386",
+    "3b5ac04156e7",
+    "1afe5bb16a9e",
+    "b72f3be93ee1"
+   ],
+   "Q24": [
+    "7839ded2d52b",
+    "beb2688295be",
+    "c236034e24d2",
+    "3c79dce4a330",
+    "d3a872bd625a",
+    "dec95fe65535",
+    "a31b42d3e40d",
+    "b7711c885517",
+    "7bcba2249f95",
+    "ed3840fb3a28"
+   ],
+   "Q25": [
+    "bbd5032e5107",
+    "74d024190d6a",
+    "f68502611675",
+    "a5a937704e3f",
+    "7839ded2d52b",
+    "3b5ac04156e7",
+    "d3a872bd625a",
+    "b72f3be93ee1",
+    "62851f963008",
+    "beb2688295be"
+   ],
+   "Q26": [
+    "89af4f96760d",
+    "62603868db65",
+    "094a8535171c",
+    "963dae4229eb",
+    "442dcb118552",
+    "3b5ac04156e7",
+    "c236034e24d2",
+    "a31b42d3e40d",
+    "9be4cf19455f",
+    "feebd51b5e4e"
+   ],
+   "Q27": [
+    "89af4f96760d",
+    "62603868db65",
+    "feebd51b5e4e",
+    "3f7023270716",
+    "dec95fe65535",
+    "3a8a289eefd1",
+    "a31b42d3e40d",
+    "be25403200a6",
+    "3b5ac04156e7",
+    "3e541d4b61c8"
+   ],
+   "Q28": [
+    "f68502611675",
+    "3f7023270716",
+    "ed3840fb3a28",
+    "dec95fe65535",
+    "3a8a289eefd1",
+    "a31b42d3e40d",
+    "be25403200a6",
+    "3b5ac04156e7",
+    "b7711c885517",
+    "b63f3dea859a"
+   ],
+   "Q29": [
+    "4bf0b43abe06",
+    "278ed26ec3ed",
+    "2a76bd4f4e23",
+    "578b6d5a7284",
+    "09e9e322e55c",
+    "ad9138005226",
+    "9f62ffd80c3d",
+    "300f4a6fbd03",
+    "a540f2d18f86",
+    "89af4f96760d"
+   ],
+   "Q30": [
+    "ff8235f48619",
+    "08705a17f766",
+    "50f5713033a7",
+    "3e92b900d7c7",
+    "7d0bf6de7c63",
+    "34a0b9b8055e",
+    "84f7b7a134c4",
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "cc7dbb7f12be"
+   ],
+   "Q31": [
+    "fb39e713bdc0",
+    "36eaefcfcb6a",
+    "c383653d1614",
+    "d9a5bd8ea531",
+    "f5caca08f514",
+    "ce196c57771f",
+    "bdaae577673c",
+    "cc7dbb7f12be",
+    "d196d1f39961",
+    "aa722ffd7358"
+   ],
+   "Q32": [
+    "df98766ea4cf",
+    "a4dc9ec49818",
+    "f02ee0910bbf",
+    "08705a17f766",
+    "50f5713033a7",
+    "1914199dd907",
+    "6537f274eff7",
+    "82cf269d9624",
+    "ce196c57771f",
+    "bdaae577673c"
+   ],
+   "Q33": [
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "a6f578d99924",
+    "a559fb986971",
+    "144a40851685",
+    "ce196c57771f",
+    "cc68b028e427",
+    "82cf269d9624",
+    "fc4723f20418",
+    "08705a17f766"
+   ],
+   "Q34": [
+    "ce196c57771f",
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "1914199dd907",
+    "2c590823561f",
+    "82cf269d9624",
+    "20888ec091fe",
+    "244433873f44",
+    "84fb1545c0de",
+    "3f7023270716"
+   ],
+   "Q35": [
+    "cc7dbb7f12be",
+    "976082f14e93",
+    "617a6fe666fc",
+    "144a40851685",
+    "2c590823561f",
+    "1914199dd907",
+    "2e762c0284bb",
+    "ac221efffd61",
+    "3c79dce4a330",
+    "349decc59358"
+   ],
+   "Q36": [
+    "c236034e24d2",
+    "ea538f94e8eb",
+    "bca83d55361b",
+    "617a6fe666fc",
+    "7839ded2d52b",
+    "45b922eb303b",
+    "144a40851685",
+    "3b5ac04156e7",
+    "b39844dd335d",
+    "961b93b4780b"
+   ],
+   "Q37": [
+    "578b6d5a7284",
+    "278ed26ec3ed",
+    "ad9138005226",
+    "4bf0b43abe06",
+    "09e9e322e55c",
+    "a540f2d18f86",
+    "9f62ffd80c3d",
+    "2a76bd4f4e23",
+    "300f4a6fbd03",
+    "66cd6ab97679"
+   ],
+   "Q38": [
+    "f80f7e98f870",
+    "c3f9c74d0319",
+    "ff8235f48619",
+    "08705a17f766",
+    "84f7b7a134c4",
+    "3e92b900d7c7",
+    "50f5713033a7",
+    "84fb1545c0de",
+    "b47ef9ac1993",
+    "34a0b9b8055e"
+   ],
+   "Q39": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "7bcba2249f95",
+    "bdaae577673c",
+    "84db8e59701d",
+    "a5c1819956e5",
+    "77e4b48bf4ed",
+    "3a8a289eefd1",
+    "976082f14e93",
+    "6c86c7f38969"
+   ],
+   "Q40": [
+    "15ecc6131f45",
+    "c3f9c74d0319",
+    "7d0bf6de7c63",
+    "ff8235f48619",
+    "81ad3121ccf8",
+    "918415635813",
+    "f80f7e98f870",
+    "50f5713033a7",
+    "34a0b9b8055e",
+    "244433873f44"
+   ],
+   "Q41": [
+    "c0e435f29225",
+    "6c86c7f38969",
+    "bd3fdfdacb40",
+    "3c79dce4a330",
+    "c21317b25056",
+    "3a8a289eefd1",
+    "20888ec091fe",
+    "d196d1f39961",
+    "08705a17f766",
+    "50f5713033a7"
+   ],
+   "Q42": [
+    "fb39e713bdc0",
+    "d196d1f39961",
+    "7bcba2249f95",
+    "36eaefcfcb6a",
+    "f5caca08f514",
+    "cc7dbb7f12be",
+    "c383653d1614",
+    "a5c1819956e5",
+    "7f1c85ab1a18",
+    "918415635813"
+   ],
+   "Q43": [
+    "611120059836",
+    "b39844dd335d",
+    "dd67881a88fb",
+    "fc2580a01927",
+    "ea0bff365b2c",
+    "238a471c1858",
+    "658dee2cb873",
+    "b16f983ce250",
+    "144a40851685",
+    "3821ebedc68b"
+   ],
+   "Q44": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "7d0bf6de7c63",
+    "244433873f44",
+    "50f5713033a7",
+    "b47ef9ac1993",
+    "918415635813",
+    "15ecc6131f45",
+    "34a0b9b8055e"
+   ],
+   "Q45": [
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "9149d479ed64",
+    "2c590823561f",
+    "dd67881a88fb",
+    "dee112868d29",
+    "aa722ffd7358",
+    "976082f14e93",
+    "611120059836",
+    "f78646d93435"
+   ],
+   "Q46": [
+    "cc7dbb7f12be",
+    "5b629e03fdcf",
+    "8a7eb02f2b10",
+    "2cfecbd4b92e",
+    "442dcb118552",
+    "2e762c0284bb",
+    "c21317b25056",
+    "2c590823561f",
+    "c236034e24d2",
+    "617a6fe666fc"
+   ],
+   "Q47": [
+    "278ed26ec3ed",
+    "578b6d5a7284",
+    "2a76bd4f4e23",
+    "4bf0b43abe06",
+    "ad9138005226",
+    "9f62ffd80c3d",
+    "300f4a6fbd03",
+    "09e9e322e55c",
+    "a540f2d18f86"
+   ],
+   "Q48": [
+    "c0e435f29225",
+    "6c86c7f38969",
+    "bd3fdfdacb40",
+    "3c79dce4a330",
+    "ce196c57771f",
+    "3a8a289eefd1",
+    "be25403200a6",
+    "d9a5bd8ea531",
+    "0abede645b28",
+    "bdaae577673c"
+   ],
+   "Q49": [
+    "e50c70a93a32",
+    "2f517f5673f1",
+    "2cfecbd4b92e",
+    "9c59e2caec7f",
+    "222973572526",
+    "d0b1b8403935",
+    "8d3924745f13",
+    "961b93b4780b",
+    "2c590823561f",
+    "1b1c047750bf"
+   ],
+   "Q50": [
+    "9c59e2caec7f",
+    "c236034e24d2",
+    "ea538f94e8eb",
+    "222973572526",
+    "e395389b8369",
+    "428d726e16d5",
+    "aa722ffd7358",
+    "8d3924745f13",
+    "f78646d93435",
+    "52ad3a57c1d1"
+   ],
+   "Q51": [
+    "f02ee0910bbf",
+    "c13d27947ed1",
+    "ea0bff365b2c",
+    "f78646d93435",
+    "dee112868d29",
+    "f8423b710c68",
+    "7bcba2249f95",
+    "b16f983ce250",
+    "13f00fce8eaa",
+    "c21317b25056"
+   ],
+   "Q52": [
+    "e50c70a93a32",
+    "fc2580a01927",
+    "144a40851685",
+    "829c3aead55c",
+    "6ed852264d3b",
+    "20888ec091fe",
+    "2c590823561f",
+    "beb2688295be",
+    "8021b57fe6d3",
+    "3c79dce4a330"
+   ],
+   "Q53": [
+    "238a471c1858",
+    "611120059836",
+    "a31b42d3e40d",
+    "dd67881a88fb",
+    "b39844dd335d",
+    "3f7023270716",
+    "d3a872bd625a",
+    "2daf87067c21",
+    "c236034e24d2",
+    "658dee2cb873"
+   ],
+   "Q54": [
+    "3a8a289eefd1",
+    "f68502611675",
+    "4f58fb0de9f1",
+    "8021b57fe6d3",
+    "611120059836",
+    "c21317b25056",
+    "20888ec091fe",
+    "f78646d93435",
+    "dee112868d29",
+    "b47ef9ac1993"
+   ],
+   "Q55": [
+    "fc2580a01927",
+    "dec95fe65535",
+    "66cd6ab97679",
+    "3f7023270716",
+    "82cf269d9624",
+    "a6f578d99924",
+    "2cfecbd4b92e",
+    "144a40851685",
+    "1b1c047750bf",
+    "4f58fb0de9f1"
+   ],
+   "Q56": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "144a40851685",
+    "a5c1819956e5",
+    "244433873f44",
+    "84fb1545c0de",
+    "82cf269d9624",
+    "7839ded2d52b"
+   ],
+   "Q57": [
+    "829c3aead55c",
+    "cc68b028e427",
+    "ada3afc95dde",
+    "fc2580a01927",
+    "611120059836",
+    "dd67881a88fb",
+    "781c6dac3029",
+    "658dee2cb873",
+    "3f7023270716",
+    "e95a55e44dac"
+   ],
+   "Q58": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "c236034e24d2",
+    "dec95fe65535",
+    "d196d1f39961",
+    "e395389b8369",
+    "4743953bc517",
+    "2ca67f44e824"
+   ],
+   "Q59": [
+    "278ed26ec3ed",
+    "4bf0b43abe06",
+    "09e9e322e55c",
+    "9f62ffd80c3d",
+    "ad9138005226",
+    "578b6d5a7284",
+    "a540f2d18f86",
+    "300f4a6fbd03",
+    "2a76bd4f4e23",
+    "66cd6ab97679"
+   ],
+   "Q60": [
+    "578b6d5a7284",
+    "a540f2d18f86",
+    "ad9138005226",
+    "09e9e322e55c",
+    "66cd6ab97679",
+    "2a76bd4f4e23",
+    "4bf0b43abe06",
+    "278ed26ec3ed",
+    "66e9968b8b5d",
+    "df98766ea4cf"
+   ],
+   "Q61": [
+    "ad9138005226",
+    "578b6d5a7284",
+    "09e9e322e55c",
+    "2a76bd4f4e23",
+    "300f4a6fbd03",
+    "278ed26ec3ed",
+    "a540f2d18f86",
+    "9f62ffd80c3d",
+    "4bf0b43abe06",
+    "66cd6ab97679"
+   ],
+   "Q62": [
+    "300f4a6fbd03",
+    "09e9e322e55c",
+    "2a76bd4f4e23",
+    "ad9138005226",
+    "00cdd7ef586a",
+    "9f62ffd80c3d",
+    "3af20210fef9",
+    "278ed26ec3ed",
+    "2d466f711e77",
+    "3821ebedc68b"
+   ],
+   "Q63": [
+    "4bf0b43abe06",
+    "2a76bd4f4e23",
+    "09e9e322e55c",
+    "578b6d5a7284",
+    "278ed26ec3ed",
+    "ad9138005226"
+   ],
+   "Q64": [
+    "86a0a5266439",
+    "3a8a289eefd1",
+    "7bcba2249f95",
+    "a5c1819956e5",
+    "77e4b48bf4ed",
+    "ce196c57771f",
+    "d9a5bd8ea531",
+    "e50c70a93a32",
+    "976082f14e93",
+    "6c86c7f38969"
+   ],
+   "Q65": [
+    "c3f9c74d0319",
+    "1914199dd907",
+    "7bcba2249f95",
+    "f80f7e98f870",
+    "a5c1819956e5",
+    "77e4b48bf4ed",
+    "3a8a289eefd1",
+    "976082f14e93",
+    "6c86c7f38969",
+    "c7f1c04e1627"
+   ],
+   "Q66": [
+    "cc68b028e427",
+    "dec95fe65535",
+    "781c6dac3029",
+    "b16f983ce250",
+    "7bcba2249f95",
+    "a5c1819956e5",
+    "2cfecbd4b92e",
+    "77e4b48bf4ed",
+    "3a8a289eefd1",
+    "976082f14e93"
+   ],
+   "Q67": [
+    "fb39e713bdc0",
+    "d196d1f39961",
+    "7bcba2249f95",
+    "f5caca08f514",
+    "36eaefcfcb6a",
+    "a5c1819956e5",
+    "c383653d1614",
+    "77e4b48bf4ed",
+    "a4dc9ec49818",
+    "3a8a289eefd1"
+   ]
+  },
+  "rerank": {
+   "Q01": [
+    "8a7eb02f2b10",
+    "2cfecbd4b92e",
+    "999d2213abc3",
+    "dd0dea74cdb4",
+    "001884678386",
+    "12c9eea21168",
+    "2e762c0284bb",
+    "2c590823561f",
+    "961b93b4780b",
+    "e50c70a93a32"
+   ],
+   "Q02": [
+    "0936bc8d346d",
+    "e395389b8369",
+    "2daf87067c21",
+    "b72f3be93ee1",
+    "718f9f34874e",
+    "ac221efffd61",
+    "611120059836",
+    "c0ade75d5a9f",
+    "961b93b4780b",
+    "6537f274eff7"
+   ],
+   "Q03": [
+    "86a0a5266439",
+    "80a1296de647",
+    "bdaae577673c",
+    "7c2650b56825",
+    "4f58fb0de9f1",
+    "d9a5bd8ea531",
+    "611120059836",
+    "3a8a289eefd1",
+    "658dee2cb873",
+    "3f7023270716"
+   ],
+   "Q04": [
+    "a22140cc4584",
+    "0abede645b28",
+    "726059051b70",
+    "2f517f5673f1",
+    "8880529621ff",
+    "fc2580a01927",
+    "e50c70a93a32",
+    "fc4723f20418",
+    "1b1c047750bf",
+    "bca83d55361b"
+   ],
+   "Q05": [
+    "df98766ea4cf",
+    "726059051b70",
+    "39da3ee0855c",
+    "d0b1b8403935",
+    "1b1c047750bf",
+    "a22140cc4584",
+    "0abede645b28",
+    "d9a5bd8ea531",
+    "bca83d55361b",
+    "9be4cf19455f"
+   ],
+   "Q06": [
+    "5b850f4804fa",
+    "213c1fa4490c",
+    "961b93b4780b",
+    "094a8535171c",
+    "6537f274eff7",
+    "dec95fe65535",
+    "36eaefcfcb6a",
+    "6ed852264d3b",
+    "dd0dea74cdb4",
+    "e2e18dd6a986"
+   ],
+   "Q07": [
+    "bca83d55361b",
+    "2cfecbd4b92e",
+    "12c9eea21168",
+    "fc4723f20418",
+    "1b1c047750bf",
+    "20fabb6f93bc",
+    "999d2213abc3",
+    "9f62ffd80c3d",
+    "2e762c0284bb",
+    "d0b1b8403935"
+   ],
+   "Q08": [
+    "1914199dd907",
+    "91def1f55b1e",
+    "611120059836",
+    "4dd082f01f22",
+    "9149d479ed64",
+    "3a8a289eefd1",
+    "12ef27e728e2",
+    "2e762c0284bb",
+    "2c590823561f",
+    "1b1c047750bf"
+   ],
+   "Q09": [
+    "349decc59358",
+    "e2e18dd6a986",
+    "7bcba2249f95",
+    "094a8535171c",
+    "5b850f4804fa",
+    "961b93b4780b",
+    "213c1fa4490c",
+    "6537f274eff7",
+    "2daf87067c21",
+    "a5c1819956e5"
+   ],
+   "Q10": [
+    "36eaefcfcb6a",
+    "c383653d1614",
+    "f5caca08f514",
+    "d196d1f39961",
+    "fb39e713bdc0",
+    "e95a55e44dac",
+    "5b80f4c1028f",
+    "86d27b0a52ac",
+    "2d466f711e77",
+    "4f58fb0de9f1"
+   ],
+   "Q11": [
+    "45b922eb303b",
+    "62851f963008",
+    "d59ed18d7c4d",
+    "1b1c047750bf",
+    "961b93b4780b",
+    "8a7eb02f2b10",
+    "2d466f711e77",
+    "6537f274eff7",
+    "3b5ac04156e7",
+    "12c9eea21168"
+   ],
+   "Q12": [
+    "428d726e16d5",
+    "82cf269d9624",
+    "62851f963008",
+    "611120059836",
+    "39da3ee0855c",
+    "9c59e2caec7f",
+    "2d466f711e77",
+    "961b93b4780b",
+    "1b1c047750bf",
+    "ea0bff365b2c"
+   ],
+   "Q13": [
+    "144a40851685",
+    "66cd6ab97679",
+    "b47ef9ac1993",
+    "df98766ea4cf",
+    "a4dc9ec49818",
+    "d9a5bd8ea531",
+    "7d0bf6de7c63",
+    "86d27b0a52ac",
+    "3e92b900d7c7",
+    "20888ec091fe"
+   ],
+   "Q14": [
+    "6ed852264d3b",
+    "c13d27947ed1",
+    "f02ee0910bbf",
+    "b16f983ce250",
+    "ea0bff365b2c",
+    "d0b1b8403935",
+    "6e0e1d1c7e4f",
+    "bca83d55361b",
+    "f8423b710c68",
+    "b7711c885517"
+   ],
+   "Q15": [
+    "ae23e5ca9b13",
+    "f78646d93435",
+    "3f7023270716",
+    "c21317b25056",
+    "66cd6ab97679",
+    "bca83d55361b",
+    "6e0e1d1c7e4f",
+    "9149d479ed64",
+    "213c1fa4490c",
+    "961b93b4780b"
+   ],
+   "Q16": [
+    "d9a5bd8ea531",
+    "e50c70a93a32",
+    "82cf269d9624",
+    "a4dc9ec49818",
+    "fc2580a01927",
+    "ff8235f48619",
+    "b0a61b2ce04a",
+    "e95a55e44dac",
+    "ce196c57771f",
+    "144a40851685"
+   ],
+   "Q17": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "ada3afc95dde",
+    "829c3aead55c",
+    "dec95fe65535",
+    "d3a872bd625a",
+    "6e0e1d1c7e4f",
+    "2cfecbd4b92e",
+    "39da3ee0855c",
+    "094a8535171c"
+   ],
+   "Q18": [
+    "7f1c85ab1a18",
+    "81ad3121ccf8",
+    "84f7b7a134c4",
+    "08705a17f766",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "3e92b900d7c7",
+    "84fb1545c0de",
+    "c3f9c74d0319",
+    "34a0b9b8055e"
+   ],
+   "Q19": [
+    "2cfecbd4b92e",
+    "001884678386",
+    "2e762c0284bb",
+    "7839ded2d52b",
+    "2c590823561f",
+    "cc7dbb7f12be",
+    "999d2213abc3",
+    "8a7eb02f2b10",
+    "62851f963008",
+    "84db8e59701d"
+   ],
+   "Q20": [
+    "611120059836",
+    "b39844dd335d",
+    "442dcb118552",
+    "dd67881a88fb",
+    "238a471c1858",
+    "a31b42d3e40d",
+    "ac221efffd61",
+    "617a6fe666fc",
+    "c0ade75d5a9f",
+    "6e0e1d1c7e4f"
+   ],
+   "Q21": [
+    "ff8235f48619",
+    "82cf269d9624",
+    "d9a5bd8ea531",
+    "961b93b4780b",
+    "bdaae577673c",
+    "84db8e59701d",
+    "09e9e322e55c",
+    "e50c70a93a32",
+    "2a76bd4f4e23",
+    "ce196c57771f"
+   ],
+   "Q22": [
+    "7839ded2d52b",
+    "c236034e24d2",
+    "beb2688295be",
+    "3b5ac04156e7",
+    "1b1c047750bf",
+    "d3a872bd625a",
+    "4bf0b43abe06",
+    "39da3ee0855c",
+    "b7711c885517",
+    "f68502611675"
+   ],
+   "Q23": [
+    "62603868db65",
+    "89af4f96760d",
+    "963dae4229eb",
+    "c236034e24d2",
+    "1afe5bb16a9e",
+    "1b1c047750bf",
+    "bf863226ca90",
+    "3b5ac04156e7",
+    "4bf0b43abe06",
+    "001884678386"
+   ],
+   "Q24": [
+    "7839ded2d52b",
+    "beb2688295be",
+    "c236034e24d2",
+    "39da3ee0855c",
+    "ac221efffd61",
+    "a31b42d3e40d",
+    "dec95fe65535",
+    "b7711c885517",
+    "d3a872bd625a",
+    "9be4cf19455f"
+   ],
+   "Q25": [
+    "bbd5032e5107",
+    "74d024190d6a",
+    "7839ded2d52b",
+    "a5a937704e3f",
+    "beb2688295be",
+    "39da3ee0855c",
+    "62851f963008",
+    "b7711c885517",
+    "3b5ac04156e7",
+    "a31b42d3e40d"
+   ],
+   "Q26": [
+    "62603868db65",
+    "89af4f96760d",
+    "963dae4229eb",
+    "8880529621ff",
+    "3b5ac04156e7",
+    "349decc59358",
+    "bd153db1f27c",
+    "3e541d4b61c8",
+    "dec95fe65535",
+    "a31b42d3e40d"
+   ],
+   "Q27": [
+    "89af4f96760d",
+    "62603868db65",
+    "feebd51b5e4e",
+    "1b1c047750bf",
+    "0abede645b28",
+    "bd153db1f27c",
+    "3b5ac04156e7",
+    "c236034e24d2",
+    "a31b42d3e40d",
+    "9be4cf19455f"
+   ],
+   "Q28": [
+    "1b1c047750bf",
+    "0abede645b28",
+    "d3a872bd625a",
+    "3b5ac04156e7",
+    "bca83d55361b",
+    "c236034e24d2",
+    "a31b42d3e40d",
+    "9be4cf19455f",
+    "fc2580a01927",
+    "ed3840fb3a28"
+   ],
+   "Q29": [
+    "89af4f96760d",
+    "62603868db65",
+    "4bf0b43abe06",
+    "c236034e24d2",
+    "963dae4229eb",
+    "62851f963008",
+    "fc4723f20418",
+    "2a76bd4f4e23",
+    "278ed26ec3ed",
+    "3e541d4b61c8"
+   ],
+   "Q30": [
+    "ff8235f48619",
+    "d9a5bd8ea531",
+    "50f5713033a7",
+    "08705a17f766",
+    "34a0b9b8055e",
+    "84f7b7a134c4",
+    "7d0bf6de7c63",
+    "3e92b900d7c7",
+    "15ecc6131f45",
+    "81ad3121ccf8"
+   ],
+   "Q31": [
+    "f5caca08f514",
+    "d9a5bd8ea531",
+    "fb39e713bdc0",
+    "c383653d1614",
+    "36eaefcfcb6a",
+    "961b93b4780b",
+    "d196d1f39961",
+    "bdaae577673c",
+    "ce196c57771f",
+    "1914199dd907"
+   ],
+   "Q32": [
+    "82cf269d9624",
+    "62851f963008",
+    "d9a5bd8ea531",
+    "428d726e16d5",
+    "a4dc9ec49818",
+    "df98766ea4cf",
+    "6ed852264d3b",
+    "144a40851685",
+    "ce196c57771f",
+    "e95a55e44dac"
+   ],
+   "Q33": [
+    "d9a5bd8ea531",
+    "82cf269d9624",
+    "e50c70a93a32",
+    "fc2580a01927",
+    "1b1c047750bf",
+    "a4dc9ec49818",
+    "fc4723f20418",
+    "3e92b900d7c7",
+    "50f5713033a7",
+    "08705a17f766"
+   ],
+   "Q34": [
+    "d9a5bd8ea531",
+    "ce196c57771f",
+    "bdaae577673c",
+    "82cf269d9624",
+    "ff8235f48619",
+    "428d726e16d5",
+    "e50c70a93a32",
+    "2e762c0284bb",
+    "144a40851685",
+    "1914199dd907"
+   ],
+   "Q35": [
+    "617a6fe666fc",
+    "278ed26ec3ed",
+    "001884678386",
+    "961b93b4780b",
+    "5b629e03fdcf",
+    "62851f963008",
+    "ac221efffd61",
+    "d3a872bd625a",
+    "442dcb118552",
+    "1914199dd907"
+   ],
+   "Q36": [
+    "961b93b4780b",
+    "bca83d55361b",
+    "45b922eb303b",
+    "0936bc8d346d",
+    "ac221efffd61",
+    "617a6fe666fc",
+    "278ed26ec3ed",
+    "a31b42d3e40d",
+    "7839ded2d52b",
+    "5b629e03fdcf"
+   ],
+   "Q37": [
+    "d9a5bd8ea531",
+    "82cf269d9624",
+    "f5caca08f514",
+    "428d726e16d5",
+    "ce196c57771f",
+    "09e9e322e55c",
+    "2a76bd4f4e23",
+    "bdaae577673c",
+    "e50c70a93a32",
+    "4bf0b43abe06"
+   ],
+   "Q38": [
+    "f80f7e98f870",
+    "ff8235f48619",
+    "c3f9c74d0319",
+    "84f7b7a134c4",
+    "08705a17f766",
+    "84fb1545c0de",
+    "81ad3121ccf8",
+    "3e92b900d7c7",
+    "7f1c85ab1a18",
+    "50f5713033a7"
+   ],
+   "Q39": [
+    "f80f7e98f870",
+    "c3f9c74d0319",
+    "b7711c885517",
+    "d753fb02bc8c",
+    "1b1c047750bf",
+    "13f00fce8eaa",
+    "c21317b25056",
+    "8021b57fe6d3",
+    "6e0e1d1c7e4f",
+    "84db8e59701d"
+   ],
+   "Q40": [
+    "15ecc6131f45",
+    "81ad3121ccf8",
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "50f5713033a7",
+    "918415635813",
+    "7d0bf6de7c63",
+    "244433873f44",
+    "34a0b9b8055e",
+    "08705a17f766"
+   ],
+   "Q41": [
+    "c0e435f29225",
+    "bd3fdfdacb40",
+    "3c79dce4a330",
+    "6c86c7f38969",
+    "6e0e1d1c7e4f",
+    "4f58fb0de9f1",
+    "3a8a289eefd1",
+    "a4dc9ec49818",
+    "20888ec091fe",
+    "8021b57fe6d3"
+   ],
+   "Q42": [
+    "fb39e713bdc0",
+    "d196d1f39961",
+    "d9a5bd8ea531",
+    "c383653d1614",
+    "f5caca08f514",
+    "36eaefcfcb6a",
+    "e50c70a93a32",
+    "8880529621ff",
+    "1b1c047750bf",
+    "cc68b028e427"
+   ],
+   "Q43": [
+    "b39844dd335d",
+    "dd67881a88fb",
+    "238a471c1858",
+    "611120059836",
+    "a31b42d3e40d",
+    "fc2580a01927",
+    "1b1c047750bf",
+    "8d3924745f13",
+    "658dee2cb873",
+    "3f7023270716"
+   ],
+   "Q44": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "244433873f44",
+    "15ecc6131f45",
+    "34a0b9b8055e",
+    "50f5713033a7",
+    "7d0bf6de7c63",
+    "918415635813",
+    "81ad3121ccf8"
+   ],
+   "Q45": [
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "9c59e2caec7f",
+    "7839ded2d52b",
+    "2c590823561f",
+    "2cfecbd4b92e",
+    "8a7eb02f2b10",
+    "611120059836",
+    "001884678386",
+    "1914199dd907"
+   ],
+   "Q46": [
+    "cc7dbb7f12be",
+    "2c590823561f",
+    "8a7eb02f2b10",
+    "5b629e03fdcf",
+    "2cfecbd4b92e",
+    "c236034e24d2",
+    "2e762c0284bb",
+    "d3a872bd625a",
+    "442dcb118552",
+    "7839ded2d52b"
+   ],
+   "Q47": [
+    "2e762c0284bb",
+    "cc7dbb7f12be",
+    "2a76bd4f4e23",
+    "999d2213abc3",
+    "961b93b4780b",
+    "2c590823561f",
+    "8a7eb02f2b10",
+    "2cfecbd4b92e",
+    "62851f963008",
+    "1914199dd907"
+   ],
+   "Q48": [
+    "3c79dce4a330",
+    "c0e435f29225",
+    "bd3fdfdacb40",
+    "6c86c7f38969",
+    "82cf269d9624",
+    "dd67881a88fb",
+    "7839ded2d52b",
+    "fc2580a01927",
+    "2c590823561f",
+    "d59ed18d7c4d"
+   ],
+   "Q49": [
+    "2f517f5673f1",
+    "e50c70a93a32",
+    "9c59e2caec7f",
+    "2cfecbd4b92e",
+    "222973572526",
+    "2d466f711e77",
+    "8d3924745f13",
+    "2e762c0284bb",
+    "2c590823561f",
+    "8a7eb02f2b10"
+   ],
+   "Q50": [
+    "9c59e2caec7f",
+    "2f517f5673f1",
+    "fc2580a01927",
+    "2cfecbd4b92e",
+    "e50c70a93a32",
+    "8c4bc4299042",
+    "8d3924745f13",
+    "222973572526",
+    "7839ded2d52b",
+    "dec95fe65535"
+   ],
+   "Q51": [
+    "c13d27947ed1",
+    "f02ee0910bbf",
+    "094a8535171c",
+    "1b1c047750bf",
+    "d753fb02bc8c",
+    "b16f983ce250",
+    "c21317b25056",
+    "8021b57fe6d3",
+    "ea0bff365b2c",
+    "13f00fce8eaa"
+   ],
+   "Q52": [
+    "e50c70a93a32",
+    "fc2580a01927",
+    "2f517f5673f1",
+    "e95a55e44dac",
+    "1b1c047750bf",
+    "b0a61b2ce04a",
+    "2c590823561f",
+    "d9a5bd8ea531",
+    "222973572526",
+    "dec95fe65535"
+   ],
+   "Q53": [
+    "611120059836",
+    "238a471c1858",
+    "dd67881a88fb",
+    "c0ade75d5a9f",
+    "82cf269d9624",
+    "62851f963008",
+    "b39844dd335d",
+    "a31b42d3e40d",
+    "d3a872bd625a",
+    "84db8e59701d"
+   ],
+   "Q54": [
+    "3a8a289eefd1",
+    "611120059836",
+    "62851f963008",
+    "09e9e322e55c",
+    "fc2580a01927",
+    "3f7023270716",
+    "1b1c047750bf",
+    "829c3aead55c",
+    "4f58fb0de9f1",
+    "a31b42d3e40d"
+   ],
+   "Q55": [
+    "fc2580a01927",
+    "dec95fe65535",
+    "3f7023270716",
+    "82cf269d9624",
+    "1b1c047750bf",
+    "b0a61b2ce04a",
+    "beb2688295be",
+    "2cfecbd4b92e",
+    "6ed852264d3b",
+    "a31b42d3e40d"
+   ],
+   "Q56": [
+    "cc68b028e427",
+    "829c3aead55c",
+    "781c6dac3029",
+    "ada3afc95dde",
+    "e50c70a93a32",
+    "82cf269d9624",
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "7839ded2d52b",
+    "ff8235f48619"
+   ],
+   "Q57": [
+    "829c3aead55c",
+    "ada3afc95dde",
+    "658dee2cb873",
+    "781c6dac3029",
+    "e95a55e44dac",
+    "fc2580a01927",
+    "cc68b028e427",
+    "611120059836",
+    "3f7023270716",
+    "ff8235f48619"
+   ],
+   "Q58": [
+    "781c6dac3029",
+    "cc68b028e427",
+    "ada3afc95dde",
+    "829c3aead55c",
+    "961b93b4780b",
+    "91def1f55b1e",
+    "d3a872bd625a",
+    "dec95fe65535",
+    "7f1c85ab1a18",
+    "d196d1f39961"
+   ],
+   "Q59": [
+    "278ed26ec3ed",
+    "617a6fe666fc",
+    "213c1fa4490c",
+    "ed3840fb3a28",
+    "b16f983ce250",
+    "e2e18dd6a986",
+    "2f517f5673f1",
+    "2ad407544ec7",
+    "dec95fe65535",
+    "a540f2d18f86"
+   ],
+   "Q60": [
+    "b47ef9ac1993",
+    "144a40851685",
+    "ad9138005226",
+    "d9a5bd8ea531",
+    "578b6d5a7284",
+    "df98766ea4cf",
+    "66cd6ab97679",
+    "a4dc9ec49818",
+    "3e92b900d7c7",
+    "66e9968b8b5d"
+   ],
+   "Q61": [
+    "ad9138005226",
+    "df98766ea4cf",
+    "a4dc9ec49818",
+    "86d27b0a52ac",
+    "d9a5bd8ea531",
+    "66cd6ab97679",
+    "3f7023270716",
+    "6e0e1d1c7e4f",
+    "829c3aead55c",
+    "66e9968b8b5d"
+   ],
+   "Q62": [
+    "00cdd7ef586a",
+    "300f4a6fbd03",
+    "09e9e322e55c",
+    "a559fb986971",
+    "961b93b4780b",
+    "4dd082f01f22",
+    "2d466f711e77",
+    "4bf0b43abe06",
+    "2a76bd4f4e23",
+    "1b1c047750bf"
+   ],
+   "Q63": [
+    "52ad3a57c1d1",
+    "c236034e24d2",
+    "2cfecbd4b92e",
+    "39da3ee0855c",
+    "dec95fe65535",
+    "2daf87067c21",
+    "20fabb6f93bc",
+    "b7711c885517",
+    "1b1c047750bf",
+    "8021b57fe6d3"
+   ],
+   "Q64": [
+    "86a0a5266439",
+    "d753fb02bc8c",
+    "a31b42d3e40d",
+    "e50c70a93a32",
+    "13f00fce8eaa",
+    "a5c1819956e5",
+    "ce196c57771f",
+    "91def1f55b1e",
+    "8021b57fe6d3",
+    "77e4b48bf4ed"
+   ],
+   "Q65": [
+    "c3f9c74d0319",
+    "d753fb02bc8c",
+    "7c2650b56825",
+    "5b850f4804fa",
+    "6e0e1d1c7e4f",
+    "8021b57fe6d3",
+    "f80f7e98f870",
+    "77e4b48bf4ed",
+    "a4dc9ec49818",
+    "1b1c047750bf"
+   ],
+   "Q66": [
+    "cc68b028e427",
+    "1b1c047750bf",
+    "d753fb02bc8c",
+    "781c6dac3029",
+    "13f00fce8eaa",
+    "7c2650b56825",
+    "6e0e1d1c7e4f",
+    "b16f983ce250",
+    "77e4b48bf4ed",
+    "8021b57fe6d3"
+   ],
+   "Q67": [
+    "fb39e713bdc0",
+    "c383653d1614",
+    "d753fb02bc8c",
+    "d196d1f39961",
+    "36eaefcfcb6a",
+    "1b1c047750bf",
+    "f5caca08f514",
+    "b7711c885517",
+    "d9a5bd8ea531",
+    "13f00fce8eaa"
+   ]
+  },
+  "vector": {
+   "Q01": [
+    "8a7eb02f2b10",
+    "2cfecbd4b92e",
+    "2c590823561f",
+    "dd0dea74cdb4",
+    "cc7dbb7f12be",
+    "2daf87067c21",
+    "6537f274eff7",
+    "999d2213abc3",
+    "e50c70a93a32",
+    "12c9eea21168"
+   ],
+   "Q02": [
+    "e395389b8369",
+    "0936bc8d346d",
+    "b72f3be93ee1",
+    "2daf87067c21",
+    "718f9f34874e",
+    "a31b42d3e40d",
+    "6d47d46f84cb",
+    "611120059836",
+    "c0ade75d5a9f",
+    "12c9eea21168"
+   ],
+   "Q03": [
+    "86a0a5266439",
+    "bdaae577673c",
+    "80a1296de647",
+    "7c2650b56825",
+    "4f58fb0de9f1",
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "d59ed18d7c4d",
+    "8021b57fe6d3",
+    "658dee2cb873"
+   ],
+   "Q04": [
+    "a22140cc4584",
+    "726059051b70",
+    "1b1c047750bf",
+    "0abede645b28",
+    "8880529621ff",
+    "d0b1b8403935",
+    "fc4723f20418",
+    "b16f983ce250",
+    "bca83d55361b",
+    "2f517f5673f1"
+   ],
+   "Q05": [
+    "d0b1b8403935",
+    "df98766ea4cf",
+    "9be4cf19455f",
+    "726059051b70",
+    "8021b57fe6d3",
+    "a22140cc4584",
+    "1b1c047750bf",
+    "0abede645b28",
+    "13f00fce8eaa",
+    "b7711c885517"
+   ],
+   "Q06": [
+    "5b850f4804fa",
+    "094a8535171c",
+    "6537f274eff7",
+    "dec95fe65535",
+    "e2e18dd6a986",
+    "dd0dea74cdb4",
+    "213c1fa4490c",
+    "8021b57fe6d3",
+    "961b93b4780b",
+    "6ed852264d3b"
+   ],
+   "Q07": [
+    "bca83d55361b",
+    "8021b57fe6d3",
+    "9f62ffd80c3d",
+    "c7f1c04e1627",
+    "1b1c047750bf",
+    "d0b1b8403935",
+    "2ad407544ec7",
+    "12c9eea21168",
+    "2e762c0284bb",
+    "13f00fce8eaa"
+   ],
+   "Q08": [
+    "1914199dd907",
+    "8021b57fe6d3",
+    "4dd082f01f22",
+    "13f00fce8eaa",
+    "91def1f55b1e",
+    "f78646d93435",
+    "3a8a289eefd1",
+    "12ef27e728e2",
+    "d753fb02bc8c",
+    "1b1c047750bf"
+   ],
+   "Q09": [
+    "e2e18dd6a986",
+    "349decc59358",
+    "7bcba2249f95",
+    "a5c1819956e5",
+    "213c1fa4490c",
+    "dec95fe65535",
+    "961b93b4780b",
+    "6537f274eff7",
+    "d9a5bd8ea531",
+    "8021b57fe6d3"
+   ],
+   "Q10": [
+    "36eaefcfcb6a",
+    "f5caca08f514",
+    "4f58fb0de9f1",
+    "c383653d1614",
+    "86d27b0a52ac",
+    "d196d1f39961",
+    "5b80f4c1028f",
+    "e95a55e44dac",
+    "fb39e713bdc0",
+    "7bcba2249f95"
+   ],
+   "Q11": [
+    "45b922eb303b",
+    "62851f963008",
+    "6537f274eff7",
+    "8a7eb02f2b10",
+    "12c9eea21168",
+    "3b5ac04156e7",
+    "3a8a289eefd1",
+    "dd0dea74cdb4",
+    "d59ed18d7c4d",
+    "961b93b4780b"
+   ],
+   "Q12": [
+    "428d726e16d5",
+    "8021b57fe6d3",
+    "1b1c047750bf",
+    "62851f963008",
+    "39da3ee0855c",
+    "82cf269d9624",
+    "d59ed18d7c4d",
+    "1914199dd907",
+    "2d466f711e77",
+    "dd65cfd6a815"
+   ],
+   "Q13": [
+    "86d27b0a52ac",
+    "66cd6ab97679",
+    "6e0e1d1c7e4f",
+    "d9a5bd8ea531",
+    "144a40851685",
+    "a4dc9ec49818",
+    "b47ef9ac1993",
+    "20888ec091fe",
+    "7d0bf6de7c63",
+    "3e92b900d7c7"
+   ],
+   "Q14": [
+    "8021b57fe6d3",
+    "b16f983ce250",
+    "f02ee0910bbf",
+    "c13d27947ed1",
+    "d753fb02bc8c",
+    "ea0bff365b2c",
+    "f8423b710c68",
+    "13f00fce8eaa",
+    "b7711c885517",
+    "d0b1b8403935"
+   ],
+   "Q15": [
+    "6e0e1d1c7e4f",
+    "ae23e5ca9b13",
+    "213c1fa4490c",
+    "9149d479ed64",
+    "bca83d55361b",
+    "f78646d93435",
+    "3f7023270716",
+    "13f00fce8eaa",
+    "c21317b25056",
+    "d0b1b8403935"
+   ],
+   "Q16": [
+    "d9a5bd8ea531",
+    "a4dc9ec49818",
+    "bdaae577673c",
+    "ce196c57771f",
+    "8021b57fe6d3",
+    "b0a61b2ce04a",
+    "fc2580a01927",
+    "ff8235f48619",
+    "e50c70a93a32",
+    "244433873f44"
+   ],
+   "Q17": [
+    "cc68b028e427",
+    "781c6dac3029",
+    "8021b57fe6d3",
+    "7c2650b56825",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "f80f7e98f870",
+    "81ad3121ccf8",
+    "dec95fe65535",
+    "c3f9c74d0319"
+   ],
+   "Q18": [
+    "f80f7e98f870",
+    "7f1c85ab1a18",
+    "c3f9c74d0319",
+    "ff8235f48619",
+    "84fb1545c0de",
+    "81ad3121ccf8",
+    "918415635813",
+    "84f7b7a134c4",
+    "244433873f44",
+    "8021b57fe6d3"
+   ],
+   "Q19": [
+    "2cfecbd4b92e",
+    "cc7dbb7f12be",
+    "2c590823561f",
+    "2e762c0284bb",
+    "001884678386",
+    "62851f963008",
+    "8a7eb02f2b10",
+    "7839ded2d52b",
+    "ed3840fb3a28",
+    "d3a872bd625a"
+   ],
+   "Q20": [
+    "442dcb118552",
+    "8021b57fe6d3",
+    "b39844dd335d",
+    "617a6fe666fc",
+    "2ca67f44e824",
+    "213c1fa4490c",
+    "ac221efffd61",
+    "a31b42d3e40d",
+    "611120059836",
+    "238a471c1858"
+   ],
+   "Q21": [
+    "a540f2d18f86",
+    "09e9e322e55c",
+    "578b6d5a7284",
+    "ad9138005226",
+    "e50c70a93a32",
+    "2a76bd4f4e23",
+    "ce196c57771f",
+    "4bf0b43abe06",
+    "82cf269d9624",
+    "d9a5bd8ea531"
+   ],
+   "Q22": [
+    "7839ded2d52b",
+    "c236034e24d2",
+    "beb2688295be",
+    "dec95fe65535",
+    "b7711c885517",
+    "39da3ee0855c",
+    "4bf0b43abe06",
+    "a31b42d3e40d",
+    "62851f963008",
+    "2daf87067c21"
+   ],
+   "Q23": [
+    "963dae4229eb",
+    "c236034e24d2",
+    "dec95fe65535",
+    "89af4f96760d",
+    "62603868db65",
+    "1afe5bb16a9e",
+    "3e541d4b61c8",
+    "fc2580a01927",
+    "4bf0b43abe06",
+    "1b1c047750bf"
+   ],
+   "Q24": [
+    "7839ded2d52b",
+    "beb2688295be",
+    "39da3ee0855c",
+    "c236034e24d2",
+    "dec95fe65535",
+    "fc2580a01927",
+    "b7711c885517",
+    "1b1c047750bf",
+    "a31b42d3e40d",
+    "d3a872bd625a"
+   ],
+   "Q25": [
+    "bbd5032e5107",
+    "a5a937704e3f",
+    "74d024190d6a",
+    "dec95fe65535",
+    "7839ded2d52b",
+    "beb2688295be",
+    "b7711c885517",
+    "8021b57fe6d3",
+    "39da3ee0855c",
+    "62851f963008"
+   ],
+   "Q26": [
+    "89af4f96760d",
+    "62603868db65",
+    "3e541d4b61c8",
+    "dec95fe65535",
+    "8021b57fe6d3",
+    "c236034e24d2",
+    "bd153db1f27c",
+    "3b5ac04156e7",
+    "a31b42d3e40d",
+    "1b1c047750bf"
+   ],
+   "Q27": [
+    "89af4f96760d",
+    "feebd51b5e4e",
+    "a31b42d3e40d",
+    "bd153db1f27c",
+    "1b1c047750bf",
+    "62603868db65",
+    "3b5ac04156e7",
+    "dec95fe65535",
+    "fc2580a01927",
+    "0abede645b28"
+   ],
+   "Q28": [
+    "a31b42d3e40d",
+    "d3a872bd625a",
+    "3b5ac04156e7",
+    "1b1c047750bf",
+    "c236034e24d2",
+    "dec95fe65535",
+    "fc2580a01927",
+    "0abede645b28",
+    "b7711c885517",
+    "8021b57fe6d3"
+   ],
+   "Q29": [
+    "4bf0b43abe06",
+    "963dae4229eb",
+    "09e9e322e55c",
+    "89af4f96760d",
+    "62603868db65",
+    "2a76bd4f4e23",
+    "a540f2d18f86",
+    "278ed26ec3ed",
+    "c236034e24d2",
+    "dec95fe65535"
+   ],
+   "Q30": [
+    "ff8235f48619",
+    "7d0bf6de7c63",
+    "3e92b900d7c7",
+    "34a0b9b8055e",
+    "84f7b7a134c4",
+    "81ad3121ccf8",
+    "15ecc6131f45",
+    "918415635813",
+    "7f1c85ab1a18",
+    "d9a5bd8ea531"
+   ],
+   "Q31": [
+    "fb39e713bdc0",
+    "f5caca08f514",
+    "c383653d1614",
+    "36eaefcfcb6a",
+    "d9a5bd8ea531",
+    "d196d1f39961",
+    "8021b57fe6d3",
+    "ce196c57771f",
+    "e2e18dd6a986",
+    "a5c1819956e5"
+   ],
+   "Q32": [
+    "ce196c57771f",
+    "d9a5bd8ea531",
+    "144a40851685",
+    "bdaae577673c",
+    "82cf269d9624",
+    "a4dc9ec49818",
+    "fc2580a01927",
+    "e95a55e44dac",
+    "e50c70a93a32",
+    "428d726e16d5"
+   ],
+   "Q33": [
+    "d9a5bd8ea531",
+    "fc2580a01927",
+    "2cfecbd4b92e",
+    "bdaae577673c",
+    "e50c70a93a32",
+    "ce196c57771f",
+    "8021b57fe6d3",
+    "1b1c047750bf",
+    "a4dc9ec49818",
+    "3e92b900d7c7"
+   ],
+   "Q34": [
+    "ce196c57771f",
+    "d9a5bd8ea531",
+    "ff8235f48619",
+    "e50c70a93a32",
+    "bdaae577673c",
+    "428d726e16d5",
+    "a4dc9ec49818",
+    "82cf269d9624",
+    "e95a55e44dac",
+    "244433873f44"
+   ],
+   "Q35": [
+    "617a6fe666fc",
+    "278ed26ec3ed",
+    "5b629e03fdcf",
+    "442dcb118552",
+    "ac221efffd61",
+    "961b93b4780b",
+    "62851f963008",
+    "2ca67f44e824",
+    "d3a872bd625a",
+    "001884678386"
+   ],
+   "Q36": [
+    "617a6fe666fc",
+    "213c1fa4490c",
+    "8021b57fe6d3",
+    "2ca67f44e824",
+    "e395389b8369",
+    "442dcb118552",
+    "0936bc8d346d",
+    "ac221efffd61",
+    "278ed26ec3ed",
+    "5b629e03fdcf"
+   ],
+   "Q37": [
+    "a540f2d18f86",
+    "09e9e322e55c",
+    "ce196c57771f",
+    "f5caca08f514",
+    "d9a5bd8ea531",
+    "ad9138005226",
+    "578b6d5a7284",
+    "2a76bd4f4e23",
+    "4bf0b43abe06",
+    "428d726e16d5"
+   ],
+   "Q38": [
+    "f80f7e98f870",
+    "ff8235f48619",
+    "c3f9c74d0319",
+    "81ad3121ccf8",
+    "7f1c85ab1a18",
+    "15ecc6131f45",
+    "08705a17f766",
+    "84fb1545c0de",
+    "918415635813",
+    "84f7b7a134c4"
+   ],
+   "Q39": [
+    "c3f9c74d0319",
+    "8021b57fe6d3",
+    "f80f7e98f870",
+    "6e0e1d1c7e4f",
+    "13f00fce8eaa",
+    "d753fb02bc8c",
+    "c21317b25056",
+    "b7711c885517",
+    "d9a5bd8ea531",
+    "a4dc9ec49818"
+   ],
+   "Q40": [
+    "15ecc6131f45",
+    "c3f9c74d0319",
+    "81ad3121ccf8",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "918415635813",
+    "7f1c85ab1a18",
+    "244433873f44",
+    "34a0b9b8055e",
+    "50f5713033a7"
+   ],
+   "Q41": [
+    "c0e435f29225",
+    "6c86c7f38969",
+    "bd3fdfdacb40",
+    "3c79dce4a330",
+    "3a8a289eefd1",
+    "8021b57fe6d3",
+    "4f58fb0de9f1",
+    "d9a5bd8ea531",
+    "ff8235f48619",
+    "6e0e1d1c7e4f"
+   ],
+   "Q42": [
+    "d196d1f39961",
+    "fb39e713bdc0",
+    "8021b57fe6d3",
+    "f5caca08f514",
+    "c383653d1614",
+    "f80f7e98f870",
+    "36eaefcfcb6a",
+    "7bcba2249f95",
+    "c0e435f29225",
+    "d9a5bd8ea531"
+   ],
+   "Q43": [
+    "b39844dd335d",
+    "611120059836",
+    "238a471c1858",
+    "8021b57fe6d3",
+    "dd67881a88fb",
+    "1b1c047750bf",
+    "fc2580a01927",
+    "658dee2cb873",
+    "a31b42d3e40d",
+    "3f7023270716"
+   ],
+   "Q44": [
+    "c3f9c74d0319",
+    "f80f7e98f870",
+    "ff8235f48619",
+    "918415635813",
+    "15ecc6131f45",
+    "7f1c85ab1a18",
+    "244433873f44",
+    "34a0b9b8055e",
+    "81ad3121ccf8",
+    "8021b57fe6d3"
+   ],
+   "Q45": [
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "2c590823561f",
+    "2cfecbd4b92e",
+    "1914199dd907",
+    "1b1c047750bf",
+    "7839ded2d52b",
+    "8a7eb02f2b10",
+    "001884678386",
+    "611120059836"
+   ],
+   "Q46": [
+    "cc7dbb7f12be",
+    "2e762c0284bb",
+    "2c590823561f",
+    "8a7eb02f2b10",
+    "999d2213abc3",
+    "001884678386",
+    "dd0dea74cdb4",
+    "d3a872bd625a",
+    "7839ded2d52b",
+    "c236034e24d2"
+   ],
+   "Q47": [
+    "2a76bd4f4e23",
+    "cc7dbb7f12be",
+    "09e9e322e55c",
+    "2e762c0284bb",
+    "4bf0b43abe06",
+    "278ed26ec3ed",
+    "2cfecbd4b92e",
+    "1914199dd907",
+    "e50c70a93a32",
+    "2f517f5673f1"
+   ],
+   "Q48": [
+    "3c79dce4a330",
+    "c0e435f29225",
+    "bd3fdfdacb40",
+    "6c86c7f38969",
+    "2cfecbd4b92e",
+    "2c590823561f",
+    "bdaae577673c",
+    "ce196c57771f",
+    "82cf269d9624",
+    "d9a5bd8ea531"
+   ],
+   "Q49": [
+    "2f517f5673f1",
+    "e50c70a93a32",
+    "222973572526",
+    "2cfecbd4b92e",
+    "3821ebedc68b",
+    "1b1c047750bf",
+    "2e762c0284bb",
+    "9c59e2caec7f",
+    "8021b57fe6d3",
+    "8d3924745f13"
+   ],
+   "Q50": [
+    "9c59e2caec7f",
+    "2f517f5673f1",
+    "2cfecbd4b92e",
+    "dec95fe65535",
+    "fc2580a01927",
+    "e50c70a93a32",
+    "8d3924745f13",
+    "8021b57fe6d3",
+    "222973572526",
+    "5b850f4804fa"
+   ],
+   "Q51": [
+    "c13d27947ed1",
+    "f02ee0910bbf",
+    "8021b57fe6d3",
+    "13f00fce8eaa",
+    "1b1c047750bf",
+    "c21317b25056",
+    "f78646d93435",
+    "d753fb02bc8c",
+    "726059051b70",
+    "b16f983ce250"
+   ],
+   "Q52": [
+    "e50c70a93a32",
+    "fc2580a01927",
+    "2f517f5673f1",
+    "e95a55e44dac",
+    "8021b57fe6d3",
+    "b0a61b2ce04a",
+    "ff8235f48619",
+    "222973572526",
+    "2cfecbd4b92e",
+    "dec95fe65535"
+   ],
+   "Q53": [
+    "611120059836",
+    "238a471c1858",
+    "dd67881a88fb",
+    "c0ade75d5a9f",
+    "b39844dd335d",
+    "62851f963008",
+    "a31b42d3e40d",
+    "dec95fe65535",
+    "8021b57fe6d3",
+    "82cf269d9624"
+   ],
+   "Q54": [
+    "3a8a289eefd1",
+    "8021b57fe6d3",
+    "62851f963008",
+    "f68502611675",
+    "09e9e322e55c",
+    "2ad407544ec7",
+    "3f7023270716",
+    "611120059836",
+    "b39844dd335d",
+    "4f58fb0de9f1"
+   ],
+   "Q55": [
+    "fc2580a01927",
+    "dec95fe65535",
+    "3f7023270716",
+    "6ed852264d3b",
+    "a31b42d3e40d",
+    "1b1c047750bf",
+    "e50c70a93a32",
+    "84db8e59701d",
+    "62851f963008",
+    "beb2688295be"
+   ],
+   "Q56": [
+    "cc68b028e427",
+    "829c3aead55c",
+    "781c6dac3029",
+    "ada3afc95dde",
+    "a4dc9ec49818",
+    "d9a5bd8ea531",
+    "8021b57fe6d3",
+    "bdaae577673c",
+    "3f7023270716",
+    "ff8235f48619"
+   ],
+   "Q57": [
+    "829c3aead55c",
+    "cc68b028e427",
+    "ada3afc95dde",
+    "3f7023270716",
+    "781c6dac3029",
+    "fc2580a01927",
+    "658dee2cb873",
+    "e50c70a93a32",
+    "e95a55e44dac",
+    "a4dc9ec49818"
+   ],
+   "Q58": [
+    "781c6dac3029",
+    "cc68b028e427",
+    "829c3aead55c",
+    "ada3afc95dde",
+    "8021b57fe6d3",
+    "6e0e1d1c7e4f",
+    "13f00fce8eaa",
+    "84fb1545c0de",
+    "961b93b4780b",
+    "244433873f44"
+   ],
+   "Q59": [
+    "278ed26ec3ed",
+    "9f62ffd80c3d",
+    "09e9e322e55c",
+    "4bf0b43abe06",
+    "300f4a6fbd03",
+    "2ad407544ec7",
+    "a540f2d18f86",
+    "617a6fe666fc",
+    "2a76bd4f4e23",
+    "578b6d5a7284"
+   ],
+   "Q60": [
+    "ad9138005226",
+    "578b6d5a7284",
+    "a540f2d18f86",
+    "66cd6ab97679",
+    "b47ef9ac1993",
+    "fc4723f20418",
+    "144a40851685",
+    "6e0e1d1c7e4f",
+    "20888ec091fe",
+    "df98766ea4cf"
+   ],
+   "Q61": [
+    "ad9138005226",
+    "a540f2d18f86",
+    "578b6d5a7284",
+    "09e9e322e55c",
+    "66cd6ab97679",
+    "9f62ffd80c3d",
+    "300f4a6fbd03",
+    "4bf0b43abe06",
+    "6e0e1d1c7e4f",
+    "aa722ffd7358"
+   ],
+   "Q62": [
+    "300f4a6fbd03",
+    "00cdd7ef586a",
+    "09e9e322e55c",
+    "278ed26ec3ed",
+    "aa722ffd7358",
+    "2a76bd4f4e23",
+    "9f62ffd80c3d",
+    "a559fb986971",
+    "a540f2d18f86",
+    "961b93b4780b"
+   ],
+   "Q63": [
+    "4bf0b43abe06",
+    "52ad3a57c1d1",
+    "39da3ee0855c",
+    "09e9e322e55c",
+    "2cfecbd4b92e",
+    "dec95fe65535",
+    "cc7dbb7f12be",
+    "a540f2d18f86",
+    "b7711c885517",
+    "ad9138005226"
+   ],
+   "Q64": [
+    "8021b57fe6d3",
+    "13f00fce8eaa",
+    "6e0e1d1c7e4f",
+    "f78646d93435",
+    "a31b42d3e40d",
+    "d753fb02bc8c",
+    "1b1c047750bf",
+    "20888ec091fe",
+    "91def1f55b1e",
+    "c21317b25056"
+   ],
+   "Q65": [
+    "d196d1f39961",
+    "8021b57fe6d3",
+    "5b850f4804fa",
+    "c3f9c74d0319",
+    "7c2650b56825",
+    "d753fb02bc8c",
+    "f80f7e98f870",
+    "c0e435f29225",
+    "7bcba2249f95",
+    "d9a5bd8ea531"
+   ],
+   "Q66": [
+    "8021b57fe6d3",
+    "7c2650b56825",
+    "cc68b028e427",
+    "781c6dac3029",
+    "1b1c047750bf",
+    "d753fb02bc8c",
+    "d9a5bd8ea531",
+    "bdaae577673c",
+    "13f00fce8eaa",
+    "6e0e1d1c7e4f"
+   ],
+   "Q67": [
+    "8021b57fe6d3",
+    "d196d1f39961",
+    "fb39e713bdc0",
+    "d753fb02bc8c",
+    "c383653d1614",
+    "f80f7e98f870",
+    "36eaefcfcb6a",
+    "6e0e1d1c7e4f",
+    "d9a5bd8ea531",
+    "1b1c047750bf"
+   ]
+  }
+ },
+ "source": {
+  "questions": "C09/questions/questions.jsonl",
+  "questions_sha256": "5d8fa684cd9b4e44c3f5254167a2380ac649b588ca8c06eaf5433d5b3479158b",
+  "retrieval_runs": "reference/c09/recordings/runs/retrieval.json",
+  "retrieval_runs_sha256": "d3a6edb4bb725540734cb9bf1d88e2f7b6d753f3e5b99e5a5c9a24ceeb448581"
+ }
+}
