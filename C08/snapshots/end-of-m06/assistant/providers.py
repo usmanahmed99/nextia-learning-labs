@@ -171,3 +171,6 @@ class OpenAICompatibleProvider:
             for chunk in self.client.chat.completions.create(**request, stream=True):
                 if chunk.choices and chunk.choices[0].delta.content:
                     yield round(time.monotonic() - start, 3), chunk.choices[0].delta.content
+                if chunk.choices and chunk.choices[0].finish_reason not in (None, "stop"):
+                    # for example "length": the stream ended normally, but the answer was cut
+                    raise ProviderError(f"The stream ended with finish_reason: {chunk.choices[0].finish_reason}.")
