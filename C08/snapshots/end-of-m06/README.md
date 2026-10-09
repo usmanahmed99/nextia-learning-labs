@@ -4,7 +4,7 @@ Larkfield's ticket assistant, the project of the course *Building Reliable Appli
 
 The assistant reads one support ticket and returns checked data: the `team` that must handle it, `needs_human` (true when a person must take over), a `reply` draft that an agent checks before sending, and, when the ticket names an order, the order's status from a read-only lookup. It never sends anything to a customer and never changes an order.
 
-You need no account and no key. By default the **mock provider** replays answers that real models gave to the same requests when the course was recorded (gpt-6-luna as `chat-small` and gpt-6.1-sol as `chat-strong` on Azure, and Gemma 3 4B through Ollama on a Mac mini, 2026-10-08). A live provider is optional (see [Optional: a live model](#optional-a-live-model)).
+You need no account and no key. By default the **mock provider** replays answers that real models gave to the same requests when the course was recorded (gpt-6-luna as `chat-small` and gpt-6.1-sol as `chat-strong` on Azure, and Gemma 3 4B through Ollama on a Mac mini). A live provider is optional (see [Optional: a live model](#optional-a-live-model)).
 
 ## Set up (once)
 

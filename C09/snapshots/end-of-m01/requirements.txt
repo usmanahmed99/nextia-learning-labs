@@ -1,2 +1,2 @@
-# Tested on 2026-10-09 with Python 3.12 (macOS, Apple silicon).
+# Tested with Python 3.12 (macOS, Apple silicon).
 pytest==9.1.1

@@ -60,4 +60,4 @@ The steps use `end-of-m03` as an example. Use the name of your snapshot.
 
 ## Tested
 
-Tested on 2026-10-09 with Python 3.12 on macOS (Apple silicon), in a new virtual environment for each snapshot and an empty model cache: every snapshot's tests pass, and the stage's commands run with the mock provider. From `end-of-m03`, the virtual environment takes about 0.9 GB and the two models about 0.94 GB; the first test run, with the downloads, took about 36 s. Windows and Linux are not tested.
+Tested with Python 3.12 on macOS (Apple silicon), in a new virtual environment for each snapshot and an empty model cache: every snapshot's tests pass, and the stage's commands run with the mock provider. From `end-of-m03`, the virtual environment takes about 0.9 GB and the two models about 0.94 GB; the first test run, with the downloads, took about 36 s. Windows and Linux are not tested.

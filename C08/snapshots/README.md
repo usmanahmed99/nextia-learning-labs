@@ -59,4 +59,4 @@ The steps use `end-of-m03` as an example. Use the name of your snapshot.
 
 ## Tested
 
-Tested on 2026-10-09 with Python 3.12 on macOS (Apple silicon), in a new virtual environment for each snapshot: every snapshot's tests pass, and `python -m assistant analyse T-80008` runs with the mock provider. Windows and Linux are not tested.
+Tested with Python 3.12 on macOS (Apple silicon), in a new virtual environment for each snapshot: every snapshot's tests pass, and `python -m assistant analyse T-80008` runs with the mock provider. Windows and Linux are not tested.
