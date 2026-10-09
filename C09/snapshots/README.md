@@ -8,9 +8,9 @@ Each folder here is the `policy-assistant` project of [RAG: Building AI That Use
 | [`end-of-m01`](end-of-m01) | Module 2 | Keyword search with SQLite FTS5 and BM25 over the sections of the Markdown documents (`lexical.py`), hit@5 (`evaluate.py`), `search` and `eval`. | 11 |
 | [`end-of-m02`](end-of-m02) | Module 3 | Parsing Markdown, HTML and PDF (`parse.py`), three chunkers (`chunk.py`), stable chunk IDs and metadata (`metadata.py`), the index file (`store.py`), `parse`, `ingest`, `chunks`. | 31 |
 | [`end-of-m03`](end-of-m03) | Module 4 | Embeddings (`embed.py`), vector, hybrid and reranked search (`dense.py`, `hybrid.py`, `rerank.py`, `search.py`), date and access filters (`filters.py`), query rewriting (`rewrite.py`), the provider adapter and settings, recorded rewrites and embed-small vectors. | 48 |
-| [`end-of-m04`](end-of-m04) | Module 5 | The context (`context.py`), answers with claims and passage IDs (`answer.py`), citation checks (`cite.py`), `ask` (`assistant.py`), recorded answers. | 72 |
-| [`end-of-m05`](end-of-m05) | Module 6 | Recall@k, precision@k, MRR and the answer checks (`evaluate.py`), `eval --answers`. | 75 |
-| [`end-of-m06`](end-of-m06) | The final assignment | Incremental ingestion and deletions (`store.py`), access checks on citations, prompt `answer_v2` against instructions hidden in documents, `info`, the full README. The course-end project. | 84 |
+| [`end-of-m04`](end-of-m04) | Module 5 | The context (`context.py`), answers with claims and passage IDs (`answer.py`), citation checks (`cite.py`), `ask` (`assistant.py`), recorded answers. | 74 |
+| [`end-of-m05`](end-of-m05) | Module 6 | Recall@k, precision@k, MRR and the answer checks (`evaluate.py`), `eval --answers`. | 77 |
+| [`end-of-m06`](end-of-m06) | The final assignment | Incremental ingestion and deletions (`store.py`), access checks on citations, prompt `answer_v2` against instructions hidden in documents, `info`, the full README. The course-end project. | 86 |
 
 Each snapshot has only what the lessons' guided practice makes. It does not have the answers to the "Your turn" tasks.
 

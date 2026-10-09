@@ -208,6 +208,8 @@ def cmd_ask(args) -> None:
     print(f"Passages: {', '.join(result.context.ids) or 'none'} ({result.context.tokens} tokens, estimated)")
     for cid, reason in result.context.dropped:
         print(f"  dropped {cid}: {reason}")
+    if result.completion is not None and result.completion.note:
+        print(f"Note: {result.completion.note}")
     if result.problem:
         print(f"No answer: {result.problem}")
         return
@@ -246,6 +248,7 @@ def cmd_eval(args) -> None:
                       args.prompt, language=q.language)
             score = answer_scores(q, res.answer)
             score["citation_problems"] = sum(1 for c in res.checks if not c.ok)
+            score["other_passages"] = bool(res.completion is not None and res.completion.note)
             score["problem"] = res.problem
             answers.append(score)
     s = summarise(rows)
@@ -261,6 +264,10 @@ def cmd_eval(args) -> None:
         print(f"answers ({args.model}, {args.prompt}): {len(ok)} valid of {len(answers)} | correct by the automatic "
               f"checks {sum(a['correct'] for a in answers)} | abstained {sum(a['abstained'] for a in ok)} | "
               f"claims with a citation problem {sum(a['citation_problems'] for a in ok)}")
+        other = [a["id"] for a in answers if a.get("other_passages")]
+        if other:
+            print(f"{len(other)} answers were recorded with other passages than yours and replayed anyway, so the answer "
+                  f"measures describe the recorded search, not yours (use a live model to measure yours): {', '.join(other)}")
         missed = [a["id"] for a in answers if not a["correct"]]
         print(f"not correct: {', '.join(missed) or 'none'}")
 

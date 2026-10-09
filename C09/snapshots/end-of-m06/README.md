@@ -87,7 +87,13 @@ Every command prints its options with `--help`. Dates are `YYYY-MM-DD`; without 
 
 ### Recorded answers and live models
 
-The mock replays only the requests that were recorded for the course: chat-small and chat-strong (`--model`), with `--method rerank` (best) or `--method bm25` (weak), prompt `answer_v1`, top 5, the structure-aware chunker and the e5 model. Any other request gives "No recording for this request". To ask anything else, use a live model: copy `.env.example` to `.env` and choose a local model (Ollama, free) or your own key. Never commit `.env`.
+The mock replays the answers that were recorded for the course: the 67 questions (by ID, for example `ask Q22`, or the same question text), with chat-small or chat-strong (`--model`) and prompt `answer_v1` (and, for some questions, `answer_v2` and `--audience public`). They were recorded with `--method rerank` (best) and `--method bm25` (weak), top 5, the structure-aware chunker and the e5 model.
+
+- If your search gives exactly the recorded passages, the answer is replayed silently.
+- If your passages differ (another method, chunker, `--k`, or a small numeric difference on your computer), the mock still replays the recorded answer of that question, prompt and model, and prints one line: `Note: Recorded with passages …; yours: …`. The citation checks then run against **your** passages, so a recorded citation that your search did not find is reported (`not_in_context`). With `eval --answers`, the answer measures then describe the recorded search, not yours; the command lists those questions.
+- A question, prompt or model that was never recorded gives "No recording for this request".
+
+To ask anything else, or to measure answers from your own search, use a live model: copy `.env.example` to `.env` and choose a local model (Ollama, free) or your own key. Never commit `.env`.
 
 | Variable | Meaning |
 |---|---|

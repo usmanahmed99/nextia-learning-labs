@@ -199,6 +199,8 @@ def cmd_ask(args) -> None:
     print(f"Passages: {', '.join(result.context.ids) or 'none'} ({result.context.tokens} tokens, estimated)")
     for cid, reason in result.context.dropped:
         print(f"  dropped {cid}: {reason}")
+    if result.completion is not None and result.completion.note:
+        print(f"Note: {result.completion.note}")
     if result.problem:
         print(f"No answer: {result.problem}")
         return

@@ -1,8 +1,8 @@
 """The whole pipeline with the mock provider: search -> context -> recorded answer -> citation check.
 
-The mock finds a recording only if the request is exactly the recorded one: the same question, the same
-passages in the same order, the same prompt and model. So this test also checks that search and context
-give, on your computer, exactly what they gave when the answers were recorded.
+The mock replays the recording of the same question, prompt and model. With exactly the recorded passages
+it replays silently (so these tests also check that search and context give, on your computer, what they
+gave when the answers were recorded); with other passages it still replays, with a note.
 """
 
 import re
@@ -13,7 +13,7 @@ from policy_assistant.assistant import ask
 from policy_assistant.documents import CORPUS
 from policy_assistant.embed import LocalEmbedder
 from policy_assistant.evaluate import load_questions
-from policy_assistant.providers import MockProvider
+from policy_assistant.providers import MockProvider, RecordingNotFound
 from policy_assistant.rerank import Reranker
 from policy_assistant.search import Retriever
 from policy_assistant.store import Store
@@ -42,6 +42,26 @@ def test_recorded_answers_replay(retriever, qid):
     assert result.answer is not None, result.problem
     assert correct(q, result.answer) if not q.abstain else not result.answer.answerable
     assert all(i in result.context.ids for c in result.answer.claims for i in c.chunk_ids)
+    assert result.completion.note == ""          # exactly the recorded passages: no warning
+
+
+def test_other_passages_replay_with_a_warning(retriever):
+    """Dense search finds other passages than the recorded (rerank) ones: the answer is replayed, the note says
+    so, and the citation checks run against the passages that this search really gave."""
+    q = QS["Q22"]
+    result = ask(q.question, q.as_of, retriever, MockProvider(), "chat-small", "dense", language=q.language)
+    assert result.answer is not None and correct(q, result.answer)
+    assert result.completion.note.startswith("Recorded with passages ")
+    assert "; yours: " + ", ".join(result.context.ids) in result.completion.note
+    for check in result.checks:                  # a recorded citation outside your passages is reported, others not
+        outside = [i for i in check.chunk_ids if i not in result.context.ids]
+        assert [p for p in check.problems if p.startswith("not_in_context")] == [f"not_in_context:{i}" for i in outside]
+
+
+def test_a_question_that_was_not_recorded(retriever):
+    with pytest.raises(RecordingNotFound):
+        MockProvider().complete({"model": "chat-small", "messages": [
+            {"role": "user", "content": "Question date: 2026-10-09\nQuestion: Is this recorded?\n\nPassages:\n"}]})
 
 
 def test_the_documents_do_not_answer(retriever):

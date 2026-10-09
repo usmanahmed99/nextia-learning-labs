@@ -7,20 +7,29 @@ The rest of the assistant builds a request (a dict in the Chat Completions forma
 - OpenAICompatibleProvider calls any server that speaks the OpenAI-compatible Chat Completions API:
   a local Ollama server, OpenAI, or another provider. Its settings come from environment variables.
 
-The mock finds a recording by `request_key`: a hash of the model, the messages, the response format
-and the token limit. Change one character of the prompt, a passage or the model name, and there is
-no recording for that request.
+How the mock finds a recording:
+1. `request_key`: a hash of the model, the messages, the response format and the token limit. The
+   same request as the recorded one (the same passages too) replays silently.
+2. Otherwise `replay_key`: the same hash with the passages left out of the user message, so the
+   model, the prompt (its system message and template), the question and its date must match. If
+   your search found other passages than the recorded ones, the mock still replays the recording
+   whose passages overlap most with yours, and `Completion.note` says so: "Recorded with passages
+   ...; yours: ...". The citation checks then run against YOUR passages, so the difference shows up
+   honestly as citation problems (for example "not_in_context"), not as a crash.
+Change the prompt, the question or the model name, and there is no recording for that request.
 """
 
 import contextlib
 import hashlib
 import json
+import re
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
 RECORDINGS = Path(__file__).resolve().parent.parent / "recordings"
 KEY_FIELDS = ("model", "messages", "response_format", "max_completion_tokens")
+PASSAGE_ID = re.compile(r"^\[([0-9a-f]{12})\] ", re.M)
 
 
 class ProviderError(Exception):
@@ -46,6 +55,7 @@ class Completion:
     reasoning_tokens: int
     latency_s: float
     raw: dict = field(repr=False)
+    note: str = ""      # set by the mock when it replays an answer recorded with other passages
 
     @classmethod
     def from_response(cls, data: dict, latency_s: float) -> "Completion":
@@ -66,27 +76,59 @@ def request_key(request: dict) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 
 
+def without_passages(request: dict) -> dict:
+    """The request with the passages cut from the user message (everything after 'Passages:')."""
+    messages = [dict(m, content=m["content"].split("\nPassages:\n", 1)[0]) if m.get("role") == "user" else m
+                for m in request.get("messages") or []]
+    return {**request, "messages": messages}
+
+
+def replay_key(request: dict) -> str:
+    return request_key(without_passages(request))
+
+
+def passage_ids(request: dict) -> list[str]:
+    users = [m["content"] for m in request.get("messages") or [] if m.get("role") == "user"]
+    return PASSAGE_ID.findall(users[-1]) if users else []
+
+
 class MockProvider:
     """Replays recorded responses. A request that was not recorded raises RecordingNotFound."""
 
     def __init__(self, folder: Path = RECORDINGS):
         self.recordings = {}
+        self.by_question: dict[str, list[dict]] = {}
         for path in sorted(folder.glob("*.jsonl")):
             for line in path.read_text(encoding="utf-8").splitlines():
                 entry = json.loads(line)
                 if "key" in entry:
                     self.recordings[entry["key"]] = entry
+                    if "request" in entry:
+                        self.by_question.setdefault(replay_key(entry["request"]), []).append(entry)
+
+    def _find(self, request: dict) -> tuple[dict, str]:
+        key = request_key(request)
+        if key in self.recordings:
+            return self.recordings[key], ""
+        candidates = self.by_question.get(replay_key(request))
+        if not candidates:
+            raise RecordingNotFound(
+                f"No recording for this request (key {key}). The mock replays only the questions that were recorded "
+                "for the course, with the same prompt and the same model.")
+        yours = passage_ids(request)
+        entry = max(candidates, key=lambda e: len(set(passage_ids(e["request"])) & set(yours)))   # first one on a tie
+        recorded = passage_ids(entry["request"])
+        note = (f"Recorded with passages {', '.join(recorded) or 'none'}; yours: {', '.join(yours) or 'none'}. "
+                "The recorded answer is replayed; its citations are checked against your passages.")
+        return entry, note
 
     def complete(self, request: dict) -> Completion:
-        key = request_key(request)
-        if key not in self.recordings:
-            raise RecordingNotFound(
-                f"No recording for this request (key {key}). The mock replays only the requests that were recorded "
-                "for the course: the same question, the same passages, the same prompt and the same model.")
-        entry = self.recordings[key]
+        entry, note = self._find(request)
         if "error" in entry:
             raise ProviderError(f"HTTP {entry['error']['status']}: {entry['error']['message']}", entry["error"]["status"])
-        return Completion.from_response(entry["response"], entry["latency_s"])
+        completion = Completion.from_response(entry["response"], entry["latency_s"])
+        completion.note = note
+        return completion
 
 
 @contextlib.contextmanager
