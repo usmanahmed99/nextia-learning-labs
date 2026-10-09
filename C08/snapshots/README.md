@@ -10,7 +10,7 @@ Each folder here is the `ticket-assistant` project of [Building Reliable Applica
 | [`end-of-m03`](end-of-m03) | Module 4 | The schema (`schema.py`), the two gates (`validate.py`), `orders.py`, the results database (`store.py`), `analyse.py`, `data/orders.sqlite`, recorded structured answers and failures. | 42 |
 | [`end-of-m04`](end-of-m04) | Module 5 | The read-only order lookup (`tools.py`) and the bounded tool loop (`loop.py`), recorded tool calls. | 59 |
 | [`end-of-m05`](end-of-m05) | Module 6 | Conversation state (`history.py`) and streaming (`stream.py`), recorded streams and a conversation. | 65 |
-| [`end-of-m06`](end-of-m06) | The final assignment | Retries with backoff and jitter (`retry.py`), the simulated failing provider (`simulate.py`), the usage log and prices (`usage.py`), the full README. The course-end project. | 76 |
+| [`end-of-m06`](end-of-m06) | The final assignment | Retries with backoff and jitter (`retry.py`), the simulated failing provider (`simulate.py`), the usage log and prices (`usage.py`), the full README. The course-end project. | 80 |
 
 Each snapshot has only what the lessons' guided practice makes. It does not have the answers to the "Your turn" tasks.
 
