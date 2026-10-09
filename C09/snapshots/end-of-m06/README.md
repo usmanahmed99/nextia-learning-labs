@@ -80,6 +80,7 @@ python -m policy_assistant search "Which pump kit fits the PW-2200?" --method bm
 python -m policy_assistant ask Q22                 # a recorded answer, with its citations checked
 python -m policy_assistant eval                    # retrieval measures on the 67 questions
 python -m policy_assistant eval --answers          # and the recorded answers
+python -m policy_assistant audit                   # recorded answers that cite removed or obsolete passages
 python -m policy_assistant info                    # how the index was built
 ```
 
@@ -106,7 +107,33 @@ To ask anything else, or to measure answers from your own search, use a live mod
 
 ## Rebuild and update
 
-`python -m policy_assistant ingest` updates the index: it reads only the documents whose content changed, and removes the documents whose file is gone (from the chunks, the keyword index and the vectors). A different chunker or embedding model needs a new index: `python -m policy_assistant ingest --rebuild --chunker fixed`.
+`python -m policy_assistant ingest` updates the index. It reads only the documents whose content changed (SHA-256 of the file), and removes the documents whose file is gone, from the chunks, the keyword index and the vectors. Two files with the same document ID and version are refused, and the index stays as it was.
+
+- **A correction** (same version): edit the file and run `ingest` (`1 updated`).
+- **A new version**: add a new file with the next version number and its `effective_from`, set `effective_to` on the old version, and run `ingest`. Searches then use the version in force on the question's date.
+- **A deletion**: delete the file and run `ingest` (`1 removed`). Update `corpus/inventory.csv` too.
+
+Then run `python -m policy_assistant audit`. It lists the recorded answers that cite a passage that is removed, not in force on the question's date, or staff-only for a public audience. In a real assistant, such answers must leave any answer cache. A process that keeps running (a server) sees the change at its next search: the index's version is checked before the chunks and vectors kept in memory are used.
+
+A different chunker or embedding model needs a new index: `python -m policy_assistant ingest --rebuild --chunker fixed`.
+
+## Handoff record
+
+`python -m policy_assistant info` prints what answers depend on: the index (documents, their fingerprint, chunks, vectors), the chunker, the embedding model and its revision, the reranker and its revision, the prompts (with a short hash of each file), the context budget, the Python and package versions, and the command that rebuilds the index. Measured on 2026-10-09 (macOS, Apple silicon, 2 CPU threads for the local models; medians):
+
+| What | Time | Cost |
+|---|---|---|
+| Ingest all 36 documents with e5 (parse, chunk, embed 185 chunks) | 4.5 s | free (local) |
+| A second `ingest` with nothing changed | under 0.1 s | free |
+| Embed the collection with embed-small instead (hosted; 443 texts) | 5.5 s | US$0.0005 |
+| Search one question: embed it, BM25, vectors | about 6 ms | free |
+| Rerank 20 candidates (the slow step of search) | 322 ms | free |
+| Answer one question with chat-small (recorded; median / 95th percentile) | 1.46 / 3.72 s | US$0.00017 |
+| Answer one question with chat-strong (recorded) | 2.46 / 4.26 s | US$0.0031 |
+
+At about 45 questions a day, chat-small costs about US$0.008 a day, and chat-strong about US$0.14. Prices change: check your provider's price list.
+
+What invalidates the recorded answers: a change to a document, the chunker, the passage format, a prompt or the e5 revision (the recorded requests contain the passages and the prompt). After such a change, measure answers with a live model.
 
 ## Reset
 

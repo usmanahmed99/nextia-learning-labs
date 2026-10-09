@@ -29,10 +29,20 @@ class Result:
 class Retriever:
     def __init__(self, store: Store, embedder=None, reranker=None):
         self.store, self.embedder, self.reranker = store, embedder, reranker
-        self._chunks = {c.chunk_id: c for c in store.chunks()}
+        self._cache, self._generation = {}, None
+
+    @property
+    def _chunks(self) -> dict:
+        """The chunks by ID, kept in memory, and read again when the index has changed since: a
+        running assistant must not keep serving a chunk that ingest has removed."""
+        generation = self.store.generation()
+        if generation != self._generation:
+            self._cache, self._generation = {c.chunk_id: c for c in self.store.chunks()}, generation
+        return self._cache
 
     def _allowed(self, filters: Filters):
-        return lambda chunk_id: filters.allows(self._chunks[chunk_id])
+        chunks = self._chunks
+        return lambda chunk_id: filters.allows(chunks[chunk_id])
 
     def _check_model(self) -> None:
         if self.embedder is None:

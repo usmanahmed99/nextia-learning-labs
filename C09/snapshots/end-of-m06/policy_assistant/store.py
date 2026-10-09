@@ -5,14 +5,17 @@ Tables:
   chunks     one row per chunk: its text, positions, sections, pages and the document's metadata
   keyword_index (FTS5) the chunks' text for BM25 (lexical.py)
   vectors    one row per chunk: its embedding (float32 bytes)
-  meta       how the index was built: chunker, embedding model and revision, dimensions
+  meta       how the index was built: chunker, embedding model and revision, time of the last sync
 
 `sync()` brings the index up to date with the folder of documents, and does only the work needed:
 - a file whose content hash is unchanged is skipped (no parsing, no embedding);
 - a new or changed file is parsed and chunked again; its old chunks, keyword rows and vectors are
   deleted first, so no old text stays searchable;
 - a document whose file is gone is deleted from every table, including the keyword index and the
-  vectors: a deletion must reach the index, not only the folder.
+  vectors: a deletion must reach the index, not only the folder. Deletions run first, so a renamed
+  file is removed under its old name and added under its new one;
+- two files with the same document ID and version are refused (DuplicateDocument), and the index
+  stays as it was: one document version must come from exactly one file.
 A different chunker or embedding model cannot be mixed into an existing index: sync refuses, and
 `--rebuild` starts a new one.
 """
@@ -50,6 +53,10 @@ class IndexMismatch(Exception):
     """The index was built with another chunker or embedding model."""
 
 
+class DuplicateDocument(ValueError):
+    """Two files hold the same document ID and version."""
+
+
 @dataclass
 class SyncReport:
     added: list = field(default_factory=list)
@@ -74,7 +81,7 @@ class Store:
         self.conn = sqlite3.connect(str(self.path), check_same_thread=False)  # read from 2 threads when recording
         self.conn.executescript(SCHEMA)
         self.keywords = KeywordIndex(self.conn)
-        self._matrix = None
+        self._matrix, self._matrix_generation, self._writes = None, None, 0
 
     # ------------------------------------------------------------ meta
     def meta(self) -> dict:
@@ -102,9 +109,15 @@ class Store:
         return Chunk(cid, doc_id, version, title, chunker, position, start, end, text, tuple(json.loads(sections)),
                      tuple(json.loads(pages)), ef, et or "", access, language, doc_type, source)
 
+    def generation(self) -> tuple[int, int]:
+        """Changes when the index changes: through this Store (a write counter) or through another
+        connection, for example `ingest` in another process (SQLite's data_version)."""
+        return self.conn.execute("PRAGMA data_version").fetchone()[0], self._writes
+
     def vectors(self) -> tuple[list[str], np.ndarray]:
-        """All chunk IDs and their vectors (one row each), cached until the index changes."""
-        if self._matrix is None:
+        """All chunk IDs and their vectors (one row each), kept in memory until the index changes."""
+        if self._matrix is None or self._matrix_generation != self.generation():
+            self._matrix_generation = self.generation()
             rows = self.conn.execute("SELECT chunk_id, vector FROM vectors ORDER BY chunk_id").fetchall()
             ids = [r[0] for r in rows]
             matrix = np.array([np.frombuffer(r[1], dtype=np.float32) for r in rows]) if rows else np.zeros((0, 0))
@@ -131,7 +144,7 @@ class Store:
         self.conn.executemany("DELETE FROM vectors WHERE chunk_id = ?", [(i,) for i in ids])
         self.conn.execute("DELETE FROM chunks WHERE doc_id = ? AND version = ?", (doc_id, version))
         self.conn.execute("DELETE FROM documents WHERE doc_id = ? AND version = ?", (doc_id, version))
-        self._matrix = None
+        self._writes += 1
         return len(ids)
 
     def add_document(self, path: Path, source: str, chunker: str, embedder=None) -> int:
@@ -140,6 +153,11 @@ class Store:
         for name in ("doc_id", "version"):
             if not m.get(name):
                 raise ValueError(f"{source}: the metadata has no {name}.")
+        other = self.conn.execute("SELECT file FROM documents WHERE doc_id = ? AND version = ?",
+                                  (m["doc_id"], m["version"])).fetchone()
+        if other:
+            raise DuplicateDocument(f"{source} and {other[0]} are both {m['doc_id']} version {m['version']}. "
+                                    "Keep one file per document version; a new version needs a new version number.")
         chunks = make_chunks(doc, source, chunker)
         self.conn.execute("INSERT INTO documents VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
                           (m["doc_id"], m["version"], m.get("title", ""), source, doc.format, file_hash(path),
@@ -154,7 +172,7 @@ class Store:
             vectors = embedder.embed_passages([c.text for c in chunks])
             self.conn.executemany("INSERT INTO vectors VALUES (?, ?)",
                                   [(c.chunk_id, v.astype(np.float32).tobytes()) for c, v in zip(chunks, vectors)])
-        self._matrix = None
+        self._writes += 1
         return len(chunks)
 
     def sync(self, folder: Path, chunker: str = "structure", embedder=None) -> SyncReport:
@@ -162,13 +180,15 @@ class Store:
         self.check_settings(chunker, embedder)
         report = SyncReport()
         known = {r["file"]: r for r in self.documents()}
-        files = sorted(p for p in Path(folder).iterdir() if p.suffix.lower() in SUFFIXES)
         root = Path(folder).parent
-        seen = set()
-        with self.conn:
-            for path in files:
-                source = path.relative_to(root).as_posix()
-                seen.add(source)
+        files = {p.relative_to(root).as_posix(): p for p in sorted(Path(folder).iterdir())
+                 if p.suffix.lower() in SUFFIXES}
+        with self.conn:   # one transaction: if anything fails, the index stays as it was
+            for source, old in known.items():           # 1. files that are gone
+                if source not in files:
+                    report.chunks_removed += self.remove_document(old["doc_id"], old["version"])
+                    report.removed.append(source)
+            for source, path in files.items():          # 2. new, changed and unchanged files
                 old = known.get(source)
                 if old and old["content_hash"] == file_hash(path):
                     report.unchanged.append(source)
@@ -177,10 +197,6 @@ class Store:
                     report.chunks_removed += self.remove_document(old["doc_id"], old["version"])
                 report.chunks_added += self.add_document(path, source, chunker, embedder)
                 (report.updated if old else report.added).append(source)
-            for source, old in known.items():
-                if source not in seen:
-                    report.chunks_removed += self.remove_document(old["doc_id"], old["version"])
-                    report.removed.append(source)
             settings = {"chunker": chunker, "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
             if embedder is not None:
                 settings |= {"embedding_model": embedder.name, "embedding_revision": embedder.revision}

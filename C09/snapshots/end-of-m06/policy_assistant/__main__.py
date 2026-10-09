@@ -8,6 +8,7 @@
     python -m policy_assistant search "QUESTION" [--method rerank] [--k 5] [--as-of DATE|none] [--audience staff] [--rewrite]
     python -m policy_assistant ask Q22 | "QUESTION" [--model chat-small] [--method rerank] [--prompt answer_v1] [--closed-book]
     python -m policy_assistant eval [--method rerank] [--k 5] [--rewrite] [--answers --model chat-small]
+    python -m policy_assistant audit                        recorded answers that cite removed or obsolete passages
     python -m policy_assistant info                         how the index was built (for the handoff)
 
 The index is index.sqlite in the project folder (--index PATH for another one). Dates are YYYY-MM-DD.
@@ -99,7 +100,7 @@ def open_store(args):
 
 
 def cmd_ingest(args) -> None:
-    from .store import IndexMismatch, Store
+    from .store import DuplicateDocument, IndexMismatch, Store
 
     path = Path(args.index)
     if args.rebuild and path.exists():
@@ -107,11 +108,14 @@ def cmd_ingest(args) -> None:
     store = Store(path)
     try:
         report = store.sync(CORPUS / "documents", args.chunker, make_embedder(args.embedder))
-    except IndexMismatch as e:
-        raise SystemExit(str(e))
+    except (IndexMismatch, DuplicateDocument) as e:
+        raise SystemExit(f"Nothing changed in the index. {e}")
     print(report.line())
     for name in ("added", "updated", "removed"):
-        for source in getattr(report, name):
+        sources = getattr(report, name)
+        if len(sources) > 5:
+            print(f"  {name}: {len(sources)} files")
+        for source in sources if len(sources) <= 5 else []:
             print(f"  {name}: {source}")
     meta = store.meta()
     print(f"index {path.name}: {len(store.documents())} documents, {len(store.chunks())} chunks | chunker {meta.get('chunker')} | "
@@ -127,7 +131,7 @@ def cmd_chunks(args) -> None:
         pages = ",".join(map(str, c.pages)) or "-"
         print(f"{c.chunk_id} v{c.version} #{c.position} chars {c.start}-{c.end} pages {pages} | {len(c.text.split())} words | "
               f"{' / '.join(c.sections) or '(title)'}")
-    print(f"{len(chunks)} chunks ({chunks[0].chunker}) from {chunks[0].source}")
+    print(f"{len(chunks)} chunks ({chunks[0].chunker}) from {', '.join(dict.fromkeys(c.source for c in chunks))}")
 
 
 def make_retriever(args, store):
@@ -272,20 +276,74 @@ def cmd_eval(args) -> None:
         print(f"not correct: {', '.join(missed) or 'none'}")
 
 
+def cmd_audit(args) -> None:
+    """Recorded answers (an answer cache) that cite a passage the index no longer serves for them."""
+    import json
+
+    from .evaluate import load_questions
+    from .filters import Filters
+
+    store = open_store(args)
+    questions = load_questions()
+    found, answers = [], 0
+    for name in ("answers", "extras"):
+        path = PROJECT / "recordings" / f"{name}.jsonl"
+        if not path.exists():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            entry = json.loads(line)
+            label, answers = entry["label"], answers + 1
+            q = questions[label["qid"]]
+            claims = json.loads(entry["response"]["choices"][0]["message"]["content"]).get("claims", [])
+            for cid in sorted({cid for claim in claims for cid in claim["chunk_ids"]}):
+                chunk = store.chunk(cid)
+                if chunk is None:
+                    why = "removed from the index"
+                elif label.get("date_filter", True) and not Filters(as_of=q.as_of).allows(chunk):
+                    why = f"{chunk.doc_id} v{chunk.version} is not in force on {q.as_of}"
+                elif label.get("audience") == "public" and chunk.access != "public":
+                    why = f"{chunk.doc_id} is staff-only, cited to a public audience"
+                else:
+                    continue
+                found.append(f"{q.id} {label['model']} {label['method']} {label['prompt']}: [{cid}] {why}")
+    for line in found:
+        print(line)
+    print(f"{answers} recorded answers | {len(found)} citations to passages that are removed, not in force or not allowed")
+
+
 def cmd_info(args) -> None:
+    """How the index was built and what answers depend on: what another person needs to rebuild it."""
+    import hashlib
+    import platform
+    from importlib.metadata import version
+
     from .answer import MAX_TOKENS
+    from .config import PROMPTS, Settings
     from .context import BUDGET
     from .rerank import RERANK_MODEL, RERANK_REVISION
+    from .search import CANDIDATES
 
     store = open_store(args)
     meta = store.meta()
-    print(f"index: {Path(args.index).resolve()}")
-    for key in ("chunker", "embedding_model", "embedding_revision", "updated_at"):
-        print(f"{key}: {meta.get(key, '-')}")
-    print(f"reranker: {RERANK_MODEL} ({RERANK_REVISION})")
-    print(f"documents: {len(store.documents())} | chunks: {len(store.chunks())}")
-    print(f"context budget: {BUDGET} estimated tokens | answer limit: {MAX_TOKENS} tokens | prompts: answer_v1, answer_v2")
-    print("rebuild: python -m policy_assistant ingest --rebuild")
+    docs = store.documents()
+    ids, matrix = store.vectors()
+    fingerprint = hashlib.sha256("".join(f"{d['file']}:{d['content_hash']}\n" for d in docs).encode()).hexdigest()[:12]
+    print(f"index: {Path(args.index).name} | last sync {meta.get('updated_at', '-')}")
+    print(f"documents: {len(docs)} (fingerprint {fingerprint}) | chunks: {len(store.chunks())} | "
+          f"vectors: {len(ids)} x {matrix.shape[1] if len(ids) else 0}")
+    print(f"chunker: {meta.get('chunker', '-')}")
+    print(f"embedding model: {meta.get('embedding_model', 'none')} ({meta.get('embedding_revision', '-')})")
+    print(f"reranker: {RERANK_MODEL} ({RERANK_REVISION}) | candidates: {CANDIDATES}")
+    prompts = ", ".join(f"{p.stem} {hashlib.sha256(p.read_bytes()).hexdigest()[:8]}" for p in sorted(PROMPTS.glob("*.md")))
+    print(f"prompts: {prompts}")
+    print(f"context budget: {BUDGET} estimated tokens | answer limit: {MAX_TOKENS} tokens")
+    settings = Settings.from_env()
+    print(f"answers: provider {settings.provider} | model {settings.model}"
+          + (f" | {settings.base_url}" if settings.base_url else ""))
+    print(f"python {platform.python_version()} | " + " | ".join(
+        f"{name} {version(name)}" for name in ("sentence-transformers", "torch", "pypdf", "openai")))
+    print(f"rebuild: python -m policy_assistant ingest --rebuild --chunker {meta.get('chunker', 'structure')} "
+          f"--embedder {meta.get('embedding_model', 'none')}")
 
 
 def main(argv=None) -> None:
@@ -323,10 +381,12 @@ def main(argv=None) -> None:
             s.add_argument("--closed-book", action="store_true", help="ask the model alone, without any document")
         if name == "eval":
             s.add_argument("--answers", action="store_true", help="also ask the model (the mock replays recordings)")
+    sub.add_parser("audit")
     sub.add_parser("info")
     args = p.parse_args(argv)
     {"inventory": cmd_inventory, "questions": cmd_questions, "parse": cmd_parse, "ingest": cmd_ingest,
-     "chunks": cmd_chunks, "search": cmd_search, "ask": cmd_ask, "eval": cmd_eval, "info": cmd_info}[args.command](args)
+     "chunks": cmd_chunks, "search": cmd_search, "ask": cmd_ask, "eval": cmd_eval, "audit": cmd_audit,
+     "info": cmd_info}[args.command](args)
 
 
 if __name__ == "__main__":
