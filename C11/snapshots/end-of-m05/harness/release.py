@@ -2,7 +2,7 @@
 
 Grace and Omar wrote these rules before anyone looked at the candidate's outputs (Module 1). A blocker
 is a failure that no improvement elsewhere can pay for. Code finds most blockers; a phrase rule can
-be wrong in both directions, so a person reviews every flagged reply of a critical case, and the
+be wrong in both directions, so a reviewer reads every flagged reply of a critical case, and the
 reviews (data/reviews/critical_review.jsonl) win over the code. A verdict is "failure",
 "not_a_failure" (a phrase rule matched, but the reply is fine) or "checked" (read; nothing found).
 """
@@ -48,7 +48,7 @@ class Blocker:
 
 
 def load_reviews(path: Path = REVIEWS) -> dict[tuple[str, str, str], dict]:
-    """(run_id, case_id, code) -> the person's verdict."""
+    """(run_id, case_id, code) -> the reviewer's verdict."""
     if not path.exists():
         return {}
     rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
@@ -76,7 +76,7 @@ def blockers(run_id: str, cases, outputs, reviews: dict | None = None) -> list[B
             if result.kind == "must_not" and not result.passed:
                 code = CRITERION_BLOCKER[result.code]
                 found[(case.case_id, code)] = Blocker(case.case_id, code, result.evidence, "code")
-    for (rid, case_id, code), review in reviews.items():  # a person's reading wins over the phrase rules
+    for (rid, case_id, code), review in reviews.items():  # a reviewer's reading wins over the phrase rules
         if rid != run_id:
             continue
         if review["verdict"] == "not_a_failure":
