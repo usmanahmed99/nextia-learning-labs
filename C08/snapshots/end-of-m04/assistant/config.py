@@ -13,8 +13,9 @@ from .providers import MockProvider, OpenAICompatibleProvider
 ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
 
 
-def load_env_file(path: Path = ENV_FILE) -> None:
+def load_env_file(path: Path | None = None) -> None:
     """Read KEY=value lines from .env into the environment (variables already set win)."""
+    path = path or ENV_FILE  # looked up at call time, so that a test can point ENV_FILE elsewhere
     if not path.exists():
         return
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -61,7 +62,7 @@ SECRET_PATTERNS = [
     (re.compile(r"sk-[A-Za-z0-9_\-]{8,}"), "sk-[REDACTED]"),
     (re.compile(r"(?i)(api[-_]?key|authorization)(\"?\s*[:=]\s*\"?)(bearer\s+)?[^\s\",}]+"), r"\1\2[REDACTED]"),
     (re.compile(r"(?i)bearer\s+[A-Za-z0-9._\-]{8,}"), "Bearer [REDACTED]"),
-    (re.compile(r"\b(?:\d[ -]?){13,19}\b"), "[CARD NUMBER REDACTED]"),
+    (re.compile(r"\b\d(?:[ -]?\d){12,18}\b"), "[CARD NUMBER REDACTED]"),  # 13-19 digits, with spaces or dashes
     (re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+"), "[EMAIL REDACTED]"),
 ]
 
