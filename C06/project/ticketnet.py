@@ -15,7 +15,7 @@ from torch import nn
 
 TEAMS = ["delivery", "returns", "payment", "warranty", "account"]
 PAD, UNK = 0, 1
-MAX_TOKENS = 120  # longer tickets are cut; 99% of tickets are shorter
+MAX_TOKENS = 120  # longer tickets are cut; about 95% of training tickets are shorter
 
 
 # ---------- data ----------
