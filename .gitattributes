@@ -1,3 +1,4 @@
 # Keep data files byte-for-byte, so their SHA-256 checksums match on every system.
 *.csv -text
 *.json -text
+*.jsonl -text
