@@ -4,7 +4,7 @@ Larkfield's ticket assistant, the project of the course *Building Reliable Appli
 
 The assistant reads one support ticket and returns checked data: the `team` that must handle it, `needs_human` (true when a person must take over), a `reply` draft that an agent checks before sending, and, when the ticket names an order, the order's status from a read-only lookup. It never sends anything to a customer and never changes an order.
 
-You need no account and no key. By default the **mock provider** replays answers that real models gave to the same requests when the course was recorded (gpt-6-luna as `chat-small` and gpt-6.1-sol as `chat-strong` on Azure, and Gemma 3 4B on a laptop, 2026-10-08). A live provider is optional (see [Optional: a live model](#optional-a-live-model)).
+You need no account and no key. By default the **mock provider** replays answers that real models gave to the same requests when the course was recorded (gpt-6-luna as `chat-small` and gpt-6.1-sol as `chat-strong` on Azure, and Gemma 3 4B through Ollama on a Mac mini, 2026-10-08). A live provider is optional (see [Optional: a live model](#optional-a-live-model)).
 
 ## Set up (once)
 
@@ -28,6 +28,8 @@ python -m assistant eval --prompt v1           # the 69 tickets of the evaluatio
 python -m assistant eval --prompt v2 --model chat-strong
 python -m assistant usage                      # tokens, time and cost of the calls in logs/usage.jsonl
 python -m assistant.stream T-64704             # a recorded stream, replayed with its real timing
+python -m assistant.stream T-64704 --cancel-after 20   # the agent presses Stop after 20 pieces
+python -m assistant.stream T-64704 --cut-after 40      # the connection breaks after 40 pieces (simulated)
 python -m assistant.raw T-80008                # the request body as JSON
 ```
 
@@ -40,7 +42,7 @@ python -m pytest                 # the deterministic tests, with the recorded an
 python -m pytest -m live         # optional: 5 tickets on your live provider (skipped without one)
 ```
 
-The tests cover a normal ticket, invalid output (real Markdown around the JSON from a local model), a refusal (constructed: no real refusal could be provoked), truncation (real), a timeout and a rate limit (simulated), a blocked tool argument (real) and a repeated-call loop (constructed).
+The tests cover a normal ticket, invalid output (real Markdown around the JSON from a local model), a refusal (constructed: no real refusal could be provoked), truncation (real), a timeout and a rate limit (simulated), a blocked tool argument (real), a repeated-call loop (constructed), and a cancelled and an interrupted stream (the interruption is simulated).
 
 ## Optional: a live model
 

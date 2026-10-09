@@ -12,6 +12,12 @@ def use_the_mock(request, monkeypatch):
         monkeypatch.setenv("ASSISTANT_MODEL", "chat-small")
 
 
+@pytest.fixture(autouse=True)
+def keep_the_usage_log_clean(tmp_path, monkeypatch):
+    """A test run must not add lines to your real logs/usage.jsonl."""
+    monkeypatch.setattr("assistant.usage.LOG_FILE", tmp_path / "usage.jsonl")
+
+
 @pytest.fixture(scope="session")
 def mock():
     return MockProvider()

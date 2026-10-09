@@ -48,7 +48,9 @@ def call_with_retry(call: Callable[[], T], policy: RetryPolicy = RetryPolicy(),
                 raise
             wait = backoff_s(attempt, policy, rng)
             if isinstance(error, RateLimited) and error.retry_after is not None:
-                wait = min(error.retry_after, policy.cap_s)  # the provider said how long to wait
+                if error.retry_after > policy.cap_s:
+                    raise  # the provider asks for a longer wait than we accept: stop, do not come back early
+                wait = max(wait, error.retry_after)  # never earlier than the provider asked
             if waited + wait > policy.max_total_s:
                 raise
             if on_retry:

@@ -26,7 +26,7 @@ def cost_usd(model: str, input_tokens: int, output_tokens: int) -> float | None:
     if model not in PRICES:
         return None
     price_in, price_out = PRICES[model]
-    return (input_tokens * price_in + output_tokens * price_out) / 1_000_000
+    return round((input_tokens * price_in + output_tokens * price_out) / 1_000_000, 8)
 
 
 @dataclass
@@ -36,8 +36,8 @@ class Budget:
 
 
 class UsageLog:
-    def __init__(self, path: Path = LOG_FILE):
-        self.path = path
+    def __init__(self, path: Path | None = None):
+        self.path = path or LOG_FILE  # read at call time, so that the tests can point it elsewhere
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
     def record(self, completion: Completion, model: str, ticket_id: str, prompt: str, status: str = "ok",

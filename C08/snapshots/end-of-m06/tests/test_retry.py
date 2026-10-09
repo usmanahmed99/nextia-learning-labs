@@ -3,7 +3,7 @@ import random
 
 import pytest
 
-from assistant.providers import ProviderError, ProviderTimeout, RateLimited
+from assistant.providers import ProviderError, ProviderTimeout, RateLimited, retry_after_s
 from assistant.retry import RetryPolicy, backoff_s, call_with_retry
 from assistant.simulate import SimulatedProvider
 
@@ -59,3 +59,17 @@ def test_backoff_doubles_up_to_the_cap_and_jitter_stays_below_it():
     assert [backoff_s(a, policy, rng) for a in range(1, 6)] == [0.5, 1, 2, 4, 4]
     jittered = RetryPolicy(base_s=0.5, cap_s=4)
     assert all(0 <= backoff_s(3, jittered, rng) <= 2 for _ in range(100))
+
+
+@pytest.mark.parametrize("headers, wait", [
+    ({"retry-after": "30", "retry-after-ms": "511"}, 0.511),  # the real 429 of 2026-10-08: the precise header wins
+    ({"retry-after": "2"}, 2.0),                               # the standard header alone, in seconds
+    ({}, None),                                                # no header: the backoff decides
+])
+def test_the_wait_comes_from_the_most_precise_header(headers, wait):
+    assert retry_after_s(headers) == wait
+
+
+def test_a_wait_longer_than_the_cap_stops_instead_of_coming_back_early():
+    with pytest.raises(RateLimited):
+        run(["rate_limit:30", "ok"])

@@ -9,10 +9,12 @@ The rest of the assistant builds a request (a dict in the Chat Completions forma
 """
 
 import contextlib
+import email.utils
 import hashlib
 import json
 import time
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator
 
@@ -132,6 +134,28 @@ class MockProvider:
             yield at, piece
 
 
+def retry_after_s(headers) -> float | None:
+    """The wait that a 429 response asks for, in seconds, or None.
+
+    Some providers send `retry-after-ms` (milliseconds, precise) as well as the standard `retry-after`
+    (whole seconds, or an HTTP date). Use the precise one when it is there.
+    """
+    for name, scale in (("retry-after-ms", 0.001), ("retry-after", 1.0)):
+        value = headers.get(name)
+        if value is None:
+            continue
+        try:
+            return max(0.0, float(value) * scale)
+        except ValueError:
+            pass
+        try:  # retry-after can also be a date: "Fri, 09 Oct 2026 02:21:39 GMT"
+            when = email.utils.parsedate_to_datetime(value)
+            return max(0.0, (when - datetime.now(timezone.utc)).total_seconds())
+        except (TypeError, ValueError):
+            pass
+    return None
+
+
 @contextlib.contextmanager
 def translate_errors():
     """Turn the SDK's exceptions into the assistant's own, so that no other file imports `openai`."""
@@ -142,8 +166,7 @@ def translate_errors():
     except openai.APITimeoutError as e:
         raise ProviderTimeout("The provider did not answer within the timeout.") from e
     except openai.RateLimitError as e:
-        wait = e.response.headers.get("retry-after")
-        raise RateLimited("HTTP 429: rate limited.", float(wait) if wait else None) from e
+        raise RateLimited("HTTP 429: rate limited.", retry_after_s(e.response.headers)) from e
     except openai.APIStatusError as e:
         raise ProviderError(f"HTTP {e.status_code}: {e.message}", status=e.status_code) from e
     except openai.APIConnectionError as e:
