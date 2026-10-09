@@ -1,7 +1,7 @@
 # Infrastructure decision: escalation-service
 
-Where Larkfield's escalation model runs, and why. Written by Amira on 2026-10-08
-(C17 Module 4), with Priya (model), Grace (help desk) and Omar (product).
+Where Larkfield's escalation model runs, and why. Written by Amira
+(Module 4 of the deployment course), with Priya (model), Grace (help desk) and Omar (product).
 Change this file when one of its numbers changes.
 
 ## What the model needs
@@ -18,7 +18,7 @@ Change this file when one of its numbers changes.
 
 ## The options (30 days, compute only)
 
-Prices from the Azure Retail Prices API on 2026-10-08, canadacentral, USD, pay-as-you-go. Check again before deploying.
+Prices from the Azure Retail Prices API, canadacentral, USD, pay-as-you-go. Check again before deploying.
 
 | Option | Cost for 30 days | Notes |
 |---|---|---|
@@ -30,8 +30,8 @@ Prices from the Azure Retail Prices API on 2026-10-08, canadacentral, USD, pay-a
 ## The decision
 
 - CPU only.
-- One container on Azure Container Apps, as in C18: 0.5 vCPU and 1 GiB, one worker (`WORKERS=1`).
-  Checked on 2026-10-08 after the benchmark: no change (see below).
+- One container on Azure Container Apps, as in the Docker course: 0.5 vCPU and 1 GiB, one worker (`WORKERS=1`).
+  Checked after the benchmark: no change (see below).
 - At least one replica from 07:00 to 22:00, so that agents do not wait for a cold start.
 - The bundle is baked into the image: each image holds the code and the model that were tested together.
 - Revisit if: the load grows past what one worker serves inside the budget, the model becomes a neural network, or Larkfield serves several models (then compare a managed endpoint again).
@@ -43,7 +43,7 @@ Prices from the Azure Retail Prices API on 2026-10-08, canadacentral, USD, pay-a
 - [x] p50, p95 and throughput with a fixed workload (Benchmark the service).
 - [ ] The cold start and the latency in the cloud, with the network (to measure after the first deployment).
 
-## Measured on a laptop (2026-10-08)
+## Measured on a laptop
 
 Workload: `bench/bench.py`, 1,000 July tickets in file order, one ticket per request, 50 warm-up requests.
 Computer: Apple silicon laptop, Docker Desktop, other programs running. Each number is the middle of five runs.

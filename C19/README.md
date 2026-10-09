@@ -1,4 +1,4 @@
-# C19: CI/CD, Testing and Safe Releases
+# CI/CD, Testing and Safe Releases
 
 Files for [CI/CD, Testing and Safe Releases](https://learning.nextia-ai.com/courses/cicd/).
 
@@ -8,4 +8,4 @@ The reference project is a real repository with real workflow runs: **[usmanahme
 |---|---|---|
 | [`snapshots/`](snapshots) | Modules 2 to 5, final assignment | The `ticket-api-ci` project at the end of each module, from Module 1 to Module 5. [snapshots/README.md](snapshots/README.md) says how to use one. |
 
-The course starts from the end of C18: [`C18/snapshots/end-of-m05`](../C18/snapshots/end-of-m05). The snapshots do not contain the final assignment's solution, a key, a password or any cloud resource.
+The course starts from the end of *Docker and Cloud Essentials for AI Developers*: [`C18/snapshots/end-of-m05`](../C18/snapshots/end-of-m05). The snapshots do not contain the final assignment's solution, a key, a password or any cloud resource.

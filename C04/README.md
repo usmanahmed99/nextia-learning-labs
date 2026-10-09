@@ -1,4 +1,4 @@
-# C04: SQL and Data Preparation for AI
+# SQL and Data Preparation for AI
 
 Data, tools and notebooks for [SQL and Data Preparation for AI](https://learning.nextia-ai.com/courses/sql/).
 

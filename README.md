@@ -8,4 +8,4 @@ Every notebook is self-contained: its first cell installs what it needs and down
 
 Each notebook has a dataset card (`dataset.md`) recording where its data comes from, its licence and why it was chosen. New cards start from [_DATASET-CARD-TEMPLATE.md](_DATASET-CARD-TEMPLATE.md).
 
-Labs are organised by course ID, for example `C04/` for *SQL and Data Preparation for AI*.
+Each course has its own folder, for example `C04/` for *SQL and Data Preparation for AI*.

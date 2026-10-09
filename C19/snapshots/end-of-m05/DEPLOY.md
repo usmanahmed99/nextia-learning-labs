@@ -1,6 +1,6 @@
 # Deployment record: ticket-api 1.1.0
 
-The deployment checklist, the resource inventory and the clean-up record for the practice deployment of C18 Module 5. Every result has a label: **live** (from Azure) or **simulated** (from Docker on this computer). The API key is never written here.
+The deployment checklist, the resource inventory and the clean-up record for the practice deployment of Module 5 of the Docker course. Every result has a label: **live** (from Azure) or **simulated** (from Docker on this computer). The API key is never written here.
 
 - Route: live, Azure Container Apps, region `canadacentral`
 - Date: 2026-10-07
@@ -26,7 +26,7 @@ Deployed image (tag and digest):
 ticketapi4821.azurecr.io/ticket-api:1.1.0@sha256:cfd04194eb1be66f49a40575f75a0b2105a74e172f953df26a355291a5191afd
 ```
 
-Address: `https://ticket-api.nicewater-a307f95a.canadacentral.azurecontainerapps.io` (deleted on 2026-10-07).
+Address: `https://ticket-api.nicewater-a307f95a.canadacentral.azurecontainerapps.io` (deleted after the test run).
 
 The key: a new random key, made for this deployment only. It was in the app's secret `api-key` and in the terminal. It is not in this file, in Git or in the image. Anyone who needs to call the API asks the owner.
 
@@ -84,7 +84,7 @@ Made with `az resource list --resource-group rg-ticket-api-practice -o table` **
 | Local tags | `docker image rm ticketapi4821.azurecr.io/ticket-api:1.1.0 ticketapi4821.azurecr.io/ticket-api:1.1.0-arm64` | `Untagged: …` for both |
 | Registry token | `docker logout ticketapi4821.azurecr.io` | `Removing login credentials for ticketapi4821.azurecr.io` |
 
-Time with resources in Azure: 16:10 to 17:04, about 54 minutes. Expected cost: one day of the Basic registry (US$0.17) and a few cents or less of compute, inside the free grant. Prices checked on 2026-10-07 (Azure Retail Prices API, canadacentral, USD).
+Time with resources in Azure: 16:10 to 17:04, about 54 minutes. Expected cost: one day of the Basic registry (US$0.17) and a few cents or less of compute, inside the free grant. Prices from the Azure Retail Prices API, canadacentral, USD.
 
 Kept on purpose: the local image `ticket-api:1.1.0` and the project.
 

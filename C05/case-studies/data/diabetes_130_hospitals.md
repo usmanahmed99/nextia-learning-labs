@@ -1,6 +1,6 @@
 # Dataset card: Diabetes 130-US hospitals, 1999–2008
 
-Used by C05-M09-L05 *Choose a model for hospital readmissions* (case study). The lead copies this card to labs `C05/case-studies/data/diabetes_130_hospitals.md`.
+Used by the case study *Choose a model for hospital readmissions* in the machine learning course. The lead copies this card to labs `C05/case-studies/data/diabetes_130_hospitals.md`.
 
 | | |
 |---|---|

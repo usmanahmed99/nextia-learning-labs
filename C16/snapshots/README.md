@@ -1,4 +1,4 @@
-# C16 snapshots: ticket-api at the end of each module
+# Snapshots: ticket-api at the end of each module
 
 Each folder here is the `ticket-api` project of [Build and Deploy Your First API](https://learning.nextia-ai.com/courses/api/), as it is after the last lesson of one module. If your project is broken or missing, copy the snapshot of the module that you finished last, and continue with the next lesson.
 
@@ -82,4 +82,4 @@ If you use a snapshot from the end of Module 5 or later, also run the Postman co
 
 ## Tested
 
-Tested on 2026-10-07 with Python 3.14.6 on macOS, from a new folder for each snapshot: install from `requirements-lock.txt`, `python -m pytest`, then `fastapi dev` with a request to `/health` and `/v1/classify`. Results: `end-of-m02` and `end-of-m03` have no tests; `end-of-m04` and `end-of-m05` 2 passed; `end-of-m06` 16 passed; `end-of-m07` 17 passed. The collections ran with no failures against `fastapi run` (6, 7 and 8 requests; 24, 28 and 31 checks), with newman 6.2.2, which runs the same collection format as the Postman CLI. Windows is not tested.
+Tested with Python 3.14.6 on macOS, from a new folder for each snapshot: install from `requirements-lock.txt`, `python -m pytest`, then `fastapi dev` with a request to `/health` and `/v1/classify`. Results: `end-of-m02` and `end-of-m03` have no tests; `end-of-m04` and `end-of-m05` 2 passed; `end-of-m06` 16 passed; `end-of-m07` 17 passed. The collections ran with no failures against `fastapi run` (6, 7 and 8 requests; 24, 28 and 31 checks), with newman 6.2.2, which runs the same collection format as the Postman CLI. Windows is not tested.

@@ -1,4 +1,4 @@
-# C03: Essential Mathematics and Statistics for AI
+# Essential Mathematics and Statistics for AI
 
 Optional notebooks for [Essential Mathematics and Statistics for AI](https://learning.nextia-ai.com/courses/math/).
 

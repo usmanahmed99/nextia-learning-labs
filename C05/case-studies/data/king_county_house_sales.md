@@ -1,6 +1,6 @@
 # Dataset card: King County house sales, May 2014 – May 2015
 
-Used by: C05-M09-L02 *Estimate house prices*, `C05/M09-L02-estimate-house-prices/estimate-house-prices.ipynb`
+Used by: the case study *Estimate house prices* in the machine learning course, `C05/M09-L02-estimate-house-prices/estimate-house-prices.ipynb`
 
 | Field | Value |
 |---|---|

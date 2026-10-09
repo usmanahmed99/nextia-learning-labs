@@ -2,7 +2,7 @@
 
 A minimal design to run `ticket-api:1.1.0` on Azure Container Apps for one practice session, then delete everything. Written before the deployment (Module 4). Module 5 builds it, and `DEPLOY.md` records what was made and removed.
 
-Prices checked on 2026-10-07 (Azure Retail Prices API, canadacentral, USD, pay-as-you-go). Check the current prices before you deploy.
+Prices from the Azure Retail Prices API, canadacentral, USD, pay-as-you-go. Check the current prices before you deploy.
 
 ## What the service needs
 

@@ -1,6 +1,6 @@
 # Nextia Learning notebook branding
 
-Based on the live Nextia Learning logo and theme, retrieved 7 October 2026. The existing logo is preserved.
+Based on the live Nextia Learning logo and theme. The existing logo is preserved.
 
 ## Included
 - Header banners: light and dark, 1600 × 360.

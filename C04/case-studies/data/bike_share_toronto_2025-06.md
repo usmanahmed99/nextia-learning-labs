@@ -1,6 +1,6 @@
 # Dataset card: Bike Share Toronto ridership, June 2025
 
-Used by: C04-M07-L03 *Plan overnight bike rebalancing*, `C04/M07-L03-plan-overnight-bike-rebalancing/plan-overnight-bike-rebalancing.ipynb` (and `-solution.ipynb`). Numbers: `reference/c04/case-studies/cs03_bikes.py`.
+Used by: the case study *Plan overnight bike rebalancing*, `C04/M07-L03-plan-overnight-bike-rebalancing/plan-overnight-bike-rebalancing.ipynb` (and `-solution.ipynb`). Numbers: `reference/c04/case-studies/cs03_bikes.py`.
 
 | Field | Value |
 |---|---|

@@ -1,12 +1,12 @@
-# C18 snapshots: ticket-api at the end of each module
+# Snapshots: ticket-api at the end of each module
 
 Each folder here is the `ticket-api` project of [Docker and Cloud Essentials for AI Developers](https://learning.nextia-ai.com/courses/docker/), as it is after the last lesson of one module. If your project is broken or missing, copy the snapshot of the module that you finished last, and continue with the next lesson.
 
-Module 1 makes no project files. To start Module 2, use C16's last snapshot, [`C16/snapshots/end-of-m07`](../../C16/snapshots/end-of-m07).
+Module 1 makes no project files. To start Module 2, use the last snapshot of *Build and Deploy Your First API*, [`C16/snapshots/end-of-m07`](../../C16/snapshots/end-of-m07).
 
 | Snapshot | Use it to start | What it has |
 |---|---|---|
-| [`end-of-m02`](end-of-m02) | Module 3 | C16's `ticket-api` (version 1.0.0, 17 tests), plus the `Dockerfile` (non-root user `app`), the allowlist `.dockerignore` and `requirements-run.txt`, the exact packages of the image (FastAPI only). |
+| [`end-of-m02`](end-of-m02) | Module 3 | The API course's `ticket-api` (version 1.0.0, 17 tests), plus the `Dockerfile` (non-root user `app`), the allowlist `.dockerignore` and `requirements-run.txt`, the exact packages of the image (FastAPI only). |
 | [`end-of-m03`](end-of-m03) | Module 4 | Version 1.1.0: settings from files (`API_KEY_FILE`), `REQUIRE_API_KEY`, the optional PostgreSQL history (`ticket_api/history.py`, `GET /v1/history`), `compose.yaml` and `.env.example`. 25 tests. |
 | [`end-of-m04`](end-of-m04) | Module 5 | The same code as `end-of-m03`, plus `docs/cloud-design.md`, the cloud design with the resource inventory. |
 | [`end-of-m05`](end-of-m05) | The final assignment | `deploy/containerapp.yaml` (the Azure Container Apps settings), `deploy/local-cloud.yaml` (the same settings on your computer) and `DEPLOY.md` (checklist, inventory and clean-up record). |
@@ -65,8 +65,8 @@ You need Docker. The steps use `end-of-m03` as an example. Use the name of your 
 
    The answer is `{"status":"ok"}`.
 
-To run the tests too, make a virtual environment and install `requirements-lock.txt`, as in C16, then run `python -m pytest`.
+To run the tests too, make a virtual environment and install `requirements-lock.txt`, as in the API course, then run `python -m pytest`.
 
 ## Tested
 
-Tested on 2026-10-07 with Docker Desktop 4.81.0 (Docker Engine 29.6.1, Compose 5.2.0) on macOS, Apple silicon, from a new folder for each snapshot. `end-of-m02`: 17 tests passed, the image built, `/health` and `/v1/classify` answered. `end-of-m03`: 25 tests passed, the image built and answered. `end-of-m05`: `docker compose up -d --build` with the database, a classification and its history; `docker compose down --volumes`; then `deploy/local-cloud.yaml` started, and `/docs` gave `404` as configured. Windows and Linux are not tested.
+Tested with Docker Desktop 4.81.0 (Docker Engine 29.6.1, Compose 5.2.0) on macOS, Apple silicon, from a new folder for each snapshot. `end-of-m02`: 17 tests passed, the image built, `/health` and `/v1/classify` answered. `end-of-m03`: 25 tests passed, the image built and answered. `end-of-m05`: `docker compose up -d --build` with the database, a classification and its history; `docker compose down --volumes`; then `deploy/local-cloud.yaml` started, and `/docs` gave `404` as configured. Windows and Linux are not tested.

@@ -34,7 +34,7 @@ docker compose up -d --build
 | `DATABASE_URL` or `DATABASE_URL_FILE` | No | none | A PostgreSQL URL. Without it, history is off. |
 | `ALLOWED_ORIGINS` | No | none | Sites that may call the API from a browser, separated by commas. |
 | `SHOW_DOCS` | No | `true` | `false` hides `/docs`, `/redoc` and `/openapi.json`. |
-| `CLASSIFIER_MODE`, `CLASSIFIER_TIMEOUT`, `LOG_LEVEL` | No | `keywords`, `2.0`, `INFO` | As in C16. |
+| `CLASSIFIER_MODE`, `CLASSIFIER_TIMEOUT`, `LOG_LEVEL` | No | `keywords`, `2.0`, `INFO` | As in the API course. |
 
 Never put a key or a password in the Dockerfile, in `compose.yaml` or in Git. `.env` and `secrets/` are in `.gitignore` and `.dockerignore`.
 

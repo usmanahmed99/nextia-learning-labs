@@ -1,4 +1,4 @@
-# C05: Machine Learning: From Problem to Reliable Model
+# Machine Learning: From Problem to Reliable Model
 
 Practice files for the course at [learning.nextia-ai.com/courses/ml/](https://learning.nextia-ai.com/courses/ml/).
 
