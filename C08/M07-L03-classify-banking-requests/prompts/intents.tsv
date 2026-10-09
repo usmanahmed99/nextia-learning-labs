@@ -1,0 +1,77 @@
+Refund_not_showing_up	A refund the customer expected does not appear on their statement or balance yet.
+activate_my_card	How to activate a card, or the card cannot be activated.
+age_limit	Minimum age to open an account, or accounts for children.
+apple_pay_or_google_pay	Using Apple Pay or Google Pay, or topping up through them.
+atm_support	Where and at which ATMs the customer can withdraw cash.
+automatic_top_up	Automatic top-ups: how to set them up, their rules and limits.
+balance_not_updated_after_bank_transfer	Money the customer sent into their own account by bank transfer is not in the balance yet.
+balance_not_updated_after_cheque_or_cash_deposit	A cheque or cash deposit is not in the balance yet.
+beneficiary_not_allowed	A transfer failed because the recipient (beneficiary) is not allowed or cannot be added.
+cancel_transfer	The customer wants to cancel or reverse a transfer they made.
+card_about_to_expire	The card expires soon: renewal and getting a replacement.
+card_acceptance	Where the card is accepted: shops, websites, countries.
+card_arrival	An ordered card has not arrived yet, and the customer asks where it is.
+card_delivery_estimate	How long card delivery takes, delivery speed or express delivery, before anything is late.
+card_linking	Linking a card to the app, or using again a card that was thought lost.
+card_not_working	The card does not work at all, in general.
+card_payment_fee_charged	A fee was charged on a card payment.
+card_payment_not_recognised	A card payment the customer does not recognise.
+card_payment_wrong_exchange_rate	A card payment in another currency used a wrong or bad exchange rate.
+card_swallowed	An ATM kept the customer's card.
+cash_withdrawal_charge	A fee was charged on a cash withdrawal.
+cash_withdrawal_not_recognised	A cash withdrawal the customer did not make.
+change_pin	How or where to change the card PIN.
+compromised_card	The card may be compromised: someone else may be using it, fraud.
+contactless_not_working	Contactless payments do not work.
+country_support	Which countries the bank, the account or the card is available in.
+declined_card_payment	A card payment was declined.
+declined_cash_withdrawal	A cash withdrawal at an ATM was declined.
+declined_transfer	A transfer was declined.
+direct_debit_payment_not_recognised	A direct debit, or a debit payment, the customer does not recognise.
+disposable_card_limits	Limits of disposable virtual cards: how many, how often.
+edit_personal_details	Changing personal details, such as the name or the address.
+exchange_charge	Fees for exchanging currency.
+exchange_rate	What the exchange rate is and where it comes from.
+exchange_via_app	How to exchange one currency for another in the app.
+extra_charge_on_statement	An unexplained small extra charge on the statement, for example one pound.
+failed_transfer	A transfer failed or does not go through.
+fiat_currency_support	Which currencies (fiat money) the account can hold or exchange.
+get_disposable_virtual_card	How to get a disposable virtual card, and what it is for.
+get_physical_card	Getting the PIN for a new physical card: where to find it or how to set it.
+getting_spare_card	Ordering an extra or second card.
+getting_virtual_card	How to get a virtual card.
+lost_or_stolen_card	The card is lost or stolen.
+lost_or_stolen_phone	The phone with the app is lost or stolen.
+order_physical_card	How to order a physical card.
+passcode_forgotten	The app passcode or password is forgotten or must be reset.
+pending_card_payment	A card payment shows as pending.
+pending_cash_withdrawal	A cash withdrawal shows as pending.
+pending_top_up	A top-up is pending or slow and has not finished yet.
+pending_transfer	A transfer the customer sent is still pending.
+pin_blocked	The PIN is blocked, for example after wrong tries.
+receiving_money	How to receive money or a salary into the account, including in another currency.
+request_refund	The customer wants to get a refund for a purchase.
+reverted_card_payment?	A card payment was reverted or cancelled and the money came back.
+supported_cards_and_currencies	Which cards and currencies can be used to top up the account.
+terminate_account	The customer wants to close or delete the account.
+top_up_by_bank_transfer_charge	Fees for topping up or receiving money by bank transfer.
+top_up_by_card_charge	Fees for topping up with a card.
+top_up_by_cash_or_cheque	Topping up with cash or a cheque.
+top_up_failed	A top-up failed or was declined.
+top_up_limits	Limits on top-ups: how much or how often.
+top_up_reverted	A top-up went through and was then reverted or cancelled, and the money is gone.
+topping_up_by_card	How to top up with a card, or a card top-up that does not show.
+transaction_charged_twice	The same payment was charged twice.
+transfer_fee_charged	A fee was charged on a transfer.
+transfer_into_account	How to transfer money into the account to add funds.
+transfer_not_received_by_recipient	The customer sent money, and the recipient has not received it.
+transfer_timing	How long transfers take in general, for example from another country.
+unable_to_verify_identity	The identity check does not work, or the customer cannot prove their identity.
+verify_my_identity	How to verify identity: the steps and the documents needed.
+verify_source_of_funds	Where the money in the account came from: checking the source of funds.
+verify_top_up	Verifying a top-up, for example the verification code of a top-up card.
+virtual_card_not_working	A virtual card does not work.
+visa_or_mastercard	Whether the card is Visa or Mastercard.
+why_verify_identity	Why the bank asks to verify identity.
+wrong_amount_of_cash_received	An ATM gave less cash than requested.
+wrong_exchange_rate_for_cash_withdrawal	A cash withdrawal abroad used a wrong or bad exchange rate.
