@@ -1,0 +1,37 @@
+file,doc_id,title,version,effective_from,effective_to,owner,access,language,doc_type,format
+documents/account-and-security.md,account-and-security,Your account and security,2,2026-01-15,,Support (Grace),public,en,policy,md
+documents/contact-and-hours.md,contact-and-hours,Contact us and opening hours,3,2026-09-01,,Customer experience,public,en,help,md
+documents/damaged-in-transit-claims.md,damaged-in-transit-claims,Courier claims for damaged or lost parcels,2,2026-04-15,,Logistics,staff,en,procedure,md
+documents/damaged-or-wrong-items.md,damaged-or-wrong-items,"Damaged, faulty on arrival or wrong items",2,2025-09-01,,Support (Grace),public,en,policy,md
+documents/delivery-policy.html,delivery-policy,Delivery policy,4,2026-04-01,,Logistics,public,en,policy,html
+documents/faq-quebec.md,faq-quebec,Questions fréquentes : clients du Québec,2,2026-06-01,,Customer experience,public,fr,help,md
+documents/garantie-legale-quebec.md,garantie-legale-quebec,Garantie légale au Québec,1,2026-01-01,,Support (Grace),public,fr,policy,md
+documents/gift-cards.md,gift-cards,Gift cards,1,2025-06-01,,Finance,public,en,policy,md
+documents/help-centre-faq.md,help-centre-faq,Help centre: frequently asked questions,7,2026-06-01,,Customer experience,public,en,help,md
+documents/holiday-returns-2025.md,holiday-returns-2025,Holiday returns extension 2025,1,2025-11-15,2026-01-31,Support (Grace),public,en,notice,md
+documents/installation-services.md,installation-services,Assembly and installation services,1,2026-04-01,,Customer experience,public,en,policy,md
+documents/large-item-delivery.md,large-item-delivery,Large item delivery,2,2026-04-01,,Logistics,public,en,policy,md
+documents/live-plants-guarantee.md,live-plants-guarantee,Live plants: delivery and guarantee,1,2026-03-01,,Product team,public,en,policy,md
+documents/loyalty-program.md,loyalty-program,Larkfield Rewards,2,2026-02-01,,Customer experience,public,en,policy,md
+documents/order-changes-and-cancellations.md,order-changes-and-cancellations,Changing or cancelling an order,2,2025-10-01,,Support (Grace),public,en,policy,md
+documents/policy-governance.md,policy-governance,How Larkfield policies are managed,2,2026-01-15,,Support (Grace),public,en,policy,md
+documents/privacy-policy.md,privacy-policy,Privacy policy,3,2025-11-01,,Privacy office,public,en,policy,md
+documents/product-care-bbq-gr310.md,product-care-bbq-gr310,Ember GR-310 gas BBQ: care and safety,1,2025-04-15,,Product team,public,en,guide,md
+documents/product-care-garden-furniture.md,product-care-garden-furniture,Caring for garden furniture,2,2026-03-01,,Product team,public,en,guide,md
+documents/product-care-hedge-trimmer-ht550.md,product-care-hedge-trimmer-ht550,HT-550 corded hedge trimmer: care and use,1,2025-03-01,,Product team,public,en,guide,md
+documents/product-care-pw2200.pdf,product-care-pw2200,PW-2200 electric pressure washer: care and parts,2,2025-05-01,,Product team,public,en,guide,pdf
+documents/product-care-pw2400.md,product-care-pw2400,PW-2400 electric pressure washer: care and parts,1,2026-03-01,,Product team,public,en,guide,md
+documents/promotions-and-discount-codes.md,promotions-and-discount-codes,Promotions and discount codes,2,2026-05-01,,Customer experience,public,en,policy,md
+documents/recycling-and-take-back.md,recycling-and-take-back,Recycling and take-back,1,2025-08-01,,Customer experience,public,en,policy,md
+documents/refund-approval-procedure.md,refund-approval-procedure,Manual refunds and goodwill credits,2,2026-03-15,,Finance,staff,en,procedure,md
+documents/refunds-and-payments.md,refunds-and-payments,Refunds and payments policy,3,2026-02-01,,Finance,public,en,policy,md
+documents/returns-policy.v3.md,returns-policy,Returns policy,3,2025-03-01,2026-10-31,Support (Grace),public,en,policy,md
+documents/returns-policy.v4.html,returns-policy,Returns policy,4,2026-11-01,,Support (Grace),public,en,policy,html
+documents/safety-escalation-procedure.md,safety-escalation-procedure,Safety escalation procedure,2,2026-05-01,,Product safety,staff,en,procedure,md
+documents/safety-notice-kt180.md,safety-notice-kt180,"Safety notice: KT-180 electric kettle, lots 2607 and 2608",1,2026-09-20,,Product safety,public,en,notice,md
+documents/staff-discount-and-perks.md,staff-discount-and-perks,Staff discount and perks,1,2026-01-01,,People team,staff,en,procedure,md
+documents/supplier-aquaflow-hose-reels.md,supplier-aquaflow-hose-reels,AquaFlow hose reels: product information,1,2026-07-01,,"Supplier content (AquaFlow), published by the Product team",public,en,supplier,md
+documents/support-team-routing.md,support-team-routing,Help desk teams and when a person must handle a ticket,4,2026-09-15,,Support (Grace),staff,en,procedure,md
+documents/trade-accounts.md,trade-accounts,Trade and business accounts,1,2026-01-01,,Finance,public,en,policy,md
+documents/warranty-claims-procedure.md,warranty-claims-procedure,Warranty claims procedure,3,2026-01-01,,Support (Grace),staff,en,procedure,md
+documents/warranty-policy.pdf,warranty-policy,Larkfield warranty policy,5,2026-01-01,,Support (Grace),public,en,policy,pdf
