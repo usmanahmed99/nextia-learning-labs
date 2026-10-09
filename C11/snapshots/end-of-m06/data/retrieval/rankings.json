@@ -1,5 +1,5 @@
 {
- "about": "Saved search results from the RAG course's policy assistant (Larkfield's synthetic policy collection, CC0). Questions and relevance labels were written by an AI model acting as that course's author, by reading the documents, then checked by a script; no person has reviewed them. Search ran locally on 2026-10-09.",
+ "about": "Saved search results from the RAG course's policy assistant (Larkfield's synthetic policy collection, CC0). Questions and relevance labels were written by that course's author, by reading the documents, then checked by a script; it is one person's reading. Search ran locally on 2026-10-09.",
  "methods": {
   "hybrid": "keyword + vector, merged with reciprocal rank fusion",
   "keyword": "keyword search: SQLite full-text search with BM25",
