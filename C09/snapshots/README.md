@@ -10,7 +10,7 @@ Each folder here is the `policy-assistant` project of [RAG: Building AI That Use
 | [`end-of-m03`](end-of-m03) | Module 4 | Embeddings (`embed.py`), vector, hybrid and reranked search (`dense.py`, `hybrid.py`, `rerank.py`, `search.py`), date and access filters (`filters.py`), query rewriting (`rewrite.py`), the provider adapter and settings, recorded rewrites and embed-small vectors. | 48 |
 | [`end-of-m04`](end-of-m04) | Module 5 | The context (`context.py`), answers with claims and passage IDs (`answer.py`), citation checks (`cite.py`), `ask` (`assistant.py`), recorded answers. | 74 |
 | [`end-of-m05`](end-of-m05) | Module 6 | Recall@k, precision@k, MRR and the answer checks (`evaluate.py`), `eval --answers`. | 77 |
-| [`end-of-m06`](end-of-m06) | The final assignment | Incremental ingestion and deletions (`store.py`), access checks on citations, prompt `answer_v2` against instructions hidden in documents, `info`, the full README. The course-end project. | 86 |
+| [`end-of-m06`](end-of-m06) | The final assignment | Incremental ingestion and deletions (`store.py`), access checks on citations, prompt `answer_v2` against instructions hidden in documents, `info`, the full README. The course-end project. | 90 |
 
 Each snapshot has only what the lessons' guided practice makes. It does not have the answers to the "Your turn" tasks.
 
