@@ -58,4 +58,4 @@ The steps use `end-of-m03` as an example. Use the name of your snapshot.
 
 ## Tested
 
-Tested on 2026-10-08 with Python 3.14.6 and Docker Desktop (Docker Engine 29.6.1) on macOS, Apple silicon, from a new folder for each snapshot: `end-of-m01` 18 tests passed, `end-of-m02` 20, `end-of-m03` to `end-of-m05` 42, without `MODEL_SHA256` in the shell. `end-of-m05`: `docker compose up -d --build --wait` → healthy, `/v1/model` → 1.0.0, `parity/check_parity.py` → 14 of 14. Windows and Linux are not tested.
+Tested with Python 3.14.6 and Docker Desktop (Docker Engine 29.6.1) on macOS, Apple silicon, from a new folder for each snapshot: `end-of-m01` 18 tests passed, `end-of-m02` 20, `end-of-m03` to `end-of-m05` 42, without `MODEL_SHA256` in the shell. `end-of-m05`: `docker compose up -d --build --wait` → healthy, `/v1/model` → 1.0.0, `parity/check_parity.py` → 14 of 14. Windows and Linux are not tested.

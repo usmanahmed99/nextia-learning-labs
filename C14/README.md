@@ -36,4 +36,4 @@ To start a scenario again, add `--reset`. It deletes `c14-lab` first, but only i
 
 The script does not change your global Git settings. In the clones, it sets `pull.ff only` and `merge.conflictStyle zdiff3`. Every commit that the script makes has a fixed author and date, so its hash is the same as in the lessons. The one exception is the `m02-l03` commit above.
 
-Tested on 2026-10-05 with Git 2.54 on macOS (`sh` and `dash`) and Alpine Linux (BusyBox `sh`), with the same hashes on each. It uses only POSIX `sh`, so it is meant to run in Git Bash on Windows too, but that is not tested yet. Git 2.40 or later is required. The four scenarios for Modules 1 and 2 were added on 2026-10-07 and tested on macOS only (`sh` and `dash`, Git 2.54).
+Tested with Git 2.54 on macOS (`sh` and `dash`) and Alpine Linux (BusyBox `sh`), with the same hashes on each. It uses only POSIX `sh`, so it is meant to run in Git Bash on Windows too, but that is not tested yet. Git 2.40 or later is required. The four scenarios for Modules 1 and 2 were tested on macOS only (`sh` and `dash`, Git 2.54).
