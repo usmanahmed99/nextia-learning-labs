@@ -1,0 +1,101 @@
+# Demand assumptions for Larkfield's document assistant: what we expect people to do.
+# Every value is a range [low, base, high]. Its evidence starts with "verified:" (we checked it,
+# and the text says how) or "assumed:" (our best guess, and the text says why).
+# Check the assumed values first: they are where the proposal is most likely to be wrong.
+
+[settings]
+days_per_month = 30
+peak_hour_share = [0.10, 0.112, 0.20]   # share of a day's questions in the busiest hour
+peak_minute_factor = [3.0, 5.35, 8.0]   # the busiest minute's rate / the busiest hour's rate
+
+[settings.evidence]
+peak_hour_share = "verified: 0.112 is the busiest hour's share of the busiest day in the help desk's ticket workload (measured.toml: ticket_peak_hour_share); the high value allows for a lunch-time rush"
+peak_minute_factor = "verified: 5.35 is the busiest minute / the busiest hour in the same workload (measured.toml: ticket_peak_minute_factor)"
+
+[tenants.larkfield]
+name = "Larkfield"
+joins_in_month = 0
+staff_users = [8, 10, 12]
+staff_questions_per_day = [10, 20, 40]
+customers_per_day = [300, 800, 1600]
+customer_questions_per_day = [1.0, 1.5, 3.0]
+documents = [36, 36, 60]
+words_per_document = [150, 181, 400]
+document_changes_per_month = [4, 8, 20]
+user_growth_per_month = [0.0, 0.02, 0.05]
+
+[tenants.larkfield.evidence]
+staff_users = "verified: Grace's help-desk rota has 10 agents; 8 to 12 with holidays and the busy season"
+staff_questions_per_day = "assumed: Grace's estimate after a one-week trial; check it with the usage log in the first month"
+customers_per_day = "assumed: about one asking customer per new ticket today (822 tickets a day); 0.4 to 2 times that"
+customer_questions_per_day = "assumed: no data yet; a customer usually asks one question and a follow-up"
+documents = "verified: 36 documents in the collection today; 60 if the product guides are added next year"
+words_per_document = "verified: 181 words on average in today's collection (the RAG course's documents)"
+document_changes_per_month = "assumed: Mei's estimate from last year's policy updates"
+user_growth_per_month = "assumed: Omar's sales plan (2% a month); 5% if the assistant goes on the home page"
+
+[tenants.bramble]
+name = "Bramble Books"
+joins_in_month = 0
+staff_users = [1, 2, 3]
+staff_questions_per_day = [5, 10, 20]
+customers_per_day = [10, 30, 80]
+customer_questions_per_day = [1.0, 1.5, 3.0]
+documents = [3, 25, 60]
+words_per_document = [150, 300, 800]
+document_changes_per_month = [1, 3, 8]
+user_growth_per_month = [0.0, 0.03, 0.08]
+
+[tenants.bramble.evidence]
+staff_users = "verified: Ines and one part-time helper"
+staff_questions_per_day = "assumed: half of a Larkfield agent's questions"
+customers_per_day = "assumed: Ines's guess from the shop's web traffic"
+customer_questions_per_day = "assumed: the same as Larkfield's customers"
+documents = "verified: 3 documents today; Ines plans about 25 (the high value: every supplier's terms)"
+words_per_document = "assumed: book-shop policies are longer than Larkfield's; Ines will send samples"
+document_changes_per_month = "assumed: Ines's estimate"
+user_growth_per_month = "assumed: a small shop that grows faster than Larkfield"
+
+[tenants.shop3]
+name = "Third shop"
+joins_in_month = 4
+staff_users = [1, 3, 6]
+staff_questions_per_day = [5, 15, 30]
+customers_per_day = [20, 100, 400]
+customer_questions_per_day = [1.0, 1.5, 3.0]
+documents = [10, 30, 80]
+words_per_document = [150, 250, 600]
+document_changes_per_month = [1, 4, 10]
+user_growth_per_month = [0.0, 0.02, 0.05]
+
+[tenants.shop3.evidence]
+staff_users = "assumed: Omar's sales plan; no shop has signed yet"
+staff_questions_per_day = "assumed: between Bramble Books and Larkfield"
+customers_per_day = "assumed: between Bramble Books and Larkfield"
+customer_questions_per_day = "assumed: the same as Larkfield's customers"
+documents = "assumed: between Bramble Books and Larkfield"
+words_per_document = "assumed: between Bramble Books and Larkfield"
+document_changes_per_month = "assumed: between Bramble Books and Larkfield"
+user_growth_per_month = "assumed: the same as Larkfield"
+
+[tenants.shop4]
+name = "Fourth shop"
+joins_in_month = 9
+staff_users = [1, 3, 6]
+staff_questions_per_day = [5, 15, 30]
+customers_per_day = [20, 100, 400]
+customer_questions_per_day = [1.0, 1.5, 3.0]
+documents = [10, 30, 80]
+words_per_document = [150, 250, 600]
+document_changes_per_month = [1, 4, 10]
+user_growth_per_month = [0.0, 0.02, 0.05]
+
+[tenants.shop4.evidence]
+staff_users = "assumed: Omar's sales plan; no shop has signed yet"
+staff_questions_per_day = "assumed: between Bramble Books and Larkfield"
+customers_per_day = "assumed: between Bramble Books and Larkfield"
+customer_questions_per_day = "assumed: the same as Larkfield's customers"
+documents = "assumed: between Bramble Books and Larkfield"
+words_per_document = "assumed: between Bramble Books and Larkfield"
+document_changes_per_month = "assumed: between Bramble Books and Larkfield"
+user_growth_per_month = "assumed: the same as Larkfield"

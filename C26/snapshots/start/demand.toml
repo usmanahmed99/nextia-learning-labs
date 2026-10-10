@@ -1,0 +1,29 @@
+# Demand assumptions for Larkfield's document assistant: what we expect people to do.
+# Every value is a range [low, base, high]. Its evidence starts with "verified:" (we checked it,
+# and the text says how) or "assumed:" (our best guess, and the text says why).
+# You fill in this file in Module 1 (lesson "Demand assumptions").
+
+[settings]
+days_per_month = 30
+peak_hour_share = [0.10, 0.112, 0.20]   # share of a day's questions in the busiest hour
+peak_minute_factor = [3.0, 5.35, 8.0]   # the busiest minute's rate / the busiest hour's rate
+
+[settings.evidence]
+peak_hour_share = "verified: 0.112 is the busiest hour's share of the busiest day in the help desk's ticket workload (measured.toml: ticket_peak_hour_share); the high value allows for a lunch-time rush"
+peak_minute_factor = "verified: 5.35 is the busiest minute / the busiest hour in the same workload (measured.toml: ticket_peak_minute_factor)"
+
+# One table per tenant (shop). Copy this example, remove the # signs and fill it in.
+# [tenants.larkfield]
+# name = "Larkfield"
+# joins_in_month = 0                      # 0 = uses the assistant now
+# staff_users = [low, base, high]
+# staff_questions_per_day = [...]         # per staff user
+# customers_per_day = [...]               # customers who ask at least one question in a day
+# customer_questions_per_day = [...]      # per such customer
+# documents = [...]
+# words_per_document = [...]
+# document_changes_per_month = [...]      # new or updated documents
+# user_growth_per_month = [...]           # 0.02 = 2% more questions every month
+#
+# [tenants.larkfield.evidence]
+# staff_users = "verified: ..."           # or "assumed: ..."; one line for every value above

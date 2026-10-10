@@ -1,0 +1,49 @@
+# The design's sizing choices (plain values) and its operating assumptions (ranges with evidence).
+
+[answers]
+model = "small"          # small | strong | routed: which model answers (Module 4 compares them)
+
+[database]
+price = "pg_b1ms_hour"   # a key of prices.toml: PostgreSQL flexible server, Burstable B1ms
+storage_gb = 32          # provisioned storage; 32 GB is the smallest size
+
+[api]
+min_replicas = 1         # one replica is always running, so the first question does not wait
+vcpu = 0.5
+memory_gib = 1.0
+
+[worker]                 # ingestion: runs only while there is work (scale to zero)
+vcpu = 0.5
+memory_gib = 1.0
+
+[assumptions]
+busy_hours_per_day = [8, 12, 18]
+log_kb_per_question = [1, 4, 10]
+retry_share = [0.0, 0.02, 0.05]
+cache_hit_share = [0.0, 0.1, 0.3]
+versions_kept = [1, 3, 10]
+response_overhead_bytes = [200, 500, 2000]
+backup_size_factor = [1, 2, 7]
+
+[assumptions.evidence]
+busy_hours_per_day = "assumed: the shops' opening hours (9 to 21); customers also ask at night"
+log_kb_per_question = "assumed: a request log line, a trace and an audit line; check it with the first week's logs"
+retry_share = "assumed: the scaling course's runs had no 429 below the quota; 5% for a busy day"
+cache_hit_share = "assumed: the real repeat rate of questions is unknown until the assistant runs; the scaling course's constructed mix reached 46.5%"
+versions_kept = "assumed: Mei keeps old versions for audits; 10 if every edit is kept"
+response_overhead_bytes = "assumed: JSON keys, IDs and HTTP headers around the answer"
+backup_size_factor = "assumed: 7 days of backups; changes are small, so the backup is 1 to 7 times the data"
+
+[labour]                 # Module 4, lesson 3: people's time is a cost too
+rate_per_hour = [40, 60, 100]
+managed_database_hours_per_month = [0.5, 1, 2]
+own_database_hours_per_month = [2, 6, 12]
+own_model_hours_per_month = [4, 10, 20]
+own_model_tokens_per_second = [10, 30, 60]
+
+[labour.evidence]
+rate_per_hour = "assumed: a loaded cost of Amira's time; set your own rate"
+managed_database_hours_per_month = "assumed: reading alerts and testing a restore once a month"
+own_database_hours_per_month = "assumed: updates, backups, monitoring and one restore test a month on a server we run"
+own_model_hours_per_month = "assumed: updates, monitoring and quality checks of a model we host"
+own_model_tokens_per_second = "assumed: a small open model on one T4 GPU; not measured in this course"

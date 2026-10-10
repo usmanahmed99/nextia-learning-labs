@@ -1,0 +1,197 @@
+# Measured values for the cost model. Each one comes from a real run; "source" says which.
+# Times change with the computer and the network; the shape of the result lasts.
+
+[answer_small_tokens_in]
+value = 946.5
+unit = "tokens per answer (mean)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-small"
+
+[answer_small_tokens_out]
+value = 152.75
+unit = "tokens per answer (mean)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-small"
+
+[answer_small_p50_s]
+value = 1.5165
+unit = "seconds (median)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-small"
+
+[answer_small_p95_s]
+value = 3.7935
+unit = "seconds (95th percentile)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-small"
+
+[answer_small_correct_share]
+value = 0.8657
+unit = "share of questions"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-small; correct by the RAG course's automatic checks"
+
+[answer_strong_tokens_in]
+value = 946.5
+unit = "tokens per answer (mean)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-strong"
+
+[answer_strong_tokens_out]
+value = 130.4
+unit = "tokens per answer (mean)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-strong"
+
+[answer_strong_p50_s]
+value = 2.485
+unit = "seconds (median)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-strong"
+
+[answer_strong_p95_s]
+value = 6.5555
+unit = "seconds (95th percentile)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-strong"
+
+[answer_strong_correct_share]
+value = 0.8582
+unit = "share of questions"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, chat-strong"
+
+[routed_escalation_share]
+value = 0.2015
+unit = "share of questions"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time; chat-small first, chat-strong again when chat-small declines or a citation check fails"
+
+[routed_p50_s]
+value = 1.7585
+unit = "seconds (median)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, routed (both calls when escalated)"
+
+[routed_p95_s]
+value = 4.0165
+unit = "seconds (95th percentile)"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, routed"
+
+[routed_correct_share]
+value = 0.8657
+unit = "share of questions"
+source = "measured: the course team's run, the RAG course's 67 questions with its best search results, 2 passes, one question at a time, routed"
+
+[question_embed_tokens]
+value = 15.51
+unit = "tokens per question (mean)"
+source = "measured: the course team's run, the 67 questions embedded with embed-small, one call each"
+
+[question_embed_p50_s]
+value = 0.3426
+unit = "seconds (median)"
+source = "measured: the same run"
+
+[retrieval_rerank_s]
+value = 0.3218
+unit = "seconds (median)"
+source = "measured: the RAG course, reranking 20 candidates on the course team's laptop CPU"
+
+[ingest_embed_tokens_per_word]
+value = 1.4844
+unit = "tokens per word"
+source = "measured: the course team's run, all 36 documents of the RAG course's collection, one call per document"
+
+[ingest_embed_s_per_document]
+value = 0.3891
+unit = "seconds (median)"
+source = "measured: the same run"
+
+[chunks_per_1000_words]
+value = 28.37
+unit = "chunks"
+source = "measured: the RAG course's structure chunker on its collection"
+
+[chunk_text_bytes_per_word]
+value = 6.47
+unit = "bytes per word"
+source = "measured: the chunk texts of the RAG course's collection"
+
+[document_file_bytes]
+value = 1515
+unit = "bytes per document (mean)"
+source = "measured: the files of the RAG course's collection (Markdown, HTML and PDF)"
+
+[vector_row_bytes]
+value = 4800
+unit = "bytes per vector"
+source = "measured: the databases course, 10,000 vectors of 384 numbers with their table and HNSW index"
+
+[answer_row_bytes]
+value = 372
+unit = "bytes per stored answer (mean)"
+source = "measured: the question and chat-small's JSON answer with citations in the course team's run (a real row adds a few IDs)"
+
+[answer_response_bytes]
+value = 308
+unit = "bytes per answer (mean)"
+source = "measured: the JSON answers of chat-small in the course team's run"
+
+[summary_tokens_in_fixed]
+value = 68.8
+unit = "tokens per summary"
+source = "measured: the course team's run, a summary of each document with chat-small (straight-line fit)"
+
+[summary_tokens_in_per_word]
+value = 1.2874
+unit = "tokens per word"
+source = "measured: the same run and fit"
+
+[summary_small_tokens_out]
+value = 184.7
+unit = "tokens per summary (mean)"
+source = "measured: the same run"
+
+[summary_small_p50_s]
+value = 1.89
+unit = "seconds (median)"
+source = "measured: the same run"
+
+[embed_one_call_per_chunk_s_per_document]
+value = 2.81
+unit = "seconds per document (median)"
+source = "measured: the course team's run, the 8 longest documents, one embedding call per chunk, 3 passes"
+
+[embed_one_call_per_document_s]
+value = 0.437
+unit = "seconds per document (median)"
+source = "measured: the same documents, all chunks of a document in one call (the same tokens and the same cost)"
+
+[provider_cached_share_long_prompt]
+value = 0.9998
+unit = "share of input tokens"
+source = "measured: the same long request (about 17,850 tokens) sent again; the provider reported this share as cached"
+
+[provider_cached_share_answer_prompt]
+value = 0.0
+unit = "share of input tokens"
+source = "measured: a normal answer request (863 tokens) sent 4 times; nothing was reported as cached"
+
+[cache_hit_s]
+value = 0.0138
+unit = "seconds (median)"
+source = "measured: the scaling course, an answer from the cache (Valkey) including the database work before it"
+
+[provider_quota_requests_per_minute]
+value = 100
+unit = "requests per minute"
+source = "measured: the provider's rate-limit headers in the scaling course's recordings (chat-small; the course team's account)"
+
+[provider_quota_tokens_per_minute]
+value = 100000
+unit = "tokens per minute"
+source = "measured: the same headers"
+
+[ticket_peak_hour_share]
+value = 0.1123
+unit = "share of a day"
+source = "measured: the scaling course's workload (synthetic tickets), busiest hour / busiest day"
+
+[ticket_peak_minute_factor]
+value = 5.35
+unit = "times the busiest hour's rate"
+source = "measured: the same workload, busiest minute / (busiest hour / 60)"
+
+[restore_mb_per_s]
+value = 40.0
+unit = "MB per second"
+source = "measured: the databases course, restoring its large database on the course team's laptop"
