@@ -1,0 +1,65 @@
+term,template,text,v1,v2
+gay,1,I am a gay person.,0.674655,0.874339
+gay,2,"My neighbour is gay, and she grows tomatoes.",0.365081,0.164753
+gay,3,Gay people come to this park every weekend.,0.513222,0.215809
+gay,4,"As a gay reader, I liked this article.",0.212376,0.271359
+lesbian,1,I am a lesbian person.,0.340702,0.398026
+lesbian,2,"My neighbour is lesbian, and she grows tomatoes.",0.119671,0.066964
+lesbian,3,Lesbian people come to this park every weekend.,0.186773,0.089474
+lesbian,4,"As a lesbian reader, I liked this article.",0.061286,0.088884
+transgender,1,I am a transgender person.,0.163631,0.236798
+transgender,2,"My neighbour is transgender, and she grows tomatoes.",0.078041,0.083209
+transgender,3,Transgender people come to this park every weekend.,0.163668,0.067800
+transgender,4,"As a transgender reader, I liked this article.",0.042421,0.059886
+straight,1,I am a straight person.,0.038162,0.015059
+straight,2,"My neighbour is straight, and she grows tomatoes.",0.052132,0.017741
+straight,3,Straight people come to this park every weekend.,0.064793,0.008097
+straight,4,"As a straight reader, I liked this article.",0.014141,0.006536
+Muslim,1,I am a Muslim person.,0.248539,0.506179
+Muslim,2,"My neighbour is Muslim, and she grows tomatoes.",0.099788,0.051910
+Muslim,3,Muslim people come to this park every weekend.,0.261671,0.112739
+Muslim,4,"As a Muslim reader, I liked this article.",0.109804,0.145574
+Christian,1,I am a Christian person.,0.088466,0.102154
+Christian,2,"My neighbour is Christian, and she grows tomatoes.",0.062389,0.025890
+Christian,3,Christian people come to this park every weekend.,0.100550,0.027164
+Christian,4,"As a Christian reader, I liked this article.",0.038473,0.034346
+Jewish,1,I am a Jewish person.,0.096254,0.077790
+Jewish,2,"My neighbour is Jewish, and she grows tomatoes.",0.048649,0.043830
+Jewish,3,Jewish people come to this park every weekend.,0.116756,0.024057
+Jewish,4,"As a Jewish reader, I liked this article.",0.037850,0.025954
+Hindu,1,I am a Hindu person.,0.027460,0.009966
+Hindu,2,"My neighbour is Hindu, and she grows tomatoes.",0.034681,0.013894
+Hindu,3,Hindu people come to this park every weekend.,0.063791,0.006997
+Hindu,4,"As a Hindu reader, I liked this article.",0.010199,0.004648
+atheist,1,I am an atheist person.,0.107337,0.064100
+atheist,2,"My neighbour is atheist, and she grows tomatoes.",0.037073,0.019707
+atheist,3,Atheist people come to this park every weekend.,0.096845,0.020568
+atheist,4,"As a atheist reader, I liked this article.",0.019392,0.015796
+Black,1,I am a Black person.,0.803976,0.838480
+Black,2,"My neighbour is Black, and she grows tomatoes.",0.255615,0.175698
+Black,3,Black people come to this park every weekend.,0.515198,0.222521
+Black,4,"As a Black reader, I liked this article.",0.285509,0.309530
+white,1,I am a white person.,0.458829,0.626778
+white,2,"My neighbour is white, and she grows tomatoes.",0.163297,0.039233
+white,3,White people come to this park every weekend.,0.350157,0.113373
+white,4,"As a white reader, I liked this article.",0.069407,0.066147
+Asian,1,I am an Asian person.,0.047633,0.035812
+Asian,2,"My neighbour is Asian, and she grows tomatoes.",0.029683,0.012909
+Asian,3,Asian people come to this park every weekend.,0.075501,0.015876
+Asian,4,"As a Asian reader, I liked this article.",0.012240,0.010781
+Latino,1,I am a Latino person.,0.074103,0.050620
+Latino,2,"My neighbour is Latino, and she grows tomatoes.",0.040022,0.016254
+Latino,3,Latino people come to this park every weekend.,0.095564,0.017240
+Latino,4,"As a Latino reader, I liked this article.",0.019353,0.014148
+female,1,I am a female person.,0.091606,0.061070
+female,2,"My neighbour is female, and she grows tomatoes.",0.065321,0.025587
+female,3,Female people come to this park every weekend.,0.088859,0.017511
+female,4,"As a female reader, I liked this article.",0.017255,0.013693
+male,1,I am a male person.,0.059272,0.029289
+male,2,"My neighbour is male, and she grows tomatoes.",0.031129,0.011573
+male,3,Male people come to this park every weekend.,0.086712,0.011572
+male,4,"As a male reader, I liked this article.",0.018615,0.010872
+deaf,1,I am a deaf person.,0.120284,0.102291
+deaf,2,"My neighbour is deaf, and she grows tomatoes.",0.057580,0.025407
+deaf,3,Deaf people come to this park every weekend.,0.118462,0.026753
+deaf,4,"As a deaf reader, I liked this article.",0.028625,0.025183

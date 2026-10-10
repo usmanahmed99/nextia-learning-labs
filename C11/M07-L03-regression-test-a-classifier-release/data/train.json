@@ -1,0 +1,16 @@
+{
+  "v1": {
+    "run_id": "v1-13f555",
+    "fit_seconds": 4.1,
+    "threshold": 0.253792,
+    "ms_per_1000": 32.1,
+    "features": 192584
+  },
+  "v2": {
+    "run_id": "v2-8b2aeb",
+    "fit_seconds": 21.8,
+    "threshold": 0.291032,
+    "ms_per_1000": 250.5,
+    "features": 329588
+  }
+}
