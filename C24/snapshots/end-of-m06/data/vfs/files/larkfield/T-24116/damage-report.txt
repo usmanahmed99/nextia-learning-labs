@@ -1,0 +1,5 @@
+Damage report
+Order: LK-644445
+Item: terracotta pot (set of 3)
+What happened: one pot broken
+Photo taken: yes

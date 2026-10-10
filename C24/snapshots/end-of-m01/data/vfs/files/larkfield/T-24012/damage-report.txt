@@ -1,0 +1,5 @@
+Damage report
+Order: LK-507862
+Item: tool chest
+What happened: broken hinge, dented lid
+Photo taken: yes
