@@ -15,6 +15,10 @@ design (start, prompt, filter, controls, secure) and the step number.
    one". The workflow then checks the replayed decision against YOUR state, as it checks any model
    decision: a call that does not fit is refused, never trusted.
 3. Nothing recorded for this task and step: RecordingNotFound. The loop stops with a clear reason.
+   The same happens when a recorded reply (a decision with no tool call) would follow a tool call that
+   this run no longer offers, for example a tool turned off by an incident switch. The recorded reply
+   was written after that tool returned data; this run never read the data, so the reply may quote
+   things that did not happen here. It is not replayed.
 """
 
 import contextlib
@@ -157,6 +161,11 @@ class MockProvider:
                     f"{meta.get('case_id')} / step {meta.get('step')} (key {key}). The mock replays only the "
                     "tasks, designs and models that were recorded for the course.")
             entry = self._pick(entries, repeat)
+            stale = _unoffered_tools_used(request) if _is_reply(entry) else []
+            if stale:
+                raise RecordingNotFound(
+                    f"The recording no longer matches: a tool it used is disabled ({', '.join(stale)}). The "
+                    "recorded reply is not replayed, because it may quote data that this run never read.")
             note = (f"Your request at step {meta.get('step')} differs from the recorded one. The recorded "
                     "decision is replayed and checked against your state.")
         else:
@@ -170,6 +179,21 @@ class MockProvider:
         completion.note = note
         completion.recorded_at = entry.get("at", "")
         return completion
+
+
+def _is_reply(entry: dict) -> bool:
+    """A recorded final reply: a response with no tool call."""
+    if "response" not in entry:
+        return False
+    return not entry["response"]["choices"][0]["message"].get("tool_calls")
+
+
+def _unoffered_tools_used(request: dict) -> list[str]:
+    """The tools that this run called earlier but no longer offers (for example, turned off)."""
+    offered = {t["function"]["name"] for t in request.get("tools") or []}
+    used = [c["function"]["name"] for m in request.get("messages") or [] if m.get("role") == "assistant"
+            for c in m.get("tool_calls") or []]
+    return sorted({name for name in used if name not in offered})
 
 
 def retry_after_s(headers) -> float | None:
