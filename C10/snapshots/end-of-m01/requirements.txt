@@ -1,0 +1,4 @@
+# Tested on 2026-10-09 with Python 3.12 (macOS, Apple silicon). Latest stable versions on that date.
+openai==3.27.0
+pydantic==2.14.0
+pytest==9.1.1

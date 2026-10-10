@@ -1,0 +1,16 @@
+{
+ "all": {
+  "same": 70,
+  "different": []
+ },
+ "resume_rule": {
+  "new ID per call (not idempotent)": {
+   "node_runs": 2,
+   "refunds": 2
+  },
+  "operation ID from the ticket and action": {
+   "node_runs": 2,
+   "refunds": 1
+  }
+ }
+}

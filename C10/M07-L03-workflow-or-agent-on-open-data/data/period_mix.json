@@ -1,0 +1,24 @@
+{
+ "dev_period": {
+  "parking": 31872,
+  "streets": 25135,
+  "environmental_services": 20802,
+  "neighborhood_policing": 11766,
+  "right_of_way_enforcement": 4537,
+  "parks": 3491,
+  "traffic_engineering": 927,
+  "development_services": 888,
+  "storm_water_enforcement": 581
+ },
+ "test_period": {
+  "parking": 57048,
+  "environmental_services": 42281,
+  "streets": 34435,
+  "neighborhood_policing": 24893,
+  "parks": 5220,
+  "right_of_way_enforcement": 2822,
+  "development_services": 1387,
+  "traffic_engineering": 1048,
+  "storm_water_enforcement": 827
+ }
+}

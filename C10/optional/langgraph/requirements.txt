@@ -1,0 +1,5 @@
+# Tested on 2026-10-09 with Python 3.12. Optional: only for the LangGraph comparison.
+langgraph==1.2.14
+langgraph-checkpoint-sqlite==3.1.1
+openai==3.27.0
+pydantic==2.14.0
