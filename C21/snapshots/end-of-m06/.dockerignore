@@ -1,0 +1,9 @@
+# Send only what the image needs. Everything else stays out of the build,
+# including .env, secrets/, .venv and .git.
+*
+!requirements-run.txt
+!pyproject.toml
+!ticket_api/
+!simulator/
+!migrations/
+**/__pycache__/

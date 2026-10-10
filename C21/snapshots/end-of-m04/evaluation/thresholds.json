@@ -1,0 +1,9 @@
+{
+  "split": "holdout",
+  "baseline": "evaluation/baseline.json",
+  "min_accuracy": 0.6,
+  "min_recall_per_category": 0.5,
+  "max_accuracy_drop": 0.02,
+  "max_recall_drop": 0.1,
+  "must_pass_all": true
+}

@@ -1,0 +1,29 @@
+[project]
+name = "ticket-api"
+version = "1.4.0"
+description = "Classifies support tickets into a category and a priority."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]==0.142.2",
+    "psycopg[binary,pool]==3.3.6",
+    "psycopg-pool==3.3.3",
+    "azure-storage-blob==12.31.0",
+    "redis==8.1.0",
+]
+
+[tool.fastapi]
+entrypoint = "ticket_api.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["azurite: needs Azurite (docker compose up -d azurite); run with pytest -m azurite"]
+addopts = "-m 'not azurite'"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# data/generate.py makes the practice data; it is not part of the API.
+extend-exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]

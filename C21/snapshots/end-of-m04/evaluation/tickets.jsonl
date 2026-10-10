@@ -1,0 +1,51 @@
+{"id": "E001", "split": "dev", "subject": "Overcharged this month", "body": "My bill is higher than my plan.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E002", "split": "dev", "subject": "Receipt missing", "body": "I need a receipt for my last order.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E003", "split": "dev", "subject": "Reset link does not work", "body": "The reset link in the email says expired.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E004", "split": "dev", "subject": "Verification code never comes", "body": "I wait for the code but nothing.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E005", "split": "dev", "subject": "Package not delivered", "body": "The package shows delivered but it is not here.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E006", "split": "dev", "subject": "Shipment delayed", "body": "When will my shipment come?", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E007", "split": "dev", "subject": "Change email address", "body": "Please change the email address on my profile.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E008", "split": "dev", "subject": "Delete my data", "body": "Please delete my profile and data.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E009", "split": "dev", "subject": "Charged twice for March", "body": "Same invoice two times.", "category": "billing", "priority": 1, "must_pass": false}
+{"id": "E010", "split": "dev", "subject": "Locked out", "body": "I am locked out after three tries.", "category": "login", "priority": 1, "must_pass": false}
+{"id": "E011", "split": "dev", "subject": "Parcel lost", "body": "The courier says the parcel is lost.", "category": "shipping", "priority": 1, "must_pass": false}
+{"id": "E012", "split": "dev", "subject": "Add a user", "body": "How do I add a user to our team?", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E013", "split": "dev", "subject": "Subscription renewal", "body": "Why did my subscription renew?", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E014", "split": "dev", "subject": "2FA app changed", "body": "I have a new phone and no 2fa codes.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E015", "split": "dev", "subject": "Order never arrived", "body": "It never arrived and it was a gift.", "category": "shipping", "priority": 1, "must_pass": false}
+{"id": "E016", "split": "dev", "subject": "Thank you", "body": "Great service, thanks.", "category": "other", "priority": 3, "must_pass": false}
+{"id": "E017", "split": "dev", "subject": "Feature idea", "body": "Could you add a dark mode?", "category": "other", "priority": 3, "must_pass": false}
+{"id": "E018", "split": "dev", "subject": "Refund please", "body": "I returned it last week, refund please.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E019", "split": "holdout", "subject": "Charged twice", "body": "My card was charged twice for one order.", "category": "billing", "priority": 1, "must_pass": true}
+{"id": "E020", "split": "holdout", "subject": "Invoice address wrong", "body": "The invoice has my old address.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E021", "split": "holdout", "subject": "Refund not received", "body": "I was promised a refund ten days ago.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E022", "split": "holdout", "subject": "Payment failed", "body": "My payment failed but the money left my bank.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E023", "split": "holdout", "subject": "Bill for a plan I cancelled", "body": "I got a bill after I cancelled.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E024", "split": "holdout", "subject": "Need a receipt for tax", "body": "Can you send a receipt for my taxes?", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E025", "split": "holdout", "subject": "Overcharged on renewal", "body": "I was overcharged when my subscription renewed.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E026", "split": "holdout", "subject": "Locked out of the app", "body": "I am locked out and cannot work.", "category": "login", "priority": 1, "must_pass": true}
+{"id": "E027", "split": "holdout", "subject": "Forgot password", "body": "How do I change my password?", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E028", "split": "holdout", "subject": "Can't sign in", "body": "I can't sign in since this morning.", "category": "login", "priority": 1, "must_pass": false}
+{"id": "E029", "split": "holdout", "subject": "Code by SMS does not arrive", "body": "The verification code by SMS never arrives.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E030", "split": "holdout", "subject": "Two-factor reset", "body": "I lost the phone with my two-factor app.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E031", "split": "holdout", "subject": "Sign in loop", "body": "After I sign in, the page sends me back.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E032", "split": "holdout", "subject": "Reset link expired", "body": "Every reset link expires before I click it.", "category": "login", "priority": 2, "must_pass": false}
+{"id": "E033", "split": "holdout", "subject": "Parcel lost in transit", "body": "The tracking stopped and the parcel is lost.", "category": "shipping", "priority": 1, "must_pass": true}
+{"id": "E034", "split": "holdout", "subject": "Where is my package", "body": "My package is two days late.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E035", "split": "holdout", "subject": "Wrong delivery address", "body": "The delivery went to my neighbour.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E036", "split": "holdout", "subject": "Courier was rude", "body": "The courier left the box in the rain.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E037", "split": "holdout", "subject": "Tracking number invalid", "body": "The tracking number does not work.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E038", "split": "holdout", "subject": "Shipment split", "body": "Half of my shipment arrived.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E039", "split": "holdout", "subject": "Says delivered, not here", "body": "It says delivered but nothing arrived.", "category": "shipping", "priority": 2, "must_pass": false}
+{"id": "E040", "split": "holdout", "subject": "Rename our company", "body": "Please change our company name.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E041", "split": "holdout", "subject": "Remove a user", "body": "Remove the user Tom from our account.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E042", "split": "holdout", "subject": "Update profile photo", "body": "How do I change my profile picture?", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E043", "split": "holdout", "subject": "New email address", "body": "I have a new email address for the account.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E044", "split": "holdout", "subject": "Close my account", "body": "Please close my account.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E045", "split": "holdout", "subject": "Delete my profile", "body": "Delete my profile, I do not use it.", "category": "account", "priority": 2, "must_pass": false}
+{"id": "E046", "split": "holdout", "subject": "Lovely staff", "body": "Your staff were very kind.", "category": "other", "priority": 3, "must_pass": false}
+{"id": "E047", "split": "holdout", "subject": "Opening hours", "body": "Are you open on public holidays?", "category": "other", "priority": 3, "must_pass": false}
+{"id": "E048", "split": "holdout", "subject": "Job application", "body": "Do you have jobs in marketing?", "category": "other", "priority": 3, "must_pass": false}
+{"id": "E049", "split": "holdout", "subject": "Money gone, no order", "body": "The money left my bank but I have no order.", "category": "billing", "priority": 2, "must_pass": false}
+{"id": "E050", "split": "holdout", "subject": "Cannot get in", "body": "I cannot get in to the app on my phone.", "category": "login", "priority": 1, "must_pass": false}
+{"id": "E051", "split": "holdout", "subject": "Two more seats", "body": "Our team needs two more seats.", "category": "account", "priority": 2, "must_pass": false}

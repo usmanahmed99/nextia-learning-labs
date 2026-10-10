@@ -1,0 +1,13 @@
+{
+  "classifier": "keywords-1.0",
+  "split": "holdout",
+  "cases": 33,
+  "accuracy": 0.636,
+  "recall": {
+    "account": 0.571,
+    "billing": 0.625,
+    "login": 0.625,
+    "other": 1.0,
+    "shipping": 0.571
+  }
+}
