@@ -37,7 +37,7 @@ Two more applications are registered for the course: `ticket-cli` (public, PKCE,
 | `JWKS_CACHE_SECONDS` | `600` | how long the provider's keys are kept |
 | `JWKS_MIN_REFRESH_SECONDS` | `10` | an unknown key ID makes the API fetch the keys again, at most this often |
 | `SESSION_KEY` | (from `python -m idp init`) | encrypts the refresh tokens of the sessions |
-| `SESSION_COOKIE_SECURE` | `false` on your computer, `true` on a server | a Secure cookie is sent only over HTTPS |
+| `SESSION_COOKIE_SECURE` | `false` on your computer, `true` on a server | a Secure cookie is meant for HTTPS only; Chrome and Firefox also send it to `127.0.0.1` over HTTP, Safari does not |
 | `SESSION_IDLE_MINUTES`, `SESSION_MAX_HOURS` | `30`, `8` | when a session ends |
 | `ALLOWED_ORIGINS` | (empty) | other sites whose JavaScript may call the API (CORS) |
 

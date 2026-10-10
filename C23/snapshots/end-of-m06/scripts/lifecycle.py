@@ -54,7 +54,7 @@ def remove(client: TestClient, say) -> dict:
     grace = headers("usr-grace")
     out = {}
     say("Camille (staff at Larkfield) has a valid access token, a queued export, and a cached")
-    say("answer (similar tickets of T-30002). Grace removes her from Larkfield.")
+    say("answer (similar tickets of T-30002). Grace removes them from Larkfield.")
     assert client.get(f"{L}/tickets/T-30002/similar", headers=camille).status_code == 200
     job = client.post(f"{L}/exports", json={}, headers=camille).json()["job_id"]
     t0 = time.perf_counter()
@@ -77,10 +77,10 @@ def remove(client: TestClient, say) -> dict:
     outcome = run_once(Database(settings.database_url, pool=False))
     reason = sql("SELECT reason FROM jobs WHERE job_id = %s", (job,))[0]["reason"]
     out["queued_job"] = {"outcome": dict(outcome).get(job), "reason": reason}
-    say(f"  her queued export, run now: {dict(outcome).get(job)} ({reason})")
+    say(f"  their queued export, run now: {dict(outcome).get(job)} ({reason})")
     r = client.get(f"{B}/tickets/T-40001", headers=camille)
     out["other_membership"] = r.status_code
-    say(f"  her other membership (read-only at Bramble Books): {r.status_code}")
+    say(f"  their other membership (read-only at Bramble Books): {r.status_code}")
     restore_member("usr-camille", "larkfield", "staff")
     return out
 
@@ -149,7 +149,7 @@ def membership_cache(_, say, seconds: float = 30) -> dict:
             time.sleep(0.5)
         stale = round(time.perf_counter() - t0, 1)
     restore_member("usr-camille", "larkfield", "staff")
-    say(f"  Camille kept reading Larkfield's tickets for {stale} s after her removal.")
+    say(f"  Camille kept reading Larkfield's tickets for {stale} s after their removal.")
     return {"cache_seconds": seconds, "stale_access_s": stale}
 
 

@@ -87,7 +87,7 @@ PowerShell: `$t = python -m scripts.login --user usr-sam --print-access-token; c
 | `python -m scripts.bench [--row-security off]` | measure the ticket list | 4 |
 | `python -m scripts.worker [--once]` | run the background jobs | 5 |
 | `python -m scripts.lifecycle all` | how long access lasts after a change | 5 |
-| `python -m scripts.audit [--check]` | the audit events | 5, 6 |
+| `python -m scripts.audit [--check]` | the audit events | 6 |
 | `python -m scripts.matrix_report` | the access-control test report (`docs/test-report.md`) | 6 |
 
 The databases course's commands still work (`scripts.explain`, `scripts.backup`, `scripts.scan`, ...).

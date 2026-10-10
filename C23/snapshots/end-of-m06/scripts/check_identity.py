@@ -100,8 +100,8 @@ def main() -> int:
         https or not s.session_cookie_secure,
         f"cookie Secure={s.session_cookie_secure}, redirect URI over "
         f"{'HTTPS' if https else 'HTTP'}",
-        "A Secure cookie is not sent over plain HTTP: use HTTPS, or (on your own computer "
-        "only) SESSION_COOKIE_SECURE=false.",
+        "Safari (WebKit) does not send a Secure cookie over plain HTTP, not even to "
+        "127.0.0.1: use HTTPS, or (on your own computer only) SESSION_COOKIE_SECURE=false.",
     )
     report(
         s.oidc_audience == "ticket-api",

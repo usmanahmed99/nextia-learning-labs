@@ -24,7 +24,8 @@ This route was tested with Keycloak 26.8.0 on macOS (Apple silicon).
 
 3. Put the four lines it prints into `.env` (instead of the practice provider's `OIDC_ISSUER`
    and `OIDC_CLIENT_SECRET`), and run the two `INSERT` statements it prints in `psql`. Keycloak
-   gives Sam a new user ID, so he needs his own membership.
+   gives Sam a new user ID, so he needs his own membership. If you already signed in as `sam`
+   once, the API has made his user row: run only the membership `INSERT`.
 4. Start the API (`fastapi dev`), open http://127.0.0.1:8000/app/ and sign in as `sam` with the
    password that step 2 printed. Check the settings with `python -m scripts.check_identity`.
 5. Delete everything: `docker rm -f ticket-keycloak`, and put the practice lines back in `.env`.

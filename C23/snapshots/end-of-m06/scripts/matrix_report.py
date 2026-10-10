@@ -4,7 +4,8 @@
                                                 docs/test-report.md and reports/access-matrix.json
 
 The report is built from the test results themselves (pytest's JUnit XML), not from the
-expected values: a failing row shows as FAIL with what the API answered.
+expected values: a failing cell shows as FAIL, and a check that did not run (for example
+without a database) shows as SKIPPED and is never counted as passed.
 """
 
 import json
@@ -51,8 +52,13 @@ def run_tests() -> dict[str, dict[str, str]]:
         for case in ET.parse(xml).getroot().iter("testcase"):
             name = case.get("name")
             test, params = name.split("[", 1)
-            failed = case.find("failure") is not None or case.find("error") is not None
-            results[test][params.rstrip("]")] = "FAIL" if failed else "pass"
+            if case.find("failure") is not None or case.find("error") is not None:
+                outcome = "FAIL"
+            elif case.find("skipped") is not None:  # not run (no database): never a pass
+                outcome = "SKIPPED"
+            else:
+                outcome = "pass"
+            results[test][params.rstrip("]")] = outcome
     return results
 
 
@@ -112,10 +118,13 @@ def main() -> int:
         want = "403" if kind == "no scope" else "401"
         out.append(f"- {kind}: {ok} of {len(cases)} routes answered {want}")
     (ROOT / "docs" / "test-report.md").write_text("\n".join(out) + "\n", encoding="utf-8")
+    skipped = sum(v == "SKIPPED" for r in results.values() for v in r.values())
     print(
         f"{passed} of {total} checks passed. Wrote docs/test-report.md and"
         " reports/access-matrix.json."
     )
+    if skipped:
+        print(f"{skipped} checks did not run (skipped). Is PostgreSQL running?")
     return 0 if passed == total else 1
 
 

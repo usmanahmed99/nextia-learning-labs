@@ -15,12 +15,13 @@ from dataclasses import replace
 
 from idp.store import Store
 from idp.tokens import Signer
-from ticket_api.config import load_settings
+from ticket_api.config import load_env, load_settings
 
 ALL_SCOPES = "tickets:read tickets:write members:manage"
 
 
 def issuer() -> str:
+    load_env()  # OIDC_ISSUER from the environment or from .env, as the API reads it
     return os.environ.get("OIDC_ISSUER") or "http://localhost:8400"
 
 
