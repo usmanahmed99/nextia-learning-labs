@@ -1,0 +1,2298 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Ticket Classifier API",
+    "description": "\nClassifies support tickets into a category and a priority, and keeps the help\ndesk's tickets, messages and files.\n\nThe classifier is a deterministic mock: it uses keywords, so the same text\nalways gives the same result. Every error has the same shape:\n`{\"error\": {\"code\": ..., \"message\": ..., \"request_id\": ..., \"fields\": [...]}}`.\n",
+    "version": "1.4.0"
+  },
+  "paths": {
+    "/v1/categories": {
+      "get": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "List the ticket categories",
+        "operationId": "list_categories_v1_categories_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/classify": {
+      "post": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Classify a support ticket",
+        "description": "Predicts the category and priority of one ticket from its subject and body. The same text always gives the same result.",
+        "operationId": "classify_v1_classify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TicketIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The predicted category and priority",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Classification"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The request body is too large.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "A field is missing or not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The classifier is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/history": {
+      "get": {
+        "tags": [
+          "tickets",
+          "history"
+        ],
+        "summary": "List recent classifications",
+        "description": "Returns the newest classifications first. History is off when the server has no DATABASE_URL.",
+        "operationId": "list_history_v1_history_get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "How many to return.",
+              "default": 10,
+              "title": "Limit"
+            },
+            "description": "How many to return."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoryList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "History is off, or the database does not answer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tickets": {
+      "get": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "List tickets",
+        "operationId": "list_tickets_v1_tickets_get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "open",
+                    "pending",
+                    "resolved",
+                    "closed"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "team",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "billing",
+                    "login",
+                    "shipping",
+                    "account",
+                    "other"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Team"
+            }
+          },
+          {
+            "name": "customer_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^C-[0-9]{4,5}$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Customer Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "How many tickets per page.",
+              "default": 20,
+              "title": "Limit"
+            },
+            "description": "How many tickets per page."
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The `next` value of the previous page.",
+              "title": "After"
+            },
+            "description": "The `next` value of the previous page."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database is not available or busy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Send a new ticket",
+        "description": "Saves the ticket and does its AI work: classify, draft a reply, embed.",
+        "operationId": "create_ticket_v1_tickets_post",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTicket"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewTicketResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The AI provider gave an answer that is not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The AI provider or the database is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tickets/{ticket_id}": {
+      "get": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Read one ticket with its messages and files",
+        "operationId": "get_ticket_v1_tickets__ticket_id__get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ticket_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^T-[0-9]{5,6}$",
+              "examples": [
+                "T-30002"
+              ],
+              "title": "Ticket Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database is not available or busy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tickets/{ticket_id}/messages": {
+      "post": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Add a message to a ticket",
+        "operationId": "add_message_v1_tickets__ticket_id__messages_post",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ticket_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^T-[0-9]{5,6}$",
+              "examples": [
+                "T-30002"
+              ],
+              "title": "Ticket Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database is not available or busy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tickets/{ticket_id}/similar": {
+      "get": {
+        "tags": [
+          "tickets"
+        ],
+        "summary": "Find similar tickets",
+        "description": "The tickets whose text is closest in meaning, by their vectors (pgvector).",
+        "operationId": "similar_v1_tickets__ticket_id__similar_get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ticket_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^T-[0-9]{5,6}$",
+              "examples": [
+                "T-30002"
+              ],
+              "title": "Ticket Id"
+            }
+          },
+          {
+            "name": "k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 5,
+              "title": "K"
+            }
+          },
+          {
+            "name": "team",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "billing",
+                    "login",
+                    "shipping",
+                    "account",
+                    "other"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Team"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "open",
+                    "pending",
+                    "resolved",
+                    "closed"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimilarList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket, or no vector.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database is not available or busy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/answers": {
+      "post": {
+        "tags": [
+          "answers"
+        ],
+        "summary": "Answer a question",
+        "operationId": "answer_question_v1_answers_post",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "x-customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^C-[0-9]{4,5}$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Customer-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Question"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Answer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The AI provider or the database is busy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tickets/{ticket_id}/attachments": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Start an upload",
+        "operationId": "start_upload_v1_tickets__ticket_id__attachments_post",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ticket_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^T-[0-9]{5,6}$",
+              "examples": [
+                "T-30002"
+              ],
+              "title": "Ticket Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachmentIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadLink"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The file is too large.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket or attachment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database or the file storage is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attachments/{attachment_id}/complete": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Check an uploaded file and keep it",
+        "operationId": "complete_upload_v1_attachments__attachment_id__complete_post",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "attachment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Attachment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentInfo"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The file is not uploaded yet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The file is too large.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The file is not the one announced.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket or attachment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database or the file storage is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attachments/{attachment_id}/download": {
+      "get": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Get a download link",
+        "operationId": "download_v1_attachments__attachment_id__download_get",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "attachment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Attachment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadLink"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing or wrong.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such ticket or attachment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The database or the file storage is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Check that the service runs",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Check that the service can classify tickets",
+        "operationId": "ready_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readiness"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Not ready.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AiRun": {
+        "properties": {
+          "task": {
+            "type": "string",
+            "enum": [
+              "classify",
+              "draft_reply",
+              "embed"
+            ],
+            "title": "Task"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "The model, as the provider named it."
+          },
+          "latency_ms": {
+            "type": "integer",
+            "title": "Latency Ms"
+          },
+          "tokens_in": {
+            "type": "integer",
+            "title": "Tokens In"
+          },
+          "tokens_out": {
+            "type": "integer",
+            "title": "Tokens Out"
+          },
+          "cost_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Usd",
+            "description": "From the dated prices in prices.py."
+          }
+        },
+        "type": "object",
+        "required": [
+          "task",
+          "model",
+          "latency_ms",
+          "tokens_in",
+          "tokens_out",
+          "cost_usd"
+        ],
+        "title": "AiRun",
+        "description": "One call to the AI provider."
+      },
+      "Answer": {
+        "properties": {
+          "answer": {
+            "type": "string",
+            "title": "Answer"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope",
+            "description": "Whose answer this is: \"customer:<id>\" or \"staff\"."
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sources",
+            "description": "The documents the answer used."
+          },
+          "cached": {
+            "type": "boolean",
+            "title": "Cached"
+          }
+        },
+        "type": "object",
+        "required": [
+          "answer",
+          "scope",
+          "sources",
+          "cached"
+        ],
+        "title": "Answer"
+      },
+      "AttachmentIn": {
+        "properties": {
+          "file_name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "File Name"
+          },
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "image/png",
+              "image/jpeg",
+              "application/pdf",
+              "text/plain"
+            ],
+            "title": "Content Type"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Size Bytes",
+            "description": "The size of the file. The API checks it after the upload."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "file_name",
+          "content_type",
+          "size_bytes"
+        ],
+        "title": "AttachmentIn",
+        "description": "The file that a client wants to upload.",
+        "examples": [
+          {
+            "content_type": "image/png",
+            "file_name": "photo-1.png",
+            "size_bytes": 48213
+          }
+        ]
+      },
+      "AttachmentInfo": {
+        "properties": {
+          "attachment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Attachment Id"
+          },
+          "file_name": {
+            "type": "string",
+            "title": "File Name"
+          },
+          "content_type": {
+            "type": "string",
+            "title": "Content Type"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "title": "Size Bytes"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "stored",
+              "rejected"
+            ],
+            "title": "Status"
+          },
+          "uploaded_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uploaded At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "attachment_id",
+          "file_name",
+          "content_type",
+          "size_bytes",
+          "status",
+          "uploaded_at"
+        ],
+        "title": "AttachmentInfo"
+      },
+      "CategoryList": {
+        "properties": {
+          "categories": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "billing",
+                "login",
+                "shipping",
+                "account",
+                "other"
+              ]
+            },
+            "type": "array",
+            "title": "Categories",
+            "description": "Every category that /v1/classify can return."
+          }
+        },
+        "type": "object",
+        "required": [
+          "categories"
+        ],
+        "title": "CategoryList"
+      },
+      "Classification": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Category",
+            "description": "The team that should handle the ticket."
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority",
+            "description": "1 is the most urgent, 3 the least."
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "Deprecated: use score. The same value. Removed in version 2.0.",
+            "deprecated": true
+          },
+          "score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score",
+            "description": "How sure the classifier is, from 0 to 1."
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version",
+            "description": "The classifier that made the prediction."
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "priority",
+          "confidence",
+          "score",
+          "model_version"
+        ],
+        "title": "Classification",
+        "description": "The predicted category and priority of a ticket.",
+        "examples": [
+          {
+            "category": "billing",
+            "confidence": 0.9,
+            "model_version": "keywords-1.0",
+            "priority": 1,
+            "score": 0.9
+          }
+        ]
+      },
+      "DownloadLink": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "GET the file from this URL before it expires."
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "expires_at"
+        ],
+        "title": "DownloadLink"
+      },
+      "ErrorDetail": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "A stable code that a program can check."
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "A short explanation for a person."
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id",
+            "description": "Give this ID when you report a problem."
+          },
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Fields",
+            "description": "The request fields that are not valid, if any.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorDetail"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "examples": [
+          {
+            "error": {
+              "code": "invalid_request",
+              "fields": [
+                "subject"
+              ],
+              "message": "The request is not valid."
+            }
+          }
+        ]
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Health": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Health"
+      },
+      "HistoryItem": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id",
+            "description": "The request that made the classification."
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Category"
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence"
+          },
+          "score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "When the API made it (UTC)."
+          }
+        },
+        "type": "object",
+        "required": [
+          "request_id",
+          "category",
+          "priority",
+          "confidence",
+          "score",
+          "model_version",
+          "created_at"
+        ],
+        "title": "HistoryItem",
+        "description": "One classification that the API made. It has no ticket text."
+      },
+      "HistoryList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HistoryItem"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "The newest classification first."
+          }
+        },
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "HistoryList"
+      },
+      "Message": {
+        "properties": {
+          "message_id": {
+            "type": "integer",
+            "title": "Message Id"
+          },
+          "author": {
+            "type": "string",
+            "enum": [
+              "customer",
+              "agent"
+            ],
+            "title": "Author"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "message_id",
+          "author",
+          "body",
+          "created_at"
+        ],
+        "title": "Message"
+      },
+      "MessageIn": {
+        "properties": {
+          "author": {
+            "type": "string",
+            "enum": [
+              "customer",
+              "agent"
+            ],
+            "title": "Author"
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Body"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "author",
+          "body"
+        ],
+        "title": "MessageIn",
+        "description": "A new message on a ticket.",
+        "examples": [
+          {
+            "author": "agent",
+            "body": "We have sent a new parcel today."
+          }
+        ]
+      },
+      "NewTicket": {
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "pattern": "^C-[0-9]{4,5}$",
+            "title": "Customer Id"
+          },
+          "subject": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Subject"
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 5000,
+            "title": "Body",
+            "default": ""
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "email",
+              "web_form",
+              "chat",
+              "phone"
+            ],
+            "title": "Channel",
+            "default": "web_form"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "customer_id",
+          "subject"
+        ],
+        "title": "NewTicket",
+        "description": "A ticket that a customer sends.",
+        "examples": [
+          {
+            "body": "My card was charged two times for the same order.",
+            "channel": "web_form",
+            "customer_id": "C-0022",
+            "subject": "Charged twice for order LK-182074"
+          }
+        ]
+      },
+      "NewTicketResult": {
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "title": "Ticket Id",
+            "examples": [
+              "T-500001"
+            ]
+          },
+          "customer_id": {
+            "type": "string",
+            "title": "Customer Id"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "team": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Team",
+            "description": "Chosen by the AI provider."
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "pending",
+              "resolved",
+              "closed"
+            ],
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "draft_reply": {
+            "type": "string",
+            "title": "Draft Reply",
+            "description": "A first reply for a person to check."
+          },
+          "embedding_version": {
+            "type": "string",
+            "title": "Embedding Version"
+          },
+          "ai_runs": {
+            "items": {
+              "$ref": "#/components/schemas/AiRun"
+            },
+            "type": "array",
+            "title": "Ai Runs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ticket_id",
+          "customer_id",
+          "subject",
+          "team",
+          "priority",
+          "status",
+          "created_at",
+          "draft_reply",
+          "embedding_version",
+          "ai_runs"
+        ],
+        "title": "NewTicketResult",
+        "description": "The new ticket, after the AI work."
+      },
+      "Question": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 3,
+            "title": "Question"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question"
+        ],
+        "title": "Question",
+        "examples": [
+          {
+            "question": "How do I return a damaged item?"
+          }
+        ]
+      },
+      "Readiness": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ready",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Readiness"
+      },
+      "SimilarList": {
+        "properties": {
+          "embedding_version": {
+            "type": "string",
+            "title": "Embedding Version"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SimilarTicket"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "The closest ticket first."
+          }
+        },
+        "type": "object",
+        "required": [
+          "embedding_version",
+          "items"
+        ],
+        "title": "SimilarList"
+      },
+      "SimilarTicket": {
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "title": "Ticket Id"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "team": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Team"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "pending",
+              "resolved",
+              "closed"
+            ],
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "distance": {
+            "type": "number",
+            "title": "Distance",
+            "description": "Cosine distance: 0 is the same direction, 2 the opposite."
+          }
+        },
+        "type": "object",
+        "required": [
+          "ticket_id",
+          "subject",
+          "team",
+          "status",
+          "created_at",
+          "distance"
+        ],
+        "title": "SimilarTicket"
+      },
+      "TicketDetail": {
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "title": "Ticket Id"
+          },
+          "customer_id": {
+            "type": "string",
+            "title": "Customer Id"
+          },
+          "customer_name": {
+            "type": "string",
+            "title": "Customer Name"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "channel": {
+            "type": "string",
+            "title": "Channel"
+          },
+          "team": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Team"
+          },
+          "priority": {
+            "type": "integer",
+            "title": "Priority"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "pending",
+              "resolved",
+              "closed"
+            ],
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "closed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closed At"
+          },
+          "message_count": {
+            "type": "integer",
+            "title": "Message Count"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "type": "array",
+            "title": "Messages"
+          },
+          "attachments": {
+            "items": {
+              "$ref": "#/components/schemas/AttachmentInfo"
+            },
+            "type": "array",
+            "title": "Attachments"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ticket_id",
+          "customer_id",
+          "customer_name",
+          "subject",
+          "body",
+          "channel",
+          "team",
+          "priority",
+          "status",
+          "created_at",
+          "updated_at",
+          "closed_at",
+          "message_count",
+          "messages",
+          "attachments"
+        ],
+        "title": "TicketDetail"
+      },
+      "TicketIn": {
+        "properties": {
+          "subject": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Subject",
+            "description": "The short title of the ticket."
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 5000,
+            "title": "Body",
+            "description": "The customer's message. Optional.",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "title": "TicketIn",
+        "description": "A support ticket to classify.",
+        "examples": [
+          {
+            "body": "My card was charged two times for the same invoice.",
+            "subject": "Charged twice for March"
+          }
+        ]
+      },
+      "TicketPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/TicketSummary"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "The newest ticket first."
+          },
+          "next": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next",
+            "description": "Give this value as `after` to get the next page. Empty on the last page."
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next"
+        ],
+        "title": "TicketPage"
+      },
+      "TicketSummary": {
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "title": "Ticket Id",
+            "examples": [
+              "T-30002"
+            ]
+          },
+          "customer_id": {
+            "type": "string",
+            "title": "Customer Id"
+          },
+          "customer_name": {
+            "type": "string",
+            "title": "Customer Name"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "team": {
+            "type": "string",
+            "enum": [
+              "billing",
+              "login",
+              "shipping",
+              "account",
+              "other"
+            ],
+            "title": "Team"
+          },
+          "priority": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Priority"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "pending",
+              "resolved",
+              "closed"
+            ],
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "message_count": {
+            "type": "integer",
+            "title": "Message Count",
+            "description": "Messages after the first one."
+          },
+          "last_message_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Message At"
+          },
+          "last_run_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run Model",
+            "description": "The model of the ticket's latest AI run."
+          },
+          "last_run_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ticket_id",
+          "customer_id",
+          "customer_name",
+          "subject",
+          "team",
+          "priority",
+          "status",
+          "created_at",
+          "message_count",
+          "last_message_at",
+          "last_run_model",
+          "last_run_status"
+        ],
+        "title": "TicketSummary",
+        "description": "One row of the ticket list."
+      },
+      "UploadLink": {
+        "properties": {
+          "attachment_id": {
+            "type": "string",
+            "title": "Attachment Id"
+          },
+          "upload_url": {
+            "type": "string",
+            "title": "Upload Url",
+            "description": "PUT the file to this URL before it expires."
+          },
+          "method": {
+            "type": "string",
+            "const": "PUT",
+            "title": "Method",
+            "default": "PUT"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Headers",
+            "description": "Send these headers with the file."
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires At"
+          },
+          "max_bytes": {
+            "type": "integer",
+            "title": "Max Bytes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "attachment_id",
+          "upload_url",
+          "headers",
+          "expires_at",
+          "max_bytes"
+        ],
+        "title": "UploadLink"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "tickets",
+      "description": "Classify, list and read support tickets."
+    },
+    {
+      "name": "attachments",
+      "description": "Upload and download the files of a ticket."
+    },
+    {
+      "name": "answers",
+      "description": "Answer questions, with a shared cache."
+    },
+    {
+      "name": "history",
+      "description": "See recent classifications."
+    },
+    {
+      "name": "health",
+      "description": "Check that the service runs."
+    }
+  ]
+}

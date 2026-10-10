@@ -1,0 +1,13 @@
+# Needed to run the API
+fastapi[standard]==0.142.2
+psycopg[binary,pool]==3.3.6
+psycopg-pool==3.3.3
+azure-storage-blob==12.31.0
+redis==8.1.0
+
+# Needed to work on the API
+pytest==9.1.1
+httpx2==2.13.1
+ruff==0.16.10
+pip-audit==2.10.1
+locust==2.46.7

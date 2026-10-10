@@ -1,0 +1,106 @@
+# The ticket API, its database, the object storage and the simulated AI provider, on
+# your computer.
+# Database, cache and provider:  docker compose up -d db cache simulator
+# Everything:                  docker compose up -d --build
+# Stop:   docker compose down           (keeps the data)
+# Reset:  docker compose down --volumes (deletes the data)
+
+services:
+  api:
+    build: .
+    image: ticket-api:1.4.0
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      API_KEY_FILE: /run/secrets/api_key
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+      REQUIRE_API_KEY: "true"
+      STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;
+      STORAGE_PUBLIC_URL: http://127.0.0.1:10000/devstoreaccount1
+      PROVIDER_URL: http://simulator:8300/v1
+      CACHE_URL: redis://cache:6379/0
+    secrets:
+      - api_key
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  worker:
+    # Takes the queued jobs and does their AI work. More workers:
+    # docker compose up -d --scale worker=3
+    image: ticket-api:1.4.0
+    command: ["python", "-m", "ticket_api.worker"]
+    # On docker compose stop, wait up to 30 s: longer than WORKER_DRAIN_SECONDS (20),
+    # so the running jobs can finish (Docker's default is 10 s).
+    stop_grace_period: 30s
+    environment:
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+      PROVIDER_URL: http://simulator:8300/v1
+      CACHE_URL: redis://cache:6379/0
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  migrate:
+    image: ticket-api:1.4.0
+    command: ["python", "-m", "ticket_api.migrate"]
+    environment:
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+    depends_on:
+      db:
+        condition: service_healthy
+
+  simulator:
+    # The simulated AI provider: times and quota from real recorded calls, simple answers.
+    image: ticket-api:1.4.0
+    build: .
+    command: ["python", "-m", "simulator", "--host", "0.0.0.0", "--port", "8300"]
+    ports:
+      - "127.0.0.1:8300:8300"
+
+  cache:
+    # Valkey 9.1 (BSD licence): the shared cache. It keeps nothing on disk: a restart
+    # empties it, which a cache must survive.
+    image: valkey/valkey:9.1.2-trixie
+    command: ["valkey-server", "--save", "", "--appendonly", "no", "--maxmemory", "256mb",
+              "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  db:
+    # PostgreSQL 18.6 with the pgvector extension (0.8.7).
+    image: pgvector/pgvector:0.8.7-pg18-trixie
+    environment:
+      POSTGRES_USER: tickets
+      POSTGRES_DB: tickets
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    # Room for parallel queries on the large data (Docker's default is 64 MB).
+    shm_size: 256mb
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "tickets", "-d", "tickets"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  azurite:
+    # Microsoft's Azure Blob Storage emulator: object storage on your computer.
+    # --skipApiVersionCheck: the azure-storage-blob package can be newer than
+    # the emulator. The account name and key are the emulator's public test key.
+    image: mcr.microsoft.com/azure-storage/azurite:3.37.0
+    command: ["azurite-blob", "--blobHost", "0.0.0.0", "--skipApiVersionCheck", "--location", "/data"]
+    ports:
+      - "127.0.0.1:10000:10000"
+    volumes:
+      - blobdata:/data
+
+secrets:
+  api_key:
+    file: ./secrets/api_key.txt
+
+volumes:
+  pgdata:
+  blobdata:

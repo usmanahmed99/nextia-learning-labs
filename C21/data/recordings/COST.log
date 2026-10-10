@@ -1,0 +1,4 @@
+2026-10-10T07:18:01+00:00 probe calls=3 concurrency=1 statuses={200: 3} usd=0.00006
+2026-10-10T07:21:57+00:00 sequential calls=300 concurrency=1 statuses={200: 300} usd=0.00619
+2026-10-10T07:22:38+00:00 concurrent calls=300 concurrency=16 statuses={200: 218, 429: 82} usd=0.00368
+2026-10-10T07:22:58+00:00 burst calls=160 concurrency=40 statuses={200: 34, 429: 126} usd=0.00115
