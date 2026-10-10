@@ -1,0 +1,282 @@
+service_name,service_name_detail,group,requests
+Bicycle-Related Issue,,environmental_services,1
+Building and Land Use Enforcement,,development_services,44
+Container Request,,environmental_services,1
+Dead Animal,,environmental_services,1358
+Development Services - Code Enforcement,,development_services,57
+Development Services - Code Enforcement,DSD BLUE,development_services,240
+Development Services - Code Enforcement,DSD BLUE,environmental_services,1
+Development Services - Code Enforcement,Other Enforcement,development_services,12
+Encampment,,development_services,9
+Encampment,,environmental_services,823
+Encampment,,neighborhood_policing,11733
+Encampment,,parks,39
+Environmental Services Code Compliance,Commercial Dumpster Condition,environmental_services,4
+Environmental Services Code Compliance,Commercial Dumpster Encroachment,environmental_services,4
+Environmental Services Code Compliance,Container Left Out,environmental_services,879
+Environmental Services Code Compliance,Dumpster Overflow,environmental_services,186
+Environmental Services Code Compliance,Empty and Remove,environmental_services,143
+Environmental Services Code Compliance,Encroachment,development_services,1
+Environmental Services Code Compliance,Encroachment,environmental_services,350
+Environmental Services Code Compliance,Franchise Encroachment,environmental_services,53
+Environmental Services Code Compliance,Inadequate Recycling,environmental_services,3
+Environmental Services Code Compliance,Major Contamination in Recycle Container,environmental_services,2
+Environmental Services Code Compliance,Major Contamination in Refuse Container,environmental_services,1
+Environmental Services Code Compliance,Private Dumpster,environmental_services,1
+Graffiti - Code Enforcement,,right_of_way_enforcement,32
+Graffiti - Code Enforcement,Bus Shelter,right_of_way_enforcement,10
+Graffiti - Code Enforcement,City Sign,right_of_way_enforcement,33
+Graffiti - Code Enforcement,Commercial Property,right_of_way_enforcement,1731
+Graffiti - Code Enforcement,Dumpster,right_of_way_enforcement,4
+Graffiti - Code Enforcement,Graffiti Removal - Commercial,streets,180
+Graffiti - Code Enforcement,Other,right_of_way_enforcement,336
+Graffiti - Code Enforcement,Park,right_of_way_enforcement,16
+Graffiti - Code Enforcement,Street Lights,right_of_way_enforcement,7
+Graffiti - Code Enforcement,Street or Sidewalk,right_of_way_enforcement,206
+Graffiti - Code Enforcement,USPS Mail Box,right_of_way_enforcement,2
+Graffiti - Code Enforcement,USPS Mail box,right_of_way_enforcement,10
+Graffiti - Code Enforcement,Utility Box,right_of_way_enforcement,229
+Graffiti - Code Enforcement,Utility Pole,right_of_way_enforcement,20
+Graffiti - Private,,right_of_way_enforcement,935
+Graffiti - Private,,streets,1025
+Graffiti - Public,,development_services,5
+Graffiti - Public,,environmental_services,2
+Graffiti - Public,,streets,4449
+Graffiti - Public,,traffic_engineering,4
+Illegal Dumping,Illegal Dumping,development_services,3
+Illegal Dumping,Illegal Dumping,environmental_services,6981
+Illegal Dumping,Illegal Dumping,parks,259
+Illegal Dumping,Litter,environmental_services,555
+Missed Collection,Delayed Collection,environmental_services,7
+Missed Collection,Missed Collection,environmental_services,8313
+Missed Collection,Potential Missed Collection,environmental_services,47
+Other,,development_services,97
+Other,,environmental_services,92
+Other,,neighborhood_policing,1
+Other,,storm_water_enforcement,20
+Other,,streets,843
+Other,,traffic_engineering,6
+Oversized Vehicle,,neighborhood_policing,3
+Parking,Parking,storm_water_enforcement,1
+Parking,Parking,streets,1
+Parking,Parking,traffic_engineering,2
+Parking - 72-Hours,,parking,263
+Parking Violation,,parking,3
+Parking Violation,72 Hour Violation,parking,20414
+Parking Violation,AVA,parking,23
+Parking Violation,Alley,parking,1360
+Parking Violation,Bike Lane,parking,493
+Parking Violation,Blocked Driveway,parking,13
+Parking Violation,Blue Disabled Zone,parking,383
+Parking Violation,EV Charger,parking,6
+Parking Violation,Fire Hydrant,parking,425
+Parking Violation,Green/Time Limited,parking,329
+Parking Violation,Lane of Traffic,parking,1020
+Parking Violation,No Residential Permit,parking,452
+Parking Violation,Oversized Vehicle Complaints,parking,2
+Parking Violation,Parking Within 20 Feet of Crosswalk,parking,510
+Parking Violation,Parking Zone Violation,parking,27
+Parking Violation,Passenger Zone (White),parking,450
+Parking Violation,Red Zone,parking,3402
+Parking Violation,Sidewalk,parking,1842
+Parking Violation,Timed Zone Violation,parking,313
+Parking Violation,Yellow Commercial Zone,parking,142
+Parks Issue,Beach Shower Issue,parks,7
+Parks Issue,Beach/Sand Maintenance,parks,8
+Parks Issue,Bee Hive,parks,20
+Parks Issue,Broken Park Fountain,parks,3
+Parks Issue,Broken Playground Equipment,parks,102
+Parks Issue,Brush Management/Weeds,parks,134
+Parks Issue,Dog Off Leash,parks,78
+Parks Issue,Drinking fountain,parks,87
+Parks Issue,E-Bikes/Scooters/E-Boards,parks,2
+Parks Issue,Electrical Issue,parks,12
+Parks Issue,Feedback - General Feedback,parks,26
+Parks Issue,Feedback - Requested Park Improvement,parks,33
+Parks Issue,Fencing,parks,43
+Parks Issue,Graffiti,parks,1102
+Parks Issue,Grass/Turf Issue,parks,53
+Parks Issue,Grill/Hot Coal Container,parks,3
+Parks Issue,Illegal Activity,parks,53
+Parks Issue,Illegal Fires,parks,8
+Parks Issue,Native Habitat Damage,parks,1
+Parks Issue,Other,parks,595
+Parks Issue,Park Furniture/Bench/Table,parks,11
+Parks Issue,Park Lighting Issue,parks,32
+Parks Issue,Park Sign,parks,40
+Parks Issue,Path/Walkway/Road Pavement/Pothole,parks,31
+Parks Issue,Portable Restroom,parks,6
+Parks Issue,Potential Tree Hazard,parks,154
+Parks Issue,Restroom,parks,74
+Parks Issue,Security Issue,parks,6
+Parks Issue,Sidewalk Vendor/Expressive Activity,parks,25
+Parks Issue,Sprinkler/Irrigation,parks,241
+Parks Issue,Trail Maintenance,parks,2
+Parks Issue,Trash Can/Overflowing,parks,26
+Parks Issue,Trash/Litter,parks,144
+Parks Issue,Unpermitted Activity/Event,parks,30
+Pavement Maintenance,ASPHALT PAVEMENT REPAIR ISSUE,streets,35
+Pavement Maintenance,BIKE MAINT-PAVEMENT IRREGULARITY-ASPHALT,streets,3
+Pavement Maintenance,CONCRETE PAVEMENT REPAIR ISSUE,streets,9
+Pavement Maintenance,DAMAGED CURB,storm_water_enforcement,2
+Pavement Maintenance,DAMAGED CURB,streets,48
+Pavement Maintenance,DIRT ALLEY,streets,25
+Pavement Maintenance,MILL & PAVE TRENCH REPAIRS,streets,1
+Pavement Maintenance,MINOR ASPHALT REPAIR,streets,22
+Pavement Maintenance,MUD DEBRIS REMOVAL,streets,16
+Pavement Maintenance,OBJECTS IN TRAVEL PATH,streets,26
+Pavement Maintenance,RESTORE SEWER TRENCH ASPHALT,streets,1
+Pavement Maintenance,RESTORE WATER TRENCH ASPHALT,streets,1
+Pavement Maintenance,SURFACE FLOW ISSUE,storm_water_enforcement,1
+Pavement Maintenance,SURFACE FLOW ISSUE,streets,7
+Pothole,,streets,7367
+ROW Maintenance,,right_of_way_enforcement,14
+ROW Maintenance,,streets,5
+ROW Maintenance,BICYCLE FACILITIES MAINTENANCE,streets,26
+ROW Maintenance,BICYCLE FACILITIES MAINTENANCE,traffic_engineering,1
+ROW Maintenance,BIKE MAINT-STRIPING/MARKINGS,streets,12
+ROW Maintenance,BRIDGE CLEANUP,streets,4
+ROW Maintenance,BRIDGE/RAILINGS/STAIRS REPAIR,streets,10
+ROW Maintenance,CHAIN LINK FENCE REPAIR,streets,55
+ROW Maintenance,FLOODED,storm_water_enforcement,5
+ROW Maintenance,FLOODED,streets,445
+ROW Maintenance,GUARDRAILS/BARRIER METAL/WOODEN,streets,122
+ROW Maintenance,GUARDRAILS/BARRIER METAL/WOODEN MAINT,streets,1
+ROW Maintenance,MARKERS/DELINIATORS - MAINTENANCE,streets,20
+ROW Maintenance,MUD DEBRIS REMOVAL,streets,25
+ROW Maintenance,PAINT CURB - MAINTENANCE,streets,414
+ROW Maintenance,PAINT CURB - MAINTENANCE,traffic_engineering,1
+ROW Maintenance,PAINT LEGEND - MAINTENANCE,streets,5
+ROW Maintenance,PAINT STRIPING - MAINTENANCE,streets,107
+ROW Maintenance,PAINT STRIPING - MAINTENANCE,traffic_engineering,2
+ROW Maintenance,TRAFFIC DEVICES,storm_water_enforcement,4
+ROW Maintenance,TRAFFIC DEVICES,streets,305
+ROW Maintenance,TRAFFIC DEVICES,traffic_engineering,3
+ROW Maintenance,TRAFFIC MAINTENANCE - OTHER,streets,24
+Right-of-Way Code Enforcement,Trenches,right_of_way_enforcement,9
+STRO Violation,,development_services,419
+Shared Mobility Device,,environmental_services,10
+Sidewalk Repair Issue,ASPHALT SIDEWALK REPAIR ISSUE,streets,1
+Sidewalk Repair Issue,CONCRETE SIDEWALK REPAIR ISSUE,storm_water_enforcement,4
+Sidewalk Repair Issue,CONCRETE SIDEWALK REPAIR ISSUE,streets,608
+Sidewalk Repair Issue,CONCRETE SIDEWALK REPAIR ISSUE,traffic_engineering,20
+Sidewalk Repair Issue,EVALUATE FOR SIDEWALK CONTRACT,streets,1
+Sidewalk Repair Issue,SIDEWALK EVALUATION,streets,3
+Sidewalk Repair Issue,SIDEWALK EVALUATION,traffic_engineering,6
+Sidewalk Repair Issue,SIDEWALK LIFTED,streets,7
+Stormwater,,streets,3
+Stormwater,CHANNEL,streets,128
+Stormwater,CONVEYANCES,streets,3
+Stormwater,DRAIN CLEANOUT,streets,22
+Stormwater,DRAIN HEADWALL,streets,9
+Stormwater,DRAIN INLET,storm_water_enforcement,33
+Stormwater,DRAIN INLET,streets,411
+Stormwater,DRAINAGE CULVERT,streets,3
+Stormwater,DRAINAGE DITCH,storm_water_enforcement,10
+Stormwater,DRAINAGE DITCH,streets,15
+Stormwater,Other,streets,4
+Stormwater,PIPE,streets,1
+Stormwater,STREET,streets,1
+Stormwater Code Enforcement,,storm_water_enforcement,8
+Stormwater Code Enforcement,SWPP - Storm Water Polution Prevention,storm_water_enforcement,489
+Stormwater Code Enforcement,SWPP - Storm Water Polution Prevention,streets,7
+Street Light Maintenance,BENT/LEANING POLE,streets,12
+Street Light Maintenance,COVER MISSING,streets,59
+Street Light Maintenance,DAMAGE,streets,70
+Street Light Maintenance,EVALUATE FOR SHIELD,traffic_engineering,1
+Street Light Maintenance,EXPOSED WIRES,streets,134
+Street Light Maintenance,FLICKERING LIGHTS,streets,20
+Street Light Maintenance,HANGING LIGHT,streets,14
+Street Light Maintenance,KNOCK OVER,streets,5
+Street Light Maintenance,LIGHT ON DURING THE DAY,streets,58
+Street Light Maintenance,LIGHT UPGRADE,traffic_engineering,2
+Street Light Maintenance,MISSING LIGHT,streets,12
+Street Light Maintenance,MISSING LIGHT,traffic_engineering,2
+Street Light Maintenance,MISSING POLE,streets,12
+Street Light Maintenance,MISSING POLE,traffic_engineering,1
+Street Light Maintenance,NEW STREET LIGHT,traffic_engineering,23
+Street Light Maintenance,POLE KNOCK OVER/DAMAGE,streets,21
+Street Light Maintenance,POWER TAPPING,streets,10
+Street Light Maintenance,STREET LIGHT OUT,streets,616
+Street Light Maintenance,STREET LIGHT OUT,traffic_engineering,2
+Street Light Maintenance,TEO-SIGNALS & LIGHTS,streets,1
+Street Sweeping,,storm_water_enforcement,4
+Street Sweeping,,streets,651
+Traffic Engineering, BICYCLE FACILITIES EVALUATE FOR MARKINGS,traffic_engineering,1
+Traffic Engineering, BICYCLE FACILITIES EVALUATE FOR SIGNAGE,traffic_engineering,8
+Traffic Engineering, BICYCLE FACILITIES EVALUATE FOR STRIPING,traffic_engineering,12
+Traffic Engineering, STREET LIGHT EVALUATE FOR SHIELD,streets,3
+Traffic Engineering, STREET LIGHT EVALUATE FOR SHIELD,traffic_engineering,2
+Traffic Engineering, TRAFFIC OPERATIONS CURB DESIGNATION EVALUATIONS,streets,5
+Traffic Engineering, TRAFFIC OPERATIONS CURB DESIGNATION EVALUATIONS,traffic_engineering,276
+Traffic Engineering, TRAFFIC OPERATIONS MARKINGS EVALUATIONS,streets,5
+Traffic Engineering, TRAFFIC OPERATIONS MARKINGS EVALUATIONS,traffic_engineering,60
+Traffic Engineering, TRAFFIC OPERATIONS PARKING EVALUATIONS,traffic_engineering,17
+Traffic Engineering, TRAFFIC OPERATIONS SIGNAGE EVALUATIONS,streets,5
+Traffic Engineering, TRAFFIC OPERATIONS SIGNAGE EVALUATIONS,traffic_engineering,97
+Traffic Engineering, TRAFFIC OPERATIONS STRIPING EVALUATIONS,streets,3
+Traffic Engineering, TRAFFIC OPERATIONS STRIPING EVALUATIONS,traffic_engineering,29
+Traffic Engineering, TRAFFIC OPERATIONS TRAFFIC CALMING/SAFETY FEATURES,streets,1
+Traffic Engineering, TRAFFIC OPERATIONS TRAFFIC CALMING/SAFETY FEATURES,traffic_engineering,187
+Traffic Engineering, TRAFFIC OPERATIONS VISIBILITY EVALUATIONS,traffic_engineering,14
+Traffic Engineering, TRAFFIC SAFETY GUARD RAIL REVIEW,traffic_engineering,2
+Traffic Engineering, TRAFFIC SAFETY LEGALITY CHECK,traffic_engineering,32
+Traffic Engineering, TRAFFIC SAFETY PARKING REVIEW,traffic_engineering,1
+Traffic Engineering, TRAFFIC SIGNAL AUDIBLE SIGNAL REVIEW,traffic_engineering,17
+Traffic Engineering, TRAFFIC SIGNAL BIKE MAINT-SIGNAL LOOP DETECTION,traffic_engineering,2
+Traffic Engineering, TRAFFIC SIGNAL PHASING REVIEW,traffic_engineering,5
+Traffic Engineering, TRAFFIC SIGNAL STRIPING/SIGNAGE REVIEW,traffic_engineering,65
+Traffic Engineering,CURB RAMP EVAL FOR NEW ADA,streets,12
+Traffic Engineering,Other,traffic_engineering,1
+Traffic Engineering,TRAFFIC SIGN,traffic_engineering,1
+Traffic Engineering,TRAFFIC SIGN SIGN - MAINT - PARKING,traffic_engineering,1
+Traffic Engineering,TRAFFIC SIGN SIGN - MAINT - TRAFFIC,traffic_engineering,1
+Traffic Sign Maintenance,,streets,1301
+Traffic Signal Issue,BENT/ LEANING POLE,streets,4
+Traffic Signal Issue,CABINET DAMAGE,streets,11
+Traffic Signal Issue,COVER MISSING,streets,49
+Traffic Signal Issue,DAMAGE,streets,95
+Traffic Signal Issue,DAMAGE,traffic_engineering,1
+Traffic Signal Issue,EXPOSED WIRES,streets,18
+Traffic Signal Issue,HANGING LIGHT,streets,12
+Traffic Signal Issue,KNOCK OVER,streets,3
+Traffic Signal Issue,LIGHTS ON FLASH,streets,343
+Traffic Signal Issue,LIGHTS OUT,streets,1165
+Traffic Signal Issue,POLE KNOCK OVER/DAMAGE,streets,9
+Traffic Signal Issue,SIGNAL FACING WRONG DIRECTION,streets,97
+Traffic Signal Issue,WALK SIGNAL PUSH BUTTON UPGRADE,streets,25
+Traffic Signal Timing,,streets,1314
+Traffic Signal Timing,,traffic_engineering,16
+Trash/Recycling Collection,Collections Truck Leak,environmental_services,20
+Trash/Recycling Collection,Collections Truck Spill,environmental_services,22
+Trash/Recycling Collection,Container Overflow,environmental_services,70
+Trash/Recycling Collection,Damage to Private Property,environmental_services,5
+Trash/Recycling Collection,Damaged Container,environmental_services,60
+Trash/Recycling Collection,Out Late,environmental_services,7
+Trash/Recycling Collection,Stolen City Container,environmental_services,1
+Trash/Recycling Collection,Street Litter Container,environmental_services,55
+Trash/Recycling Collection,Uncovered Container,environmental_services,3
+Tree Maintenance,BIKE MAINT-TREE/SHRUB ENCROACHMENT,streets,2
+Tree Maintenance,CONTRACTUAL TRIMMING,streets,77
+Tree Maintenance,CONTRACTUAL TRIMMING,traffic_engineering,1
+Tree Maintenance,EVALUATE TREE FOR REMOVAL,streets,207
+Tree Maintenance,FREE TREE PLANTING REQUEST,streets,2
+Tree Maintenance,ILLEGAL TREE TRIM/REMOVAL,streets,6
+Tree Maintenance,INVESTIGATE,streets,352
+Tree Maintenance,INVESTIGATE,traffic_engineering,1
+Tree Maintenance,LIMB FALLEN,streets,204
+Tree Maintenance,LIMB HANGING,streets,28
+Tree Maintenance,PALM FRONDS DOWN,streets,239
+Tree Maintenance,STUMP GRIND CONTRACT,streets,42
+Tree Maintenance,TREE FALLEN,streets,83
+Tree Maintenance,TREE INFESTATION - BEES/PESTS,streets,49
+Tree Maintenance,TRIM TREE - BLOCKING TRAFFIC DEVICE,streets,112
+Tree Maintenance,TRIM TREE FOR PEDS/VEHICLE CLEARANCE,streets,361
+Tree Maintenance,TRIM TREE FOR PEDS/VEHICLE CLEARANCE,traffic_engineering,1
+Vegetation Encroachment,,parks,1
+Vegetation Encroachment,,right_of_way_enforcement,943
+Vegetation Encroachment,,streets,2
+Waste on Private Property,,development_services,1
+Waste on Private Property,,environmental_services,742
+Waste on Private Property,,neighborhood_policing,29
+Weed Cleanup,,streets,328

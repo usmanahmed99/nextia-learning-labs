@@ -1,0 +1,99 @@
+order_id,sku,product,quantity,unit_price,box
+LK-118342,HOSE-25,garden hose (25 m),1,34.50,1
+LK-179785,COMPOST,compost bin,2,64.00,1
+LK-205761,COMPOST,compost bin,1,64.00,1
+LK-245426,POOL-PAD,paddling pool,2,48.99,1
+LK-266415,HAMMOCK,hammock,1,74.00,1
+LK-316109,RUG-W,wool rug,2,149.00,1
+LK-347101,VAC-R1,robot vacuum,2,329.00,1
+LK-350972,HR-30,AquaFlow HR-30 hose reel,1,59.00,1
+LK-350972,CAN-10,watering can,1,19.95,1
+LK-371548,VAC-R1,robot vacuum,1,329.00,1
+LK-374058,CPOLE,curtain pole,1,39.95,1
+LK-428830,PARASOL,patio parasol,1,129.00,1
+LK-482913,CPOLE,curtain pole,1,39.95,1
+LK-507862,TOOLCHEST,tool chest,1,119.00,1
+LK-551906,SOIL-40,potting soil (40 L),1,12.99,1
+LK-551906,TROWEL,trowel,2,8.50,1
+LK-553201,HR-30,AquaFlow HR-30 hose reel,1,59.00,1
+LK-557211,LIGHTS-6,solar path lights (set of 6),2,45.00,1
+LK-561004,LIGHTS-6,solar path lights (set of 6),1,45.00,1
+LK-581106,SHED-6X8,garden shed,1,899.00,1
+LK-582031,POOL-PAD,paddling pool,1,48.99,1
+LK-615204,SHED-6X8,garden shed,1,899.00,1
+LK-640933,TRAMP-10,trampoline,1,289.00,1
+LK-699159,LIGHTS-6,solar path lights (set of 6),1,45.00,1
+LK-702219,CHAIR-G,garden chair,4,54.00,1
+LK-736201,HT-C20,cordless hedge trimmer,1,139.00,1
+LK-739156,POT-TC3,terracotta pot (set of 3),1,27.50,1
+LK-774120,CPOLE,curtain pole,1,39.95,1
+LK-785215,SOIL-40,potting soil (40 L),2,12.99,1
+LK-793996,CAN-10,watering can,1,19.95,1
+LK-830215,BENCH-WD,wooden garden bench,1,249.00,1
+LK-889023,SHEARS,pruning shears,1,24.95,1
+LK-909558,VAC-R1,robot vacuum,2,329.00,1
+LK-913377,HT-550,HT-550 electric hedge trimmer,1,99.00,1
+LK-967013,HT-550,HT-550 electric hedge trimmer,2,99.00,1
+LK-985069,CHAIR-G,garden chair,2,54.00,1
+LK-640218,RUG-W,wool rug,1,149.00,1
+LK-640327,CAN-10,watering can,1,19.95,1
+LK-640327,TROWEL,trowel,2,8.50,1
+LK-640436,PLANTER,cedar planter,1,89.00,1
+LK-640545,SOIL-40,potting soil (40 L),1,12.99,1
+LK-640654,HOSE-25,garden hose (25 m),1,34.50,1
+LK-640763,CUSH-4,cushion covers (set of 4),1,36.00,1
+LK-640872,TROWEL,trowel,1,8.50,1
+LK-640872,FEEDER,bird feeder,1,22.00,1
+LK-640981,GREENHOUSE,greenhouse frame,1,460.00,1
+LK-640981,GH-SHELF,greenhouse shelving,1,39.00,2
+LK-641090,BENCH-WD,wooden garden bench,1,249.00,1
+LK-641090,CUSH-4,cushion covers (set of 4),1,36.00,2
+LK-641199,LADDER-3,step ladder,1,79.00,1
+LK-641199,CAN-10,watering can,1,19.95,1
+LK-641199,FEEDER,bird feeder,1,22.00,1
+LK-641210,FEEDER,bird feeder,1,22.00,1
+LK-641210,LIGHTS-6,solar path lights (set of 6),1,45.00,1
+LK-641321,PARASOL,patio parasol,1,129.00,1
+LK-641432,POT-TC3,terracotta pot (set of 3),1,27.50,1
+LK-641543,CHAIR-G,garden chair,2,54.00,1
+LK-641654,CHAIR-G,garden chair,2,54.00,1
+LK-641765,LIGHTS-6,solar path lights (set of 6),1,45.00,1
+LK-641876,COMPOST,compost bin,1,64.00,1
+LK-642001,BBQ-GR310,Ember GR-310 gas BBQ,1,449.00,1
+LK-642112,KT-180,KT-180 electric kettle,1,49.00,1
+LK-642223,PW-2200,PW-2200 electric pressure washer,1,189.00,1
+LK-642334,BENCH-WD,wooden garden bench,1,249.00,1
+LK-642445,COMPOST,compost bin,1,64.00,1
+LK-642556,PW-2200,PW-2200 electric pressure washer,1,189.00,1
+LK-643001,LIGHTS-6,solar path lights (set of 6),2,45.00,1
+LK-643112,RUG-W,wool rug,1,149.00,1
+LK-643223,COMPOST,compost bin,1,64.00,1
+LK-643334,CUSH-4,cushion covers (set of 4),1,36.00,1
+LK-643445,LADDER-3,step ladder,1,79.00,1
+LK-643556,SHEARS,pruning shears,1,24.95,1
+LK-643667,HAMMOCK,hammock,1,74.00,1
+LK-643778,HT-C20,cordless hedge trimmer,1,139.00,1
+LK-644001,CAN-10,watering can,1,19.95,1
+LK-644001,FEEDER,bird feeder,1,22.00,1
+LK-644112,PARASOL,patio parasol,1,129.00,1
+LK-644223,HOSE-25,garden hose (25 m),1,34.50,1
+LK-644334,HAMMOCK,hammock,1,74.00,1
+LK-644445,POT-TC3,terracotta pot (set of 3),1,27.50,1
+LK-644556,RUG-W,wool rug,1,149.00,1
+LK-645001,SHEARS,pruning shears,1,24.95,1
+LK-645112,CHAIR-G,garden chair,1,54.00,1
+LK-645223,CUSH-4,cushion covers (set of 4),1,36.00,1
+LK-645334,LADDER-3,step ladder,1,79.00,1
+LK-645445,TROWEL,trowel,2,8.50,1
+LK-645445,SHEARS,pruning shears,1,24.95,1
+LK-645556,CAN-10,watering can,1,19.95,1
+LK-645667,BENCH-WD,wooden garden bench,1,249.00,1
+LK-645778,FEEDER,bird feeder,1,22.00,1
+LK-646001,CHAIR-G,garden chair,2,54.00,1
+LK-646112,RUG-W,wool rug,1,149.00,1
+LK-646223,POT-TC3,terracotta pot (set of 3),1,27.50,1
+LK-646334,HAMMOCK,hammock,1,74.00,1
+LK-646445,HOSE-25,garden hose (25 m),1,34.50,1
+LK-646556,VAC-R1,robot vacuum,1,329.00,1
+LK-646667,LADDER-3,step ladder,1,79.00,1
+LK-646778,CUSH-4,cushion covers (set of 4),1,36.00,1
