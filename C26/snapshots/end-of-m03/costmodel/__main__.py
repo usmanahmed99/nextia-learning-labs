@@ -165,6 +165,10 @@ def main(argv=None) -> None:
     ap.add_argument("--scenario", default="base", choices=("low", "base", "high"))
     ap.add_argument("--month", type=int, default=0)
     args = ap.parse_args(argv)
+    # Name the module of the command itself, not of an earlier file that it also needs.
+    own = {"scenarios": "units", "sensitivity": "units", "check": "packcheck"}.get(args.command, args.command)
+    if own in LATER:
+        need(own)
     try:
         COMMANDS[args.command](args)
     except InputError as e:

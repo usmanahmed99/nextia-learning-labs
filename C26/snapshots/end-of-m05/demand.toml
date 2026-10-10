@@ -5,11 +5,11 @@
 
 [settings]
 days_per_month = 30
-peak_hour_share = [0.10, 0.112, 0.20]   # share of a day's questions in the busiest hour
+peak_hour_share = [0.10, 0.123, 0.20]   # share of an average day's questions in the busiest hour
 peak_minute_factor = [3.0, 5.35, 8.0]   # the busiest minute's rate / the busiest hour's rate
 
 [settings.evidence]
-peak_hour_share = "verified: 0.112 is the busiest hour's share of the busiest day in the help desk's ticket workload (measured.toml: ticket_peak_hour_share); the high value allows for a lunch-time rush"
+peak_hour_share = "verified: 0.123 is the busiest hour's share of an average day in the help desk's ticket workload (101 of 822 tickets; measured.toml: ticket_peak_hour_share), because the model multiplies an average day by it; the high value allows for a lunch-time rush"
 peak_minute_factor = "verified: 5.35 is the busiest minute / the busiest hour in the same workload (measured.toml: ticket_peak_minute_factor)"
 
 [tenants.larkfield]

@@ -182,9 +182,9 @@ unit = "tokens per minute"
 source = "measured: the same headers"
 
 [ticket_peak_hour_share]
-value = 0.1123
-unit = "share of a day"
-source = "measured: the scaling course's workload (synthetic tickets), busiest hour / busiest day"
+value = 0.1229
+unit = "share of an average day"
+source = "measured: the scaling course's workload (synthetic tickets), busiest hour / an average day (101 / 822); the cost model multiplies an average day"
 
 [ticket_peak_minute_factor]
 value = 5.35

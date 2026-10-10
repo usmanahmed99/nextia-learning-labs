@@ -43,8 +43,8 @@ own_model_tokens_per_second = [10, 30, 60]
 
 [labour.evidence]
 rate_per_hour = "assumed: a loaded cost of Amira's time; set your own rate"
-managed_database_hours_per_month = "assumed: reading alerts and testing a restore once a month"
-own_database_hours_per_month = "assumed: updates, backups, monitoring and one restore test a month on a server we run"
+managed_database_hours_per_month = "assumed: reading alerts, and a restore test every quarter"
+own_database_hours_per_month = "assumed: updates, backups, monitoring and a restore test every quarter on a server we run"
 own_model_hours_per_month = "assumed: updates, monitoring and quality checks of a model we host"
 own_model_tokens_per_second = "assumed: a small open model on one T4 GPU; not measured in this course"
 
