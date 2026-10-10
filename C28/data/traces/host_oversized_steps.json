@@ -56,7 +56,7 @@
       "who": "server",
       "text": "result: 1025 characters",
       "data": {
-        "ms": 2.1,
+        "ms": 2.0,
         "clipped": true
       }
     },

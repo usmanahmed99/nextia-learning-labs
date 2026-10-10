@@ -70,6 +70,15 @@ SCENARIOS = {
         {"jsonrpc": "2.0", "method": "notifications/initialized"},
         {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}},
     ],
+    "mixed-eras": [
+        req(1, "server/discover"),
+        {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "initialize",
+            "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": CLIENT},
+        },
+    ],
     "legacy-old-version": [
         {
             "jsonrpc": "2.0",
