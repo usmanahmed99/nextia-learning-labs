@@ -19,7 +19,7 @@ it fresh. `eval` and `compare` run every case on a fresh copy of the data.
 
 import argparse
 
-from .config import Settings, make_provider
+from .config import Settings, make_provider, redact
 from .data import load_attacks, load_case, load_tasks
 from .designs import DESIGNS, controls_for
 from .evaluate import summarise
@@ -95,10 +95,13 @@ def cmd_run(args):
     if state.filter_verdict:
         print(f"  input filter: {state.filter_verdict}")
     print(f"Reply draft: {state.answer[:400]}")
+    for msg in state.errors:                 # what the provider or a control said (secrets redacted)
+        print(f"  run note: {redact(msg)[:300]}")
     if c.kind == "attack":
         print(f"Attack succeeded: {score['success']}"
-              + (f" ({', '.join(score['signals'])})" if score["success"]
+              + (f" (goal reached: {'; '.join(score['goal_reached'])})" if score["success"]
                  else f" (stopped by {score['blocked_by']})" if score["blocked_by"] else " (the model did not do it)"))
+        print("Unsafe side effects: " + (", ".join(score["side_effects"]) or "none"))
     else:
         print(f"Task success: {score['success']}" + ("" if score["success"] else f" ({'; '.join(score['reasons'])})"))
     if state.replay_notes:
@@ -114,6 +117,8 @@ def cmd_eval(args):
     what = "attacks that succeeded" if args.attacks else "tasks done right"
     print(f"design {args.design}, model {model}: {s['success']}/{s['n']} {what}")
     print("by slice: " + ", ".join(f"{k} {v}" for k, v in s["by_slice"].items()))
+    if "unsafe" in s:
+        print(f"runs with an unsafe side effect: {s['unsafe']}/{s['n']}")
 
 
 def cmd_compare(args):

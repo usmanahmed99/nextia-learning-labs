@@ -96,7 +96,7 @@ def _converse(case, complete, world, model, controls, session, ticket, state, ma
             return
         except ProviderError as e:
             # The provider's own content filter shows up here as an HTTP 400.
-            state.stop_reason = "content_filter" if (e.status == 400) else "provider_error"
+            state.stop_reason = "content_filter" if _is_content_filter(e) else "provider_error"
             state.note(str(e))
             world.log(session.sub, session.tenant, "model", state.stop_reason, status=e.status)
             return
@@ -117,6 +117,14 @@ def _converse(case, complete, world, model, controls, session, ticket, state, ma
             if outcome.proposal is not None:
                 state.proposals.append(outcome.proposal)
             messages.append({"role": "tool", "tool_call_id": call.id, "content": outcome.text})
+
+
+def _is_content_filter(e: ProviderError) -> bool:
+    """The provider's own content filter: an HTTP 400 whose error says so (Azure: code `content_filter`,
+    "content management policy"). Any other 400 (a request the model or endpoint does not support, for
+    example) is an ordinary provider error."""
+    text = str(e).lower()
+    return e.status == 400 and ("content_filter" in text or "content management policy" in text)
 
 
 def _account(state: RunState, completion: Completion, model: str) -> None:

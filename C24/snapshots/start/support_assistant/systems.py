@@ -176,21 +176,27 @@ class World:
             return row["tenant"] if row else None
 
     def search_docs(self, query: str, tenant: str | None, access: tuple[str, ...] = ("public",), limit: int = 3):
+        """Keyword search (SQLite FTS5, BM25 ranking): the best `limit` passages for ANY of the query's words.
+
+        Each word of three letters or more becomes a quoted term, joined with OR, so a passage need not
+        contain every word of the model's query (a plain MATCH of "return window policy" would need all three).
+        """
+        words = [w for w in "".join(c if c.isalnum() else " " for c in query.lower()).split() if len(w) > 2]
+        if not words:
+            return []
+        match = " OR ".join(f'"{w}"' for w in dict.fromkeys(words))
         with closing(self._con()) as con:
             placeholders = ",".join("?" * len(access))
             sql = (f"SELECT d.passage_id,d.doc_id,d.title,d.section,d.text,d.version,d.tenant,d.access "
                    f"FROM documents_fts f JOIN documents d ON d.passage_id=f.passage_id "
                    f"WHERE documents_fts MATCH ? AND d.access IN ({placeholders})")
-            args: list = [query, *access]
+            args: list = [match, *access]
             if tenant is not None:
                 sql += " AND d.tenant=?"
                 args.append(tenant)
-            sql += " ORDER BY rank LIMIT ?"
+            sql += " ORDER BY bm25(documents_fts), d.passage_id LIMIT ?"
             args.append(limit)
-            try:
-                return [dict(r) for r in con.execute(sql, args)]
-            except sqlite3.OperationalError:
-                return []
+            return [dict(r) for r in con.execute(sql, args)]
 
     def file_metadata(self, path: str):
         with closing(self._con()) as con:
@@ -200,7 +206,14 @@ class World:
     # ----- writes (recorded into the database)
     def write(self, tool: str, tenant: str, args: dict, actor: str, approval_id: str | None) -> dict:
         with closing(self._con()) as con:
-            ident = f"{tool[:2].upper()}-{abs(hash((tool, tenant, json.dumps(args, sort_keys=True), self._seq)))%10**8:08d}"
+            # The next number for this kind of write: IS-0001, CR-0001, SE-0001 ... (the same on every run).
+            table, column = {"issue_refund": ("refunds", "refund_id"), "create_return_label": ("return_labels", "label_id"),
+                             "send_email": ("emails", "email_id")}.get(tool, ("", ""))
+            if not table:
+                raise ValueError(f"not a write tool: {tool}")
+            prefix = tool[:2].upper()
+            count = con.execute(f"SELECT COUNT(*) FROM {table} WHERE {column} LIKE ?", (prefix + "-%",)).fetchone()[0]
+            ident = f"{prefix}-{count + 1:04d}"
             if tool == "issue_refund":
                 con.execute("INSERT INTO refunds VALUES (?,?,?,?,?,?,?,?)",
                             (ident, tenant, args["order_id"], args["amount"], args.get("reason", ""), actor,

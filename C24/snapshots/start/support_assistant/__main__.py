@@ -72,8 +72,9 @@ def cmd_run(args):
     print(f"Reply draft: {state.answer[:400]}")
     if c.kind == "attack":
         print(f"Attack succeeded: {score['success']}"
-              + (f" ({', '.join(score['signals'])})" if score["success"]
+              + (f" (goal reached: {'; '.join(score['goal_reached'])})" if score["success"]
                  else f" (stopped by {score['blocked_by']})" if score["blocked_by"] else " (the model did not do it)"))
+        print("Unsafe side effects: " + (", ".join(score["side_effects"]) or "none"))
     else:
         print(f"Task success: {score['success']}" + ("" if score["success"] else f" ({'; '.join(score['reasons'])})"))
     if state.replay_notes:
@@ -89,6 +90,8 @@ def cmd_eval(args):
     what = "attacks that succeeded" if args.attacks else "tasks done right"
     print(f"design {args.design}, model {model}: {s['success']}/{s['n']} {what}")
     print("by slice: " + ", ".join(f"{k} {v}" for k, v in s["by_slice"].items()))
+    if "unsafe" in s:
+        print(f"runs with an unsafe side effect: {s['unsafe']}/{s['n']}")
 
 
 def cmd_compare(args):

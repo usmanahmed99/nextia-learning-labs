@@ -18,6 +18,7 @@ class ToolEvent(BaseModel):
     read_order_tenant: str = ""         # for a read of an order: the order's tenant (to catch cross-tenant)
     read_path: str = ""                 # for read_file
     fetch_host: str = ""                # for fetch_url
+    docs: list[str] = Field(default_factory=list)   # for search_docs: "passage tenant access" of each passage read
 
 
 class Proposal(BaseModel):

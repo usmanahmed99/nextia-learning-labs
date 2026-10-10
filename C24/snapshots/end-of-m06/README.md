@@ -32,11 +32,11 @@ python -m pytest
 
 ```
 python -m support_assistant cases --attacks                 # the harmless attacks
-python -m support_assistant show ATK-26                     # one case in full
+python -m support_assistant show ATK-28                     # one case in full
 python -m support_assistant boundaries                      # the trust-boundary map
-python -m support_assistant run ATK-26 --design start       # the weak start: the attack works
-python -m support_assistant run ATK-26 --design secure      # the hardened assistant: it is stopped
-python -m support_assistant compare ATK-26                  # one attack across the five designs
+python -m support_assistant run ATK-28 --design start       # the weak start: the attack works
+python -m support_assistant run ATK-28 --design secure      # the hardened assistant: it is stopped
+python -m support_assistant compare ATK-28                  # one attack across the five designs
 python -m support_assistant eval --attacks --design secure  # how many attacks still succeed
 python -m support_assistant eval --design secure            # how many normal tasks still work
 ```
