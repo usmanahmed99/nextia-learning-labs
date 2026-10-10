@@ -11,12 +11,13 @@ The worked example of the scaling course, Module 1. The numbers come from `pytho
 | AI work per ticket | 2 chat calls (classify, draft a reply) + 1 embedding call | the same | `ticket_api/intake.py` |
 | Time of the AI work, one ticket alone | about 2.2 s (classify 0.9 s + reply 1.1 s + embedding 0.2 s, medians) | longer when the provider is busy | the recorded calls |
 | Provider quota (chat model) | 100 requests per minute | the same: it does not grow with our traffic | the provider's headers |
-| What users expect | <write Omar's answer here: e.g. "the ticket is saved at once; the first reply within 5 minutes"> | | Omar |
+| What users expect | "A customer must see within 5 seconds that the ticket was saved. The help desk can wait a few minutes for the draft reply." | the same promise: within 5 seconds | Omar |
 
 What it means before any test:
 
 - **Average load is small.** 0.28 tickets per second needs about 34 chat calls per minute: inside the quota.
 - **Bursts are not.** 90 tickets in one minute need 180 chat calls: almost twice the quota. Without a plan, about half of those tickets get an error.
+- **The promise is 5 seconds.** A new ticket saved later than that does not count as useful work, however many the service finishes.
 - **The AI work is slow compared with everything else.** One ticket waits about 2.2 s for the provider and a few milliseconds for the database.
 
 The load tests of the course send this workload (and larger ones) to the service on your computer, never to a service that you do not own.

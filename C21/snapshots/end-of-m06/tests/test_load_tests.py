@@ -15,9 +15,13 @@ READ_SHAPES = """
 import json, sys
 sys.path.insert(0, "loadtest")
 import ramp, steady, burst, soak
+from locust.util.load_locustfile import load_locustfile
 print(json.dumps({m.__name__: [c for c in vars(m).values() if isinstance(c, type)
                   and hasattr(c, "stages") and c.stages][0].stages
                   for m in (ramp, steady, burst, soak)}))
+# The shape that Locust runs for each file: its own, not the empty base class.
+print(json.dumps({f: type(load_locustfile("loadtest/" + f + ".py")[1][0]).__name__
+                  for f in ("ramp", "steady", "burst", "soak")}))
 """
 
 
@@ -25,7 +29,8 @@ def test_the_load_shapes():
     out = subprocess.run(
         [sys.executable, "-c", READ_SHAPES], cwd=ROOT, capture_output=True, text=True, check=True
     ).stdout
-    shapes = json.loads(out.strip().splitlines()[-1])
+    shapes, picked = (json.loads(line) for line in out.strip().splitlines()[-2:])
+    assert picked == {"ramp": "Ramp", "steady": "Steady", "burst": "Burst", "soak": "Soak"}
     assert shapes["steady"] == [[70, 4]]
     assert shapes["burst"] == [[20, 2], [35, 20], [80, 2]]  # ten times more for 15 s
     assert [users for _, users in shapes["ramp"]] == [2, 4, 8, 12, 16]

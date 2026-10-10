@@ -32,6 +32,11 @@ class UploadRejected(Exception):
 CODES = {401: "unauthorized", 404: "not_found", 405: "method_not_allowed"}
 
 
+def seconds(n: int) -> str:
+    """'1 second', '30 seconds': for the messages that say when to try again."""
+    return f"{n} second" if n == 1 else f"{n} seconds"
+
+
 def field_name(error: dict) -> str:
     """Return the field that a validation error is about, such as "subject"."""
     if error["type"] == "json_invalid":
@@ -128,7 +133,7 @@ def add_error_handlers(app: FastAPI) -> None:
         if isinstance(exc, ProviderRateLimited):
             wait = max(1, math.ceil(exc.retry_after or 5))
             response = error_response(
-                request, 503, "ai_busy", f"The AI provider is busy. Try again in {wait} seconds."
+                request, 503, "ai_busy", f"The AI provider is busy. Try again in {seconds(wait)}."
             )
             response.headers["Retry-After"] = str(wait)
             return response

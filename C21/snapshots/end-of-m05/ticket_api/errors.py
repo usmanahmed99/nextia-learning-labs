@@ -36,6 +36,11 @@ class UploadRejected(Exception):
 CODES = {401: "unauthorized", 404: "not_found", 405: "method_not_allowed", 409: "conflict"}
 
 
+def seconds(n: int) -> str:
+    """'1 second', '30 seconds': for the messages that say when to try again."""
+    return f"{n} second" if n == 1 else f"{n} seconds"
+
+
 def field_name(error: dict) -> str:
     """Return the field that a validation error is about, such as "subject"."""
     if error["type"] == "json_invalid":
@@ -132,7 +137,7 @@ def add_error_handlers(app: FastAPI) -> None:
         if isinstance(exc, ProviderRateLimited):
             wait = max(1, math.ceil(exc.retry_after or 5))
             response = error_response(
-                request, 503, "ai_busy", f"The AI provider is busy. Try again in {wait} seconds."
+                request, 503, "ai_busy", f"The AI provider is busy. Try again in {seconds(wait)}."
             )
             response.headers["Retry-After"] = str(wait)
             return response
@@ -152,7 +157,7 @@ def add_error_handlers(app: FastAPI) -> None:
             503,
             "ai_unavailable",
             "The AI provider is failing; the API stopped calling it for now. "
-            f"Try again in {wait} seconds.",
+            f"Try again in {seconds(wait)}.",
         )
         response.headers["Retry-After"] = str(wait)
         return response
@@ -164,7 +169,7 @@ def add_error_handlers(app: FastAPI) -> None:
             request,
             503,
             "queue_full",
-            f"Too much work is waiting. Try again in {exc.retry_after} seconds.",
+            f"Too much work is waiting. Try again in {seconds(exc.retry_after)}.",
         )
         response.headers["Retry-After"] = str(exc.retry_after)
         return response
@@ -176,7 +181,7 @@ def add_error_handlers(app: FastAPI) -> None:
             429,
             "rate_limited",
             f"More than {exc.limit} new tickets in one minute. "
-            f"Try again in {exc.retry_after} seconds.",
+            f"Try again in {seconds(exc.retry_after)}.",
         )
         response.headers["Retry-After"] = str(exc.retry_after)
         return response

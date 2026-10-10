@@ -2,12 +2,12 @@
 
 The project of [Scaling APIs and AI Workloads](https://learning.nextia-ai.com/courses/scaling/) (Nextia Learning). It is the ticket API of the API, Docker, CI/CD and databases courses. In this course, every new ticket starts AI work (classify, draft a reply, embed), and the API learns to handle many tickets at once: measured first, then with concurrency, a shared cache, a job queue with workers, limits for overload, failure containment and load tests.
 
-All the data is made up for the course. No real customer, ticket or file is in it. The AI provider is **simulated**: a small local service whose times and quota come from real recorded calls to a hosted model. Its answers are simple; its timing is realistic.
+This copy is the project at the end of Module 5; the next modules add to it. All the data is made up for the course. No real customer, ticket or file is in it. The AI provider is **simulated**: a small local service whose times and quota come from real recorded calls to a hosted model. Its answers are simple; its timing is realistic.
 
 ## What you need
 
 - Python 3.12 or later.
-- Docker (Docker Desktop on Windows and macOS) for PostgreSQL 18 with pgvector and, from Module 3, Valkey (the cache). Without Docker, see [Without Docker](#without-docker).
+- Docker (Docker Desktop on Windows and macOS) for PostgreSQL 18 with pgvector, Azurite (the storage emulator of the databases course) and, from Module 3, Valkey (the cache). Without Docker, see [Without Docker](#without-docker).
 
 You do not need an account, a key or money. Run load tests only against these services on your own computer.
 
@@ -18,7 +18,7 @@ macOS and Linux:
 ```sh
 cp .env.example .env              # then change the password in .env (three places)
 mkdir -p secrets && echo "local-practice-key" > secrets/api_key.txt
-docker compose up -d db cache     # PostgreSQL (127.0.0.1:5432) and Valkey (127.0.0.1:6379)
+docker compose up -d db azurite cache     # PostgreSQL (127.0.0.1:5432), Azurite (127.0.0.1:10000) and Valkey (127.0.0.1:6379)
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -31,7 +31,7 @@ Windows (PowerShell):
 ```powershell
 Copy-Item .env.example .env       # then change the password in .env (three places)
 New-Item -ItemType Directory -Force secrets; Set-Content secrets\api_key.txt "local-practice-key"
-docker compose up -d db cache
+docker compose up -d db azurite cache
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
@@ -56,7 +56,7 @@ curl -X POST http://127.0.0.1:8000/v1/tickets -H "Content-Type: application/json
 
 **Reset:** `python -m scripts.load --reset` loads the data again (new tickets start at T-500001 again); `python -m scripts.cache flush` empties the cache; `docker compose down --volumes` deletes the database. The simulated provider forgets everything when you stop it.
 
-**Everything in Docker** (the API, the worker, the simulated provider, the database and the cache): `docker compose up -d --build`. The API then needs the key in `secrets/api_key.txt` (header `X-API-Key`).
+**Everything in Docker** (the API, the simulated provider, the worker, the database, Azurite and the cache): `docker compose up -d --build`. The API then needs the key in `secrets/api_key.txt` (header `X-API-Key`).
 
 ## How a new ticket gets its AI work
 
@@ -92,9 +92,6 @@ curl -X POST http://127.0.0.1:8000/v1/tickets -H "Content-Type: application/json
 | `python -m scripts.outage_demo [--breaker on\|off]` | a simulated outage, with and without a circuit breaker | 5 |
 | `python -m scripts.shutdown_demo` | stop a worker gracefully, then kill one (constructed) | 5 |
 | `python -m scripts.autoscale [--min 1 --max 6]` | a local autoscaler that starts and stops workers | 5 |
-| `locust -f loadtest/ramp.py\|steady.py\|burst.py\|soak.py --headless` | load shapes | 6 |
-| `python -m scripts.compare --config "name:VAR=value,..." ...` | compare configurations, several passes each | 6 |
-| `python -m scripts.cost` | estimated AI cost per ticket, from the dated prices | 6 |
 
 The databases course's commands still work (`scripts.bench`, `scripts.explain`, `scripts.backup`, ...).
 

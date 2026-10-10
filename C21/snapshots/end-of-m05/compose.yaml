@@ -30,6 +30,9 @@ services:
     # docker compose up -d --scale worker=3
     image: ticket-api:1.4.0
     command: ["python", "-m", "ticket_api.worker"]
+    # On docker compose stop, wait up to 30 s: longer than WORKER_DRAIN_SECONDS (20),
+    # so the running jobs can finish (Docker's default is 10 s).
+    stop_grace_period: 30s
     environment:
       DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
       PROVIDER_URL: http://simulator:8300/v1

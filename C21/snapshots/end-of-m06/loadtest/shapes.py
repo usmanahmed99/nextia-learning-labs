@@ -16,6 +16,9 @@ from locust import LoadTestShape
 class Stages(LoadTestShape):
     """A list of (until second, users). The test stops after the last stage."""
 
+    # Not a shape on its own: without this line, Locust would also find Stages in each
+    # file and could run it (no stages, so the test would stop at once).
+    abstract = True
     stages: list[tuple[int, int]] = []
 
     def tick(self):

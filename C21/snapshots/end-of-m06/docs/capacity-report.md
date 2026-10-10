@@ -27,9 +27,17 @@ Can the service accept Black Friday's tickets, and give each one its AI work, wi
 2. **Bound the queue** at what the provider can do in the time customers accept for the first reply. With the quota's 50 tickets per minute and a 5-minute promise, that is about 250 jobs. Above it, refuse with Retry-After instead of making a promise we cannot keep.
 3. **Keep the circuit breaker on.** In a 20-second simulated outage, the worker without it used all 5 attempts of every job (150 calls, 30 dead letters); with it, 8 calls, and all 30 jobs succeeded afterwards.
 
+## Cost
+
+The AI work costs about **US$0.00006 per ticket** (US$0.06 per 1,000 tickets): the provider's token counts times the dated prices in `ticket_api/prices.py` (`python -m scripts.cost`). The busiest Black Friday hour (1,010 tickets) costs about US$0.06 of AI work. The queue does not change this cost: every ticket gets the same three calls. Not included: the machines, the database and the cache.
+
 ## The next bottleneck
 
 The provider's quota. Before the next change, measure: the real provider's times under our load (the simulator does not slow down with load; the real provider was about 30% slower with 40 calls in flight), and the quota after an increase is granted.
+
+## What a real run must measure before a production claim
+
+A run on the real platform, in a disposable copy of production, with a budget and a deletion afterwards: the replicas over time, their cold starts and the scale-down delay; the managed database's connections and CPU; the real provider's times and refusals at our arrival rate; and the cost per hour of the machines. This course did not make that run.
 
 ## What this test does not say
 

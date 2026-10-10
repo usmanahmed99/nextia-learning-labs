@@ -7,7 +7,7 @@ All the data is made up for the course. No real customer, ticket or file is in i
 ## What you need
 
 - Python 3.12 or later.
-- Docker (Docker Desktop on Windows and macOS) for PostgreSQL 18 with pgvector and, from Module 3, Valkey (the cache). Without Docker, see [Without Docker](#without-docker).
+- Docker (Docker Desktop on Windows and macOS) for PostgreSQL 18 with pgvector, Azurite (the storage emulator of the databases course) and, from Module 3, Valkey (the cache). Without Docker, see [Without Docker](#without-docker).
 
 You do not need an account, a key or money. Run load tests only against these services on your own computer.
 
@@ -18,7 +18,7 @@ macOS and Linux:
 ```sh
 cp .env.example .env              # then change the password in .env (three places)
 mkdir -p secrets && echo "local-practice-key" > secrets/api_key.txt
-docker compose up -d db cache     # PostgreSQL (127.0.0.1:5432) and Valkey (127.0.0.1:6379)
+docker compose up -d db azurite cache     # PostgreSQL (127.0.0.1:5432), Azurite (127.0.0.1:10000) and Valkey (127.0.0.1:6379)
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -31,7 +31,7 @@ Windows (PowerShell):
 ```powershell
 Copy-Item .env.example .env       # then change the password in .env (three places)
 New-Item -ItemType Directory -Force secrets; Set-Content secrets\api_key.txt "local-practice-key"
-docker compose up -d db cache
+docker compose up -d db azurite cache
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
@@ -56,7 +56,7 @@ curl -X POST http://127.0.0.1:8000/v1/tickets -H "Content-Type: application/json
 
 **Reset:** `python -m scripts.load --reset` loads the data again (new tickets start at T-500001 again); `python -m scripts.cache flush` empties the cache; `docker compose down --volumes` deletes the database. The simulated provider forgets everything when you stop it.
 
-**Everything in Docker** (the API, the worker, the simulated provider, the database and the cache): `docker compose up -d --build`. The API then needs the key in `secrets/api_key.txt` (header `X-API-Key`).
+**Everything in Docker** (the API, the simulated provider, the worker, the database, Azurite and the cache): `docker compose up -d --build`. The API then needs the key in `secrets/api_key.txt` (header `X-API-Key`).
 
 ## How a new ticket gets its AI work
 
@@ -136,7 +136,7 @@ CREATE DATABASE tickets OWNER tickets;
 | `loadtest/` | the Locust workloads and load shapes |
 | `migrations/` | the schema; `013_ai_work.sql`, `014_jobs.sql` are this course's |
 | `scripts/` | the commands above |
-| `docs/` | `workload.md`, `benchmark-template.md`, `cache-plan.md` (worked examples), and the databases course's storage map and schema |
+| `docs/` | `workload.md`, `benchmark-template.md`, `cache-plan.md` (worked examples), `capacity-report.md` (the recommendation of Module 6), and the databases course's storage map and schema |
 | `data/` | the made-up help-desk data (from the databases course) |
 | `.github/`, `deploy/`, `evaluation/`, `contract/` | from the CI/CD course: the pipeline, the local environments, the AI evaluation gate, the API contract |
 

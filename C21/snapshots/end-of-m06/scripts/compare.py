@@ -3,14 +3,15 @@
     python -m scripts.compare \
         --config "one process:INTAKE_MODE=async" \
         --config "queue, 2 workers:INTAKE_MODE=queue,WORKERS=2" \
-        --users 8 --seconds 40 --warmup 10 --passes 3 [--pace 0] [--json result.json]
+        --users 8 --seconds 40 --warmup 10 --passes 3 [--pace 0] [--json result.json] \
+        [--port 8790]
 
 For each configuration and pass it starts everything again from the same state: the
 small data loaded again, the cache's keys deleted, the simulated provider reset; then
-the API (uvicorn on 127.0.0.1:8790, WEB_WORKERS processes) and, with INTAKE_MODE=queue,
-WORKERS worker processes; then Locust (loadtest/locustfile.py, headless) for --seconds.
-A configuration is "name:VAR=value,VAR=value": any setting of the API (.env.example,
-README), plus WEB_WORKERS and WORKERS.
+the API (uvicorn on 127.0.0.1:8790 or --port/COMPARE_PORT, WEB_WORKERS processes) and,
+with INTAKE_MODE=queue, WORKERS worker processes; then Locust (loadtest/locustfile.py,
+headless) for --seconds. A configuration is "name:VAR=value,VAR=value": any setting of
+the API (.env.example, README), plus WEB_WORKERS and WORKERS.
 
 It reports, per configuration, the median of the passes and the range (lowest-highest):
 - useful throughput: successful answers within --slo-ms (5 s) per second;
@@ -47,7 +48,7 @@ from scripts.breakdown import provider_stats
 from ticket_api.config import load_settings
 
 ROOT = Path(__file__).resolve().parent.parent
-PORT = 8790
+PORT = int(os.environ.get("COMPARE_PORT", "8790"))
 
 
 def parse_config(text: str) -> tuple[str, dict]:
@@ -68,7 +69,7 @@ def wait_until_up(url: str, seconds: float = 30) -> None:
     raise SystemExit("The API did not start: see the output above.")
 
 
-def start(env: dict) -> tuple[subprocess.Popen, list[subprocess.Popen]]:
+def start(env: dict, port: int = PORT) -> tuple[subprocess.Popen, list[subprocess.Popen]]:
     full = {**os.environ, "LOG_LEVEL": "WARNING", "RATE_LIMIT_PER_MINUTE": "0", **env}
     api = subprocess.Popen(
         [
@@ -79,7 +80,7 @@ def start(env: dict) -> tuple[subprocess.Popen, list[subprocess.Popen]]:
             "--host",
             "127.0.0.1",
             "--port",
-            str(PORT),
+            str(port),
             "--workers",
             env.get("WEB_WORKERS", "1"),
             "--log-level",
@@ -139,9 +140,9 @@ def reset(settings, provider_url: str) -> None:
 def one_pass(name: str, env: dict, args, settings) -> dict:
     provider_url = env.get("PROVIDER_URL", settings.provider_url)
     reset(settings, provider_url)
-    api, workers = start(env)
+    api, workers = start(env, args.port)
     try:
-        wait_until_up(f"http://127.0.0.1:{PORT}")
+        wait_until_up(f"http://127.0.0.1:{args.port}")
         before = provider_stats(provider_url)
         cpu0, wall0 = cpu_seconds([api]), time.monotonic()
         with tempfile.TemporaryDirectory() as tmp:
@@ -161,7 +162,7 @@ def one_pass(name: str, env: dict, args, settings) -> dict:
                     "-t",
                     f"{args.seconds}s",
                     "--host",
-                    f"http://127.0.0.1:{PORT}",
+                    f"http://127.0.0.1:{args.port}",
                     "--only-summary",
                     "--loglevel",
                     "WARNING",
@@ -200,7 +201,7 @@ def one_pass(name: str, env: dict, args, settings) -> dict:
                     " extract(epoch FROM finished_at) AS finished FROM jobs"
                 ).fetchall()
                 done = sorted(
-                    j["e2e_ms"]
+                    float(j["e2e_ms"])
                     for j in jobs
                     if j["state"] == "succeeded" and window[0] <= j["created"] < window[1]
                 )
@@ -262,6 +263,9 @@ def main(argv: list[str] | None = None) -> int:
         help="an answer slower than this is not useful (default 5 s)",
     )
     parser.add_argument("--json", help="write every pass and the summary here")
+    parser.add_argument(
+        "--port", type=int, default=PORT, help="the API's port during the run (default 8790)"
+    )
     args = parser.parse_args(argv)
     settings = load_settings()
     configs = [parse_config(c) for c in args.config]

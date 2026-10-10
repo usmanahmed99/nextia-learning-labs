@@ -8,15 +8,15 @@ Each folder here is the `ticket-api` project of [Scaling APIs and AI Workloads](
 | [`end-of-m01`](end-of-m01) | Module 2 | AI work for every new ticket (`POST /v1/tickets`: classify, draft a reply, embed), the simulated AI provider (`python -m simulator`), the Locust workload (`loadtest/locustfile.py`), `scripts/workload.py`, `percentiles.py`, `machine.py`, `breakdown.py`, the result template. | 128 |
 | [`end-of-m02`](end-of-m02) | Module 3 | `INTAKE_MODE` (`async`, `thread`, and `blocking`, a mistake made on purpose), `PROVIDER_MAX_CONCURRENCY`, `scripts/stall.py`, `scripts/limits.py`. | 137 |
 | [`end-of-m03`](end-of-m03) | Module 4 | The shared cache in Valkey (`ticket_api/cache.py`), answers to questions with keys that include who asks (`POST /v1/answers`), `scripts/cache.py`, `leak_demo.py`, `stampede.py`, `loadtest/questions.py`. | 148 |
-| [`end-of-m04`](end-of-m04) | Module 5 | The job queue in PostgreSQL (`014`), the worker (`python -m ticket_api.worker`), job routes, idempotency keys, retries and dead letters, the queue bound and the rate limit; `queue_watch.py`, `duplicate_demo.py`. | 163 |
-| [`end-of-m05`](end-of-m05) | Module 6 | Timeouts, the circuit breaker and the retry budget (`ticket_api/resilience.py`), graceful worker shutdown; `outage_demo.py`, `shutdown_demo.py`, `autoscale.py`, `send_tickets.py`. | 172 |
+| [`end-of-m04`](end-of-m04) | Module 5 | The job queue in PostgreSQL (`014`), the worker (`python -m ticket_api.worker`), job routes, idempotency keys, retries and dead letters, the queue bound and the rate limit; `queue_watch.py`, `duplicate_demo.py`, `send_tickets.py`. | 163 |
+| [`end-of-m05`](end-of-m05) | Module 6 | Timeouts, the circuit breaker and the retry budget (`ticket_api/resilience.py`), graceful worker shutdown; `outage_demo.py`, `shutdown_demo.py`, `autoscale.py`. | 172 |
 | [`end-of-m06`](end-of-m06) | The final assignment | Load shapes (`loadtest/ramp.py`, `steady.py`, `burst.py`, `soak.py`), `scripts/compare.py`, `scripts/cost.py`, the capacity report. The course-end project. | 176 |
 
 Each snapshot has only what the lessons' guided practice makes. It does not have the answers to the "Your turn" tasks.
 
 ## What a snapshot does not have
 
-- `.env` and `secrets/`. Make them from `.env.example`, as the project's `README.md` says.
+- `.env` and `secrets/`. Make them from `.env.example`, as the snapshot's `README.md` says (each snapshot has its own README, for its stage).
 - The virtual environment `.venv` and the large data (`data/large/`).
 - Your database and your cache: they live in Docker. `python -m scripts.load --reset` loads the data again; `python -m scripts.cache flush` empties the cache.
 
@@ -53,14 +53,14 @@ The steps use `end-of-m03` as an example. Use the name of your snapshot.
    python3 -m venv .venv
    source .venv/bin/activate              # Windows: .venv\Scripts\Activate.ps1
    python -m pip install -r requirements.txt
-   docker compose up -d db cache          # start to end-of-m02: docker compose up -d db
+   docker compose up -d db azurite cache  # start to end-of-m02: docker compose up -d db azurite
    python -m scripts.load --reset
    python -m pytest
    ```
 
    `end-of-m03` gives `148 passed`. `python -m scripts.load --reset` applies the snapshot's migrations and loads the small data again.
 
-   A database that has migrations from a later snapshot cannot go back: `python -m ticket_api.migrate` never undoes a migration. To go back to an earlier snapshot, delete the database first: `docker compose down --volumes`, then `docker compose up -d db cache`.
+   A database that has migrations from a later snapshot cannot go back: `python -m ticket_api.migrate` never undoes a migration. To go back to an earlier snapshot, delete the database first: `docker compose down --volumes`, then `docker compose up -d db azurite cache`.
 
 ## Tested
 
