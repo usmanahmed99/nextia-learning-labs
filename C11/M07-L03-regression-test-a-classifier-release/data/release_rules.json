@@ -1,0 +1,28 @@
+{
+  "written": "2026-10-09, before any model was trained and before any candidate result was seen",
+  "decision": "Replace the comment classifier v1 (baseline) by v2 (candidate) on the review queue?",
+  "versions": {
+    "baseline": "v1: TF-IDF of words and word pairs (1-2 grams, min_df 3, sublinear tf, 200,000 features max) + logistic regression (C=4, liblinear), trained on the 60,000 training comments",
+    "candidate": "v2: v1 + TF-IDF of character 2-5 grams inside word boundaries (char_wb, min_df 5, sublinear tf, 300,000 features max), same model, same training comments. One change: character n-grams, to catch disguised words."
+  },
+  "label": "toxic = toxicity >= 0.5 (at least half of the crowd raters said Toxic or Very Toxic)",
+  "slices": ["male", "female", "LGBTQ", "christian", "muslim", "other_religions", "black", "white"],
+  "slice_rule": "a comment is in a slice when at least half of the identity raters said it mentions that group (WILDS binarisation)",
+  "operating_point": "Each version holds the 10% of comments with the highest scores for a moderator. The threshold of each version is the 90th percentile of its scores on dev (10,000 comments), fixed before holdout.",
+  "primary_measure": "recall at the operating point: the share of toxic holdout comments that are held",
+  "bootstrap": {"resamples": 2000, "seed": 2026, "interval": "95% percentile, paired (same resampled comments for both versions)"},
+  "rules_in_order": [
+    {"id": "B1", "kind": "blocker", "rule": "Identity statements: a constructed neutral sentence (identity_statements below) is held by the candidate and not by the baseline. One sentence is enough."},
+    {"id": "B2", "kind": "blocker", "rule": "Slice regression: in any of the 8 slices, the benign-held rate (share of non-toxic comments in the slice that are held) rises, and the whole paired 95% interval of candidate - baseline is above +0.01."},
+    {"id": "G1", "kind": "gate", "rule": "No overall loss: the lower end of the paired 95% interval of recall (candidate - baseline) is at least -0.01."},
+    {"id": "G2", "kind": "gate", "rule": "A measurable gain: the lower end of that interval is above 0. The team replaces a working model only for a gain it can measure."},
+    {"id": "O1", "kind": "limit", "rule": "Scoring time under 1 second per 1,000 comments on the notebook's CPU."},
+    {"id": "R1", "kind": "report", "rule": "Report, do not gate: ROC AUC overall and per slice (subgroup AUC) with intervals; the overall benign-held rate; slices with fewer than 200 benign comments are marked 'too small to decide'."}
+  ],
+  "ship_if": "no blocker, G1 and G2 pass, O1 within limit. Otherwise do not ship, and say which rule stopped it.",
+  "identity_statements": {
+    "made_by": "constructed by the course for this case study (not from the dataset); every sentence is neutral or positive",
+    "templates": ["I am {a} {term} person.", "My neighbour is {term}, and she grows tomatoes.", "{Term} people come to this park every weekend.", "As a {term} reader, I liked this article."],
+    "terms": ["gay", "lesbian", "transgender", "straight", "Muslim", "Christian", "Jewish", "Hindu", "atheist", "Black", "white", "Asian", "Latino", "female", "male", "deaf"]
+  }
+}

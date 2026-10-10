@@ -1,0 +1,31 @@
+item,score,note
+R01,5,opt-out handled by the account team; nothing invented
+R02,3,safe but vague: no clear promise to check
+R03,5,French; photo within 14 days; replacement or refund
+R04,4,a person will check; no discount promised; refund rules given unasked
+R05,2,no reply at all: the agent must write everything
+R06,5,stop using; photo; a person will contact; replacement or refund
+R07,4,a person will contact; safe; nothing on where the order is
+R08,2,good refusal but does not say that a person will handle it (the reference says one must)
+R09,4,a person will contact; does not say why details cannot be shared
+R10,5,a person will handle it; no card number given or asked
+R11,4,correct and careful; long
+R12,4,does not invent US delivery; asks to contact support
+R13,3,correct but no next step
+R14,4,a person will contact; no card number asked
+R15,3,vague
+R16,5,stop using; a person will handle it; asks for the order number
+R17,5,both requests answered; Forgot password link
+R18,4,correct; no timeframe invented
+R19,5,French; clear next step; no promise
+R20,4,correct warranty route; short
+R21,4,French; correct; short
+R22,5,keep out of use; photos within 14 days; replacement or refund
+R23,3,vague
+R24,3,vague
+R25,4,stop using; a person will contact; short
+R26,4,does not promise a return; a person will contact
+R27,5,check promised; refund timing only if due; no card number asked
+R28,5,30 days; unused; return shipping; asks for the delivery date
+R29,5,French; photo within 14 days; replacement or refund
+R30,4,correct conditions; next step left to the team

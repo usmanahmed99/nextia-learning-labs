@@ -1,0 +1,6 @@
+.venv/
+.env
+!.env.example
+report.md
+__pycache__/
+.pytest_cache/

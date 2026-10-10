@@ -1,0 +1,132 @@
+{
+ "summary_request": "Summarise the news article below in at most three sentences for a daily briefing. Keep the main point and the key numbers. Use only facts from the article.",
+ "summary_model": "gpt-6-luna-2026-09-22",
+ "summary_at": "2026-10-09",
+ "summaries": {
+  "real": {
+   "text": "Randwick City Council has opened public consultation on introducing paid parking at beaches, citing non-local visitors making up as much as 84% of traffic at some beaches. The proposal is estimated to cost A$3.6 million to implement and generate A$6 million in annual revenue; consultation closes April 15. If approved, new signs and parking meters would be installed in late 2026 and 2027.",
+   "constructed": false,
+   "how": "written by chat-small (recorded)"
+  },
+  "wrong_number": {
+   "text": "Randwick City Council has opened public consultation on introducing paid parking at beaches, citing non-local visitors making up as much as 84% of traffic at some beaches. The proposal is estimated to cost A$3.6 million to implement and generate A$16 million in annual revenue; consultation closes April 15. If approved, new signs and parking meters would be installed in late 2026 and 2027.",
+   "how": "CONSTRUCTED by the course author: the real summary with one number changed (A$6 million became A$16 million).",
+   "constructed": true
+  },
+  "off_point": {
+   "text": "A Wikinews contributor visited the area and found that parking at Arden St. was free. Parking near Coogee Oval required a fee from 2003 to 2016. Near Manly, a multi-level paid car park is available in a nearby shopping center.",
+   "how": "CONSTRUCTED by the course author: three true side details from the article's last paragraph; the main point (the consultation on paid beach parking) is missing.",
+   "constructed": true
+  }
+ },
+ "judgements": [
+  {
+   "summary": "real",
+   "model": "chat-small",
+   "model_version": "gpt-6-luna-2026-09-22",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "ea4d26b5fb04d4c8",
+   "answer": {
+    "coherence": 5,
+    "consistency": 5,
+    "fluency": 5,
+    "relevance": 5,
+    "unsupported": ""
+   },
+   "tokens_in": 1036,
+   "tokens_out": 108,
+   "latency_s": 1.67,
+   "at": "2026-10-09T17:46:16-04:00"
+  },
+  {
+   "summary": "real",
+   "model": "chat-strong",
+   "model_version": "gpt-6.1-sol-2026-09-29",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "0a915ce6a1da87ae",
+   "answer": {
+    "coherence": 5,
+    "consistency": 5,
+    "fluency": 5,
+    "relevance": 5,
+    "unsupported": ""
+   },
+   "tokens_in": 1036,
+   "tokens_out": 32,
+   "latency_s": 1.844,
+   "at": "2026-10-09T17:46:18-04:00"
+  },
+  {
+   "summary": "wrong_number",
+   "model": "chat-small",
+   "model_version": "gpt-6-luna-2026-09-22",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "7ca13e96865c64ab",
+   "answer": {
+    "coherence": 5,
+    "consistency": 3,
+    "fluency": 5,
+    "relevance": 5,
+    "unsupported": "The proposal is estimated to cost A$3.6 million to implement and generate A$16 million in annual revenue; consultation closes April 15."
+   },
+   "tokens_in": 1036,
+   "tokens_out": 222,
+   "latency_s": 2.867,
+   "at": "2026-10-09T17:46:21-04:00"
+  },
+  {
+   "summary": "wrong_number",
+   "model": "chat-strong",
+   "model_version": "gpt-6.1-sol-2026-09-29",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "b197fa3635f8b5e8",
+   "answer": {
+    "coherence": 5,
+    "consistency": 3,
+    "fluency": 5,
+    "relevance": 5,
+    "unsupported": "The proposal is estimated to cost A$3.6 million to implement and generate A$16 million in annual revenue"
+   },
+   "tokens_in": 1036,
+   "tokens_out": 150,
+   "latency_s": 4.075,
+   "at": "2026-10-09T17:46:25-04:00"
+  },
+  {
+   "summary": "off_point",
+   "model": "chat-small",
+   "model_version": "gpt-6-luna-2026-09-22",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "1864d09f45197480",
+   "answer": {
+    "coherence": 5,
+    "consistency": 5,
+    "fluency": 5,
+    "relevance": 1,
+    "unsupported": ""
+   },
+   "tokens_in": 1007,
+   "tokens_out": 293,
+   "latency_s": 2.962,
+   "at": "2026-10-09T17:46:44-04:00"
+  },
+  {
+   "summary": "off_point",
+   "model": "chat-strong",
+   "model_version": "gpt-6.1-sol-2026-09-29",
+   "prompt_sha": "8e70441e3fe1",
+   "key": "c22980c2f7ebebda",
+   "answer": {
+    "coherence": 4,
+    "consistency": 5,
+    "fluency": 5,
+    "relevance": 1,
+    "unsupported": ""
+   },
+   "tokens_in": 1007,
+   "tokens_out": 86,
+   "latency_s": 3.088,
+   "at": "2026-10-09T17:46:47-04:00"
+  }
+ ]
+}
