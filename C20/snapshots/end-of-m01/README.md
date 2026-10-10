@@ -44,7 +44,7 @@ python -m pytest
 
 **Reset:** `python -m scripts.load --reset` deletes the help-desk data and loads it again. `docker compose down --volumes` deletes the whole database (and, from Module 5, the files in Azurite).
 
-**The large data** (300,000 tickets, for the performance lessons): `python -m scripts.load --size large --reset`. The first time, it makes the data on your computer (`data/generate.py`, about 15 seconds) and downloads the ticket vectors (15 MB). Go back to the small data with `python -m scripts.load --reset`.
+**The large data** (300,000 tickets, for the performance lessons): `python -m scripts.load --size large --reset`. The first time, it makes the data on your computer (`data/generate.py`, about 15 seconds) and downloads the ticket vectors (15 MB). If you have the vectors in a folder already (for example a clone of the labs repository), use `--vectors <folder>` (or set `LARGE_VECTORS_DIR`) and nothing is downloaded. Go back to the small data with `python -m scripts.load --reset`.
 
 ## Without Docker
 

@@ -11,7 +11,7 @@ The deployment checklist, the resource inventory and the clean-up record for the
 
 | Step | Command | Result (live) |
 |---|---|---|
-| Resource group, with tags | `az group create --name rg-ticket-api-practice --location canadacentral --tags purpose=practice course=C18` | Created |
+| Resource group, with tags | `az group create --name rg-ticket-api-practice --location canadacentral --tags purpose=practice course=docker` | Created |
 | Registry, admin user off | `az acr create --resource-group rg-ticket-api-practice --name ticketapi4821 --sku Basic` | `ADMIN ENABLED False` |
 | Build for the cloud and push | `az acr login --name ticketapi4821`, then `docker buildx build --platform linux/amd64 -t ticketapi4821.azurecr.io/ticket-api:1.1.0 --push .` | 27 s |
 | Check the platform | `docker buildx imagetools inspect ticketapi4821.azurecr.io/ticket-api:1.1.0` | `linux/amd64` (and the build attestation, `unknown/unknown`) |

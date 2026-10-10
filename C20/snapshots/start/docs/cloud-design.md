@@ -20,7 +20,7 @@ Prices checked on 2026-10-07 (Azure Retail Prices API, canadacentral, USD, pay-a
 ## Region and resource group
 
 - Region: `canadacentral` (the course's region; use the nearest region that has Container Apps). Every resource is in the same region.
-- Resource group: `rg-ticket-api-practice`, tags `purpose=practice` and `course=C18`. Every resource goes in this group, so one delete removes them all.
+- Resource group: `rg-ticket-api-practice`, tags `purpose=practice` and `course=docker`. Every resource goes in this group, so one delete removes them all.
 
 ## Identity and access
 

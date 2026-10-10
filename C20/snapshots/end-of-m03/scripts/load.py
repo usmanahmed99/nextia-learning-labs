@@ -3,6 +3,10 @@
     python -m scripts.load                  the small data (40 customers, 200 tickets)
     python -m scripts.load --size large     the large data (20,000 customers, 300,000 tickets)
     python -m scripts.load --reset          delete the help-desk data first, then load
+    python -m scripts.load --size large --vectors FOLDER
+                                            take the large data's vectors from a folder (for
+                                            example labs C20/data/large) instead of downloading
+                                            them; or set LARGE_VECTORS_DIR
 
 It applies the migrations first, so the tables exist. Then it copies the CSV files of
 data/<size>/ into the tables with COPY, adds the ticket vectors, and prints the counts.
@@ -13,6 +17,8 @@ The database comes from DATABASE_URL (in .env). All the data is made up for the 
 import argparse
 import csv
 import hashlib
+import os
+import shutil
 import struct
 import subprocess
 import sys
@@ -62,7 +68,10 @@ def check_files(folder: Path) -> None:
             )
 
 
-def make_large() -> None:
+VECTOR_FILES = ("ticket_embeddings.f32", "ticket_embeddings.ids", "ticket_embeddings.json")
+
+
+def make_large(vectors_from: Path | None = None) -> None:
     if not (DATA / "large" / "tickets.csv").exists():
         print("Making the large data (once, about 15 seconds) ...")
         subprocess.run(
@@ -70,14 +79,22 @@ def make_large() -> None:
             check=True,
         )
     vectors = DATA / "large" / "ticket_embeddings.f32"
-    if not vectors.exists():
+    vectors_from = vectors_from or (
+        Path(os.environ["LARGE_VECTORS_DIR"]) if os.environ.get("LARGE_VECTORS_DIR") else None
+    )
+    if vectors_from is not None:
+        print(f"Copying the vectors of the large data from {vectors_from} ...")
+        for name in VECTOR_FILES:
+            if not (vectors_from / name).exists():
+                raise SystemExit(f"{vectors_from / name} does not exist.")
+            shutil.copyfile(vectors_from / name, DATA / "large" / name)
+        if hashlib.sha256(vectors.read_bytes()).hexdigest() != LARGE_VECTORS_SHA256:
+            vectors.unlink()
+            raise SystemExit(f"The vectors in {vectors_from} are not the expected file.")
+    elif not vectors.exists():
         print("Downloading the vectors of the large data (15 MB, once) ...")
         try:
-            for name in (
-                "ticket_embeddings.f32",
-                "ticket_embeddings.ids",
-                "ticket_embeddings.json",
-            ):
+            for name in VECTOR_FILES:
                 urllib.request.urlretrieve(LARGE_VECTORS_URL + name, DATA / "large" / name)
         except OSError as error:
             print(f"Could not download the vectors ({error}). The data loads without them.")
@@ -200,11 +217,16 @@ def upload_files(folder: Path, reset: bool) -> int:
 
 
 def load(
-    url: str, size: str = "small", reset: bool = False, quiet: bool = False, files: bool = True
+    url: str,
+    size: str = "small",
+    reset: bool = False,
+    quiet: bool = False,
+    files: bool = True,
+    vectors_from: Path | None = None,
 ) -> dict:
     folder = DATA / size
     if size == "large":
-        make_large()
+        make_large(vectors_from)
     check_files(folder)
     with psycopg.connect(url) as conn:
         conn.execute("SET client_min_messages = warning")
@@ -267,6 +289,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--size", choices=["small", "large"], default="small")
     parser.add_argument("--reset", action="store_true", help="delete the help-desk data first")
+    parser.add_argument(
+        "--vectors", type=Path, help="a folder with the large data's vectors (no download)"
+    )
     args = parser.parse_args(argv)
     load_env()
     url = read_secret("DATABASE_URL")
@@ -274,7 +299,7 @@ def main(argv: list[str] | None = None) -> int:
         print("DATABASE_URL is not set. Copy .env.example to .env and set it.", file=sys.stderr)
         return 1
     try:
-        load(url, args.size, args.reset)
+        load(url, args.size, args.reset, vectors_from=args.vectors)
     except psycopg.OperationalError as error:
         print(
             f"Cannot connect to the database: {str(error).strip().splitlines()[0]}", file=sys.stderr
