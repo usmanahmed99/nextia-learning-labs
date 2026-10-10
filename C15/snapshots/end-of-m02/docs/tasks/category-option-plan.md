@@ -15,6 +15,13 @@ and the tests.
 `valid_records` and `rejected` come from all the tickets, before the status is
 chosen. A test now shows that (`test_whole_file_counts_do_not_depend_on_the_status`).
 
+## Found while reading
+
+`clean_category` keeps the capital letters of a name that is not one of the
+web form's names, so `LOGIN` and `login` are two categories. That is Grace's
+bug (`docs/tasks/category-names-bug.md`), a separate task. The option compares
+the chosen names with the stored category, and does not work around the bug.
+
 ## Steps
 
 | Step | Change | File | Test that shows it works |
