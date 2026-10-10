@@ -5,6 +5,7 @@ import json
 from support_assistant import incident
 from support_assistant.assistant import run_case
 from support_assistant.data import load_attacks, load_tasks
+from support_assistant.providers import MockProvider
 from support_assistant.runner import fresh_world
 from tests.scripted import Scripted
 
@@ -18,6 +19,9 @@ def test_a_disabled_tool_leaves_the_tool_list_and_a_call_is_refused():
     sent = {t["function"]["name"] for t in model.calls[0][0]["tools"]}
     assert "fetch_url" not in sent
     assert st.tool_events[0].code == "tool_disabled" and not st.tool_events[0].allowed
+    # The recorded reply of TASK-08 quotes the fetched page: with the tool off, it is not replayed.
+    st = run_case(load_tasks()["TASK-08"], MockProvider().complete, w, "chat-small", "secure")
+    assert st.stop_reason == "no_recording" and st.answer == "" and "disabled" in st.errors[-1]
     assert incident.restore(w, "tool", "fetch_url") and "fetch_url" not in incident.disabled_tools(w)
 
 
