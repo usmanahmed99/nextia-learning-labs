@@ -4,7 +4,7 @@ A tabletop review: for each failure, what users see, how we notice, what limits 
 
 | ID | Failure | What users see | Detection signal | Mitigation | Owner | Recovery |
 |---|---|---|---|---|---|---|
-| F1 | Model provider outage or 429 (quota) | answers fail or wait | share of 5xx/429 from the provider over 5 minutes > 5% | timeout 10 s; circuit breaker (the scaling course measured 8 calls instead of 150 during a 20 s outage); a clear "try again in a minute" message; ingestion jobs wait in the queue | Amira | automatic when the provider is back; no data lost |
+| F1 | Model provider outage or 429 (quota) | answers fail or wait | share of 5xx/429 from the provider over 5 minutes > 5% | timeout 10 s; circuit breaker (the scaling course measured 8 calls instead of 150 during a 20 s outage); a clear "try again in a minute" message; ingestion jobs wait in the queue | Kwame (Amira runs the fallback) | automatic when the provider is back; no data lost |
 | F2 | Slow database | every answer is slow | p95 of the search query > 100 ms; connection pool waits | connection pool with a timeout; the indexes from the databases course; one bigger server size is a setting | Mei | minutes (resize) |
 | F3 | Queue backlog | new documents are not searchable for hours | age of the oldest queued job > 15 minutes | the worker scales on queue age; the upload answer says "processing"; a bound on jobs per tenant | Mei | the backlog drains; no data lost |
 | F4 | Partial ingestion (worker stops halfway) | an old version stays active, or a document is missing | jobs "running" past their lease; versions "processing" for more than 1 hour | one transaction for chunks, vectors and the version switch; the lease returns the job to the queue | Mei | automatic on the next delivery |

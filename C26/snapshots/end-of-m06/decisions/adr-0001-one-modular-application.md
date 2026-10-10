@@ -6,7 +6,7 @@ Accepted. Kwame, with Amira.
 
 ## Context
 
-The assistant has an interactive part (answers, J1 and J2) and a slow part (ingestion, J3). Tomás proposed separate services (an answer service, an ingestion service, a search service) on Kubernetes. Demand is small and uncertain: 1,465 questions a day in the base scenario, 0.53 requests in flight at the busiest minute (cost model, from measured times). One developer (Amira) maintains it (Q6).
+The assistant has an interactive part (answers, J1 and J2) and a slow part (ingestion, J3). Tomás proposed separate services (an answer service, an ingestion service, a search service) on Kubernetes. Demand is small and uncertain: 1,465 questions a day in the base scenario, 0.58 requests in flight at the busiest minute (cost model, from measured times). One developer (Amira) maintains it (Q6).
 
 ## Options
 
