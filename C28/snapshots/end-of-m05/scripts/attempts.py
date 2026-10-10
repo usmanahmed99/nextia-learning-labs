@@ -51,6 +51,7 @@ def which_check(status: str, message: str) -> str:
     m = message.lower()
     for key, name in [
         ("http 401", "token (signature, issuer, audience, expiry)"),
+        ("http 403", "scope (the token does not allow it)"),
         ("no access to this organization", "membership (no membership here)"),
         ("insufficient_scope", "scope (the token does not allow it)"),
         ("not_found", "organization-scoped lookup (not in this organization)"),

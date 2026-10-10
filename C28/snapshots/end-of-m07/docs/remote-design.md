@@ -14,7 +14,7 @@
 
 1. The client sends a request without a token. The server answers **401** with `WWW-Authenticate: Bearer … resource_metadata="…/.well-known/oauth-protected-resource/mcp"`.
 2. The client reads the protected resource metadata (RFC 9728): the resource URL and its authorization server.
-3. The client reads the authorization server's metadata (RFC 8414), registers if needed (RFC 7591), and signs the person in with the authorization code flow and PKCE (S256), asking for this resource (`resource=` the server's URL, RFC 8707) and the scopes it needs.
+3. The client reads the authorization server's metadata (RFC 8414), registers if needed (RFC 7591), and signs the person in with the authorization code flow and PKCE (S256), asking for this resource (`resource=` the server's URL, RFC 8707) and the scopes the server advertises (`scopes_supported`: the read scopes only). `python -m scripts.oauth_login` shows every step.
 4. The client sends every request with `Authorization: Bearer <token>` and the organization in `X-Support-Tenant`.
 5. The server checks the token (signature, `typ`, issuer, **audience = its own URL**, expiry), then the membership (organization and role) and the scope, for every request.
 

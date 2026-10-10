@@ -77,7 +77,7 @@ The policy documents and tickets are read from `data/` at every start and never 
 | `support_mcp/logs.py` | Logs on stderr (stdout is for the protocol) |
 | `host/` | A minimal AI application with one MCP client and a mock model |
 | `examples/hello_server.py` | The smallest MCP server |
-| `scripts/` | Traces, versions, the attempts table, the contract, compatibility, latency |
+| `scripts/` | Traces, versions, the attempts table, the sign-in flow, the contract, compatibility, latency |
 | `docs/` | The integration map, the capability catalog, the remote design, the compatibility checklist |
 
 ## Licence

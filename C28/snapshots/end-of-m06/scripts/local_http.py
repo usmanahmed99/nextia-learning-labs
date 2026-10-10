@@ -22,6 +22,22 @@ def free_port() -> int:
 
 
 @contextmanager
+def serve_app(app, port: int):
+    """Serve any ASGI app (for example the practice identity provider) on 127.0.0.1:port."""
+    server = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=port, log_level="warning"))
+    thread = threading.Thread(target=server.run, daemon=True)
+    thread.start()
+    deadline = time.time() + 10
+    while not server.started and time.time() < deadline:
+        time.sleep(0.02)
+    try:
+        yield f"http://127.0.0.1:{port}"
+    finally:
+        server.should_exit = True
+        thread.join(timeout=10)
+
+
+@contextmanager
 def serve_http(port: int | None = None):
     """Yields the server's URL. Tokens: keys.access_token(user, scope, url)."""
     port = port or free_port()

@@ -32,7 +32,7 @@
       "who": "server",
       "text": "result: 558 characters",
       "data": {
-        "ms": 2.7,
+        "ms": 2.9,
         "clipped": false
       }
     },
@@ -56,7 +56,7 @@
       "who": "server",
       "text": "result: 1025 characters",
       "data": {
-        "ms": 2.0,
+        "ms": 2.1,
         "clipped": true
       }
     },

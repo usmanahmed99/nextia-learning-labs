@@ -114,11 +114,14 @@ def test_a_cross_tenant_id_is_not_found(server):
     assert call(server, token(server, "usr-camille"), "bramble", "get_ticket", {"ticket_id": "T-40003"})[0] == "ok"
 
 
-def test_an_out_of_scope_read_is_refused(server):
-    tok = token(server, scope="knowledge:read")
-    assert call(server, tok, "larkfield", "search_knowledge", {"query": "returns"})[0] == "ok"
-    status, message = call(server, tok, "larkfield", "get_ticket", {"ticket_id": "T-30002"})
-    assert status == "refused" and "insufficient_scope" in message
+def test_a_token_without_the_read_scopes_is_refused_before_mcp(server):
+    r = post(server, token(server, scope="knowledge:read"))  # no tickets:read
+    assert r.status_code == 403 and 'error="insufficient_scope"' in r.headers["www-authenticate"]
+
+
+def test_the_resource_metadata_advertises_only_the_read_scopes(server):
+    meta = httpx2.get(server.replace("/mcp", "/.well-known/oauth-protected-resource/mcp")).json()
+    assert meta["scopes_supported"] == ["knowledge:read", "tickets:read"]  # not refunds:propose
 
 
 def test_someone_without_any_membership_is_refused(server):

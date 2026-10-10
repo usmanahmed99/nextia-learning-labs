@@ -81,7 +81,11 @@ $TOKEN = python -m idp token --user usr-sam
 python -m host "What is the return window?" --http http://127.0.0.1:8000/mcp --token $TOKEN --tenant larkfield
 ```
 
-`python -m idp token` is a practice shortcut: it signs a token without a sign-in. The provider also runs the real sign-in flow (authorization code with PKCE) at `/authorize` and `/token`.
+`python -m idp token` is a practice shortcut: it signs a token without a sign-in. The provider also runs the real sign-in flow (authorization code with PKCE) at `/authorize` and `/token`. To see the whole flow done by the SDK's own OAuth client (metadata, registration, PKCE, token), run:
+
+```sh
+python -m scripts.oauth_login
+```
 
 ### A real model (optional)
 
@@ -106,7 +110,7 @@ Delete `.idp/` (the practice key), then run `python -m idp init` again.
 | `host/` | A minimal AI application with one MCP client and a mock model |
 | `idp/` | A practice identity provider (authorization server) |
 | `examples/hello_server.py` | The smallest MCP server |
-| `scripts/` | Traces, versions, the attempts table, the contract, compatibility, latency |
+| `scripts/` | Traces, versions, the attempts table, the sign-in flow, the contract, compatibility, latency |
 | `docs/` | The integration map, the capability catalog, the remote design, the compatibility checklist |
 
 ## Licence

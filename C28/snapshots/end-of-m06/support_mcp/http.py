@@ -29,6 +29,7 @@ RESOURCE_URL = os.environ.get("MCP_RESOURCE_URL", "http://127.0.0.1:8000/mcp")
 JWKS_URL = os.environ.get("OIDC_JWKS_URL", f"{ISSUER}/jwks.json")
 LEEWAY_SECONDS = 30
 ACCESS_TOKEN_TYPES = {"at+jwt", "application/at+jwt"}
+READ_SCOPES = ("knowledge:read", "tickets:read")
 
 
 class JwtVerifier:
@@ -106,8 +107,13 @@ def build_app(
         knowledge,
         transport="http",
         token_verifier=verifier or JwtVerifier(issuer, resource_url),
+        # Every token must carry the read scopes; the resource metadata advertises only these, so a
+        # client asks for no more (least privilege). The write scope is granted separately.
         auth=AuthSettings(
-            issuer_url=issuer, resource_server_url=resource_url, required_scopes=None, validate_token_resource=False
-        ),  # the verifier checks aud
+            issuer_url=issuer,
+            resource_server_url=resource_url,
+            required_scopes=list(READ_SCOPES),
+            validate_token_resource=False,  # the verifier checks the audience itself
+        ),
     )
     return mcp.streamable_http_app()

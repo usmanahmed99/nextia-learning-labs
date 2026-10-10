@@ -9,9 +9,9 @@ Each folder here is the `support-mcp` project of [MCP: Connect AI Applications t
 | [`end-of-m02`](end-of-m02) | Module 3 | The capability contracts (`support_mcp/contracts.py`) and the capability catalog. | 20 |
 | [`end-of-m03`](end-of-m03) | Module 4 | The MCP server on stdio (`python -m support_mcp`): two read-only tools, the policy resources, the prompt; `scripts/trace.py`. | 40 |
 | [`end-of-m04`](end-of-m04) | Module 5 | The AI application (`python -m host`) with a mock model, its checks, timeouts and limits. | 49 |
-| [`end-of-m05`](end-of-m05) | Module 6 | Streamable HTTP with access tokens (`python -m support_mcp --http`), the practice identity provider (`python -m idp`), `scripts/attempts.py`. | 66 |
-| [`end-of-m06`](end-of-m06) | Module 7 | Tool results as untrusted data, the refund proposal (`propose_refund`) and its approval (`python -m support_mcp.approvals`). | 82 |
-| [`end-of-m07`](end-of-m07) | The final assignment | The contract file and its test, the compatibility matrix (`scripts/compat.py`), logs without secrets, `scripts/latency.py`, `scripts/tee.py`. The course-end project. | 89 |
+| [`end-of-m05`](end-of-m05) | Module 6 | Streamable HTTP with access tokens (`python -m support_mcp --http`), the practice identity provider (`python -m idp`), `scripts/attempts.py`, `scripts/oauth_login.py` (the sign-in flow with the SDK's OAuth client). | 68 |
+| [`end-of-m06`](end-of-m06) | Module 7 | Tool results as untrusted data, the refund proposal (`propose_refund`) and its approval (`python -m support_mcp.approvals`). | 84 |
+| [`end-of-m07`](end-of-m07) | The final assignment | The contract file and its test, the compatibility matrix (`scripts/compat.py`), logs without secrets, `scripts/latency.py`, `scripts/tee.py`. The course-end project. | 91 |
 
 Each snapshot has only what the lessons' guided practice makes. It does not have the answers to the "Your turn" tasks.
 

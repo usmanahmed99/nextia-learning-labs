@@ -1,2 +1,2 @@
 {"t_ms": 0.2, "dir": "->", "bytes": 269, "message": {"jsonrpc": "2.0", "id": 1, "method": "server/discover", "params": {"_meta": {"io.modelcontextprotocol/protocolVersion": "2099-01-01", "io.modelcontextprotocol/clientInfo": {"name": "trace-script", "version": "1.0"}, "io.modelcontextprotocol/clientCapabilities": {}}}}}
-{"t_ms": 246.1, "dir": "<-", "bytes": 151, "message": {"jsonrpc": "2.0", "id": 1, "error": {"code": -32022, "message": "Unsupported protocol version", "data": {"supported": ["2026-07-28"], "requested": "2099-01-01"}}}}
+{"t_ms": 258.3, "dir": "<-", "bytes": 151, "message": {"jsonrpc": "2.0", "id": 1, "error": {"code": -32022, "message": "Unsupported protocol version", "data": {"supported": ["2026-07-28"], "requested": "2099-01-01"}}}}

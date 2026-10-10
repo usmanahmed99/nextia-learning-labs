@@ -49,7 +49,7 @@ The policy documents and tickets are read from `data/` at every start and never 
 | `support_mcp/knowledge.py` | The business service: search and ticket lookup inside one organization |
 | `support_mcp/contracts.py` | The capability contracts: inputs, outputs, bounds, URIs, the prompt |
 | `examples/hello_server.py` | The smallest MCP server |
-| `scripts/` | Traces, versions, the attempts table, the contract, compatibility, latency |
+| `scripts/` | Traces, versions, the attempts table, the sign-in flow, the contract, compatibility, latency |
 | `docs/` | The integration map, the capability catalog, the remote design, the compatibility checklist |
 
 ## Licence

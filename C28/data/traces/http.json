@@ -6,7 +6,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -37,7 +37,7 @@
     "dir": "<-",
     "status": 401,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-type": "application/json",
       "content-length": "74",
@@ -52,7 +52,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -79,7 +79,7 @@
     "dir": "<-",
     "status": 401,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-type": "application/json",
       "content-length": "74",
@@ -100,7 +100,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -132,7 +132,7 @@
     "dir": "<-",
     "status": 200,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-length": "604",
       "content-type": "application/json"
@@ -173,7 +173,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -210,7 +210,7 @@
     "dir": "<-",
     "status": 200,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-length": "1324",
       "content-type": "application/json"
@@ -257,7 +257,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -289,7 +289,7 @@
     "dir": "<-",
     "status": 200,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-length": "4459",
       "content-type": "application/json"
@@ -609,7 +609,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -641,7 +641,7 @@
     "dir": "<-",
     "status": 401,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-type": "application/json",
       "content-length": "74",
@@ -656,7 +656,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -684,7 +684,7 @@
     "dir": "<-",
     "status": 401,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-type": "application/json",
       "content-length": "74",
@@ -705,7 +705,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -737,7 +737,7 @@
     "dir": "<-",
     "status": 200,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-length": "604",
       "content-type": "application/json"
@@ -778,7 +778,7 @@
     "dir": "->",
     "method": "POST",
     "headers": {
-      "host": "127.0.0.1:8000",
+      "host": "127.0.0.1:62821",
       "accept-encoding": "gzip, deflate",
       "connection": "keep-alive",
       "user-agent": "python-httpx2/2.13.1",
@@ -815,7 +815,7 @@
     "dir": "<-",
     "status": 200,
     "headers": {
-      "date": "Sat, 10 Oct 2026 18:21:20 GMT",
+      "date": "Sat, 10 Oct 2026 18:37:25 GMT",
       "server": "uvicorn",
       "content-length": "111",
       "content-type": "application/json"
@@ -834,7 +834,11 @@
     "body": {
       "resource": "http://127.0.0.1:8000/mcp",
       "authorization_servers": [
-        "http://127.0.0.1:8000"
+        "http://127.0.0.1:8400"
+      ],
+      "scopes_supported": [
+        "knowledge:read",
+        "tickets:read"
       ],
       "bearer_methods_supported": [
         "header"
