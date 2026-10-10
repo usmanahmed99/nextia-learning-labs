@@ -4,7 +4,7 @@ An architecture decision record (ADR) keeps one decision, why we took it and whe
 
 ## Status
 
-Proposed | Accepted | Replaced by ADR-NNNN. Date and who decided.
+Proposed, Accepted, or Replaced by ADR-NNNN. Who decided (the commit that adds the file keeps the date).
 
 ## Context
 

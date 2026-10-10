@@ -5,6 +5,7 @@ every component have a job, does every decision say when to revisit it?
 """
 
 import re
+from pathlib import Path
 
 from .components import check_diagram, load_components
 from .demand import load_demand
@@ -89,12 +90,20 @@ CHECKS = (
 )
 
 
+def _short(filename) -> str:
+    """The missing file's path inside the pack (decisions/roadmap.md), not the whole path on this computer."""
+    path = Path(filename)
+    return path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(filename)
+
+
 def run() -> tuple[int, list[str]]:
     lines, passed = [], 0
     for name, check in CHECKS:
         try:
             problem = check()
-        except (InputError, FileNotFoundError, KeyError) as e:
+        except FileNotFoundError as e:
+            problem = f"{_short(e.filename)} does not exist yet"
+        except (InputError, KeyError) as e:
             problem = str(e)
         passed += problem is None
         lines.append(f"  {'PASS' if problem is None else 'FAIL'}  {name}" + (f": {problem}" if problem else ""))
