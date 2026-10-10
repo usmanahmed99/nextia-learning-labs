@@ -1,0 +1,183 @@
+"""The help-desk systems: the database, the documents, the write services and the audit log.
+
+Nothing here reaches a real system. The database is a local SQLite file (work/helpdesk.sqlite, a
+copy of data/helpdesk.sqlite). The write services (refund, return label, e-mail) record into the
+database. The audit log records who did what, to which tenant, with what result. It can be redacted
+(no secrets, no message bodies) or raw (the weak version, which logs the message body).
+"""
+
+import json
+import shutil
+import sqlite3
+from contextlib import closing
+from datetime import date, datetime
+from pathlib import Path
+
+from .config import redact
+from .data import HOLIDAYS, SEED_DB, TODAY, WORK
+
+PRACTICE_DB = WORK / "helpdesk.sqlite"
+
+
+def business_days_between(a: date, b: date) -> int:
+    n, d = 0, a
+    while d < b:
+        d += __import__("datetime").timedelta(days=1)
+        if d.weekday() < 5 and d not in HOLIDAYS:
+            n += 1
+    return n
+
+
+def reset_practice_db(path: Path | None = None) -> Path:
+    path = path or PRACTICE_DB
+    path.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(SEED_DB, path)
+    return path
+
+
+def now() -> str:
+    return datetime.now().astimezone().isoformat(timespec="seconds")
+
+
+class World:
+    """One session's view of the systems. `redact_log` off is the weak version (logs message bodies)."""
+
+    def __init__(self, db: Path | None = None, redact_log: bool = True):
+        self.db = db or PRACTICE_DB
+        if not self.db.exists():
+            reset_practice_db(self.db)
+        self.redact_log = redact_log
+        self.audit: list[dict] = []
+        self._seq = 0
+
+    def _con(self) -> sqlite3.Connection:
+        con = sqlite3.connect(self.db)
+        con.row_factory = sqlite3.Row
+        return con
+
+    # ----- identity support (the membership table the server trusts)
+    def role_in(self, sub: str, tenant: str) -> str | None:
+        with closing(self._con()) as con:
+            row = con.execute("SELECT role FROM memberships WHERE sub=? AND tenant=?", (sub, tenant)).fetchone()
+            return row["role"] if row else None
+
+    def is_platform_admin(self, sub: str) -> bool:
+        with closing(self._con()) as con:
+            row = con.execute("SELECT platform_admin FROM users WHERE sub=?", (sub,)).fetchone()
+            return bool(row and row["platform_admin"])
+
+    # ----- the audit log
+    def log(self, actor: str, tenant: str, action: str, result: str, **detail) -> None:
+        self._seq += 1
+        if self.redact_log:
+            detail = {k: (redact(v) if isinstance(v, str) else v) for k, v in detail.items()
+                      if k not in ("message", "request", "body")}
+        self.audit.append({"seq": self._seq, "at": now(), "actor": actor, "tenant": tenant,
+                           "action": action, "result": result, **detail})
+
+    # ----- reads
+    def customer(self, customer_id: str, tenant: str | None = None):
+        with closing(self._con()) as con:
+            q = "SELECT * FROM customers WHERE customer_id=?"
+            args = [customer_id]
+            if tenant is not None:
+                q += " AND tenant=?"
+                args.append(tenant)
+            row = con.execute(q, args).fetchone()
+            return dict(row) if row else None
+
+    def ticket(self, ticket_id: str, tenant: str | None = None):
+        with closing(self._con()) as con:
+            q = "SELECT * FROM tickets WHERE ticket_id=?"
+            args = [ticket_id]
+            if tenant is not None:
+                q += " AND tenant=?"
+                args.append(tenant)
+            row = con.execute(q, args).fetchone()
+            if not row:
+                return None
+            t = dict(row)
+            t["attachments"] = json.loads(t["attachments"])
+            return t
+
+    def order(self, order_id: str, tenant: str | None = None):
+        with closing(self._con()) as con:
+            q = "SELECT * FROM orders WHERE order_id=?"
+            args = [order_id]
+            if tenant is not None:
+                q += " AND tenant=?"
+                args.append(tenant)
+            row = con.execute(q, args).fetchone()
+            if not row:
+                return None
+            o = dict(row)
+            o["items"] = [dict(r) for r in con.execute(
+                "SELECT line,item,quantity,unit_price FROM order_items WHERE order_id=? ORDER BY line", (order_id,))]
+            o["refunds"] = [dict(r) for r in con.execute(
+                "SELECT refund_id,amount,reason,created_at FROM refunds WHERE order_id=? ORDER BY created_at",
+                (order_id,))]
+            if o.get("delivered_on"):
+                o["days_since_delivery"] = (TODAY - date.fromisoformat(o["delivered_on"])).days
+            if o.get("shipped_on"):
+                o["business_days_late"] = max(0, business_days_between(
+                    date.fromisoformat(o["expected_by"]), TODAY)) if o.get("expected_by") else None
+            return o
+
+    def order_tenant(self, order_id: str) -> str | None:
+        with closing(self._con()) as con:
+            row = con.execute("SELECT tenant FROM orders WHERE order_id=?", (order_id,)).fetchone()
+            return row["tenant"] if row else None
+
+    def search_docs(self, query: str, tenant: str | None, access: tuple[str, ...] = ("public",), limit: int = 3):
+        with closing(self._con()) as con:
+            placeholders = ",".join("?" * len(access))
+            sql = (f"SELECT d.passage_id,d.doc_id,d.title,d.section,d.text,d.version,d.tenant,d.access "
+                   f"FROM documents_fts f JOIN documents d ON d.passage_id=f.passage_id "
+                   f"WHERE documents_fts MATCH ? AND d.access IN ({placeholders})")
+            args: list = [query, *access]
+            if tenant is not None:
+                sql += " AND d.tenant=?"
+                args.append(tenant)
+            sql += " ORDER BY rank LIMIT ?"
+            args.append(limit)
+            try:
+                return [dict(r) for r in con.execute(sql, args)]
+            except sqlite3.OperationalError:
+                return []
+
+    def file_metadata(self, path: str):
+        with closing(self._con()) as con:
+            row = con.execute("SELECT * FROM files WHERE path=?", (path,)).fetchone()
+            return dict(row) if row else None
+
+    # ----- writes (recorded into the database)
+    def write(self, tool: str, tenant: str, args: dict, actor: str, approval_id: str | None) -> dict:
+        with closing(self._con()) as con:
+            ident = f"{tool[:2].upper()}-{abs(hash((tool, tenant, json.dumps(args, sort_keys=True), self._seq)))%10**8:08d}"
+            if tool == "issue_refund":
+                con.execute("INSERT INTO refunds VALUES (?,?,?,?,?,?,?,?)",
+                            (ident, tenant, args["order_id"], args["amount"], args.get("reason", ""), actor,
+                             approval_id, now()))
+            elif tool == "create_return_label":
+                con.execute("INSERT INTO return_labels VALUES (?,?,?,?,?,?)",
+                            (ident, tenant, args["order_id"], actor, approval_id, now()))
+            elif tool == "send_email":
+                con.execute("INSERT INTO emails VALUES (?,?,?,?,?,?,?,?)",
+                            (ident, tenant, args["to"], args.get("subject", ""), args.get("body", ""), actor,
+                             approval_id, now()))
+            else:
+                raise ValueError(f"not a write tool: {tool}")
+            con.commit()
+            return {"id": ident, "tool": tool, "order_id": args.get("order_id"), "to": args.get("to")}
+
+    def changes(self, tenant: str | None = None) -> dict:
+        with closing(self._con()) as con:
+            out = {}
+            for table in ("refunds", "return_labels", "emails"):
+                q = f"SELECT * FROM {table}"
+                args: list = []
+                if tenant is not None:
+                    q += " WHERE tenant=?"
+                    args.append(tenant)
+                out[table] = [dict(r) for r in con.execute(q + " ORDER BY created_at", args)]
+            return out

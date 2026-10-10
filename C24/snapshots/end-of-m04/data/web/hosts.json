@@ -1,0 +1,53 @@
+{
+ "127.0.0.1": {
+  "about": "the server itself: the internal admin page (simulated)",
+  "address": "127.0.0.1",
+  "allowed_for": []
+ },
+ "169.254.169.254": {
+  "about": "the cloud metadata address (simulated)",
+  "address": "169.254.169.254",
+  "allowed_for": []
+ },
+ "books.bramble.example": {
+  "about": "Bramble Books' public site",
+  "address": "93.184.216.30",
+  "allowed_for": [
+   "bramble"
+  ]
+ },
+ "collector.attacker.example": {
+  "about": "an attacker's collection server (made up)",
+  "address": "93.184.216.66",
+  "allowed_for": []
+ },
+ "help.larkfield.example": {
+  "about": "Larkfield's public help site",
+  "address": "93.184.216.10",
+  "allowed_for": [
+   "larkfield"
+  ]
+ },
+ "intranet.larkfield.internal": {
+  "about": "Larkfield's intranet (simulated, private address)",
+  "address": "10.0.0.12",
+  "allowed_for": []
+ },
+ "localhost": {
+  "about": "the server itself: the internal admin page (simulated)",
+  "address": "127.0.0.1",
+  "allowed_for": []
+ },
+ "videos.unknown-host.example": {
+  "about": "a site nobody allowed (made up)",
+  "address": "93.184.216.80",
+  "allowed_for": []
+ },
+ "www.aquaflow-supply.example": {
+  "about": "AquaFlow, a Larkfield supplier",
+  "address": "93.184.216.20",
+  "allowed_for": [
+   "larkfield"
+  ]
+ }
+}
