@@ -1,0 +1,17 @@
+doc_id,version,title,doc_type,language,access,effective_from,effective_to,body,sha256
+returns-policy,1,Returning a book,policy,en,public,2026-09-15,,"# Returning a book
+
+You can return a book within 30 days if it is unread and in the condition we sent it. We refund the price of the book to the card you paid with. We do not refund the delivery cost unless the book was damaged or wrong.
+
+A damaged or wrong book: write to us within 14 days with a photo. We send a new copy or refund the whole order, as you prefer.
+",4ec977b1d81d40ee8bdec63f6e2fd533a72c591f5e221f2eef2b680ffb39d66c
+delivery-policy,1,Delivery times,policy,en,public,2026-09-15,,"# Delivery times
+
+We ship within 2 business days. Delivery in British Columbia takes 2 to 4 business days, and 4 to 8 days to the rest of Canada. Delivery costs 6.50 dollars, or nothing for orders over 60 dollars.
+
+Pre-orders ship on the day the publisher releases the book.
+",764a62a55ad3092b32375cffb587b849194d79750d8f7040b9705dbb36251e81
+supplier-terms,1,Wholesale terms (staff only),supplier,en,staff,2026-09-15,,"# Wholesale terms (staff only)
+
+Our wholesaler gives Bramble Books 40 percent off the list price, and 45 percent on orders of 50 books or more. Do not share these terms with customers. Book clubs and schools may get 10 percent off; an owner approves larger discounts.
+",cf9f4661c6da57d9b335dc9549bebd315c4c14652b655263ad9088e6af9124d1

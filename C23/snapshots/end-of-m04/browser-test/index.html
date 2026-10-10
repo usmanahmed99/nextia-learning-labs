@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Ticket classifier test</title></head>
+<body>
+  <h1>Ticket classifier test</h1>
+  <button id="send">Classify "Charged twice for March"</button>
+  <pre id="result">No request yet.</pre>
+  <script>
+    document.getElementById("send").addEventListener("click", async () => {
+      const result = document.getElementById("result");
+      try {
+        const response = await fetch("http://127.0.0.1:8000/v1/classify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ subject: "Charged twice for March" }),
+        });
+        result.textContent = response.status + " " + (await response.text());
+      } catch (error) {
+        result.textContent = "The request failed: " + error;
+      }
+    });
+  </script>
+</body>
+</html>

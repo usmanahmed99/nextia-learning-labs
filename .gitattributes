@@ -2,3 +2,5 @@
 *.csv -text
 *.json -text
 *.jsonl -text
+*.gz -text
+*.zip -text

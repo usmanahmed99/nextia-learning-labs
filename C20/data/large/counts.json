@@ -1,0 +1,11 @@
+{
+  "size": "large",
+  "version": "1.0",
+  "customers": 20000,
+  "tickets": 300000,
+  "messages": 690300,
+  "attachments": 61853,
+  "documents": 36,
+  "ai_runs": 449734,
+  "files": 0
+}

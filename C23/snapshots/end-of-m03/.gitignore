@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.fastapicloud/
+secrets/
+reports/
+data/large/
+backups/
+.idp/
+.tokens/

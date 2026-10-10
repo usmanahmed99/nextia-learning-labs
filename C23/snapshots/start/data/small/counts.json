@@ -1,0 +1,11 @@
+{
+  "size": "small",
+  "version": "1.0",
+  "customers": 40,
+  "tickets": 200,
+  "messages": 334,
+  "attachments": 43,
+  "documents": 36,
+  "ai_runs": 294,
+  "files": 43
+}

@@ -1,0 +1,44 @@
+# The container settings of the ticket API on Azure Container Apps.
+# Apply with:
+#   az containerapp update --resource-group rg-ticket-api-practice \
+#     --name ticket-api --yaml deploy/containerapp.yaml
+# Replace REGISTRY_NAME with the name of your registry first.
+# The secret api-key must already exist on the app (az containerapp secret set).
+properties:
+  template:
+    containers:
+      - name: ticket-api
+        image: REGISTRY_NAME.azurecr.io/ticket-api:1.1.0
+        resources:
+          cpu: 0.25
+          memory: 0.5Gi
+        env:
+          - name: API_KEY
+            secretRef: api-key
+          - name: REQUIRE_API_KEY
+            value: "true"
+          - name: SHOW_DOCS
+            value: "false"
+        probes:
+          - type: Startup
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 1
+            periodSeconds: 2
+            failureThreshold: 30
+          - type: Liveness
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3
+          - type: Readiness
+            httpGet:
+              path: /ready
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3
+    scale:
+      minReplicas: 0
+      maxReplicas: 2

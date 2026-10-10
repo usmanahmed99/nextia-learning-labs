@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help desk (practice)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 44rem; margin: 2rem auto; padding: 0 1rem; }
+    button { margin-right: .5rem; }
+    pre { background: #f4f4f4; padding: .75rem; overflow-x: auto; }
+    .muted { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Help desk</h1>
+  <p class="muted">A practice page of the ticket API. It never sees a token: the browser keeps only
+    an HttpOnly session cookie, which this page's JavaScript cannot read.</p>
+  <p id="status">Checking your session...</p>
+  <p>
+    <button id="signin" hidden>Sign in</button>
+    <button id="switch" hidden>Switch account</button>
+    <button id="signout" hidden>Sign out</button>
+  </p>
+  <h2>Who am I?</h2>
+  <pre id="me">Not signed in.</pre>
+  <script>
+    // The page keeps data only in memory. Signing out clears it, so the next person who uses
+    // this browser sees nothing of the previous one.
+    let session = null;
+    const $ = (id) => document.getElementById(id);
+
+    function clearData() {
+      session = null;
+      $("me").textContent = "Not signed in.";
+    }
+
+    async function signOut() {
+      const response = await fetch("/auth/logout", {
+        method: "POST",
+        headers: { "X-CSRF-Token": session.csrf_token },
+      });
+      clearData();
+      return response.ok ? (await response.json()).provider_logout_url : null;
+    }
+
+    async function load() {
+      const info = await (await fetch("/auth/session")).json();
+      $("signin").hidden = info.signed_in;
+      $("switch").hidden = $("signout").hidden = !info.signed_in;
+      if (!info.signed_in) {
+        clearData();
+        $("status").textContent = "You are not signed in.";
+        return;
+      }
+      session = info;
+      $("status").textContent = `Signed in as ${info.user_id}. The session ends at ${info.expires_at}`
+        + ` at the latest, or after 30 minutes without a request.`;
+      const me = await fetch("/v1/me");
+      $("me").textContent = JSON.stringify(await me.json(), null, 2);
+    }
+
+    $("signin").onclick = () => { location.href = "/auth/login?return_to=/app/"; };
+    // Switch account: end this session, then ask the provider to show the list of people again.
+    $("switch").onclick = async () => {
+      await signOut();
+      location.href = "/auth/login?return_to=/app/&prompt=select_account";
+    };
+    // Sign out here AND at the provider; otherwise the next sign-in there is silent.
+    $("signout").onclick = async () => {
+      const providerLogout = await signOut();
+      location.href = providerLogout || "/app/";
+    };
+    load();
+  </script>
+</body>
+</html>

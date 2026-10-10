@@ -1,0 +1,70 @@
+ticket_id,task,model,prompt_version,tokens_in,tokens_out,cost_usd,latency_ms,status,output,created_at
+T-40001,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-27 00:20:33+00
+T-40001,draft_reply,chat-small,draft-v2,1102,175,0.00019770,2033,ok,"Hello Eleanor, thank you for writing to Bramble Books. I have passed your question about The Lighthouse Cookbook to the right person, and they will contact you soon.",2026-09-27 00:20:34+00
+T-40002,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-27 04:22:43+00
+T-40003,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""shipping"", ""priority"": 1}",2026-09-27 06:27:42+00
+T-40003,draft_reply,chat-small,draft-v2,1126,173,0.00019910,1709,ok,"Hello Chloé, I am sorry that A Field Guide to Moss arrived damaged. We will send a new copy of order BB-310166 today.",2026-09-27 06:27:43+00
+T-40004,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-27 06:58:57+00
+T-40004,draft_reply,chat-small,draft-v2,995,158,0.00017850,1520,ok,"Hello Harbour, thank you for writing to Bramble Books. I have passed your question about The Clockmaker's Daughter to the right person, and they will contact you soon.",2026-09-27 06:58:58+00
+T-40005,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-27 10:07:16+00
+T-40006,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 03:42:52+00
+T-40007,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-28 08:11:56+00
+T-40007,draft_reply,chat-small,draft-v2,1153,139,0.00018480,2371,ok,"Hello Olga, thank you for writing to Bramble Books. I have passed your question about Quiet Gardens to the right person, and they will contact you soon.",2026-09-28 08:11:57+00
+T-40008,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 21:47:46+00
+T-40009,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-30 08:09:48+00
+T-40009,draft_reply,chat-small,draft-v2,1277,215,0.00023520,1300,ok,"Hello Olga, thank you for writing to Bramble Books. I have passed your question about A Field Guide to Moss to the right person, and they will contact you soon.",2026-09-30 08:09:49+00
+T-40010,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""shipping"", ""priority"": 1}",2026-09-30 09:32:58+00
+T-40011,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-30 18:12:42+00
+T-40011,draft_reply,chat-small,draft-v2,1232,121,0.00018370,1936,ok,"Hello Ruth, thank you for writing to Bramble Books. I have passed your question about Quiet Gardens to the right person, and they will contact you soon.",2026-09-30 18:12:43+00
+T-40012,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-30 21:20:58+00
+T-40012,draft_reply,chat-small,draft-v2,1057,209,0.00021020,2276,ok,"Hello Mina, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-09-30 21:20:59+00
+T-40013,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""login"", ""priority"": 3}",2026-10-02 09:42:06+00
+T-40014,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-02 11:20:23+00
+T-40014,draft_reply,chat-small,draft-v2,805,157,0.00015900,916,ok,"Hello Agnes, thank you for writing to Bramble Books. I have passed your question about The Clockmaker's Daughter to the right person, and they will contact you soon.",2026-10-02 11:20:24+00
+T-40015,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-02 17:01:51+00
+T-40015,draft_reply,chat-small,draft-v2,856,119,0.00014510,1559,ok,"Hello Ruth, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-10-02 17:01:52+00
+T-40016,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""login"", ""priority"": 3}",2026-10-02 18:22:36+00
+T-40016,draft_reply,chat-small,draft-v2,1251,213,0.00023160,1469,ok,"Hello Olga, thank you for writing to Bramble Books. I have passed your question about The Lighthouse Cookbook to the right person, and they will contact you soon.",2026-10-02 18:22:37+00
+T-40017,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-03 03:17:27+00
+T-40017,draft_reply,chat-small,draft-v2,1203,217,0.00022880,1380,ok,"Hello Ruth, thank you for writing to Bramble Books. I have passed your question about The Orchard Year to the right person, and they will contact you soon.",2026-10-03 03:17:28+00
+T-40018,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""login"", ""priority"": 3}",2026-10-03 03:30:25+00
+T-40019,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-03 15:55:11+00
+T-40020,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-03 16:45:23+00
+T-40020,draft_reply,chat-small,draft-v2,1167,131,0.00018220,1250,ok,"Hello Samir, thank you for writing to Bramble Books. I have passed your question about The Orchard Year to the right person, and they will contact you soon.",2026-10-03 16:45:24+00
+T-40021,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-03 16:45:52+00
+T-40022,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-03 18:29:36+00
+T-40023,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-04 10:20:38+00
+T-40023,draft_reply,chat-small,draft-v2,1120,210,0.00021700,804,ok,"Hello Chloé, thank you for writing to Bramble Books. I have passed your question about Night Trains of Europe to the right person, and they will contact you soon.",2026-10-04 10:20:39+00
+T-40024,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-04 11:51:29+00
+T-40024,draft_reply,chat-small,draft-v2,1127,167,0.00019620,2128,ok,"Hello Ruth, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-10-04 11:51:30+00
+T-40025,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-04 14:51:34+00
+T-40025,draft_reply,chat-small,draft-v2,1087,111,0.00016420,804,ok,"Hello Leo, thank you for writing to Bramble Books. I have passed your question about A Field Guide to Moss to the right person, and they will contact you soon.",2026-10-04 14:51:35+00
+T-40026,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-05 12:30:13+00
+T-40026,draft_reply,chat-small,draft-v2,1212,104,0.00017320,1532,ok,"Hello Olga, thank you for writing to Bramble Books. I have passed your question about Night Trains of Europe to the right person, and they will contact you soon.",2026-10-05 12:30:14+00
+T-40027,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-05 15:11:17+00
+T-40027,draft_reply,chat-small,draft-v2,910,101,0.00014150,1420,ok,"Hello Samir, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-10-05 15:11:18+00
+T-40028,classify,keywords-1.0,,0,0,0,5,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-05 19:59:51+00
+T-40028,draft_reply,chat-small,draft-v2,864,127,0.00014990,2393,ok,"Hello Harbour, thank you for writing to Bramble Books. I have passed your question about A Field Guide to Moss to the right person, and they will contact you soon.",2026-10-05 19:59:52+00
+T-40029,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-06 12:03:24+00
+T-40029,draft_reply,chat-small,draft-v2,1297,196,0.00022770,1274,ok,"Hello Chloé, thank you for writing to Bramble Books. I have passed your question about Maps of Small Rivers to the right person, and they will contact you soon.",2026-10-06 12:03:25+00
+T-40030,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 1}",2026-10-06 18:10:02+00
+T-40030,draft_reply,chat-small,draft-v2,1115,156,0.00018950,1145,ok,"Hello Olga, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-10-06 18:10:03+00
+T-40031,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""login"", ""priority"": 3}",2026-10-06 18:20:13+00
+T-40031,draft_reply,chat-small,draft-v2,1091,105,0.00016160,2141,ok,"Hello Samir, thank you for writing to Bramble Books. I have passed your question about Quiet Gardens to the right person, and they will contact you soon.",2026-10-06 18:20:14+00
+T-40032,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""shipping"", ""priority"": 1}",2026-10-06 19:34:29+00
+T-40032,draft_reply,chat-small,draft-v2,1173,140,0.00018730,2312,ok,"Hello Daniel, I am sorry that Quiet Gardens arrived damaged. We will send a new copy of order BB-310735 today.",2026-10-06 19:34:30+00
+T-40033,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-07 03:20:50+00
+T-40033,draft_reply,chat-small,draft-v2,1252,143,0.00019670,2138,ok,"Hello Harbour, thank you for writing to Bramble Books. I have passed your question about Stars for Beginners to the right person, and they will contact you soon.",2026-10-07 03:20:51+00
+T-40034,classify,keywords-1.0,,0,0,0,4,ok,"{""category"": ""billing"", ""priority"": 1}",2026-10-07 12:30:36+00
+T-40034,draft_reply,chat-small,draft-v2,929,116,0.00015090,2358,ok,"Hello Leo, thank you for writing to Bramble Books. I have passed your question about Quiet Gardens to the right person, and they will contact you soon.",2026-10-07 12:30:37+00
+T-40035,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""shipping"", ""priority"": 1}",2026-10-07 13:17:59+00
+T-40035,draft_reply,chat-small,draft-v2,1230,146,0.00019600,2132,ok,"Hello Westshore, I am sorry that The Lighthouse Cookbook arrived damaged. We will send a new copy of order BB-310701 today.",2026-10-07 13:18:00+00
+T-40036,classify,keywords-1.0,,0,0,0,6,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-07 18:34:22+00
+T-40036,draft_reply,chat-small,draft-v2,930,159,0.00017250,1334,ok,"Hello Peter, thank you for writing to Bramble Books. I have passed your question about The Lighthouse Cookbook to the right person, and they will contact you soon.",2026-10-07 18:34:23+00
+T-40037,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-07 19:15:14+00
+T-40037,draft_reply,chat-small,draft-v2,1003,132,0.00016630,2050,ok,"Hello Westshore, thank you for writing to Bramble Books. I have passed your question about The Lighthouse Cookbook to the right person, and they will contact you soon.",2026-10-07 19:15:15+00
+T-40038,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-08 00:13:24+00
+T-40038,draft_reply,chat-small,draft-v2,1298,154,0.00020680,1730,ok,"Hello Eleanor, thank you for writing to Bramble Books. I have passed your question about Salt and Cedar to the right person, and they will contact you soon.",2026-10-08 00:13:25+00
+T-40039,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-08 14:52:12+00
+T-40039,draft_reply,chat-small,draft-v2,957,195,0.00019320,1275,ok,"Hello Harbour, thank you for writing to Bramble Books. I have passed your question about Night Trains of Europe to the right person, and they will contact you soon.",2026-10-08 14:52:13+00
+T-40040,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-08 23:12:07+00
