@@ -1,0 +1,118 @@
+diff --git a/ticket_cleaner/files.py b/ticket_cleaner/files.py
+index da0f995..6fd40cc 100644
+--- a/ticket_cleaner/files.py
++++ b/ticket_cleaner/files.py
+@@ -2,15 +2,16 @@ import csv
+ import json
+ import os
+ from pathlib import Path
++from tempfile import NamedTemporaryFile
+ 
+ 
+ def read_rows(path: Path) -> list[dict]:
+     """Read raw records from a .csv or .json file."""
+     if path.suffix == ".csv":
+-        with open(path, encoding="utf-8-sig", newline="") as file:
++        with path.open(encoding="utf-8-sig", newline="") as file:
+             return list(csv.DictReader(file))
+     if path.suffix == ".json":
+-        with open(path, encoding="utf-8") as file:
++        with path.open(encoding="utf-8") as file:
+             return json.load(file)
+     raise ValueError(f"cannot read {path.name}: use a .csv or .json file")
+ 
+@@ -18,8 +19,20 @@ def read_rows(path: Path) -> list[dict]:
+ def write_json(data: dict, path: Path) -> None:
+     """Save data as JSON. Write a temporary file first, so a failure never leaves half a file."""
+     path.parent.mkdir(parents=True, exist_ok=True)
+-    temporary = path.with_name(path.name + ".tmp")
+-    with open(temporary, "w", encoding="utf-8") as file:
+-        json.dump(data, file, indent=2, ensure_ascii=False)
+-        file.write("\n")
+-    os.replace(temporary, path)
++    temporary: Path | None = None
++    try:
++        with NamedTemporaryFile(
++            mode="w",
++            encoding="utf-8",
++            dir=path.parent,
++            prefix=f".{path.name}.",
++            suffix=".tmp",
++            delete=False,
++        ) as file:
++            temporary = Path(file.name)
++            json.dump(data, file, indent=2, ensure_ascii=False)
++            file.write("\n")
++        os.replace(temporary, path)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..b4fdcea 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -21,7 +21,7 @@ def clean_category(value: object) -> str:
+     return CATEGORY_ALIASES.get(text.lower(), text)
+ 
+ 
+-def find_problems(raw: dict) -> list[str]:
++def find_problems(raw: object) -> list[str]:
+     """Return a list of problems with one raw record. An empty list means valid."""
+     if not isinstance(raw, dict):
+         return ["not a record"]
+@@ -52,18 +52,24 @@ def to_ticket(raw: dict) -> Ticket:
+ 
+ def split_records(rows: list[dict]) -> tuple[list[Ticket], list[Rejected]]:
+     """Separate valid tickets from rejected records. Nothing is dropped silently."""
+-    tickets = []
+-    rejected = []
+-    seen_ids = set()
++    tickets: list[Ticket] = []
++    rejected: list[Rejected] = []
++    seen_ids: set[str] = set()
++
+     for row_number, raw in enumerate(rows, start=1):
+         problems = find_problems(raw)
+-        if not problems:
+-            ticket = to_ticket(raw)
+-            if ticket.id in seen_ids:
+-                problems.append(f"duplicate id {ticket.id}")
+         if problems:
+             rejected.append(Rejected(row=row_number, problems=problems))
+-        else:
+-            tickets.append(ticket)
+-            seen_ids.add(ticket.id)
++            continue
++
++        ticket = to_ticket(raw)
++        if ticket.id in seen_ids:
++            rejected.append(
++                Rejected(row=row_number, problems=[f"duplicate id {ticket.id}"])
++            )
++            continue
++
++        tickets.append(ticket)
++        seen_ids.add(ticket.id)
++
+     return tickets, rejected
+diff --git a/ticket_cleaner/report.py b/ticket_cleaner/report.py
+index 72456fa..da717b8 100644
+--- a/ticket_cleaner/report.py
++++ b/ticket_cleaner/report.py
+@@ -1,3 +1,5 @@
++from collections import Counter
++
+ from ticket_cleaner.records import Rejected, Ticket
+ 
+ 
+@@ -8,9 +10,7 @@ def filter_by_status(tickets: list[Ticket], status: str = "open") -> list[Ticket
+ 
+ def count_by_category(tickets: list[Ticket]) -> dict[str, int]:
+     """Return the number of tickets in each category, sorted by category."""
+-    counts = {}
+-    for ticket in tickets:
+-        counts[ticket.category] = counts.get(ticket.category, 0) + 1
++    counts = Counter(ticket.category for ticket in tickets)
+     return dict(sorted(counts.items()))
+ 
+ 

@@ -1,0 +1,13 @@
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..1821416 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -18,7 +18,7 @@ def clean_text(value: object) -> str:
+ def clean_category(value: object) -> str:
+     """Return the category, with the web form's names changed to the report's names."""
+     text = str(value).strip()
+-    return CATEGORY_ALIASES.get(text.lower(), text)
++    return CATEGORY_ALIASES.get(text.lower(), text.lower())
+ 
+ 
+ def find_problems(raw: dict) -> list[str]:

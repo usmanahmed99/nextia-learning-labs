@@ -1,0 +1,29 @@
+diff --git a/tests/test_parsing.py b/tests/test_parsing.py
+index c2237c6..9131802 100644
+--- a/tests/test_parsing.py
++++ b/tests/test_parsing.py
+@@ -20,6 +20,11 @@ def test_text_is_cleaned(valid_raw):
+     assert to_ticket(valid_raw) == expected
+ 
+ 
++def test_category_is_lowercased(valid_raw):
++    valid_raw["category"] = "LOGIN"
++    assert to_ticket(valid_raw).category == "login"
++
++
+ @pytest.mark.parametrize("name", ["Sign-in", "log-in", " sign-in "])
+ def test_web_form_names_become_report_categories(valid_raw, name):
+     valid_raw["category"] = name
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..1821416 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -18,7 +18,7 @@ def clean_text(value: object) -> str:
+ def clean_category(value: object) -> str:
+     """Return the category, with the web form's names changed to the report's names."""
+     text = str(value).strip()
+-    return CATEGORY_ALIASES.get(text.lower(), text)
++    return CATEGORY_ALIASES.get(text.lower(), text.lower())
+ 
+ 
+ def find_problems(raw: dict) -> list[str]:
