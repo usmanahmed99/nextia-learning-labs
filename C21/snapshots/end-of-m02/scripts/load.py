@@ -231,6 +231,9 @@ def load(
     if size == "large":
         make_large(vectors_from)
     check_files(folder)
+    # Apply new migrations even when the data is already loaded (a new module's migration).
+    if migrate.main([], url=url, quiet=quiet) != 0:
+        raise SystemExit("The migrations failed: nothing was loaded.")
     with psycopg.connect(url) as conn:
         conn.execute("SET client_min_messages = warning")
         existing = conn.execute(
@@ -242,8 +245,6 @@ def load(
                     "The help-desk tables already have data. "
                     "Run again with --reset to delete it and load again."
                 )
-    if migrate.main([], url=url, quiet=quiet) != 0:
-        raise SystemExit("The migrations failed: nothing was loaded.")
     started = time.perf_counter()
     with psycopg.connect(url) as conn:
         extra = ["orphaned_messages", "file_deletions", "erasures"]  # tables that later modules add

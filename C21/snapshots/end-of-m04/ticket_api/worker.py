@@ -245,8 +245,9 @@ async def main_async(args: argparse.Namespace) -> int:
     worker = make_worker(settings, args.name)
     worker.db.open()
     started = time.perf_counter()
+    noun = "job" if worker.concurrency == 1 else "jobs"
     print(
-        f"Worker {worker.name}: up to {worker.concurrency} jobs at a time. "
+        f"Worker {worker.name}: up to {worker.concurrency} {noun} at a time. "
         + ("Takes what is queued, then stops." if args.once else "Stop it with Ctrl+C.")
     )
     try:
