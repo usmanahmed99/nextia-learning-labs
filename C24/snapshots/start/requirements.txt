@@ -1,0 +1,6 @@
+# Tested with Python 3.12 (macOS, Apple silicon).
+openai==3.28.0
+pydantic==2.14.0
+pyjwt==2.15.1
+cryptography==50.0.2
+pytest==9.1.1

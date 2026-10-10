@@ -1,0 +1,22 @@
+{
+ "about": "The support assistant's trust boundaries, as Module 1 maps them. A source is trusted only if the shop controls what it says. Everything else is data: the model reads it, but it must never be obeyed. The tools list what each tool can reach in the weak start, before any control.",
+ "sources": [
+  {"name": "system prompt", "trusted": true, "from": "the developers (prompts/ in this project)", "enters_as": "the system message"},
+  {"name": "team member's request", "trusted": true, "from": "a signed-in support team member", "enters_as": "the start of the user message"},
+  {"name": "ticket text", "trusted": false, "from": "the customer: anyone who can send a message", "enters_as": "the user message"},
+  {"name": "attachment names", "trusted": false, "from": "the customer (file names they chose)", "enters_as": "the user message"},
+  {"name": "attached file", "trusted": false, "from": "the customer", "enters_as": "a read_file result"},
+  {"name": "help document", "trusted": false, "from": "shop staff and suppliers (one supplier passage hides an instruction)", "enters_as": "a search_docs result"},
+  {"name": "order record", "trusted": false, "from": "the shop database, with notes typed by customers and couriers", "enters_as": "a get_order result"},
+  {"name": "web page", "trusted": false, "from": "whoever runs the web host", "enters_as": "a fetch_url result"}
+ ],
+ "tools": {
+  "get_order": {"kind": "read", "reaches": "every order of both shops", "asset": "orders and customers' delivery details"},
+  "search_docs": {"kind": "read", "reaches": "every help document of both shops, staff-only ones too", "asset": "staff-only policy"},
+  "read_file": {"kind": "read", "reaches": "any file under the file area, and a ../ path leaves it (the server's config with a secret)", "asset": "the service key in config/service.env"},
+  "fetch_url": {"kind": "read", "reaches": "any web address, the cloud metadata address and the server's own admin page too", "asset": "the cloud credentials on the metadata page"},
+  "issue_refund": {"kind": "write", "reaches": "any order, any amount", "changes": "money leaves the shop", "asset": "the shop's money"},
+  "create_return_label": {"kind": "write", "reaches": "any order", "changes": "a paid return label is made", "asset": "the shop's money"},
+  "send_email": {"kind": "write", "reaches": "any address", "changes": "an e-mail leaves the shop", "asset": "customers' data and the shop's name"}
+ }
+}

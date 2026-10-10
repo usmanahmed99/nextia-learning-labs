@@ -1,0 +1,295 @@
+run_id,ticket_id,task,model,prompt_version,tokens_in,tokens_out,cost_usd,latency_ms,status,output,created_at
+1,T-30001,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 07:26:50+00
+2,T-30001,draft_reply,chat-small,draft-v2,1032,179,0.00019270,813,ok,"Hello Bruno, thank you for writing to us. I have passed your question about the robot vacuum to the right team, and they will contact you soon.",2026-09-25 07:26:51+00
+3,T-30002,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-25 08:20:20+00
+4,T-30003,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 3}",2026-09-25 08:31:19+00
+5,T-30004,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 09:00:45+00
+6,T-30004,draft_reply,chat-small,draft-v2,970,0,0.00009700,1184,error,,2026-09-25 09:00:47+00
+7,T-30005,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 2}",2026-09-25 09:32:09+00
+8,T-30006,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-25 09:33:23+00
+9,T-30007,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 09:36:41+00
+10,T-30008,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 09:50:31+00
+11,T-30008,draft_reply,chat-small,draft-v2,1134,124,0.00017540,1380,ok,"Hello Bruno, thank you for contacting Larkfield. I am sorry about the problem with your robot vacuum. I have checked order LK-960780, and a colleague will confirm the next step today.",2026-09-25 09:50:33+00
+12,T-30009,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 10:56:43+00
+13,T-30010,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-25 12:40:16+00
+14,T-30011,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-25 12:42:34+00
+15,T-30012,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 15:56:30+00
+16,T-30012,draft_reply,chat-small,draft-v2,830,127,0.00014650,1137,ok,"Hello Dina, thank you for contacting Larkfield. I am sorry about the problem with your PW-2200 electric pressure washer. I have checked order LK-711717, and a colleague will confirm the next step today.",2026-09-25 15:56:32+00
+17,T-30013,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-25 16:40:39+00
+18,T-30014,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-25 19:57:56+00
+19,T-30015,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-26 07:05:29+00
+20,T-30015,draft_reply,chat-small,draft-v2,1215,155,0.00019900,1511,ok,"Hello Ximena, thank you for your message about order LK-155097. I understand that this is frustrating. We will look at it and reply within one business day.",2026-09-26 07:05:31+00
+21,T-30016,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-26 08:29:23+00
+22,T-30017,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-26 08:51:59+00
+23,T-30018,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-26 09:02:26+00
+24,T-30018,draft_reply,chat-small,draft-v2,974,164,0.00017940,1416,ok,"Hello Noah, thank you for contacting Larkfield. I am sorry about the problem with your cedar planter. I have checked order LK-415046, and a colleague will confirm the next step today.",2026-09-26 09:02:28+00
+25,T-30019,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-26 09:38:31+00
+26,T-30019,draft_reply,chat-small,draft-v2,833,153,0.00015980,1946,ok,"Hello Grace, thank you for contacting Larkfield. I am sorry about the problem with your HT-550 electric hedge trimmer. I have checked order LK-625810, and a colleague will confirm the next step today.",2026-09-26 09:38:33+00
+27,T-30020,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-26 09:41:15+00
+28,T-30020,draft_reply,chat-small,draft-v2,1146,158,0.00019360,969,ok,"Hello Uma, thank you for your message about order LK-871946. I understand that this is frustrating. We will look at it and reply within one business day.",2026-09-26 09:41:16+00
+29,T-30021,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-26 11:36:38+00
+30,T-30022,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-26 12:05:30+00
+31,T-30023,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-26 12:37:13+00
+32,T-30024,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 3}",2026-09-26 16:11:28+00
+33,T-30025,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-26 16:27:45+00
+34,T-30026,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-26 16:58:22+00
+35,T-30027,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-26 19:51:09+00
+36,T-30028,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-27 07:22:55+00
+37,T-30029,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-27 09:58:35+00
+38,T-30030,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-27 11:11:04+00
+39,T-30031,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-27 11:48:20+00
+40,T-30032,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-27 13:05:00+00
+41,T-30032,draft_reply,chat-small,draft-v2,1311,157,0.00020960,1461,ok,"Hello Samir, I am sorry about the problem with your robot vacuum. Could you please send a photo of the item, so that we can help you quickly?",2026-09-27 13:05:02+00
+42,T-30033,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""login"", ""priority"": 2}",2026-09-27 13:08:25+00
+43,T-30034,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-27 13:44:43+00
+44,T-30035,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-27 13:57:10+00
+45,T-30035,draft_reply,chat-small,draft-v2,685,263,0.00020000,1025,ok,"Hello Sofia, I am sorry about the problem with your KT-180 electric kettle. Could you please send a photo of the item, so that we can help you quickly?",2026-09-27 13:57:12+00
+46,T-30036,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""login"", ""priority"": 2}",2026-09-27 14:35:07+00
+47,T-30037,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-27 15:35:22+00
+48,T-30038,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-27 20:49:21+00
+49,T-30039,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-28 08:16:46+00
+50,T-30039,draft_reply,chat-small,draft-v2,638,174,0.00015080,1195,ok,"Hello Marco, thank you for writing to us. I have passed your question about the tool chest to the right team, and they will contact you soon.",2026-09-28 08:16:48+00
+51,T-30040,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-28 09:28:45+00
+52,T-30040,draft_reply,chat-small,draft-v2,757,225,0.00018820,1644,ok,"Hello Uma, I am sorry about the problem with your HT-550 electric hedge trimmer. Could you please send a photo of the item, so that we can help you quickly?",2026-09-28 09:28:47+00
+53,T-30041,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 09:42:39+00
+54,T-30042,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-28 11:35:22+00
+55,T-30043,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-28 12:45:56+00
+56,T-30043,draft_reply,chat-small,draft-v2,868,70,0.00012180,1472,ok,"Hello Priyanka, I am sorry about the problem with your patio parasol. Could you please send a photo of the item, so that we can help you quickly?",2026-09-28 12:45:58+00
+57,T-30044,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""login"", ""priority"": 3}",2026-09-28 15:23:25+00
+58,T-30045,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-28 15:23:43+00
+59,T-30045,draft_reply,chat-small,draft-v2,1231,123,0.00018460,912,ok,"Hello Emma, thank you for writing to us. I have passed your question about the tool chest to the right team, and they will contact you soon.",2026-09-28 15:23:44+00
+60,T-30046,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 15:48:39+00
+61,T-30046,draft_reply,chat-small,draft-v2,1009,170,0.00018590,1445,ok,"Hello Sofia, I am sorry about the problem with your patio parasol. Could you please send a photo of the item, so that we can help you quickly?",2026-09-28 15:48:41+00
+62,T-30047,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 17:55:06+00
+63,T-30047,draft_reply,chat-small,draft-v2,1087,98,0.00015770,1500,ok,"Hello Dina, thank you for your message about order LK-106016. I understand that this is frustrating. We will look at it and reply within one business day.",2026-09-28 17:55:08+00
+64,T-30048,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-28 18:54:44+00
+65,T-30048,draft_reply,chat-small,draft-v2,1174,238,0.00023640,1244,ok,"Hello Pedro, I am sorry about the problem with your solar path lights (set of 6). Could you please send a photo of the item, so that we can help you quickly?",2026-09-28 18:54:46+00
+66,T-30049,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 3}",2026-09-28 19:15:40+00
+67,T-30050,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-28 19:48:44+00
+68,T-30051,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-28 20:22:23+00
+69,T-30051,draft_reply,chat-strong,draft-v2,688,139,0.00276600,1958,ok,"Hello Emma, thank you for your message about order LK-699561. I understand that this is frustrating. We will look at it and reply within one business day.",2026-09-28 20:22:25+00
+70,T-30052,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-28 20:53:31+00
+71,T-30053,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 08:44:57+00
+72,T-30053,draft_reply,chat-small,draft-v2,994,100,0.00014940,1190,ok,"Hello Noah, I am sorry about the problem with your Ember GR-310 gas BBQ. Could you please send a photo of the item, so that we can help you quickly?",2026-09-29 08:44:59+00
+73,T-30054,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 10:05:43+00
+74,T-30055,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 10:08:46+00
+75,T-30055,draft_reply,chat-small,draft-v2,1217,140,0.00019170,746,ok,"Hello Noah, thank you for writing to us. I have passed your question about the patio parasol to the right team, and they will contact you soon.",2026-09-29 10:08:47+00
+76,T-30056,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 11:20:04+00
+77,T-30056,draft_reply,chat-small,draft-v2,997,125,0.00016220,1057,ok,"Hello Marco, thank you for contacting Larkfield. I am sorry about the problem with your garden shed. I have checked order LK-579539, and a colleague will confirm the next step today.",2026-09-29 11:20:06+00
+78,T-30057,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 14:13:24+00
+79,T-30057,draft_reply,chat-small,draft-v2,1336,144,0.00020560,828,ok,"Hello Uma, thank you for writing to us. I have passed your question about the PW-2200 electric pressure washer to the right team, and they will contact you soon.",2026-09-29 14:13:25+00
+80,T-30058,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-29 14:19:28+00
+81,T-30058,draft_reply,chat-small,draft-v2,1159,93,0.00016240,1022,ok,"Hello Samir, thank you for contacting Larkfield. I am sorry about the problem with your hammock. I have checked order LK-245793, and a colleague will confirm the next step today.",2026-09-29 14:19:30+00
+82,T-30059,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 14:38:01+00
+83,T-30059,draft_reply,chat-small,draft-v2,765,126,0.00013950,1043,ok,"Hello Dev, thank you for writing to us. I have passed your question about the PW-2200 electric pressure washer to the right team, and they will contact you soon.",2026-09-29 14:38:03+00
+84,T-30060,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-29 14:59:49+00
+85,T-30061,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 3}",2026-09-29 15:14:01+00
+86,T-30062,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""login"", ""priority"": 2}",2026-09-29 15:27:50+00
+87,T-30062,draft_reply,chat-small,draft-v2,1004,127,0.00016390,1119,ok,"Hello Jade, thank you for contacting Larkfield. I am sorry about the problem with your wooden garden bench. I have checked order LK-989388, and a colleague will confirm the next step today.",2026-09-29 15:27:52+00
+88,T-30063,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-29 15:32:15+00
+89,T-30064,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-29 15:45:41+00
+90,T-30065,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-29 16:03:37+00
+91,T-30065,draft_reply,chat-strong,draft-v2,874,165,0.00339800,3979,ok,"Hello Noah, I am sorry about the problem with your greenhouse frame. Could you please send a photo of the item, so that we can help you quickly?",2026-09-29 16:03:41+00
+92,T-30066,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-29 16:30:57+00
+93,T-30066,draft_reply,chat-small,draft-v2,690,95,0.00011650,1041,ok,"Hello Samir, thank you for writing to us. I have passed your question about the cedar planter to the right team, and they will contact you soon.",2026-09-29 16:30:59+00
+94,T-30067,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-29 17:14:29+00
+95,T-30067,draft_reply,chat-small,draft-v2,1069,0,0.00010690,1302,error,,2026-09-29 17:14:31+00
+96,T-30068,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 3}",2026-09-29 20:01:52+00
+97,T-30068,draft_reply,chat-small,draft-v2,1178,98,0.00016680,745,ok,"Hello Olga, thank you for contacting Larkfield. I am sorry about the problem with your HT-550 electric hedge trimmer. I have checked order LK-108251, and a colleague will confirm the next step today.",2026-09-29 20:01:53+00
+98,T-30069,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-29 20:22:27+00
+99,T-30069,draft_reply,chat-small,draft-v2,1404,146,0.00021340,1504,ok,"Hello Noah, thank you for writing to us. I have passed your question about the garden hose (25 m) to the right team, and they will contact you soon.",2026-09-29 20:22:29+00
+100,T-30070,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 1}",2026-09-30 07:05:51+00
+101,T-30071,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-30 07:27:18+00
+102,T-30071,draft_reply,chat-small,draft-v2,1171,0,0.00011710,888,error,,2026-09-30 07:27:19+00
+103,T-30072,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-30 07:48:16+00
+104,T-30073,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-30 07:56:44+00
+105,T-30073,draft_reply,chat-small,draft-v2,1540,121,0.00021450,1753,ok,"Hello Amara, thank you for writing to us. I have passed your question about the cushion covers (set of 4) to the right team, and they will contact you soon.",2026-09-30 07:56:46+00
+106,T-30074,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-30 08:50:06+00
+107,T-30075,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-30 08:55:52+00
+108,T-30075,draft_reply,chat-small,draft-v2,1332,202,0.00023420,1453,ok,"Hello Bruno, thank you for your message about order LK-857385. I understand that this is frustrating. We will look at it and reply within one business day.",2026-09-30 08:55:54+00
+109,T-30076,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 1}",2026-09-30 09:50:55+00
+110,T-30077,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-30 10:19:44+00
+111,T-30077,draft_reply,chat-small,draft-v2,1066,130,0.00017160,1563,ok,"Hello Olga, I am sorry about the problem with your robot vacuum. Could you please send a photo of the item, so that we can help you quickly?",2026-09-30 10:19:46+00
+112,T-30078,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-30 10:42:40+00
+113,T-30078,draft_reply,chat-strong,draft-v2,1182,126,0.00362400,3050,ok,"Hello Wen, thank you for writing to us. I have passed your question about the wooden garden bench to the right team, and they will contact you soon.",2026-09-30 10:42:44+00
+114,T-30079,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-30 10:49:10+00
+115,T-30080,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-30 11:10:29+00
+116,T-30081,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-30 12:28:41+00
+117,T-30082,classify,keywords-1.0,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 3}",2026-09-30 12:38:12+00
+118,T-30083,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-09-30 13:21:09+00
+119,T-30083,draft_reply,chat-small,draft-v2,1232,162,0.00020420,993,ok,"Hello Noah, I am sorry about the problem with your hammock. Could you please send a photo of the item, so that we can help you quickly?",2026-09-30 13:21:10+00
+120,T-30084,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 1}",2026-09-30 13:21:43+00
+121,T-30084,draft_reply,chat-small,draft-v2,1299,210,0.00023490,1215,ok,"Hello George, thank you for contacting Larkfield. I am sorry about the problem with your compost bin. I have checked order LK-508896, and a colleague will confirm the next step today.",2026-09-30 13:21:45+00
+122,T-30085,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-09-30 13:32:51+00
+123,T-30086,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-30 14:32:54+00
+124,T-30087,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 1}",2026-09-30 14:58:59+00
+125,T-30088,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-09-30 15:31:06+00
+126,T-30088,draft_reply,chat-strong,draft-v2,1433,157,0.00443600,4231,ok,"Hello Bruno, thank you for contacting Larkfield. I am sorry about the problem with your compost bin. I have checked order LK-373448, and a colleague will confirm the next step today.",2026-09-30 15:31:11+00
+127,T-30089,classify,keywords-1.0,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 1}",2026-09-30 16:58:05+00
+128,T-30090,classify,keywords-1.0,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-09-30 18:49:18+00
+129,T-30091,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 3}",2026-09-30 19:11:02+00
+130,T-30092,classify,keywords-1.0,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-09-30 20:42:07+00
+131,T-30093,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-01 09:22:06+00
+132,T-30093,draft_reply,chat-small,draft-v2,1064,85,0.00014890,1494,ok,"Hello Bruno, thank you for contacting Larkfield. I am sorry about the problem with your wooden garden bench. I have checked order LK-350978, and a colleague will confirm the next step today.",2026-10-01 09:22:08+00
+133,T-30094,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-01 10:22:44+00
+134,T-30094,draft_reply,chat-strong,draft-v2,861,117,0.00289200,3023,ok,"Hello Samir, I am sorry about the problem with your cedar planter. Could you please send a photo of the item, so that we can help you quickly?",2026-10-01 10:22:48+00
+135,T-30095,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 1}",2026-10-01 11:09:24+00
+136,T-30096,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-01 11:55:41+00
+137,T-30096,draft_reply,chat-small,draft-v2,906,116,0.00014860,792,ok,"Hello Dina, thank you for your message about order LK-945274. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-01 11:55:42+00
+138,T-30097,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-01 12:09:19+00
+139,T-30098,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-01 12:59:41+00
+140,T-30099,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-01 13:12:37+00
+141,T-30099,draft_reply,chat-strong,draft-v2,838,117,0.00284600,2252,ok,"Hello Noah, I am sorry about the problem with your wool rug. Could you please send a photo of the item, so that we can help you quickly?",2026-10-01 13:12:40+00
+142,T-30100,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-01 15:05:49+00
+143,T-30100,draft_reply,chat-small,draft-v2,1321,121,0.00019260,1457,ok,"Hello Noah, I am sorry about the problem with your robot vacuum. Could you please send a photo of the item, so that we can help you quickly?",2026-10-01 15:05:51+00
+144,T-30101,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 1}",2026-10-01 17:14:54+00
+145,T-30101,draft_reply,chat-small,draft-v2,822,178,0.00017120,1212,ok,"Hello Noah, thank you for your message about order LK-326568. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-01 17:14:56+00
+146,T-30102,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-01 17:56:11+00
+147,T-30102,draft_reply,chat-small,draft-v2,748,160,0.00015480,1040,ok,"Hello Emma, thank you for contacting Larkfield. I am sorry about the problem with your AquaFlow HR-30 hose reel. I have checked order LK-492910, and a colleague will confirm the next step today.",2026-10-01 17:56:13+00
+148,T-30103,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-01 19:35:14+00
+149,T-30104,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-02 07:15:59+00
+150,T-30105,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-02 08:03:47+00
+151,T-30105,draft_reply,chat-small,draft-v2,1864,65,0.00021890,1329,ok,"Hello Samir, thank you for your message about order LK-290980. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-02 08:03:49+00
+152,T-30106,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-02 08:25:00+00
+153,T-30107,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-02 08:36:07+00
+154,T-30107,draft_reply,chat-small,draft-v2,930,189,0.00018750,1216,ok,"Hello Samir, thank you for your message about order LK-269431. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-02 08:36:09+00
+155,T-30108,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-02 08:52:35+00
+156,T-30109,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-02 08:53:41+00
+157,T-30109,draft_reply,chat-small,draft-v2,925,193,0.00018900,995,ok,"Hello Amara, I am sorry about the problem with your greenhouse frame. Could you please send a photo of the item, so that we can help you quickly?",2026-10-02 08:53:42+00
+158,T-30110,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-02 09:04:14+00
+159,T-30110,draft_reply,chat-strong,draft-v2,880,187,0.00363000,3966,ok,"Hello Uma, thank you for contacting Larkfield. I am sorry about the problem with your trampoline. I have checked order LK-377805, and a colleague will confirm the next step today.",2026-10-02 09:04:18+00
+160,T-30111,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-02 09:05:43+00
+161,T-30111,draft_reply,chat-strong,draft-v2,765,100,0.00253000,4322,ok,"Hello Hugo, thank you for your message about order LK-165643. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-02 09:05:48+00
+162,T-30112,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-02 10:45:37+00
+163,T-30113,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-02 13:15:47+00
+164,T-30113,draft_reply,chat-small,draft-v2,981,96,0.00014610,914,ok,"Hello Priyanka, I am sorry about the problem with your tool chest. Could you please send a photo of the item, so that we can help you quickly?",2026-10-02 13:15:48+00
+165,T-30114,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-02 15:09:52+00
+166,T-30115,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-02 15:23:29+00
+167,T-30115,draft_reply,chat-strong,draft-v2,902,166,0.00346400,2990,ok,"Hello Yusuf, thank you for contacting Larkfield. I am sorry about the problem with your HT-550 electric hedge trimmer. I have checked order LK-607679, and a colleague will confirm the next step today.",2026-10-02 15:23:32+00
+168,T-30116,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-02 15:35:40+00
+169,T-30117,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-02 16:01:25+00
+170,T-30117,draft_reply,chat-small,draft-v2,778,133,0.00014430,978,ok,"Hello Bruno, thank you for your message about order LK-969096. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-02 16:01:26+00
+171,T-30118,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 3}",2026-10-02 16:05:54+00
+172,T-30118,draft_reply,chat-small,draft-v2,1454,85,0.00018790,795,ok,"Hello Gil, thank you for writing to us. I have passed your question about the KT-180 electric kettle to the right team, and they will contact you soon.",2026-10-02 16:05:55+00
+173,T-30119,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 3}",2026-10-02 16:17:02+00
+174,T-30120,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-02 17:38:58+00
+175,T-30120,draft_reply,chat-small,draft-v2,896,139,0.00015910,1400,ok,"Hello Noah, thank you for your message about order LK-326655. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-02 17:39:00+00
+176,T-30121,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-02 18:55:00+00
+177,T-30122,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-02 19:18:32+00
+178,T-30123,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 1}",2026-10-02 20:08:09+00
+179,T-30124,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-03 07:01:46+00
+180,T-30125,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-03 07:10:08+00
+181,T-30125,draft_reply,chat-small,draft-v2,1326,135,0.00020010,1211,ok,"Hello Bruno, thank you for your message about order LK-846057. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-03 07:10:10+00
+182,T-30126,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-03 07:12:31+00
+183,T-30126,draft_reply,chat-small,draft-v2,1218,173,0.00020830,592,ok,"Hello Pedro, I am sorry about the problem with your garden hose (25 m). Could you please send a photo of the item, so that we can help you quickly?",2026-10-03 07:12:32+00
+184,T-30127,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-03 08:04:01+00
+185,T-30128,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-03 09:07:25+00
+186,T-30128,draft_reply,chat-small,draft-v2,1042,187,0.00019770,713,ok,"Hello Dev, I am sorry about the problem with your pruning shears. Could you please send a photo of the item, so that we can help you quickly?",2026-10-03 09:07:26+00
+187,T-30129,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-03 11:20:49+00
+188,T-30129,draft_reply,chat-small,draft-v2,1136,168,0.00019760,1082,ok,"Hello Oscar, thank you for writing to us. I have passed your question about the robot vacuum to the right team, and they will contact you soon.",2026-10-03 11:20:51+00
+189,T-30130,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 1}",2026-10-03 11:21:20+00
+190,T-30131,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-03 11:44:27+00
+191,T-30132,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-03 11:52:42+00
+192,T-30133,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-03 11:53:46+00
+193,T-30134,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-03 12:15:04+00
+194,T-30134,draft_reply,chat-small,draft-v2,700,157,0.00014850,1144,ok,"Hello Priyanka, I am sorry about the problem with your garden hose (25 m). Could you please send a photo of the item, so that we can help you quickly?",2026-10-03 12:15:06+00
+195,T-30135,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-03 15:16:15+00
+196,T-30135,draft_reply,chat-small,draft-v2,1062,208,0.00021020,973,ok,"Hello Grace, thank you for your message about order LK-258161. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-03 15:16:16+00
+197,T-30136,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-03 15:25:42+00
+198,T-30136,draft_reply,chat-small,draft-v2,619,90,0.00010690,1670,ok,"Hello George, thank you for writing to us. I have passed your question about the cedar planter to the right team, and they will contact you soon.",2026-10-03 15:25:44+00
+199,T-30137,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 3}",2026-10-03 15:37:52+00
+200,T-30137,draft_reply,chat-small,draft-v2,734,101,0.00012390,1533,ok,"Hello Noah, thank you for writing to us. I have passed your question about the watering can to the right team, and they will contact you soon.",2026-10-03 15:37:54+00
+201,T-30138,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-03 18:17:40+00
+202,T-30139,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-03 18:40:51+00
+203,T-30140,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-03 19:19:18+00
+204,T-30140,draft_reply,chat-strong,draft-v2,940,161,0.00349000,5748,ok,"Hello Hugo, thank you for contacting Larkfield. I am sorry about the problem with your wool rug. I have checked order LK-154696, and a colleague will confirm the next step today.",2026-10-03 19:19:24+00
+205,T-30141,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-04 08:13:17+00
+206,T-30142,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-04 08:18:33+00
+207,T-30142,draft_reply,chat-strong,draft-v2,1102,101,0.00321400,2272,ok,"Hello Hugo, I am sorry about the problem with your cushion covers (set of 4). Could you please send a photo of the item, so that we can help you quickly?",2026-10-04 08:18:36+00
+208,T-30143,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-04 08:34:20+00
+209,T-30144,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-04 08:42:38+00
+210,T-30145,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-04 09:36:04+00
+211,T-30146,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-04 09:51:14+00
+212,T-30147,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-04 10:55:10+00
+213,T-30148,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 3}",2026-10-04 11:12:20+00
+214,T-30148,draft_reply,chat-small,draft-v2,1194,108,0.00017340,1076,ok,"Hello Marco, thank you for contacting Larkfield. I am sorry about the problem with your step ladder. I have checked order LK-493508, and a colleague will confirm the next step today.",2026-10-04 11:12:22+00
+215,T-30149,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-04 14:27:44+00
+216,T-30149,draft_reply,chat-small,draft-v2,1200,89,0.00016450,760,ok,"Hello Noah, thank you for writing to us. I have passed your question about the hammock to the right team, and they will contact you soon.",2026-10-04 14:27:45+00
+217,T-30150,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-04 14:58:31+00
+218,T-30150,draft_reply,chat-strong,draft-v2,1116,115,0.00338200,2414,ok,"Hello Priyanka, thank you for contacting Larkfield. I am sorry about the problem with your hammock. I have checked order LK-428380, and a colleague will confirm the next step today.",2026-10-04 14:58:34+00
+219,T-30151,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-04 16:11:05+00
+220,T-30151,draft_reply,chat-small,draft-v2,1356,160,0.00021560,1012,ok,"Hello Amara, thank you for writing to us. I have passed your question about the robot vacuum to the right team, and they will contact you soon.",2026-10-04 16:11:07+00
+221,T-30152,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-04 17:14:48+00
+222,T-30153,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-04 19:40:53+00
+223,T-30153,draft_reply,chat-small,draft-v2,1007,145,0.00017320,1134,ok,"Hello Wen, thank you for writing to us. I have passed your question about the compost bin to the right team, and they will contact you soon.",2026-10-04 19:40:55+00
+224,T-30154,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 1}",2026-10-05 07:36:59+00
+225,T-30155,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-05 08:56:36+00
+226,T-30155,draft_reply,chat-small,draft-v2,1163,257,0.00024480,1242,ok,"Hello Dina, thank you for contacting Larkfield. I am sorry about the problem with your AquaFlow HR-30 hose reel. I have checked order LK-657328, and a colleague will confirm the next step today.",2026-10-05 08:56:38+00
+227,T-30156,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-05 08:59:08+00
+228,T-30157,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-05 09:14:02+00
+229,T-30158,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-05 09:15:15+00
+230,T-30159,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-05 09:29:58+00
+231,T-30159,draft_reply,chat-small,draft-v2,1558,149,0.00023030,920,ok,"Hello Victor, thank you for writing to us. I have passed your question about the watering can to the right team, and they will contact you soon.",2026-10-05 09:29:59+00
+232,T-30160,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-05 09:50:07+00
+233,T-30161,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-05 11:09:46+00
+234,T-30162,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-05 12:05:09+00
+235,T-30162,draft_reply,chat-small,draft-v2,880,59,0.00011750,1780,ok,"Hello Farah, thank you for contacting Larkfield. I am sorry about the problem with your pruning shears. I have checked order LK-325305, and a colleague will confirm the next step today.",2026-10-05 12:05:11+00
+236,T-30163,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-05 12:11:49+00
+237,T-30163,draft_reply,chat-small,draft-v2,717,118,0.00013070,1641,ok,"Hello Samir, thank you for contacting Larkfield. I am sorry about the problem with your garden chair. I have checked order LK-382980, and a colleague will confirm the next step today.",2026-10-05 12:11:51+00
+238,T-30164,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-05 12:18:07+00
+239,T-30164,draft_reply,chat-small,draft-v2,1067,155,0.00018420,1053,ok,"Hello Noah, thank you for contacting Larkfield. I am sorry about the problem with your trampoline. I have checked order LK-195868, and a colleague will confirm the next step today.",2026-10-05 12:18:09+00
+240,T-30165,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-05 12:54:19+00
+241,T-30166,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 1}",2026-10-05 14:53:13+00
+242,T-30166,draft_reply,chat-small,draft-v2,1170,127,0.00018050,1823,ok,"Hello Farah, thank you for writing to us. I have passed your question about the patio parasol to the right team, and they will contact you soon.",2026-10-05 14:53:15+00
+243,T-30167,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-05 15:16:39+00
+244,T-30167,draft_reply,chat-small,draft-v2,1221,156,0.00020010,1082,ok,"Hello Pedro, I am sorry about the problem with your robot vacuum. Could you please send a photo of the item, so that we can help you quickly?",2026-10-05 15:16:41+00
+245,T-30168,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 1}",2026-10-05 15:19:13+00
+246,T-30168,draft_reply,chat-strong,draft-v2,821,121,0.00285200,7251,ok,"Hello Amara, I am sorry about the problem with your robot vacuum. Could you please send a photo of the item, so that we can help you quickly?",2026-10-05 15:19:21+00
+247,T-30169,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-05 16:16:51+00
+248,T-30170,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-05 18:04:15+00
+249,T-30171,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-06 07:57:29+00
+250,T-30172,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-06 08:10:44+00
+251,T-30172,draft_reply,chat-small,draft-v2,885,136,0.00015650,1240,ok,"Hello George, thank you for your message about order LK-552348. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-06 08:10:46+00
+252,T-30173,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-06 09:13:45+00
+253,T-30174,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""login"", ""priority"": 2}",2026-10-06 09:14:27+00
+254,T-30174,draft_reply,chat-small,draft-v2,1150,180,0.00020500,1267,ok,"Hello Bruno, thank you for contacting Larkfield. I am sorry about the problem with your wool rug. I have checked order LK-236604, and a colleague will confirm the next step today.",2026-10-06 09:14:29+00
+255,T-30175,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-06 10:01:28+00
+256,T-30176,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-06 12:05:27+00
+257,T-30176,draft_reply,chat-small,draft-v2,998,109,0.00015430,696,ok,"Hello Samir, thank you for your message about order LK-690917. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-06 12:05:28+00
+258,T-30177,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-06 12:24:16+00
+259,T-30178,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-06 12:36:29+00
+260,T-30178,draft_reply,chat-small,draft-v2,825,92,0.00012850,1054,ok,"Hello Jonas, thank you for contacting Larkfield. I am sorry about the problem with your wooden garden bench. I have checked order LK-207956, and a colleague will confirm the next step today.",2026-10-06 12:36:31+00
+261,T-30179,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 3}",2026-10-06 12:43:45+00
+262,T-30180,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-06 14:55:50+00
+263,T-30180,draft_reply,chat-small,draft-v2,1227,109,0.00017720,1748,ok,"Hello Valeria, thank you for contacting Larkfield. I am sorry about the problem with your PW-2200 electric pressure washer. I have checked order LK-514901, and a colleague will confirm the next step today.",2026-10-06 14:55:52+00
+264,T-30181,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-06 15:53:40+00
+265,T-30181,draft_reply,chat-small,draft-v2,916,150,0.00016660,1163,ok,"Hello Olga, I am sorry about the problem with your PW-2200 electric pressure washer. Could you please send a photo of the item, so that we can help you quickly?",2026-10-06 15:53:42+00
+266,T-30182,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-06 17:38:13+00
+267,T-30183,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-06 19:18:48+00
+268,T-30183,draft_reply,chat-small,draft-v2,1872,102,0.00023820,1672,ok,"Hello Oscar, thank you for contacting Larkfield. I am sorry about the problem with your wool rug. I have checked order LK-980844, and a colleague will confirm the next step today.",2026-10-06 19:18:50+00
+269,T-30184,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-06 20:23:09+00
+270,T-30185,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""account"", ""priority"": 3}",2026-10-06 20:40:05+00
+271,T-30186,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-07 07:53:04+00
+272,T-30187,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-07 08:00:11+00
+273,T-30187,draft_reply,chat-strong,draft-v2,1166,0,0.00233200,30000,timeout,,2026-10-07 08:00:42+00
+274,T-30188,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""other"", ""priority"": 3}",2026-10-07 12:03:07+00
+275,T-30189,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-07 14:42:08+00
+276,T-30189,draft_reply,chat-small,draft-v2,1003,202,0.00020130,1208,ok,"Hello Olga, thank you for your message about order LK-182465. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-07 14:42:10+00
+277,T-30190,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 1}",2026-10-07 15:32:59+00
+278,T-30190,draft_reply,chat-strong,draft-v2,826,77,0.00242200,4365,ok,"Hello Pedro, thank you for contacting Larkfield. I am sorry about the problem with your Ember GR-310 gas BBQ. I have checked order LK-603270, and a colleague will confirm the next step today.",2026-10-07 15:33:04+00
+279,T-30191,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-07 17:40:20+00
+280,T-30191,draft_reply,chat-small,draft-v2,2532,112,0.00030920,1509,ok,"Hello Pedro, thank you for writing to us. I have passed your question about the watering can to the right team, and they will contact you soon.",2026-10-07 17:40:22+00
+281,T-30192,classify,keywords-1.1,,0,0,0,2,ok,"{""category"": ""login"", ""priority"": 1}",2026-10-07 17:47:42+00
+282,T-30192,draft_reply,chat-small,draft-v2,796,99,0.00012910,1351,ok,"Hello Felix, thank you for writing to us. I have passed your question about the bird feeder to the right team, and they will contact you soon.",2026-10-07 17:47:44+00
+283,T-30193,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-07 18:00:59+00
+284,T-30194,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-08 07:24:09+00
+285,T-30194,draft_reply,chat-small,draft-v2,1224,138,0.00019140,780,ok,"Hello Bruno, thank you for writing to us. I have passed your question about the AquaFlow HR-30 hose reel to the right team, and they will contact you soon.",2026-10-08 07:24:10+00
+286,T-30195,classify,keywords-1.1,,0,0,0,0,ok,"{""category"": ""shipping"", ""priority"": 3}",2026-10-08 10:00:44+00
+287,T-30196,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-08 13:59:47+00
+288,T-30196,draft_reply,chat-strong,draft-v2,819,118,0.00281800,3708,ok,"Hello Olga, thank you for your message about order LK-377515. I understand that this is frustrating. We will look at it and reply within one business day.",2026-10-08 13:59:51+00
+289,T-30197,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""billing"", ""priority"": 2}",2026-10-08 14:47:54+00
+290,T-30197,draft_reply,chat-small,draft-v2,868,224,0.00019880,1761,ok,"Hello Noah, thank you for writing to us. I have passed your question about the greenhouse frame to the right team, and they will contact you soon.",2026-10-08 14:47:56+00
+291,T-30198,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""account"", ""priority"": 2}",2026-10-08 16:28:33+00
+292,T-30199,classify,keywords-1.1,,0,0,0,3,ok,"{""category"": ""shipping"", ""priority"": 2}",2026-10-08 17:02:18+00
+293,T-30200,classify,keywords-1.1,,0,0,0,1,ok,"{""category"": ""other"", ""priority"": 2}",2026-10-08 19:13:17+00
+294,T-30200,draft_reply,chat-strong,draft-v2,1043,206,0.00414600,5335,ok,"Hello Oscar, I am sorry about the problem with your wooden garden bench. Could you please send a photo of the item, so that we can help you quickly?",2026-10-08 19:13:23+00

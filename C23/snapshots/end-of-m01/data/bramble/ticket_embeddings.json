@@ -1,0 +1,15 @@
+{
+  "model": "intfloat/multilingual-e5-small",
+  "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "licence": "MIT",
+  "embedding_version": "e5-small-v1",
+  "dimensions": 384,
+  "count": 40,
+  "normalized": true,
+  "text": "'query: ' + subject + '\\n' + body",
+  "versions": {
+    "sentence-transformers": "6.1.0",
+    "torch": "2.14.1"
+  },
+  "f32_sha256": "647c27760ed965bc79672b282cf96ba89894a8a21e271e22f2418a543bc1c49a"
+}

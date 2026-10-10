@@ -1,0 +1,7 @@
+tenant_id,user_id,role,created_at
+larkfield,usr-grace,owner,2024-01-08 09:00:00+00
+larkfield,usr-sam,staff,2024-03-04 09:00:00+00
+larkfield,usr-omar,read_only,2025-02-17 09:00:00+00
+larkfield,usr-camille,staff,2025-06-02 09:00:00+00
+bramble,usr-ines,owner,2026-09-15 09:00:00+00
+bramble,usr-camille,read_only,2026-09-22 09:00:00+00
