@@ -1,0 +1,16 @@
+# Authentication, Permissions and Multi-Tenant Applications
+
+Files for the course [Authentication, Permissions and Multi-Tenant Applications](https://learning.nextia-ai.com/courses/auth/).
+
+| Folder | What it has |
+|---|---|
+| [`snapshots/`](snapshots) | The course project `ticket-api`: `start` (the end of the databases course; download it in the first lesson) and the project at the end of each module. Code MIT; data CC0. |
+| [`data/`](data) | The second shop, Bramble Books (customers, tickets, messages, files, AI runs, documents and ticket vectors), and the made-up people with their memberships, with a [dataset card](data/dataset.md) and the builder that makes them again. CC0. |
+
+You need no account, no key and no money. PostgreSQL (with pgvector), the object storage (Azurite) and the identity provider run on your computer. The identity provider in the project (`idp/`) is a mock for practice: it does not ask for a password. A real provider is optional: `optional/keycloak/` in the snapshots from Module 3 runs Keycloak in Docker on your computer.
+
+All the people, shops, tickets and files are made up for the course. Every attempt in the course to read or change what a person may not is harmless and targets only your own practice app.
+
+## Tested
+
+Tested with Python 3.12 on macOS (Apple silicon), Docker Desktop, PostgreSQL 18.6 with pgvector 0.8.7 and Azurite 3.37.0, in a new virtual environment and a new database for each snapshot: every snapshot's tests pass, and the stage's first commands run. The optional Keycloak route was tested with Keycloak 26.8.0. Windows and Linux are not tested. The route without Docker is not tested.

@@ -1,0 +1,74 @@
+# Continuous delivery: promote one image, by digest, to staging and then to
+# production. It starts when CI succeeds on main, or by hand with a digest
+# (for a hotfix or a rollback). Production waits for a reviewer's approval.
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: "The image digest to deploy, for example sha256:4f1c..."
+        required: true
+      reason:
+        description: "Why you deploy it by hand (hotfix, rollback, ...)"
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    name: Find the image
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+    outputs:
+      digest: ${{ steps.digest.outputs.digest }}
+    steps:
+      - name: Get build-info.json from the CI run
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v7
+        with:
+          name: build-info
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Choose the digest
+        id: digest
+        env:
+          INPUT_DIGEST: ${{ inputs.digest }}
+        run: |
+          if [ -n "$INPUT_DIGEST" ]; then digest="$INPUT_DIGEST"; else digest=$(jq -r .digest build-info.json); fi
+          case "$digest" in sha256:*) ;; *) echo "Not a digest: $digest"; exit 1;; esac
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+          echo "Deploying ghcr.io/${{ github.repository }}@$digest" >> "$GITHUB_STEP_SUMMARY"
+
+  staging:
+    needs: resolve
+    uses: ./.github/workflows/deploy-to.yml
+    with:
+      environment: staging
+      image: ghcr.io/${{ github.repository }}@${{ needs.resolve.outputs.digest }}
+    secrets: inherit
+    permissions:
+      contents: read
+      id-token: write
+
+  production:
+    needs: [resolve, staging]
+    uses: ./.github/workflows/deploy-to.yml
+    with:
+      environment: production
+      image: ghcr.io/${{ github.repository }}@${{ needs.resolve.outputs.digest }}
+    secrets: inherit
+    permissions:
+      contents: read
+      id-token: write

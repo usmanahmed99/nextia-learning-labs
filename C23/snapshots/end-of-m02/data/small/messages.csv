@@ -1,0 +1,335 @@
+message_id,ticket_id,author,body,created_at
+1,T-30001,agent,Sorry about this. I have asked the warehouse to look at order LK-790159. You will get an email when we know more.,2026-09-25 21:35:49+00
+2,T-30002,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-09-25 19:59:19+00
+3,T-30003,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-09-25 22:52:18+00
+4,T-30004,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-25 13:45:44+00
+5,T-30004,customer,The refund is on my card now. Thanks.,2026-09-26 12:23:44+00
+6,T-30006,agent,"For your security, please confirm this request from the email address on your account.",2026-09-26 06:29:22+00
+7,T-30006,customer,"Great, thanks for the quick help!",2026-09-26 08:57:22+00
+8,T-30007,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-26 05:39:40+00
+9,T-30008,agent,Your parcel is at the Northline depot and will be delivered tomorrow.,2026-09-26 07:40:30+00
+10,T-30008,customer,The refund is on my card now. Thanks.,2026-09-26 11:30:30+00
+11,T-30008,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-27 08:46:30+00
+12,T-30008,customer,Any news on this? It has been 18 days.,2026-09-28 00:50:30+00
+13,T-30011,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-09-26 12:05:33+00
+14,T-30011,customer,Any news on this? It has been 10 days.,2026-09-26 21:20:33+00
+15,T-30012,agent,"Thank you for the photo. We will send a replacement PW-2200 electric pressure washer this week, and a free return label for the damaged one.",2026-09-26 01:37:29+00
+16,T-30015,agent,Your request is done. Please reply if anything is still not right.,2026-09-26 11:30:28+00
+17,T-30015,customer,"Great, thanks for the quick help!",2026-09-26 21:22:28+00
+18,T-30015,agent,Your request is done. Please reply if anything is still not right.,2026-09-27 15:07:28+00
+19,T-30016,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-09-26 12:03:22+00
+20,T-30016,customer,I attached the photo you asked for.,2026-09-26 21:18:22+00
+21,T-30017,agent,"Thank you for your message. You can find the instructions for the compost bin on its product page, under Downloads.",2026-09-26 11:36:58+00
+22,T-30018,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-09-27 07:02:25+00
+23,T-30018,customer,Any news on this? It has been 6 days.,2026-09-27 20:09:25+00
+24,T-30019,agent,I have reset your sign-in. Please try again and use the newest email that we sent.,2026-09-27 07:56:30+00
+25,T-30020,agent,I have sent the invoice for order LK-871946 to your email address.,2026-09-26 20:10:14+00
+26,T-30020,customer,"Thank you, that works now.",2026-09-27 02:24:14+00
+27,T-30020,agent,I have sent the invoice for order LK-871946 to your email address.,2026-09-27 13:20:14+00
+28,T-30021,agent,"I checked the payments for order LK-413252. The second payment was only an authorisation, and your bank will release it.",2026-09-27 05:43:37+00
+29,T-30022,agent,Please stop using the solar path lights (set of 6) now. We will collect it and send a replacement. Your safety comes first.,2026-09-27 07:14:29+00
+30,T-30022,customer,The refund is on my card now. Thanks.,2026-09-27 21:09:29+00
+31,T-30023,agent,"For your security, please confirm this request from the email address on your account.",2026-09-26 22:58:12+00
+32,T-30023,customer,"Thank you, that works now.",2026-09-27 06:38:12+00
+33,T-30023,agent,Your request is done. Please reply if anything is still not right.,2026-09-27 13:44:12+00
+34,T-30024,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-09-27 07:45:27+00
+35,T-30024,customer,The refund is on my card now. Thanks.,2026-09-27 09:06:27+00
+36,T-30024,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-09-27 20:07:27+00
+37,T-30024,customer,Any news on this? It has been 16 days.,2026-09-27 22:08:27+00
+38,T-30025,agent,I have unlocked your account. You can sign in again now.,2026-09-27 07:34:44+00
+39,T-30025,customer,"Thank you, that works now.",2026-09-27 09:00:44+00
+40,T-30026,agent,"Thank you for your message. You can find the instructions for the greenhouse frame on its product page, under Downloads.",2026-09-27 09:53:21+00
+41,T-30026,customer,Can I talk to someone on the phone about this?,2026-09-28 01:04:21+00
+42,T-30027,agent,Your parcel is at the ParcelGo depot and will be delivered tomorrow.,2026-09-26 22:04:08+00
+43,T-30027,customer,"Great, thanks for the quick help!",2026-09-27 20:30:08+00
+44,T-30027,agent,Thank you for your message. I have checked order LK-496284 with Northline and I will update you within one business day.,2026-09-27 22:55:08+00
+45,T-30027,customer,"Thank you, that works now.",2026-09-28 12:34:08+00
+46,T-30028,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-27 10:45:54+00
+47,T-30028,customer,"Yes, please send the replacement.",2026-09-27 21:31:54+00
+48,T-30028,agent,Sorry about this. I have asked the warehouse to look at order LK-466054. You will get an email when we know more.,2026-09-28 05:16:54+00
+49,T-30029,agent,I can see the problem. I have started a refund of 74.00 dollars. It can take 5 to 10 business days to reach your card.,2026-09-27 14:17:34+00
+50,T-30029,customer,I attached the photo you asked for.,2026-09-28 12:07:34+00
+51,T-30029,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-09-29 12:59:34+00
+52,T-30029,customer,"Thank you, that works now.",2026-09-30 18:00:34+00
+53,T-30030,agent,"Thank you for the photo. We will send a replacement watering can this week, and a free return label for the damaged one.",2026-09-27 22:12:03+00
+54,T-30030,customer,"Thank you, that works now.",2026-09-28 03:58:03+00
+55,T-30031,agent,I have sent the invoice for order LK-765514 to your email address.,2026-09-27 23:31:19+00
+56,T-30032,agent,"I checked the payments for order LK-819291. The second payment was only an authorisation, and your bank will release it.",2026-09-27 23:46:59+00
+57,T-30032,customer,Any news on this? It has been 21 days.,2026-09-29 03:08:59+00
+58,T-30033,agent,I have unlocked your account. You can sign in again now.,2026-09-28 06:42:24+00
+59,T-30033,customer,"Yes, please send the replacement.",2026-09-28 17:01:24+00
+60,T-30033,agent,"Please check that your phone can receive text messages from short numbers, then ask for a new code.",2026-09-29 07:58:24+00
+61,T-30034,agent,Thank you for your message. I have checked order LK-539626 with SwiftPost and I will update you within one business day.,2026-09-27 15:07:42+00
+62,T-30035,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-27 21:06:09+00
+63,T-30035,customer,Any news on this? It has been 13 days.,2026-09-28 20:37:09+00
+64,T-30035,agent,Thank you for your message. I have checked order LK-369575 with Northline and I will update you within one business day.,2026-09-30 02:03:09+00
+65,T-30035,customer,I still have not received anything.,2026-09-30 22:26:09+00
+66,T-30036,agent,I have unlocked your account. You can sign in again now.,2026-09-27 17:42:06+00
+67,T-30036,customer,"Great, thanks for the quick help!",2026-09-27 23:09:06+00
+68,T-30036,agent,"Please check that your phone can receive text messages from short numbers, then ask for a new code.",2026-09-29 02:34:06+00
+69,T-30037,agent,Sorry about this. I have asked the warehouse to look at order LK-145406. You will get an email when we know more.,2026-09-27 21:37:21+00
+70,T-30037,customer,The refund is on my card now. Thanks.,2026-09-28 06:46:21+00
+71,T-30037,agent,Thank you for your message. I have checked order LK-145406 with Northline and I will update you within one business day.,2026-09-29 08:41:21+00
+72,T-30037,customer,Any news on this? It has been 11 days.,2026-09-30 12:24:21+00
+73,T-30038,agent,"I checked the payments for order LK-471058. The second payment was only an authorisation, and your bank will release it.",2026-09-28 19:48:20+00
+74,T-30039,agent,I can see the problem. I have started a refund of 119.00 dollars. It can take 5 to 10 business days to reach your card.,2026-09-28 20:24:45+00
+75,T-30040,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-09-29 09:00:44+00
+76,T-30040,customer,Can I talk to someone on the phone about this?,2026-09-29 09:20:44+00
+77,T-30040,agent,Please stop using the HT-550 electric hedge trimmer now. We will collect it and send a replacement. Your safety comes first.,2026-09-30 10:09:44+00
+78,T-30040,customer,Can I talk to someone on the phone about this?,2026-09-30 13:58:44+00
+79,T-30041,agent,Sorry about this. I have asked the warehouse to look at order LK-649042. You will get an email when we know more.,2026-09-29 01:25:38+00
+80,T-30041,customer,"Great, thanks for the quick help!",2026-09-29 08:34:38+00
+81,T-30042,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-09-29 03:09:21+00
+82,T-30042,customer,Can I talk to someone on the phone about this?,2026-09-29 06:10:21+00
+83,T-30043,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-09-28 17:01:55+00
+84,T-30045,agent,"Please check that your phone can receive text messages from short numbers, then ask for a new code.",2026-09-29 07:20:42+00
+85,T-30045,customer,Can I talk to someone on the phone about this?,2026-09-30 12:51:42+00
+86,T-30047,agent,"Thank you for the photo. We will send a replacement pruning shears this week, and a free return label for the damaged one.",2026-09-29 01:10:05+00
+87,T-30047,customer,"Great, thanks for the quick help!",2026-09-29 06:51:05+00
+88,T-30048,agent,"For your security, please confirm this request from the email address on your account.",2026-09-28 21:28:43+00
+89,T-30049,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-09-29 09:05:39+00
+90,T-30049,customer,Any news on this? It has been 13 days.,2026-09-30 12:03:39+00
+91,T-30050,agent,I can see the problem. I have started a refund of 36.00 dollars. It can take 5 to 10 business days to reach your card.,2026-09-29 23:47:43+00
+92,T-30051,agent,"I checked the payments for order LK-699561. The second payment was only an authorisation, and your bank will release it.",2026-09-28 22:20:22+00
+93,T-30051,customer,I still have not received anything.,2026-09-30 03:57:22+00
+94,T-30051,agent,I can see the problem. I have started a refund of 49.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-01 03:00:22+00
+95,T-30051,customer,"Great, thanks for the quick help!",2026-10-01 11:54:22+00
+96,T-30052,agent,"Thank you for the photo. We will send a replacement compost bin this week, and a free return label for the damaged one.",2026-09-29 00:38:30+00
+97,T-30052,customer,"Thank you, that works now.",2026-09-29 22:33:30+00
+98,T-30052,agent,Your parcel is at the Northline depot and will be delivered tomorrow.,2026-09-30 17:14:30+00
+99,T-30052,customer,I still have not received anything.,2026-10-01 01:33:30+00
+100,T-30053,agent,"Thank you for the photo. We will send a replacement Ember GR-310 gas BBQ this week, and a free return label for the damaged one.",2026-09-29 14:14:56+00
+101,T-30054,agent,"Thank you for the photo. We will send a replacement PW-2200 electric pressure washer this week, and a free return label for the damaged one.",2026-09-29 16:44:42+00
+102,T-30054,customer,I still have not received anything.,2026-09-30 19:15:42+00
+103,T-30054,agent,Your parcel is at the Northline depot and will be delivered tomorrow.,2026-10-01 16:15:42+00
+104,T-30055,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-30 10:10:45+00
+105,T-30056,agent,"Thank you for the photo. We will send a replacement garden shed this week, and a free return label for the damaged one.",2026-09-29 17:57:03+00
+106,T-30057,agent,"Thank you for the photo. We will send a replacement PW-2200 electric pressure washer this week, and a free return label for the damaged one.",2026-09-29 18:59:23+00
+107,T-30057,customer,"Thank you, that works now.",2026-09-30 14:52:23+00
+108,T-30058,agent,"Thank you for your message. You can find the instructions for the hammock on its product page, under Downloads.",2026-09-30 17:00:27+00
+109,T-30059,agent,Sorry about this. I have asked the warehouse to look at order LK-827179. You will get an email when we know more.,2026-09-29 22:03:00+00
+110,T-30059,customer,I attached the photo you asked for.,2026-09-30 01:53:00+00
+111,T-30060,agent,Please stop using the step ladder now. We will collect it and send a replacement. Your safety comes first.,2026-09-30 08:28:48+00
+112,T-30060,customer,"Thank you, that works now.",2026-10-01 00:19:48+00
+113,T-30062,agent,I have unlocked your account. You can sign in again now.,2026-09-29 19:55:49+00
+114,T-30063,agent,"For your security, please confirm this request from the email address on your account.",2026-09-30 13:07:14+00
+115,T-30064,agent,I can see the problem. I have started a refund of 59.00 dollars. It can take 5 to 10 business days to reach your card.,2026-09-30 13:19:40+00
+116,T-30065,agent,"Please check that your phone can receive text messages from short numbers, then ask for a new code.",2026-09-30 02:56:36+00
+117,T-30065,customer,I attached the photo you asked for.,2026-09-30 06:58:36+00
+118,T-30066,agent,Thank you for your message. I have checked order LK-857549 with SwiftPost and I will update you within one business day.,2026-09-30 06:43:56+00
+119,T-30066,customer,The refund is on my card now. Thanks.,2026-10-01 06:42:56+00
+120,T-30067,agent,"For your security, please confirm this request from the email address on your account.",2026-09-30 06:01:28+00
+121,T-30067,customer,"Great, thanks for the quick help!",2026-09-30 23:14:28+00
+122,T-30067,agent,"For your security, please confirm this request from the email address on your account.",2026-10-02 04:28:28+00
+123,T-30068,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-09-30 18:07:51+00
+124,T-30069,agent,I can see the problem. I have started a refund of 34.50 dollars. It can take 5 to 10 business days to reach your card.,2026-09-30 09:50:26+00
+125,T-30069,customer,The refund is on my card now. Thanks.,2026-10-01 07:41:26+00
+126,T-30069,agent,I can see the problem. I have started a refund of 34.50 dollars. It can take 5 to 10 business days to reach your card.,2026-10-02 04:55:26+00
+127,T-30070,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-01 11:59:50+00
+128,T-30070,customer,I still have not received anything.,2026-10-01 17:42:50+00
+129,T-30070,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-02 18:06:50+00
+130,T-30071,agent,Your parcel is at the ParcelGo depot and will be delivered tomorrow.,2026-10-01 12:39:17+00
+131,T-30071,customer,The refund is on my card now. Thanks.,2026-10-01 20:25:17+00
+132,T-30072,agent,Please stop using the robot vacuum now. We will collect it and send a replacement. Your safety comes first.,2026-09-30 20:03:15+00
+133,T-30073,agent,"Yes, the cushion covers (set of 4) is covered by the warranty. I have started a claim for you.",2026-10-01 10:12:43+00
+134,T-30073,customer,I still have not received anything.,2026-10-01 13:27:43+00
+135,T-30074,agent,Please stop using the garden chair now. We will collect it and send a replacement. Your safety comes first.,2026-09-30 15:34:05+00
+136,T-30074,customer,I attached the photo you asked for.,2026-10-01 17:18:05+00
+137,T-30077,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-09-30 16:38:43+00
+138,T-30077,customer,"Yes, please send the replacement.",2026-10-01 14:16:43+00
+139,T-30078,agent,Your request is done. Please reply if anything is still not right.,2026-10-01 08:17:39+00
+140,T-30078,customer,Any news on this? It has been 9 days.,2026-10-02 11:44:39+00
+141,T-30078,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-10-03 01:50:39+00
+142,T-30079,agent,"For your security, please confirm this request from the email address on your account.",2026-10-01 15:42:09+00
+143,T-30080,agent,I can see the problem. I have started a refund of 22.00 dollars. It can take 5 to 10 business days to reach your card.,2026-09-30 18:22:28+00
+144,T-30080,customer,"Great, thanks for the quick help!",2026-10-01 18:32:28+00
+145,T-30081,agent,"I checked the payments for order LK-579099. The second payment was only an authorisation, and your bank will release it.",2026-10-01 12:36:40+00
+146,T-30081,customer,The refund is on my card now. Thanks.,2026-10-01 20:27:40+00
+147,T-30082,agent,"Yes, the pruning shears is covered by the warranty. I have started a claim for you.",2026-09-30 15:44:11+00
+148,T-30082,customer,"Great, thanks for the quick help!",2026-10-01 05:41:11+00
+149,T-30083,agent,Thank you for your message. I have checked order LK-976961 with ParcelGo and I will update you within one business day.,2026-10-01 13:55:08+00
+150,T-30086,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-01 12:31:53+00
+151,T-30087,agent,"Yes, the step ladder is covered by the warranty. I have started a claim for you.",2026-09-30 16:14:58+00
+152,T-30088,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-09-30 22:13:05+00
+153,T-30089,agent,"Yes, the step ladder is covered by the warranty. I have started a claim for you.",2026-10-01 20:52:04+00
+154,T-30089,customer,I still have not received anything.,2026-10-02 03:00:04+00
+155,T-30090,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-10-01 18:33:17+00
+156,T-30091,agent,"I checked the payments for order LK-737836. The second payment was only an authorisation, and your bank will release it.",2026-10-01 19:41:01+00
+157,T-30091,customer,"Thank you, that works now.",2026-10-02 18:37:01+00
+158,T-30092,agent,Your request is done. Please reply if anything is still not right.,2026-10-02 02:37:06+00
+159,T-30093,agent,"Thank you for the photo. We will send a replacement wooden garden bench this week, and a free return label for the damaged one.",2026-10-01 15:13:05+00
+160,T-30094,agent,"Thank you for your message. You can find the instructions for the cedar planter on its product page, under Downloads.",2026-10-01 11:55:43+00
+161,T-30094,customer,"Yes, please send the replacement.",2026-10-01 16:11:43+00
+162,T-30095,agent,I have sent the invoice for order LK-539653 to your email address.,2026-10-01 17:44:23+00
+163,T-30095,customer,Any news on this? It has been 19 days.,2026-10-01 19:04:23+00
+164,T-30096,agent,I have unlocked your account. You can sign in again now.,2026-10-01 13:02:40+00
+165,T-30098,agent,"Yes, the step ladder is covered by the warranty. I have started a claim for you.",2026-10-02 18:49:40+00
+166,T-30098,customer,I still have not received anything.,2026-10-03 09:58:40+00
+167,T-30099,agent,Sorry about this. I have asked the warehouse to look at order LK-704122. You will get an email when we know more.,2026-10-02 02:09:36+00
+168,T-30099,customer,The refund is on my card now. Thanks.,2026-10-02 15:38:36+00
+169,T-30100,agent,Your parcel is at the ParcelGo depot and will be delivered tomorrow.,2026-10-01 22:29:48+00
+170,T-30100,customer,The refund is on my card now. Thanks.,2026-10-02 17:32:48+00
+171,T-30101,agent,Please stop using the Ember GR-310 gas BBQ now. We will collect it and send a replacement. Your safety comes first.,2026-10-02 09:42:53+00
+172,T-30102,agent,"For your security, please confirm this request from the email address on your account.",2026-10-02 21:43:10+00
+173,T-30102,customer,"Yes, please send the replacement.",2026-10-03 09:13:10+00
+174,T-30103,agent,Thank you for your message. I have checked order LK-403829 with SwiftPost and I will update you within one business day.,2026-10-02 00:39:13+00
+175,T-30104,agent,Sorry about this. I have asked the warehouse to look at order LK-633583. You will get an email when we know more.,2026-10-02 12:28:58+00
+176,T-30104,customer,I attached the photo you asked for.,2026-10-03 11:13:58+00
+177,T-30104,agent,Thank you for your message. I have checked order LK-633583 with SwiftPost and I will update you within one business day.,2026-10-04 07:16:58+00
+178,T-30105,agent,I have sent the invoice for order LK-290980 to your email address.,2026-10-02 08:51:46+00
+179,T-30105,customer,"Thank you, that works now.",2026-10-03 08:22:46+00
+180,T-30105,agent,"I checked the payments for order LK-290980. The second payment was only an authorisation, and your bank will release it.",2026-10-03 12:57:46+00
+181,T-30106,agent,"Thank you for the photo. We will send a replacement garden hose (25 m) this week, and a free return label for the damaged one.",2026-10-02 14:29:59+00
+182,T-30106,customer,Can I talk to someone on the phone about this?,2026-10-03 01:11:59+00
+183,T-30106,agent,"Thank you for the photo. We will send a replacement garden hose (25 m) this week, and a free return label for the damaged one.",2026-10-03 05:55:59+00
+184,T-30106,customer,Can I talk to someone on the phone about this?,2026-10-03 21:24:59+00
+185,T-30107,agent,"For your security, please confirm this request from the email address on your account.",2026-10-03 01:13:06+00
+186,T-30108,agent,Your request is done. Please reply if anything is still not right.,2026-10-03 01:09:34+00
+187,T-30109,agent,"Thank you for your message. You can find the instructions for the greenhouse frame on its product page, under Downloads.",2026-10-03 04:35:40+00
+188,T-30110,agent,"Yes, the trampoline is covered by the warranty. I have started a claim for you.",2026-10-03 04:33:13+00
+189,T-30110,customer,I attached the photo you asked for.,2026-10-03 15:34:13+00
+190,T-30110,agent,"Thank you for your message. You can find the instructions for the trampoline on its product page, under Downloads.",2026-10-04 04:12:13+00
+191,T-30111,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-03 04:46:42+00
+192,T-30111,customer,I still have not received anything.,2026-10-03 13:15:42+00
+193,T-30111,agent,"Yes, the greenhouse frame is covered by the warranty. I have started a claim for you.",2026-10-04 12:30:42+00
+194,T-30112,agent,Please stop using the wooden garden bench now. We will collect it and send a replacement. Your safety comes first.,2026-10-03 07:44:36+00
+195,T-30112,customer,Any news on this? It has been 16 days.,2026-10-04 04:00:36+00
+196,T-30113,agent,I have unlocked your account. You can sign in again now.,2026-10-03 07:21:46+00
+197,T-30114,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-02 20:09:51+00
+198,T-30114,customer,"Yes, please send the replacement.",2026-10-03 12:11:51+00
+199,T-30115,agent,Your parcel is at the Northline depot and will be delivered tomorrow.,2026-10-02 16:51:28+00
+200,T-30115,customer,"Thank you, that works now.",2026-10-03 17:38:28+00
+201,T-30115,agent,"Thank you for the photo. We will send a replacement HT-550 electric hedge trimmer this week, and a free return label for the damaged one.",2026-10-03 22:43:28+00
+202,T-30116,agent,"Yes, the cedar planter is covered by the warranty. I have started a claim for you.",2026-10-03 06:24:39+00
+203,T-30116,customer,"Great, thanks for the quick help!",2026-10-03 10:42:39+00
+204,T-30117,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-03 02:31:24+00
+205,T-30118,agent,I can see the problem. I have started a refund of 49.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-03 06:27:53+00
+206,T-30119,agent,I have unlocked your account. You can sign in again now.,2026-10-03 11:16:01+00
+207,T-30120,agent,"I checked the payments for order LK-326655. The second payment was only an authorisation, and your bank will release it.",2026-10-03 04:57:57+00
+208,T-30121,agent,"Thank you for the photo. We will send a replacement garden hose (25 m) this week, and a free return label for the damaged one.",2026-10-03 22:52:59+00
+209,T-30122,agent,"I checked the payments for order LK-312415. The second payment was only an authorisation, and your bank will release it.",2026-10-03 02:36:31+00
+210,T-30122,customer,The refund is on my card now. Thanks.,2026-10-03 11:19:31+00
+211,T-30122,agent,I have sent the invoice for order LK-312415 to your email address.,2026-10-03 21:26:31+00
+212,T-30123,agent,"Yes, the Ember GR-310 gas BBQ is covered by the warranty. I have started a claim for you.",2026-10-03 07:54:08+00
+213,T-30123,customer,"Thank you, that works now.",2026-10-04 12:45:08+00
+214,T-30124,agent,"I checked the payments for order LK-201235. The second payment was only an authorisation, and your bank will release it.",2026-10-03 21:04:45+00
+215,T-30124,customer,"Thank you, that works now.",2026-10-04 15:39:45+00
+216,T-30125,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-03 17:36:07+00
+217,T-30126,agent,Thank you for your message. I have checked order LK-435293 with ParcelGo and I will update you within one business day.,2026-10-04 06:37:30+00
+218,T-30127,agent,"Yes, the KT-180 electric kettle is covered by the warranty. I have started a claim for you.",2026-10-04 10:22:00+00
+219,T-30128,agent,I have sent the invoice for order LK-158393 to your email address.,2026-10-03 13:56:24+00
+220,T-30128,customer,"Yes, please send the replacement.",2026-10-04 00:40:24+00
+221,T-30129,agent,Thank you for your message. I have checked order LK-614857 with ParcelGo and I will update you within one business day.,2026-10-04 15:48:48+00
+222,T-30130,agent,I have reset your sign-in. Please try again and use the newest email that we sent.,2026-10-04 14:00:19+00
+223,T-30131,agent,Please stop using the hammock now. We will collect it and send a replacement. Your safety comes first.,2026-10-04 02:59:26+00
+224,T-30131,customer,Can I talk to someone on the phone about this?,2026-10-05 01:12:26+00
+225,T-30131,agent,Please stop using the hammock now. We will collect it and send a replacement. Your safety comes first.,2026-10-06 05:36:26+00
+226,T-30132,agent,Sorry about this. I have asked the warehouse to look at order LK-226231. You will get an email when we know more.,2026-10-04 09:37:41+00
+227,T-30133,agent,Please stop using the tool chest now. We will collect it and send a replacement. Your safety comes first.,2026-10-04 10:07:45+00
+228,T-30135,agent,I have reset your sign-in. Please try again and use the newest email that we sent.,2026-10-04 20:50:14+00
+229,T-30135,customer,I still have not received anything.,2026-10-05 20:38:14+00
+230,T-30136,agent,"Thank you for your message. You can find the instructions for the cedar planter on its product page, under Downloads.",2026-10-03 22:24:41+00
+231,T-30136,customer,Can I talk to someone on the phone about this?,2026-10-04 05:13:41+00
+232,T-30137,agent,I can see the problem. I have started a refund of 19.95 dollars. It can take 5 to 10 business days to reach your card.,2026-10-03 23:49:51+00
+233,T-30137,customer,I attached the photo you asked for.,2026-10-04 16:51:51+00
+234,T-30138,agent,"Yes, the terracotta pot (set of 3) is covered by the warranty. I have started a claim for you.",2026-10-04 04:13:39+00
+235,T-30139,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-10-04 21:23:50+00
+236,T-30139,customer,"Thank you, that works now.",2026-10-05 19:56:50+00
+237,T-30140,agent,Your request is done. Please reply if anything is still not right.,2026-10-04 21:06:17+00
+238,T-30140,customer,Any news on this? It has been 2 days.,2026-10-05 01:47:17+00
+239,T-30141,agent,Please stop using the robot vacuum now. We will collect it and send a replacement. Your safety comes first.,2026-10-05 09:24:16+00
+240,T-30142,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-10-05 04:50:32+00
+241,T-30142,customer,"Great, thanks for the quick help!",2026-10-05 23:09:32+00
+242,T-30142,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-07 04:57:32+00
+243,T-30143,agent,Your request is done. Please reply if anything is still not right.,2026-10-04 23:33:19+00
+244,T-30145,agent,"Thank you for your message. You can find the instructions for the garden chair on its product page, under Downloads.",2026-10-04 18:50:03+00
+245,T-30145,customer,Can I talk to someone on the phone about this?,2026-10-04 21:59:03+00
+246,T-30145,agent,"Yes, the garden chair is covered by the warranty. I have started a claim for you.",2026-10-05 21:17:03+00
+247,T-30146,agent,I can see the problem. I have started a refund of 22.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-05 00:19:13+00
+248,T-30146,customer,I still have not received anything.,2026-10-05 19:56:13+00
+249,T-30146,agent,"I checked the payments for order LK-649695. The second payment was only an authorisation, and your bank will release it.",2026-10-07 01:42:13+00
+250,T-30146,customer,The refund is on my card now. Thanks.,2026-10-07 10:38:13+00
+251,T-30147,agent,"Thank you for the photo. We will send a replacement Ember GR-310 gas BBQ this week, and a free return label for the damaged one.",2026-10-05 06:24:09+00
+252,T-30148,agent,I can see the problem. I have started a refund of 79.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-04 23:52:19+00
+253,T-30149,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-04 15:52:43+00
+254,T-30149,customer,Can I talk to someone on the phone about this?,2026-10-05 10:36:43+00
+255,T-30149,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-05 19:09:43+00
+256,T-30150,agent,I have reset your sign-in. Please try again and use the newest email that we sent.,2026-10-04 23:32:30+00
+257,T-30150,customer,"Yes, please send the replacement.",2026-10-05 07:00:30+00
+258,T-30151,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-05 21:23:04+00
+259,T-30151,customer,"Yes, please send the replacement.",2026-10-06 18:19:04+00
+260,T-30152,agent,Your parcel is at the Northline depot and will be delivered tomorrow.,2026-10-05 15:01:47+00
+261,T-30152,customer,"Thank you, that works now.",2026-10-05 15:57:47+00
+262,T-30152,agent,Could you send a photo of the item and the label on the box? Then I can open a claim with the courier.,2026-10-06 14:23:47+00
+263,T-30153,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-10-04 22:48:52+00
+264,T-30154,agent,"Thank you for your message. You can find the instructions for the tool chest on its product page, under Downloads.",2026-10-05 16:12:58+00
+265,T-30154,customer,I still have not received anything.,2026-10-06 02:06:58+00
+266,T-30155,agent,"Thank you for your message. You can find the instructions for the AquaFlow HR-30 hose reel on its product page, under Downloads.",2026-10-05 21:36:35+00
+267,T-30155,customer,The refund is on my card now. Thanks.,2026-10-06 21:52:35+00
+268,T-30155,agent,"Yes, the AquaFlow HR-30 hose reel is covered by the warranty. I have started a claim for you.",2026-10-07 11:17:35+00
+269,T-30155,customer,Can I talk to someone on the phone about this?,2026-10-07 21:02:35+00
+270,T-30156,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-10-05 09:31:07+00
+271,T-30157,agent,I have sent the invoice for order LK-489587 to your email address.,2026-10-06 10:22:01+00
+272,T-30158,agent,"Yes, the robot vacuum is covered by the warranty. I have started a claim for you.",2026-10-05 14:31:14+00
+273,T-30159,agent,"I checked the payments for order LK-150023. The second payment was only an authorisation, and your bank will release it.",2026-10-05 15:07:57+00
+274,T-30160,agent,"Thank you for the photo. We will send a replacement watering can this week, and a free return label for the damaged one.",2026-10-05 14:03:06+00
+275,T-30160,customer,"Great, thanks for the quick help!",2026-10-06 06:52:06+00
+276,T-30161,agent,Thank you for your message. I have checked order LK-850855 with SwiftPost and I will update you within one business day.,2026-10-06 10:04:45+00
+277,T-30161,customer,"Yes, please send the replacement.",2026-10-07 05:00:45+00
+278,T-30162,agent,Your request is done. Please reply if anything is still not right.,2026-10-05 23:52:08+00
+279,T-30162,customer,"Thank you, that works now.",2026-10-06 22:37:08+00
+280,T-30163,agent,Your request is done. Please reply if anything is still not right.,2026-10-05 15:48:48+00
+281,T-30164,agent,"I checked the payments for order LK-195868. The second payment was only an authorisation, and your bank will release it.",2026-10-05 13:59:06+00
+282,T-30165,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-10-06 12:39:18+00
+283,T-30165,customer,I still have not received anything.,2026-10-07 00:57:18+00
+284,T-30166,agent,I have unlocked your account. You can sign in again now.,2026-10-06 02:40:12+00
+285,T-30166,customer,Any news on this? It has been 18 days.,2026-10-06 18:40:12+00
+286,T-30167,agent,"For your security, please confirm this request from the email address on your account.",2026-10-06 05:35:38+00
+287,T-30167,customer,I attached the photo you asked for.,2026-10-07 11:04:38+00
+288,T-30167,agent,Your request is done. Please reply if anything is still not right.,2026-10-08 10:11:38+00
+289,T-30167,customer,I attached the photo you asked for.,2026-10-08 18:32:38+00
+290,T-30168,agent,I have sent the invoice for order LK-919420 to your email address.,2026-10-06 16:42:12+00
+291,T-30168,customer,Can I talk to someone on the phone about this?,2026-10-07 03:20:12+00
+292,T-30168,agent,"I checked the payments for order LK-919420. The second payment was only an authorisation, and your bank will release it.",2026-10-08 05:29:12+00
+293,T-30169,agent,Please stop using the bird feeder now. We will collect it and send a replacement. Your safety comes first.,2026-10-06 05:08:50+00
+294,T-30169,customer,I still have not received anything.,2026-10-06 15:02:50+00
+295,T-30170,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-06 15:15:14+00
+296,T-30170,customer,I still have not received anything.,2026-10-07 16:32:14+00
+297,T-30170,agent,"Thank you for your message. You can find the instructions for the patio parasol on its product page, under Downloads.",2026-10-08 01:36:14+00
+298,T-30170,customer,Can I talk to someone on the phone about this?,2026-10-08 03:53:14+00
+299,T-30171,agent,"Yes, the garden hose (25 m) is covered by the warranty. I have started a claim for you.",2026-10-06 22:19:28+00
+300,T-30171,customer,Any news on this? It has been 6 days.,2026-10-07 17:19:28+00
+301,T-30172,agent,Sorry about this. I have asked the warehouse to look at order LK-552348. You will get an email when we know more.,2026-10-07 09:00:43+00
+302,T-30172,customer,"Yes, please send the replacement.",2026-10-08 08:32:43+00
+303,T-30173,agent,"Thank you for your message. You can find the instructions for the cushion covers (set of 4) on its product page, under Downloads.",2026-10-07 09:07:44+00
+304,T-30173,customer,Can I talk to someone on the phone about this?,2026-10-08 02:31:44+00
+305,T-30174,agent,I have unlocked your account. You can sign in again now.,2026-10-06 11:59:26+00
+306,T-30174,customer,Any news on this? It has been 3 days.,2026-10-07 05:20:26+00
+307,T-30175,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-10-07 00:25:27+00
+308,T-30175,customer,"Yes, please send the replacement.",2026-10-07 12:00:27+00
+309,T-30175,agent,"I checked the payments for order LK-333646. The second payment was only an authorisation, and your bank will release it.",2026-10-08 17:59:27+00
+310,T-30176,agent,Your request is done. Please reply if anything is still not right.,2026-10-06 13:17:26+00
+311,T-30176,customer,I still have not received anything.,2026-10-07 16:01:26+00
+312,T-30176,agent,"For your security, please confirm this request from the email address on your account.",2026-10-07 20:12:26+00
+313,T-30176,customer,Can I talk to someone on the phone about this?,2026-10-08 12:13:26+00
+314,T-30177,agent,I have sent the invoice for order LK-897874 to your email address.,2026-10-07 16:29:15+00
+315,T-30177,customer,"Great, thanks for the quick help!",2026-10-08 11:55:15+00
+316,T-30178,agent,Your parcel is at the SwiftPost depot and will be delivered tomorrow.,2026-10-07 17:08:28+00
+317,T-30178,customer,I attached the photo you asked for.,2026-10-08 13:08:28+00
+318,T-30180,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-10-07 18:44:49+00
+319,T-30180,customer,The refund is on my card now. Thanks.,2026-10-08 21:01:49+00
+320,T-30181,agent,"Thank you for the photo. We will send a replacement PW-2200 electric pressure washer this week, and a free return label for the damaged one.",2026-10-06 23:15:39+00
+321,T-30181,customer,Can I talk to someone on the phone about this?,2026-10-07 19:05:39+00
+322,T-30182,agent,Your parcel is at the ParcelGo depot and will be delivered tomorrow.,2026-10-07 13:17:12+00
+323,T-30183,agent,"Yes, the wool rug is covered by the warranty. I have started a claim for you.",2026-10-07 05:00:47+00
+324,T-30184,agent,Could you send the receipt or a screenshot of the payment? Then I can check it with our payments team.,2026-10-07 09:03:08+00
+325,T-30185,agent,"I have passed your request to our privacy team. They answer within 30 days, as the privacy policy says.",2026-10-07 12:03:04+00
+326,T-30186,agent,I can see the problem. I have started a refund of 119.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-07 21:44:03+00
+327,T-30187,agent,I can see the problem. I have started a refund of 99.00 dollars. It can take 5 to 10 business days to reach your card.,2026-10-08 01:18:10+00
+328,T-30190,agent,I have passed this to our product team. A specialist will contact you within two business days.,2026-10-08 03:16:58+00
+329,T-30191,agent,Sorry about this. I have asked the warehouse to look at order LK-878860. You will get an email when we know more.,2026-10-08 04:07:19+00
+330,T-30191,customer,"Great, thanks for the quick help!",2026-10-09 01:02:19+00
+331,T-30195,agent,Sorry about this. I have asked the warehouse to look at order LK-197897. You will get an email when we know more.,2026-10-08 21:15:43+00
+332,T-29994,agent,"Test message, please ignore.",2026-09-25 03:00:00+00
+333,T-29997,agent,"Test message, please ignore.",2026-09-25 04:00:00+00
+334,T-29999,agent,"Test message, please ignore.",2026-09-25 05:00:00+00

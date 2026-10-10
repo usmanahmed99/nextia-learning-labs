@@ -1,0 +1,13 @@
+customer_id,name,email,segment,region,joined_on,created_at
+B-20101,Eleanor Price,eleanor.price@mail.example,home,west,2026-09-16,2026-09-16 14:44:28+00
+B-20102,Samir Haddad,samir.haddad@mail.example,home,west,2026-09-16,2026-09-16 14:20:39+00
+B-20103,Chloé Martin,chloe.martin@courriel.example,home,east,2026-09-17,2026-09-17 17:59:21+00
+B-20104,Peter Novak,peter.novak@mail.example,home,west,2026-09-18,2026-09-18 18:06:50+00
+B-20105,Olga Olsen,olga.olsen@example.com,home,north,2026-09-18,2026-09-18 09:41:19+00
+B-20106,Ruth Adeyemi,ruth.adeyemi@mail.example,home,west,2026-09-19,2026-09-19 16:45:33+00
+B-20107,Westshore Reading Circle,books@westshore-circle.example,business,west,2026-09-19,2026-09-19 12:11:14+00
+B-20108,Daniel Okoro,daniel.okoro@mail.example,home,south,2026-09-20,2026-09-20 10:40:01+00
+B-20109,Mina Park,mina.park@mail.example,home,west,2026-09-21,2026-09-21 11:23:04+00
+B-20110,Harbour Primary School,library@harbour-school.example,business,west,2026-09-22,2026-09-22 17:08:45+00
+B-20111,Leo Fischer,leo.fischer@mail.example,home,east,2026-09-23,2026-09-23 08:12:09+00
+B-20112,Agnes Moreau,agnes.moreau@mail.example,home,west,2026-09-24,2026-09-24 15:57:28+00
