@@ -1,0 +1,58 @@
+# Every part of the design: one responsibility, one owner, what it stores.
+# kind: client | app | store | external. The check: python -m costmodel components
+
+[components.client]
+name = "Help-desk tool"
+kind = "client"
+responsibility = "Shows the assistant to agents and to customers on the shop's website."
+owner = "Amira"
+stores = ""
+
+[components.identity]
+name = "Identity provider"
+kind = "external"
+responsibility = "Signs people in and gives each request a token with its tenant and role."
+owner = "Kwame"
+stores = "users, sign-in sessions"
+
+[components.api]
+name = "Assistant API"
+kind = "app"
+responsibility = "Answers one tenant's question: checks the token, searches, calls the model, saves the answer."
+owner = "Amira"
+stores = ""
+
+[components.worker]
+name = "Ingestion worker"
+kind = "app"
+responsibility = "Turns an uploaded document version into chunks, vectors and a summary, in the background."
+owner = "Mei"
+stores = ""
+
+[components.database]
+name = "PostgreSQL"
+kind = "store"
+responsibility = "Keeps every record of the system, with row-level security per tenant."
+owner = "Mei"
+stores = "tenants, document versions, chunks, vectors (pgvector), answers, the job queue, the answer cache"
+
+[components.files]
+name = "File storage"
+kind = "store"
+responsibility = "Keeps the original file of every document version."
+owner = "Mei"
+stores = "uploaded files, one folder per tenant"
+
+[components.models]
+name = "Model provider"
+kind = "external"
+responsibility = "Runs the chat and embedding models that the API and the worker call."
+owner = "Kwame"
+stores = "nothing that we keep (requests are not stored for training)"
+
+[components.monitoring]
+name = "Logs and alerts"
+kind = "store"
+responsibility = "Collects logs and traces, and alerts a person when a signal crosses its line."
+owner = "Amira"
+stores = "request logs, traces, audit lines (31 days)"
