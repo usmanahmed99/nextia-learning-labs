@@ -11,7 +11,7 @@ Used by: the course [AI System Design and Cost Engineering](https://learning.nex
 | Version or access date | the price list's read time is in `prices-azure.json` (`read_at`); prices change, so check the current page |
 | Files used | `routing_calls.jsonl`, `requests_calls.jsonl`, `prices-azure.json`, kept here: yes |
 | SHA-256 | `SHA256SUMS` |
-| Size | 268 + 231 calls (one JSON object per line); 1,160 price rows; 0.8 MB |
+| Size | 268 rows (one call each) + 231 rows (390 calls: a batching row adds up the calls of one document); 1,112 price rows; 0.8 MB |
 
 ## What one row means
 
