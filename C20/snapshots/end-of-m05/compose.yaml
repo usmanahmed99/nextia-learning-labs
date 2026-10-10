@@ -1,0 +1,70 @@
+# The ticket API, its database and the object storage, on your computer.
+# Database only (the databases course): docker compose up -d db azurite
+# Everything:                           docker compose up -d --build
+# Stop:   docker compose down           (keeps the data)
+# Reset:  docker compose down --volumes (deletes the data)
+
+services:
+  api:
+    build: .
+    image: ticket-api:1.3.0
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      API_KEY_FILE: /run/secrets/api_key
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+      REQUIRE_API_KEY: "true"
+      STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;
+      STORAGE_PUBLIC_URL: http://127.0.0.1:10000/devstoreaccount1
+    secrets:
+      - api_key
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  migrate:
+    image: ticket-api:1.3.0
+    command: ["python", "-m", "ticket_api.migrate"]
+    environment:
+      DATABASE_URL: postgresql://tickets:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/tickets
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    # PostgreSQL 18.6 with the pgvector extension (0.8.7).
+    image: pgvector/pgvector:0.8.7-pg18-trixie
+    environment:
+      POSTGRES_USER: tickets
+      POSTGRES_DB: tickets
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    # Room for parallel queries on the large data (Docker's default is 64 MB).
+    shm_size: 256mb
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "tickets", "-d", "tickets"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  azurite:
+    # Microsoft's Azure Blob Storage emulator: object storage on your computer.
+    # --skipApiVersionCheck: the azure-storage-blob package can be newer than
+    # the emulator. The account name and key are the emulator's public test key.
+    image: mcr.microsoft.com/azure-storage/azurite:3.37.0
+    command: ["azurite-blob", "--blobHost", "0.0.0.0", "--skipApiVersionCheck", "--location", "/data"]
+    ports:
+      - "127.0.0.1:10000:10000"
+    volumes:
+      - blobdata:/data
+
+secrets:
+  api_key:
+    file: ./secrets/api_key.txt
+
+volumes:
+  pgdata:
+  blobdata:
