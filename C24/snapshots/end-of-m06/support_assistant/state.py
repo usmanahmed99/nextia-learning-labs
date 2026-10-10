@@ -23,6 +23,7 @@ class ToolEvent(BaseModel):
 class Proposal(BaseModel):
     tool: str                           # issue_refund, create_return_label, send_email
     arguments: dict
+    approval_id: str = ""               # the waiting approval in the database (when a person must approve)
     approved: bool = False
     approver: str = ""
     approver_role: str = ""
@@ -32,6 +33,7 @@ class Proposal(BaseModel):
 
 
 class RunState(BaseModel):
+    run_id: str = ""                    # a new ID for every run; every audit event of the run carries it
     case_id: str
     design: str
     model: str
@@ -43,7 +45,8 @@ class RunState(BaseModel):
     answer: str = ""                    # the reply draft the assistant produced
     tool_events: list[ToolEvent] = Field(default_factory=list)
     proposals: list[Proposal] = Field(default_factory=list)
-    stop_reason: str = ""               # finished, max_steps, provider_error, content_filter, auth_error, filter_block
+    stop_reason: str = ""               # finished, max_steps, provider_error, content_filter, auth_error, filter_block,
+                                        # no_recording, revoked
     filter_verdict: str = ""            # if the input filter ran: allow / block + why
     usage_calls: int = 0
     input_tokens: int = 0
@@ -51,6 +54,7 @@ class RunState(BaseModel):
     cost_usd: float | None = 0.0
     model_seconds: float = 0.0
     errors: list[str] = Field(default_factory=list)
+    replay_notes: int = 0               # model decisions the mock replayed from a different recorded request
 
     def note(self, msg: str) -> None:
         self.errors.append(msg)

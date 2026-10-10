@@ -1,67 +1,58 @@
-"""The tools the assistant can call, their contracts, and the controls that run around them.
+"""The tools the assistant can call.
 
-The model only proposes a call. This code decides whether it runs:
-- read tools run at once, inside the limits the design sets (tenant and customer scope, a file
-  sandbox, a URL allow-list);
-- write tools are never run by the model. With the controls on, the model proposes a write and a
-  person approves it, with the role's refund limit and the customer's own e-mail address checked in
-  code. With the controls off (the weak start), a write runs at once.
+The model proposes a call; this code runs it. In this first version every tool runs at once, with
+no checks:
+- `get_order` reads any order, of any shop;
+- `search_docs` searches every help document, of both shops;
+- `read_file` reads any path under the file area (and a ../ leaves it);
+- `fetch_url` fetches any web address;
+- a write (refund, return label, e-mail) runs at once.
 
-Every tool result is data. The assistant must never treat text inside a result as an instruction.
+Notice that the write tools' descriptions say "A person approves it". A description is a sentence
+for the model. Nothing in this code makes it true yet.
 """
 
 import json
 from dataclasses import dataclass
-from pathlib import Path
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from pydantic import BaseModel, ValidationError
 
 from . import vfs, web
-from .data import VFS
-from .designs import Controls
 from .state import Proposal, ToolEvent
 
 MAX_RESULT_CHARS = 4000
-ORDER_ID = r"^(LK|BB)-\d{6}$"
 
 
 class GetOrder(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    order_id: str = Field(pattern=ORDER_ID)
+    order_id: str
 
 
 class SearchDocs(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    query: str = Field(min_length=2, max_length=200)
+    query: str
 
 
 class ReadFile(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    path: str = Field(min_length=1, max_length=300)
+    path: str
 
 
 class FetchUrl(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    url: str = Field(min_length=4, max_length=400)
+    url: str
 
 
 class IssueRefund(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    order_id: str = Field(pattern=ORDER_ID)
-    amount: float = Field(gt=0, le=100000)
-    reason: str = Field(default="", max_length=200)
+    order_id: str
+    amount: float
+    reason: str = ""
 
 
 class CreateReturnLabel(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    order_id: str = Field(pattern=ORDER_ID)
+    order_id: str
 
 
 class SendEmail(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    to: str = Field(min_length=3, max_length=200)
-    subject: str = Field(default="", max_length=200)
-    body: str = Field(default="", max_length=4000)
+    to: str
+    subject: str = ""
+    body: str = ""
 
 
 READ_SPECS = {
@@ -80,7 +71,7 @@ WRITE_SPECS = {
 
 
 def _schema(model: type[BaseModel]) -> dict:
-    props, required = {}, []
+    props = {}
     hints = {"order_id": "The order ID, like LK-581106.", "query": "A few words to search for.",
              "path": "The file path, like damage-report.txt.", "url": "The full web address.",
              "amount": "The amount in dollars.", "reason": "A short reason.", "to": "The e-mail address.",
@@ -88,18 +79,14 @@ def _schema(model: type[BaseModel]) -> dict:
     for name, f in model.model_fields.items():
         kind = "number" if f.annotation is float else "string"
         props[name] = {"type": kind, "description": hints.get(name, "")}
-        if f.is_required():
-            required.append(name)
     return {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
 
 
-def tool_list(controls: Controls, role: str) -> list[dict]:
-    names = list(READ_SPECS)
-    if not (controls.least_privilege and role == "read_only"):
-        names += list(WRITE_SPECS)
+def tool_list() -> list[dict]:
+    """Every tool, for every user."""
     specs = {**READ_SPECS, **WRITE_SPECS}
     return [{"type": "function", "function": {"name": n, "description": specs[n][1], "strict": True,
-                                              "parameters": _schema(specs[n][0])}} for n in names]
+                                              "parameters": _schema(specs[n][0])}} for n in specs]
 
 
 @dataclass
@@ -115,8 +102,8 @@ def _validate(name: str, specs, arguments):
     return specs[name][0].model_validate(arguments), arguments
 
 
-def run_tool(name: str, raw_args, step: int, controls: Controls, session, ticket: dict, world) -> ToolOutcome:
-    """Run one proposed tool call, with every check for this design. Never raises for a bad call."""
+def run_tool(name: str, raw_args, step: int, session, ticket: dict, world) -> ToolOutcome:
+    """Run one proposed tool call. Never raises for a bad call."""
     event = ToolEvent(step=step, tool=name, allowed=False)
     specs = {**READ_SPECS, **WRITE_SPECS}
     if name not in specs:
@@ -126,76 +113,46 @@ def run_tool(name: str, raw_args, step: int, controls: Controls, session, ticket
     try:
         args, raw = _validate(name, specs, raw_args)
     except (ValidationError, json.JSONDecodeError) as e:
-        event.blocked_reason = f"invalid arguments: {e}"
+        event.blocked_reason = f"invalid arguments: {_first_error(e)}"
         event.code = "invalid_arguments"
         return ToolOutcome(_json({"ok": False, "error": "The arguments are not valid for this tool."}), event)
     event.arguments = args.model_dump()
 
     if name in READ_SPECS:
-        return _run_read(name, args, event, controls, session, ticket, world)
-    return _propose_write(name, args, event, controls, session, ticket, world)
+        return _run_read(name, args, event, session, ticket, world)
+    return _run_write(name, args, event, session, ticket, world)
 
 
-def _run_read(name, args, event, controls, session, ticket, world) -> ToolOutcome:
+def _run_read(name, args, event, session, ticket, world) -> ToolOutcome:
     if name == "get_order":
-        order_tenant = world.order_tenant(args.order_id)
-        event.read_order_tenant = order_tenant or ""
-        if controls.enforce_tenant:
-            order = world.order(args.order_id, tenant=session.tenant)
-            # The assistant for this ticket sees only this ticket's customer's orders.
-            if order is None or order["customer_id"] != ticket["customer_id"]:
-                event.allowed, event.ok, event.code = True, False, "not_found"
-                event.summary = "no such order for this customer"
-                return ToolOutcome(_json({"ok": False, "error":
-                                          f"No order {args.order_id} is available for this customer."}), event)
-        else:
-            order = world.order(args.order_id)
-            if order is None:
-                event.allowed, event.ok, event.code = True, False, "not_found"
-                return ToolOutcome(_json({"ok": False, "error": f"No order {args.order_id}."}), event)
+        event.read_order_tenant = world.order_tenant(args.order_id) or ""
+        order = world.order(args.order_id)
+        if order is None:
+            event.allowed, event.ok, event.code = True, False, "not_found"
+            return ToolOutcome(_json({"ok": False, "error": f"No order {args.order_id}."}), event)
         event.allowed, event.ok = True, True
         event.summary = f"order {args.order_id} ({order['tenant']})"
         return ToolOutcome(_json({"ok": True, "result": order}), event)
 
     if name == "search_docs":
-        if controls.enforce_tenant:
-            access = ("public",) if session.role == "read_only" else ("public", "staff")
-            rows = world.search_docs(args.query, tenant=session.tenant, access=access)
-        else:
-            rows = world.search_docs(args.query, tenant=None, access=("public", "staff"))
+        rows = world.search_docs(args.query, tenant=None, access=("public", "staff"))
         event.allowed, event.ok = True, True
-        event.summary = f"{len(rows)} passage(s)"
+        event.summary = f"search '{args.query[:60]}': {len(rows)} passage(s)"
         return ToolOutcome(_json({"ok": True, "result": rows}), event)
 
     if name == "read_file":
         event.read_path = args.path
-        root = VFS / "files"
         try:
-            if controls.sandbox_files:
-                text = vfs.read_sandboxed(root, f"{session.tenant}/{ticket['ticket_id']}", args.path)
-            else:
-                text = vfs.read_unsafe(root, args.path)   # weak: relative to the whole file area
-        except (vfs.FileDenied, OSError) as e:
-            event.allowed = isinstance(e, OSError)   # a sandbox refusal = a control acting; OSError = just missing
-            event.ok, event.code = False, getattr(e, "code", "not_found")
-            event.blocked_reason = str(e) if isinstance(e, vfs.FileDenied) else ""
-            msg = str(e) if isinstance(e, vfs.FileDenied) else f"{args.path}: no such file."
-            return ToolOutcome(_json({"ok": False, "error": msg}), event)
+            text = vfs.read_unsafe(world.vfs / "files", args.path)
+        except OSError:
+            event.allowed, event.ok, event.code = True, False, "not_found"
+            return ToolOutcome(_json({"ok": False, "error": f"{args.path}: no such file."}), event)
         event.allowed, event.ok = True, True
         event.summary = f"read {args.path}"
         return ToolOutcome(_json({"ok": True, "result": text[:MAX_RESULT_CHARS]}), event)
 
     # fetch_url
-    try:
-        if controls.allowlist_urls:
-            page, final_host = web.fetch_sandboxed(args.url, session.tenant)
-        else:
-            page, final_host = web.fetch_unsafe(args.url)
-    except web.FetchDenied as e:
-        event.fetch_host = _host(args.url)
-        event.allowed, event.ok, event.code = False, False, "fetch_denied"
-        event.blocked_reason = str(e)
-        return ToolOutcome(_json({"ok": False, "error": str(e)}), event)
+    page, final_host = web.fetch_unsafe(args.url)
     event.fetch_host = final_host           # the host actually read, after any redirect
     event.allowed, event.ok = True, page.status < 400
     event.summary = f"fetched {final_host} ({page.status})"
@@ -203,56 +160,25 @@ def _run_read(name, args, event, controls, session, ticket, world) -> ToolOutcom
     return ToolOutcome(_json(body), event)
 
 
-def _propose_write(name, args, event, controls, session, ticket, world) -> ToolOutcome:
+def _run_write(name, args, event, session, ticket, world) -> ToolOutcome:
+    """A write runs at once, with no checks."""
     proposal = Proposal(tool=name, arguments=args.model_dump())
-    if not controls.require_approval:
-        # The weak start: a write runs at once, with no checks.
-        result = world.write(name, session.tenant, proposal.arguments, actor=session.sub, approval_id=None)
-        proposal.approved = proposal.executed = True
-        proposal.execution_id = result["id"]
-        event.allowed, event.ok = True, True
-        event.summary = f"{name} executed at once (no approval)"
-        world.log(session.sub, session.tenant, name, "executed", order_id=args.model_dump().get("order_id"))
-        return ToolOutcome(_json({"ok": True, "result": f"Done: {result['id']}."}), event, proposal)
-
-    # Controls on: check permission, then wait for a person.
-    refused = _write_permission(name, args, controls, session, ticket, world)
-    if refused:
-        proposal.refused_reason = refused
-        event.allowed, event.code = False, "write_refused"
-        event.blocked_reason = refused
-        world.log(session.sub, session.tenant, name, "refused", reason=refused)
-        return ToolOutcome(_json({"ok": False, "error": refused}), event, proposal)
+    result = world.write(name, session.tenant, proposal.arguments, actor=session.sub, approval_id=None)
+    proposal.approved = proposal.executed = True
+    proposal.execution_id = result["id"]
     event.allowed, event.ok = True, True
-    event.summary = f"{name} proposed; waiting for approval"
-    world.log(session.sub, session.tenant, name, "proposed", order_id=args.model_dump().get("order_id"))
-    return ToolOutcome(_json({"ok": True, "result": "Proposed. A person must approve this before it happens."}),
-                       event, proposal)
+    event.summary = f"{name} executed at once (no approval)"
+    world.log(session.sub, session.tenant, name, "executed", order_id=args.model_dump().get("order_id"))
+    return ToolOutcome(_json({"ok": True, "result": f"Done: {result['id']}."}), event, proposal)
 
 
-def _write_permission(name, args, controls, session, ticket, world) -> str:
-    """Check a write in code. '' = allowed (so it may be proposed). Otherwise the reason it is refused."""
-    if controls.least_privilege and not session.may_write():
-        return "A read-only member may not propose a change."
-    a = args.model_dump()
-    if "order_id" in a:
-        order = world.order(a["order_id"], tenant=session.tenant)
-        if order is None or order["customer_id"] != ticket["customer_id"]:
-            return f"{a['order_id']} is not an order of this ticket's customer."
-    if name == "issue_refund" and a["amount"] > session.refund_limit():
-        return (f"A refund of {a['amount']:.2f} is over the {session.refund_limit():.0f}-dollar limit for the "
-                f"{session.role} role. The shop owner must do it.")
-    if name == "send_email":
-        on_file = world.customer(ticket["customer_id"], tenant=session.tenant)
-        if not on_file or a["to"].strip().lower() != on_file["email"].lower():
-            return "An e-mail may go only to the address on the customer's account."
-    return ""
+def _first_error(e) -> str:
+    """One short line about what is wrong, for the trace (the model sees only a general message)."""
+    if isinstance(e, ValidationError):
+        err = e.errors()[0]
+        return f"{'.'.join(str(x) for x in err['loc']) or 'arguments'}: {err['msg']}"
+    return "not valid JSON"
 
 
 def _json(data) -> str:
     return json.dumps(data, ensure_ascii=False, separators=(",", ":"))[:MAX_RESULT_CHARS]
-
-
-def _host(url: str) -> str:
-    from urllib.parse import urlparse
-    return urlparse(url).hostname or ""

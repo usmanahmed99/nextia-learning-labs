@@ -2,8 +2,8 @@
 
 import json
 
-from support_assistant.data import load_attacks
 from support_assistant.assistant import run_case
+from support_assistant.data import load_attacks
 from support_assistant.evaluate import score_attack
 from support_assistant.runner import fresh_world
 from tests._helpers import SECURE, WEAK, run, session

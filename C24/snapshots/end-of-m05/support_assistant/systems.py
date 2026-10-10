@@ -1,9 +1,11 @@
 """The help-desk systems: the database, the documents, the write services and the audit log.
 
 Nothing here reaches a real system. The database is a local SQLite file (work/helpdesk.sqlite, a
-copy of data/helpdesk.sqlite). The write services (refund, return label, e-mail) record into the
-database. The audit log records who did what, to which tenant, with what result. It can be redacted
-(no secrets, no message bodies) or raw (the weak version, which logs the message body).
+copy of data/helpdesk.sqlite) and the file area is a copy of data/vfs (work/vfs). The write services
+(refund, return label, e-mail) record into the database. The audit log (a table in the database)
+records who did what, to which tenant, with what result. It can be redacted (no secrets, no message
+bodies) or raw (the weak version, which logs the message body). Every run of the assistant is also
+stored in the `conversations` table.
 """
 
 import json
@@ -14,7 +16,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 from .config import redact
-from .data import HOLIDAYS, SEED_DB, TODAY, WORK
+from .data import HOLIDAYS, SEED_DB, TODAY, VFS, WORK
 
 PRACTICE_DB = WORK / "helpdesk.sqlite"
 
@@ -28,10 +30,28 @@ def business_days_between(a: date, b: date) -> int:
     return n
 
 
+EXTRA_TABLES = """
+CREATE TABLE IF NOT EXISTS audit_log (seq INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT NOT NULL, run_id TEXT,
+                                      actor TEXT, tenant TEXT, action TEXT NOT NULL, result TEXT NOT NULL,
+                                      detail TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS conversations (run_id TEXT PRIMARY KEY, tenant TEXT, case_id TEXT, ticket_id TEXT,
+                                          customer_id TEXT, customer_name TEXT, customer_email TEXT, request TEXT,
+                                          ticket_text TEXT, answer TEXT, outcome TEXT NOT NULL, created_at TEXT NOT NULL,
+                                          expires_on TEXT);
+"""
+
+
 def reset_practice_db(path: Path | None = None) -> Path:
+    """A fresh copy of the seed database and of the file area (the folder vfs/ next to the database)."""
     path = path or PRACTICE_DB
     path.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(SEED_DB, path)
+    files = path.parent / "vfs"
+    if files.exists():
+        shutil.rmtree(files)
+    shutil.copytree(VFS, files)
+    with closing(sqlite3.connect(path)) as con:
+        con.executescript(EXTRA_TABLES)
     return path
 
 
@@ -44,10 +64,14 @@ class World:
 
     def __init__(self, db: Path | None = None, redact_log: bool = True):
         self.db = db or PRACTICE_DB
-        if not self.db.exists():
+        if not self.db.exists() or not (self.db.parent / "vfs").exists():
             reset_practice_db(self.db)
+        self.vfs = self.db.parent / "vfs"   # this world's copy of the file area
+        with closing(sqlite3.connect(self.db)) as con:
+            con.executescript(EXTRA_TABLES)   # the tables the app adds to the seed database
         self.redact_log = redact_log
-        self.audit: list[dict] = []
+        self.audit: list[dict] = []        # the events this World wrote (they are also in the audit_log table)
+        self.run_id = ""                   # set by the assistant: every event of a run carries its run ID
         self._seq = 0
 
     def _con(self) -> sqlite3.Connection:
@@ -72,8 +96,36 @@ class World:
         if self.redact_log:
             detail = {k: (redact(v) if isinstance(v, str) else v) for k, v in detail.items()
                       if k not in ("message", "request", "body")}
-        self.audit.append({"seq": self._seq, "at": now(), "actor": actor, "tenant": tenant,
-                           "action": action, "result": result, **detail})
+        entry = {"seq": self._seq, "at": now(), "run": self.run_id, "actor": actor, "tenant": tenant,
+                 "action": action, "result": result, **detail}
+        self.audit.append(entry)
+        with closing(self._con()) as con:
+            con.execute("INSERT INTO audit_log (at,run_id,actor,tenant,action,result,detail) VALUES (?,?,?,?,?,?,?)",
+                        (entry["at"], self.run_id, actor, tenant, action, result,
+                         json.dumps(detail, ensure_ascii=False, sort_keys=True)))
+            con.commit()
+
+    def audit_rows(self) -> list[dict]:
+        """Every event in the audit log table (all runs on this database), oldest first."""
+        with closing(self._con()) as con:
+            return [{**dict(r), "detail": json.loads(r["detail"])}
+                    for r in con.execute("SELECT * FROM audit_log ORDER BY seq")]
+
+    # ----- stored conversations (what the assistant keeps after a run)
+    def save_conversation(self, row: dict) -> None:
+        cols = ("run_id", "tenant", "case_id", "ticket_id", "customer_id", "customer_name", "customer_email",
+                "request", "ticket_text", "answer", "outcome", "created_at", "expires_on")
+        with closing(self._con()) as con:
+            con.execute(f"INSERT OR REPLACE INTO conversations ({','.join(cols)}) VALUES ({','.join('?' * len(cols))})",
+                        [row.get(c) for c in cols])
+            con.commit()
+
+    def conversations(self, customer_id: str | None = None) -> list[dict]:
+        with closing(self._con()) as con:
+            q, args = "SELECT * FROM conversations", []
+            if customer_id:
+                q, args = q + " WHERE customer_id=?", [customer_id]
+            return [dict(r) for r in con.execute(q + " ORDER BY created_at", args)]
 
     # ----- reads
     def customer(self, customer_id: str, tenant: str | None = None):

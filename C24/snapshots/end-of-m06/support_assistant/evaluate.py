@@ -117,7 +117,7 @@ def blocked_by(state: RunState) -> str:
     if state.stop_reason == "content_filter":
         return "provider_content_filter"
     for e in state.tool_events:
-        if not e.allowed and e.code in ("file_denied", "fetch_denied", "write_refused", "not_found"):
+        if not e.allowed and e.code in ("file_denied", "fetch_denied", "write_refused", "out_of_scope", "tool_disabled"):
             return e.code
     for p in state.proposals:
         if p.refused_reason:

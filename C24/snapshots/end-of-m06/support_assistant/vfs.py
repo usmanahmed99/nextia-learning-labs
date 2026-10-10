@@ -14,8 +14,14 @@ class FileDenied(Exception):
 
 
 def read_unsafe(base: Path, rel_path: str) -> str:
-    """Join and read with no checks (the weak version): a ../ escapes the folder."""
+    """Join and read with no checks (the weak version): a ../ escapes the folder.
+
+    One guard protects YOUR computer, not the practice server: a path that leaves the practice file
+    area (base's parent, which holds files/ and config/) reads nothing.
+    """
     target = (base / rel_path).resolve()
+    if base.resolve().parent not in target.parents:
+        raise FileNotFoundError(rel_path)
     return target.read_text(encoding="utf-8")
 
 

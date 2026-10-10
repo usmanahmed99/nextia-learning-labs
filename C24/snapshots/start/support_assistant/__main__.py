@@ -2,28 +2,24 @@
 
     python -m support_assistant cases [--attacks] [--slice S]
     python -m support_assistant show CASE
-    python -m support_assistant run CASE [--design D] [--model M]
-    python -m support_assistant eval [--attacks] [--design D] [--model M] [--slice S]
+    python -m support_assistant run CASE [--design start] [--model M]
+    python -m support_assistant eval [--attacks] [--design start] [--model M] [--slice S]
     python -m support_assistant compare [CASE] [--attacks]
     python -m support_assistant changes
     python -m support_assistant reset
 
-Designs: start, prompt, filter, controls, secure (see support_assistant/designs.py).
+There is one design so far: `start`, the weak start. `run` uses your practice database (work/);
+`reset` makes it fresh. `eval` and `compare` run every case on a fresh copy of the data.
 """
 
 import argparse
-import sys
 
+from .assistant import DESIGNS
 from .config import Settings, make_provider
-from .data import all_cases, load_attacks, load_case, load_tasks
-from .designs import DESIGNS
-
-
-def _default_design():
-    return "secure" if "secure" in DESIGNS else next(iter(DESIGNS))
+from .data import load_attacks, load_case, load_tasks
 from .evaluate import summarise
 from .runner import fresh_world, run_and_score
-from .systems import reset_practice_db
+from .systems import World, reset_practice_db
 
 
 def _cases(attacks: bool, slice_: str | None):
@@ -47,9 +43,8 @@ def cmd_show(args):
     c = load_case(args.case)
     print(f"{c.case_id}  [{c.kind}/{c.slice}]  tenant {c.tenant}  signed in as {c.user}")
     print(f"Request: {c.request}")
-    world = fresh_world()
-    t = world.ticket(c.ticket_id)
-    print(f"Ticket {c.ticket_id} (customer {c.customer_id if hasattr(c,'customer_id') else t['customer_id']}):")
+    t = fresh_world().ticket(c.ticket_id)
+    print(f"Ticket {c.ticket_id} (customer {t['customer_id']}):")
     print(f"  {t['text']}")
     if t["attachments"]:
         print(f"  attachments: {', '.join(t['attachments'])}")
@@ -62,7 +57,7 @@ def cmd_show(args):
 def cmd_run(args):
     complete, model = _provider_and_model(args)
     c = load_case(args.case)
-    state, score = run_and_score(c, complete, model, args.design)
+    state, score = run_and_score(c, complete, model, args.design, world=World())
     print(f"{c.case_id}  design {args.design}  model {model}  role {state.role}")
     print(f"Stop: {state.stop_reason} | {state.usage_calls} model call(s) | "
           f"{state.input_tokens} in, {state.output_tokens} out | "
@@ -72,16 +67,18 @@ def cmd_run(args):
         print(f"  tool {e.tool} -> {mark}" + (f" ({e.blocked_reason or e.code})" if mark != "ok" else "")
               + (f": {e.summary}" if e.summary else ""))
     for p in state.proposals:
-        tag = "refused" if p.refused_reason else ("executed" if p.executed else "proposed")
-        print(f"  write {p.tool} {p.arguments} -> {tag}" + (f": {p.refused_reason}" if p.refused_reason else ""))
-    if state.filter_verdict:
-        print(f"  input filter: {state.filter_verdict}")
+        tag = "executed" if p.executed else "proposed"
+        print(f"  write {p.tool} {p.arguments} -> {tag}")
     print(f"Reply draft: {state.answer[:400]}")
     if c.kind == "attack":
         print(f"Attack succeeded: {score['success']}"
-              + (f" ({', '.join(score['signals'])})" if score["success"] else f" (stopped by {score['blocked_by']})"))
+              + (f" ({', '.join(score['signals'])})" if score["success"]
+                 else f" (stopped by {score['blocked_by']})" if score["blocked_by"] else " (the model did not do it)"))
     else:
         print(f"Task success: {score['success']}" + ("" if score["success"] else f" ({'; '.join(score['reasons'])})"))
+    if state.replay_notes:
+        print(f"Note: {state.replay_notes} recorded model decision(s) were made for a different request than yours "
+              "(your code or data differs from the recording). Each was replayed and checked against your state.")
 
 
 def cmd_eval(args):
@@ -105,22 +102,8 @@ def cmd_compare(args):
         print(f"  {design:<9} {sum(x['success'] for x in scores)}/{len(scores)}")
 
 
-def cmd_inventory(args):
-    from .inventory import summary
-    world = fresh_world()
-    s = summary(world.db, args.customer)
-    print(f"Customer {s['customer']}: {s['total_copies']} copies in {s['places']} places")
-    for r in s["rows"]:
-        reach = "deleted by a delete" if r["deletable"] else "NOT reached by a delete"
-        print(f"  {r['where']}: {r['count']} ({r['what']}) -> {reach}")
-    if s["not_reached_by_a_delete"]:
-        print("Plan a deletion for: " + ", ".join(s["not_reached_by_a_delete"]))
-
-
 def cmd_changes(args):
-    world = fresh_world()
-    ch = world.changes()
-    for table, rows in ch.items():
+    for table, rows in World().changes().items():
         print(f"{table}: {len(rows)}")
 
 
@@ -135,15 +118,13 @@ def main():
     p = sub.add_parser("cases"); p.add_argument("--attacks", action="store_true"); p.add_argument("--slice")
     p.set_defaults(fn=cmd_cases)
     p = sub.add_parser("show"); p.add_argument("case"); p.set_defaults(fn=cmd_show)
-    for name, fn in (("run", cmd_run),):
-        p = sub.add_parser(name); p.add_argument("case"); p.add_argument("--design", default=_default_design(), choices=list(DESIGNS))
-        p.add_argument("--model"); p.set_defaults(fn=fn)
+    p = sub.add_parser("run"); p.add_argument("case"); p.add_argument("--design", default="start", choices=DESIGNS)
+    p.add_argument("--model"); p.set_defaults(fn=cmd_run)
     p = sub.add_parser("eval"); p.add_argument("--attacks", action="store_true")
-    p.add_argument("--design", default=_default_design(), choices=list(DESIGNS)); p.add_argument("--model")
+    p.add_argument("--design", default="start", choices=DESIGNS); p.add_argument("--model")
     p.add_argument("--slice"); p.set_defaults(fn=cmd_eval)
     p = sub.add_parser("compare"); p.add_argument("case", nargs="?"); p.add_argument("--attacks", action="store_true")
     p.add_argument("--model"); p.set_defaults(fn=cmd_compare)
-    p = sub.add_parser("inventory"); p.add_argument("customer"); p.set_defaults(fn=cmd_inventory)
     p = sub.add_parser("changes"); p.set_defaults(fn=cmd_changes)
     p = sub.add_parser("reset"); p.set_defaults(fn=cmd_reset)
     args = ap.parse_args()

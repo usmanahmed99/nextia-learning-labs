@@ -7,9 +7,9 @@ Two providers do the work:
 - OpenAICompatibleProvider calls any server that speaks the OpenAI-compatible Chat Completions API:
   a local Ollama server, OpenAI, or another provider. Its settings come from environment variables.
 
-How the mock finds a recording (robust replay). Every call also passes `meta`: the task, the
-design (fixed, router, agent, workers...), the step number and a short digest of the evidence so far.
-1. The exact request was recorded: it replays silently.
+How the mock finds a recording (robust replay). Every call also passes `meta`: the case, the
+design (start, prompt, filter, controls, secure) and the step number.
+1. The exact request was recorded for this case and design: it replays silently.
 2. Otherwise the mock looks for a recording of the same model, design, task and step. It replays it
    and sets `Completion.note`, so that the run can warn: "your request differs from the recorded
    one". The workflow then checks the replayed decision against YOUR state, as it checks any model
@@ -107,7 +107,7 @@ class MockProvider:
 
     def __init__(self, folder: Path = RECORDINGS, repeat: int = 1):
         self.repeat = repeat
-        self.exact: dict[str, dict[int, dict]] = {}
+        self.exact: dict[str, list[dict]] = {}
         self.by_step: dict[str, dict[int, dict]] = {}
         for path in sorted([*folder.glob("*.jsonl"), *folder.glob("*.jsonl.gz")]):
             raw = path.read_bytes()
@@ -118,7 +118,7 @@ class MockProvider:
                     continue
                 meta = entry.get("meta") or {}
                 rep = meta.get("repeat", 1)
-                self.exact.setdefault(entry["key"], {}).setdefault(rep, entry)
+                self.exact.setdefault(entry["key"], []).append(entry)
                 if meta.get("case_id"):
                     self.by_step.setdefault(replay_key(entry["request"]["model"], meta), {}).setdefault(rep, entry)
 
@@ -126,6 +126,19 @@ class MockProvider:
         """The repeat numbers recorded for this model, design and task (step 1)."""
         found = self.by_step.get(replay_key(model, {"design": design, "case_id": case_id, "step": 1}), {})
         return sorted(found)
+
+    def _exact(self, key: str, meta: dict) -> dict[int, dict]:
+        """The recordings of exactly this request, by repeat. Two designs can send the same request (for
+        example at step 1); the recording of this task and design wins, then this task's, then any."""
+        found = self.exact.get(key) or []
+        for fields in (("case_id", "design"), ("case_id",), ()):
+            same = [e for e in found if all((e.get("meta") or {}).get(f) == meta.get(f) for f in fields)]
+            if same:
+                out: dict[int, dict] = {}
+                for e in same:
+                    out.setdefault((e.get("meta") or {}).get("repeat", 1), e)
+                return out
+        return {}
 
     def _pick(self, entries: dict[int, dict], repeat: int) -> dict:
         return entries.get(repeat) or entries[min(entries)]
@@ -135,11 +148,7 @@ class MockProvider:
         repeat = meta.get("repeat") or self.repeat
         key = request_key(request)
         note = ""
-        entries = self.exact.get(key)
-        if entries and meta.get("case_id"):
-            # The same request can be recorded for several tasks only by accident; prefer this task's.
-            same = {r: e for r, e in entries.items() if (e.get("meta") or {}).get("case_id") == meta["case_id"]}
-            entries = same or entries
+        entries = self._exact(key, meta)
         if not entries:
             entries = self.by_step.get(replay_key(request.get("model", ""), meta))
             if not entries:
@@ -148,9 +157,8 @@ class MockProvider:
                     f"{meta.get('case_id')} / step {meta.get('step')} (key {key}). The mock replays only the "
                     "tasks, designs and models that were recorded for the course.")
             entry = self._pick(entries, repeat)
-            recorded = (entry.get("meta") or {}).get("state", "")
-            note = (f"Your request at step {meta.get('step')} differs from the recorded one (evidence {meta.get('state')} "
-                    f"here, {recorded} when recorded). The recorded decision is replayed and checked against your state.")
+            note = (f"Your request at step {meta.get('step')} differs from the recorded one. The recorded "
+                    "decision is replayed and checked against your state.")
         else:
             entry = self._pick(entries, repeat)
         if "error" in entry:

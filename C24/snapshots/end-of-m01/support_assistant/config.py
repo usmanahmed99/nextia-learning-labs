@@ -1,16 +1,12 @@
-"""Settings, the provider, the secrets loader and log redaction.
+"""Settings and the provider.
 
-A secret is read here and given only to the code that needs it. It is never printed, logged or
-put in a model prompt. `load_service_env` reads the assistant server's own key from a file; it
-returns the value but never prints it.
+The settings come from environment variables (and a .env file, if you made one).
 """
 
 import os
-import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
-from .data import VFS
 from .providers import MockProvider, OpenAICompatibleProvider
 
 ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
@@ -32,7 +28,7 @@ class Settings:
     provider: str = "mock"
     model: str = "chat-small"
     base_url: str = ""
-    api_key: str = field(default="", repr=False)   # repr=False: printing the settings never shows the key
+    api_key: str = ""
     timeout_s: float = 60.0
     reasoning_effort: str = ""
     max_steps: int = 8
@@ -61,26 +57,3 @@ def make_provider(settings: Settings):
         return OpenAICompatibleProvider(settings.base_url, settings.api_key, settings.timeout_s,
                                         settings.reasoning_effort)
     raise ValueError(f"Unknown ASSISTANT_PROVIDER {settings.provider!r}: use mock or openai_compatible.")
-
-
-def load_service_env(key: str, vfs: Path = VFS) -> str:
-    """Read one value from the server's config file. The value is returned, never printed."""
-    path = vfs / "config/service.env"
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if line.startswith(key + "="):
-            return line.split("=", 1)[1].strip()
-    return ""
-
-
-# Redaction for logs: a key-shaped string, an api-key field, a bearer token.
-SECRET_PATTERNS = [
-    (re.compile(r"\b(?:lfk_live_|ctk_)[A-Za-z0-9]{8,}"), "[REDACTED-SECRET]"),
-    (re.compile(r"(?i)(api[-_]?key|authorization|token)(\"?\s*[:=]\s*\"?)(bearer\s+)?[^\s\",}]+"), r"\1\2[REDACTED]"),
-    (re.compile(r"(?i)bearer\s+[A-Za-z0-9._\-]{8,}"), "Bearer [REDACTED]"),
-]
-
-
-def redact(text: str) -> str:
-    for pattern, replacement in SECRET_PATTERNS:
-        text = pattern.sub(replacement, text)
-    return text

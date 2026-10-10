@@ -18,6 +18,10 @@ from .data import WEB
 class FetchDenied(Exception):
     code = "fetch_denied"
 
+    def __init__(self, message: str, host: str = ""):
+        super().__init__(message)
+        self.host = host          # the host that was refused (after a redirect, the redirect's target)
+
 
 @dataclass
 class Page:
@@ -42,7 +46,7 @@ def allowed_hosts(tenant: str) -> list[str]:
     return sorted(h for h, meta in _hosts().items() if tenant in meta.get("allowed_for", []))
 
 
-def _is_private(host: str) -> bool:
+def is_private(host: str) -> bool:
     meta = _hosts().get(host)
     address = meta["address"] if meta else host
     try:
@@ -77,20 +81,21 @@ def fetch_sandboxed(url: str, tenant: str, _redirects: int = 1) -> tuple[Page, s
     """Fetch only from a host on the tenant's allow-list; refuse private/metadata hosts and bad redirects."""
     parsed = urlparse(url)
     if parsed.scheme not in ("http", "https"):
-        raise FetchDenied(f"{url}: only http and https are allowed.")
+        raise FetchDenied(f"{url}: only http and https are allowed.", parsed.hostname or "")
     host, path = parsed.hostname or "", parsed.path or "/"
-    if _is_private(host):
-        raise FetchDenied(f"{host}: a private or internal address is never fetched.")
+    if is_private(host):
+        raise FetchDenied(f"{host}: a private or internal address is never fetched.", host)
     if host not in allowed_hosts(tenant):
-        raise FetchDenied(f"{host}: this host is not on the allow-list. Allowed: {', '.join(allowed_hosts(tenant))}.")
+        raise FetchDenied(f"{host}: this host is not on the allow-list. Allowed: {', '.join(allowed_hosts(tenant))}.",
+                          host)
     page = _lookup(host, path)
     if page.status == 302:
         to = parse_qs(parsed.query).get("to", [""])[0]
         if _redirects <= 0:
-            raise FetchDenied("Too many redirects.")
+            raise FetchDenied("Too many redirects.", host)
         return fetch_sandboxed(to, tenant, _redirects - 1)   # the redirect target is checked again
     return page, host
 
 
 def is_allowed_final(host: str, tenant: str) -> bool:
-    return host in allowed_hosts(tenant) and not _is_private(host)
+    return host in allowed_hosts(tenant) and not is_private(host)

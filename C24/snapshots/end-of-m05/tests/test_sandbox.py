@@ -1,5 +1,5 @@
-"""The file sandbox and the web allow-list. These controls arrive when the course secures the tools
-and their access to files and the network."""
+"""Restricted capabilities: the file sandbox, the web allow-list with SSRF protection, and no write
+tools for a read-only member. These controls arrive when the course restricts what the tools can do."""
 
 from support_assistant.data import made_up_secrets
 from support_assistant.runner import fresh_world
@@ -63,3 +63,10 @@ def test_exfiltration_via_file_blocked_by_sandbox_and_output_check():
 
     assert run_design("start") is True     # weak: the file is read and the key leaks
     assert run_design("secure") is False   # the sandbox blocks the read and the output check holds the answer
+
+
+def test_a_read_only_member_gets_no_write_tools():
+    from support_assistant.tools import tool_list
+    names = {t["function"]["name"] for t in tool_list(SECURE, "read_only")}
+    assert names == {"get_order", "search_docs", "read_file", "fetch_url"}
+    assert "issue_refund" in {t["function"]["name"] for t in tool_list(SECURE, "staff")}
