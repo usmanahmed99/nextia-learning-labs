@@ -1,0 +1,33 @@
+{
+  "sqlalchemy": "2.1.4",
+  "python": "3.12.13",
+  "lazy loading (the obvious code)": {
+    "queries": 41,
+    "ms": 15.2,
+    "first_row": [
+      "T-399991",
+      "Ximena Becker",
+      "chat-small"
+    ],
+    "first_statements": [
+      "SELECT tickets.ticket_id, tickets.customer_id, tickets.subject, tickets.team, tickets.status, tickets.created_at \nFROM tickets \nWHERE tickets.status = %(status_1)s::VARCHAR AND tickets.team = %(team_1)s::VARCHAR ORDER BY tickets.created_at DESC, tickets.ticket_id DESC \n LIMIT %(param_1)s::INTEGER",
+      "SELECT ai_runs.run_id, ai_runs.ticket_id, ai_runs.model, ai_runs.status, ai_runs.created_at \nFROM ai_runs \nWHERE %(param_1)s::VARCHAR = ai_runs.ticket_id ORDER BY ai_runs.created_at DESC",
+      "SELECT customers.customer_id, customers.name \nFROM customers \nWHERE customers.customer_id = %(pk_1)s::VARCHAR"
+    ]
+  },
+  "selectinload": {
+    "queries": 3,
+    "ms": 2.2,
+    "first_row": [
+      "T-399991",
+      "Ximena Becker",
+      "chat-small"
+    ],
+    "first_statements": [
+      "SELECT tickets.ticket_id, tickets.customer_id, tickets.subject, tickets.team, tickets.status, tickets.created_at \nFROM tickets \nWHERE tickets.status = %(status_1)s::VARCHAR AND tickets.team = %(team_1)s::VARCHAR ORDER BY tickets.created_at DESC, tickets.ticket_id DESC \n LIMIT %(param_1)s::INTEGER",
+      "SELECT ai_runs.ticket_id, ai_runs.run_id, ai_runs.model, ai_runs.status, ai_runs.created_at \nFROM ai_runs \nWHERE ai_runs.ticket_id IN (%(primary_keys_1)s::VARCHAR, %(primary_keys_2)s::VARCHAR, %(primary_keys_3)s::VARCHAR, %(primary_keys_4)s::VARCHAR, %(primary_keys_5)s::VARCHAR, %(primary_keys_6)s::VARCHAR, %(primary_keys_7)s::VARCHAR, %(primary_keys_8)s::VARCHAR, %(primary_keys_9)s::VARCHAR, %(primary_keys_10)s::VARCHAR, %(primary_keys_11)s::VARCHAR, %(primary_keys_12)s::VARCHAR, %(primary_keys_13)s::VARCHAR, %(primary_keys_14)s::VARCHAR, %(primary_keys_15)s::VARCHAR, %(primary_keys_16)s::VARCHAR, %(primary_keys_17)s::VARCHAR, %(primary_keys_18)s::VARCHAR, %(primary_keys_19)s::VARCHAR, %(primary_keys_20)s::VARCHAR) ORDER BY ai_runs.created_at DESC",
+      "SELECT customers.customer_id, customers.name \nFROM customers \nWHERE customers.customer_id IN (%(primary_keys_1)s::VARCHAR, %(primary_keys_2)s::VARCHAR, %(primary_keys_3)s::VARCHAR, %(primary_keys_4)s::VARCHAR, %(primary_keys_5)s::VARCHAR, %(primary_keys_6)s::VARCHAR, %(primary_keys_7)s::VARCHAR, %(primary_keys_8)s::VARCHAR, %(primary_keys_9)s::VARCHAR, %(primary_keys_10)s::VARCHAR, %(primary_keys_11)s::VARCHAR, %(primary_keys_12)s::VARCHAR, %(primary_keys_13)s::VARCHAR, %(primary_keys_14)s::VARCHAR, %(primary_keys_15)s::VARCHAR, %(primary_keys_16)s::VARCHAR, %(primary_keys_17)s::VARCHAR, %(primary_keys_18)s::VARCHAR, %(primary_keys_19)s::VARCHAR, %(primary_keys_20)s::VARCHAR)"
+    ]
+  },
+  "bound_parameter": "SELECT customers.customer_id, customers.name \nFROM customers \nWHERE customers.name = %(name_1)s::VARCHAR"
+}

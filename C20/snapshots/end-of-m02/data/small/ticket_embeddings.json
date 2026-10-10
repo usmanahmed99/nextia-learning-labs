@@ -1,0 +1,20 @@
+{
+  "model": "intfloat/multilingual-e5-small",
+  "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "licence": "MIT",
+  "embedding_version": "e5-small-v1",
+  "dimensions": 384,
+  "count": 200,
+  "normalized": true,
+  "text": "'query: ' + subject + '\\n' + body",
+  "source_sha256": "sha256 of subject + '\\n' + body (UTF-8), per ticket, computed by the loader",
+  "seconds": 0.4,
+  "threads": 4,
+  "machine": "Darwin arm64, Python 3.12.13",
+  "versions": {
+    "sentence-transformers": "6.1.0",
+    "torch": "2.14.1"
+  },
+  "f32_sha256": "7566a1d74988f244e3a80d1e447359233e4609f56db617fda15b2c3923a0744f",
+  "ids_sha256": "76b09dc01a53f01d6fd32c3385d20cabfc092abe57aa867d870451daa52710c7"
+}
