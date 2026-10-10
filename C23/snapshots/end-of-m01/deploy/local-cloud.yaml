@@ -1,0 +1,32 @@
+# A local simulation of the Azure Container Apps settings in containerapp.yaml.
+# It uses the same image, the same environment values, the same limits and a
+# health check on the same path. It has no HTTPS, no scaling and no registry.
+# Start:  docker compose -f deploy/local-cloud.yaml up -d
+# Stop:   docker compose -f deploy/local-cloud.yaml down
+
+name: ticket-api-cloud-sim
+
+services:
+  api:
+    image: ticket-api:1.1.0
+    ports:
+      - "127.0.0.1:8080:8000"
+    environment:
+      API_KEY_FILE: /run/secrets/api_key
+      REQUIRE_API_KEY: "true"
+      SHOW_DOCS: "false"
+    secrets:
+      - api_key
+    cpus: 0.25
+    mem_limit: 512m
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+secrets:
+  api_key:
+    file: ../secrets/api_key.txt

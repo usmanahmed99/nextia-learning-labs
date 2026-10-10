@@ -1,0 +1,10 @@
+{
+  "tenant": "bramble",
+  "customers": 12,
+  "tickets": 40,
+  "messages": 58,
+  "attachments": 14,
+  "documents": 3,
+  "ai_runs": 69,
+  "files": 14
+}

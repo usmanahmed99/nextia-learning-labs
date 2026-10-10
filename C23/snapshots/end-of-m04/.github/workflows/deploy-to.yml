@@ -1,0 +1,62 @@
+# The same deployment steps for every environment. The environment's settings
+# (app name, resource group, URL, identity) are variables of the GitHub
+# environment; its API key for the smoke check is an environment secret.
+name: Deploy to one environment
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      image:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ vars.APP_URL }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Sign in to Azure with this environment's identity (no password)
+        uses: azure/login@v3
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy the image
+        env:
+          IMAGE: ${{ inputs.image }}
+        run: |
+          az config set extension.use_dynamic_install=yes_without_prompt --only-show-errors
+          az containerapp update --name "${{ vars.APP_NAME }}" --resource-group "${{ vars.RESOURCE_GROUP }}" \
+            --image "$IMAGE" --query "properties.latestRevisionName" -o tsv
+      - name: Wait for the new revision
+        run: |
+          for _ in $(seq 1 30); do
+            state=$(az containerapp show -n "${{ vars.APP_NAME }}" -g "${{ vars.RESOURCE_GROUP }}" \
+              --query "properties.latestReadyRevisionName == properties.latestRevisionName" -o tsv)
+            [ "$state" = "true" ] && echo "The new revision is ready." && exit 0
+            sleep 10
+          done
+          echo "The new revision did not become ready in 5 minutes."; exit 1
+      - name: Smoke check
+        env:
+          SMOKE_API_KEY: ${{ secrets.SMOKE_API_KEY }}
+        run: scripts/smoke.sh "${{ vars.APP_URL }}" "$SMOKE_API_KEY"
+      - name: Record the deployment
+        run: |
+          {
+            echo "### ${{ inputs.environment }}"
+            echo "Image: \`${{ inputs.image }}\`"
+            echo "Revision: $(az containerapp show -n "${{ vars.APP_NAME }}" -g "${{ vars.RESOURCE_GROUP }}" --query properties.latestRevisionName -o tsv)"
+            echo "Started by: ${{ github.actor }}, run ${{ github.run_id }}"
+          } >> "$GITHUB_STEP_SUMMARY"
