@@ -1,6 +1,6 @@
 # Dataset card: arXiv computer-science records, February and March 2024
 
-Used by: C20-M06-L02 *Vector search over an open document collection*, the project `paper-search` (starter.zip, finished.zip)
+Used by: the case study *Vector search over an open document collection*, the project `paper-search` (starter.zip, finished.zip)
 
 | Field | Value |
 |---|---|
