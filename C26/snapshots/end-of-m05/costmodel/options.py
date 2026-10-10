@@ -26,7 +26,7 @@ def routing_rows(demand, design, m, p, scenario="base") -> list[dict]:
         p50 = m[f"{key}_p50_s"].value
         p95 = m[f"{key}_p95_s"].value
         rows.append({
-            "design": LABELS[model], "model": model,
+            "design": LABELS[model], "model": model, "scenario": scenario,
             "correct_share": m[f"{key}_correct_share"].value,
             "usd_per_question": answer_cost_per_question(m, p, model),
             "p50_s": p50, "p95_s": p95,
@@ -36,7 +36,8 @@ def routing_rows(demand, design, m, p, scenario="base") -> list[dict]:
 
 
 def routing_table(rows: list[dict]) -> str:
-    lines = ["Model routing: the same 67 questions, the same search results (measured), base workload (cost model)",
+    scenario = rows[0].get("scenario", "base") if rows else "base"
+    lines = [f"Model routing: the same 67 questions, the same search results (measured), {scenario} workload (cost model)",
              f"  {'design':<24} {'correct':>8} {'US$/question':>13} {'p50 s':>7} {'p95 s':>7} {'US$/month':>10}"]
     for r in rows:
         lines.append(f"  {r['design']:<24} {r['correct_share']:>8.1%} {r['usd_per_question']:>13.6f} "
