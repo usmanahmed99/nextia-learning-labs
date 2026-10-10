@@ -1,0 +1,8 @@
+user_id,name,email,platform_role
+usr-grace,Grace,grace@larkfield.example,
+usr-sam,Sam,sam@larkfield.example,
+usr-omar,Omar,omar@larkfield.example,
+usr-ines,Ines,ines@bramble.example,
+usr-camille,Camille,camille@larkfield.example,
+usr-tomas,Tomás,tomas@larkfield.example,
+usr-kwame,Kwame,kwame@larkfield.example,platform_admin

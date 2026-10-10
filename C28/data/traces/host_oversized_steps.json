@@ -1,0 +1,71 @@
+{
+  "settings": {
+    "HOST_MAX_RESULT_CHARS": 600
+  },
+  "answer": "Ticket T-30002 (open): Charged twice for order LK-182074.",
+  "steps": [
+    {
+      "who": "host",
+      "text": "discovered 3 tools: search_knowledge, get_ticket, propose_refund",
+      "data": {
+        "protocol": "2026-07-28",
+        "server": "support-mcp"
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants get_ticket",
+      "data": {
+        "arguments": {
+          "ticket_id": "T-30002"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 558 characters",
+      "data": {
+        "ms": 2.7,
+        "clipped": false
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants search_knowledge",
+      "data": {
+        "arguments": {
+          "query": "Charged twice for order LK-182074"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 1025 characters",
+      "data": {
+        "ms": 2.0,
+        "clipped": true
+      }
+    },
+    {
+      "who": "model",
+      "text": "final answer",
+      "data": {
+        "answer": "Ticket T-30002 (open): Charged twice for order LK-182074."
+      }
+    }
+  ]
+}
