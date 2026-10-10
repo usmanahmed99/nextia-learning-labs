@@ -57,9 +57,16 @@ class Run:
             self.printer(step)
 
 
+# The only settings the local server gets from the host's environment (Module 6). The SDK adds a few
+# safe ones itself (PATH, HOME, ...). Never the model's key: the server has no use for it.
+SERVER_SETTINGS = ("SUPPORT_SCOPES", "SUPPORT_STATE", "SUPPORT_WRITES", "SUPPORT_SLOW_SECONDS")
+
+
 def server_params(user: str, tenant: str, scopes: str | None = None) -> StdioServerParameters:
-    """How the host starts the local server: a child process that speaks MCP on stdin/stdout."""
-    env = {**os.environ, "SUPPORT_USER": user, "SUPPORT_TENANT": tenant, "PYTHONUNBUFFERED": "1"}
+    """How the host starts the local server: a child process that speaks MCP on stdin/stdout.
+    It passes an allow-list of settings, not the host's whole environment."""
+    env = {k: os.environ[k] for k in SERVER_SETTINGS if k in os.environ}
+    env |= {"SUPPORT_USER": user, "SUPPORT_TENANT": tenant, "PYTHONUNBUFFERED": "1"}
     if scopes:
         env["SUPPORT_SCOPES"] = scopes
     return StdioServerParameters(command=sys.executable, args=["-m", "support_mcp"], env=env)
