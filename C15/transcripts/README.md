@@ -12,7 +12,7 @@ Each session is a real run of a coding assistant on a fresh copy of the `start` 
 | `feature-vague` | "Add a way to filter the report by category." | 4 files, +77 −3. Its tests pass, but only 4 of 8 acceptance checks; every report gets a new key. |
 | `feature-bounded` | The same feature as a task brief with acceptance criteria | 5 files, +145 −4. All 8 acceptance checks pass. |
 | `feature-bounded-small` | The same brief, with the smaller model | 5 files, +86 −3. All 8 acceptance checks pass. |
-| `feature-chat-mode` | The same brief in chat mode | The reply's diff did not apply (`git apply`: corrupt patch). In chat mode, you move the code yourself. |
+| `feature-chat-mode` | The same brief in chat mode | The reply's diff did not apply (`git apply`: corrupt patch). In chat mode, you move the code yourself. The reply's diff, unchanged, is in `feature-chat-mode.reply.diff`. |
 | `feature-plan-first` | Ask for an explanation and a plan first, then step 1 only | Turn 1 changes no file; turn 2 does step 1: 2 files, +82 −4. |
 | `bug-little-context` | "The categories in the report are wrong. Fix it." with one file and no repository map | No change: the assistant asked for an example and the expected result. |
 | `bug-relevant-context` | Grace's report, a minimal input and the right files | 2 files, +20 −3. All 5 bug checks pass. |

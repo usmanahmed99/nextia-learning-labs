@@ -1,0 +1,19 @@
+diff --git a/delivery_slots/zones.py b/delivery_slots/zones.py
+index 15852d6..25181f2 100644
+--- a/delivery_slots/zones.py
++++ b/delivery_slots/zones.py
+@@ -28,10 +28,10 @@ def zone_for(postcode: str, zones: dict[str, str]) -> str:
+     """The zone of a postcode, for example "west" for "LS5 3QR".
+ 
+     Customers type postcodes with or without the space ("LS5 3QR", "ls53qr"),
+-    so the district is matched at the start of the postcode.
++    so remove spaces and the final three characters to get the district.
+     """
+     code = normalise(postcode).replace(" ", "")
+-    for district, zone in zones.items():
+-        if code.startswith(district):
+-            return zone
++    district = code[:-3]
++    if district in zones:
++        return zones[district]
+     raise UnknownPostcode(f"We do not deliver to {normalise(postcode)}.")

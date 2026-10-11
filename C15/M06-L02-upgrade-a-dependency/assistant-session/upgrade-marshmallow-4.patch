@@ -1,0 +1,96 @@
+diff --git a/form_intake/cli.py b/form_intake/cli.py
+index 527d437..bf91234 100644
+--- a/form_intake/cli.py
++++ b/form_intake/cli.py
+@@ -2,10 +2,9 @@ import argparse
+ import json
+ from dataclasses import asdict
+ from datetime import datetime
++from importlib.metadata import version
+ from pathlib import Path
+ 
+-import marshmallow
+-
+ from form_intake import __version__
+ from form_intake.schema import check_submissions
+ 
+@@ -25,7 +24,7 @@ def make_parser() -> argparse.ArgumentParser:
+     parser.add_argument(
+         "--version",
+         action="version",
+-        version=f"form_intake {__version__} (marshmallow {marshmallow.__version__})",
++        version=f"form_intake {__version__} (marshmallow {version('marshmallow')})",
+     )
+     return parser
+ 
+diff --git a/form_intake/schema.py b/form_intake/schema.py
+index 9f391b5..2c13aab 100644
+--- a/form_intake/schema.py
++++ b/form_intake/schema.py
+@@ -16,9 +16,19 @@ from marshmallow import (
+ CATEGORIES = ["account", "billing", "login", "shipping", "other"]
+ 
+ 
+-def not_blank(text: str) -> bool:
+-    """Return False for text that has only spaces."""
+-    return text.strip() != ""
++def not_blank(text: str) -> None:
++    """Reject text that has only spaces."""
++    if not text.strip():
++        raise ValidationError("Invalid value.")
++
++
++class SubmissionDateTime(fields.DateTime):
++    """Require a time component as well as a date."""
++
++    def _deserialize(self, value, attr, data, **kwargs):
++        if isinstance(value, str) and "T" not in value and " " not in value:
++            raise self.make_error("invalid", input=value, obj_type=self.OBJ_TYPE)
++        return super()._deserialize(value, attr, data, **kwargs)
+ 
+ 
+ @dataclass(frozen=True)
+@@ -35,23 +45,26 @@ class Submission:
+ 
+ 
+ class SubmissionSchema(Schema):
+-    """Checks one submission. Pass the time now as context["now"]."""
++    """Checks one submission against the supplied current time."""
++
++    def __init__(self, *, now: datetime, **kwargs):
++        super().__init__(**kwargs)
++        self.now = now
+ 
+     class Meta:
+         unknown = EXCLUDE  # the form adds fields that we do not use
+-        ordered = True
+ 
+     ticket_id = fields.Str(required=True, validate=validate.Regexp(r"^T-\d{4}$"))
+     email = fields.Email(required=True)
+-    category = fields.Str(missing="other", validate=validate.OneOf(CATEGORIES))
+-    priority = fields.Int(missing=2, validate=validate.Range(min=1, max=3))
++    category = fields.Str(load_default="other", validate=validate.OneOf(CATEGORIES))
++    priority = fields.Int(load_default=2, validate=validate.Range(min=1, max=3))
+     subject = fields.Str(required=True, validate=not_blank)
+-    submitted_at = fields.DateTime(required=True)
+-    page_url = fields.Url(missing=None, allow_none=True)
++    submitted_at = SubmissionDateTime(required=True)
++    page_url = fields.Url(load_default=None, allow_none=True)
+ 
+     @validates("submitted_at")
+-    def not_in_the_future(self, value: datetime) -> None:
+-        if value > self.context["now"]:
++    def not_in_the_future(self, value: datetime, **kwargs) -> None:
++        if value > self.now:
+             raise ValidationError("The time is in the future.")
+ 
+     @post_load
+@@ -61,7 +74,7 @@ class SubmissionSchema(Schema):
+ 
+ def check_submissions(rows: list[dict], now: datetime) -> tuple[list, list]:
+     """Return the accepted submissions, and the rejected ones with their problems."""
+-    schema = SubmissionSchema(context={"now": now})
++    schema = SubmissionSchema(now=now)
+     accepted, rejected = [], []
+     for row in rows:
+         try:
