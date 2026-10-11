@@ -1,0 +1,2 @@
+# The business service needs no package: only Python's standard library (sqlite3).
+# The tests need pytest: pip install -r requirements-dev.txt

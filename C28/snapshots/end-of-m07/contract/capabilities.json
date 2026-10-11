@@ -1,0 +1,317 @@
+{
+  "prompts": [
+    {
+      "arguments": [
+        {
+          "name": "ticket_id",
+          "required": true
+        }
+      ],
+      "description": "Draft a reply to a support ticket, using your organization's policies.",
+      "name": "draft_reply",
+      "title": "Draft a reply to a ticket"
+    }
+  ],
+  "protocol": "2026-07-28",
+  "resourceTemplates": [
+    {
+      "description": "The full text of one policy document of your organization.",
+      "mimeType": "text/markdown",
+      "name": "policy",
+      "title": "Policy document",
+      "uriTemplate": "policy://{tenant}/{doc_id}"
+    }
+  ],
+  "tools": [
+    {
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Search this organization's policy documents. Returns at most 5 short matches, best first, each with the URI of the full policy. Use it before you answer a policy question.",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 3,
+            "description": "How many documents to return (1-5).",
+            "maximum": 5,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "query": {
+            "description": "Words to look for in the organization's policy documents.",
+            "maxLength": 200,
+            "minLength": 3,
+            "title": "Query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_knowledgeArguments",
+        "type": "object"
+      },
+      "name": "search_knowledge",
+      "outputSchema": {
+        "$defs": {
+          "KnowledgeHit": {
+            "properties": {
+              "doc_id": {
+                "title": "Doc Id",
+                "type": "string"
+              },
+              "score": {
+                "title": "Score",
+                "type": "number"
+              },
+              "snippet": {
+                "maxLength": 302,
+                "title": "Snippet",
+                "type": "string"
+              },
+              "title": {
+                "title": "Title",
+                "type": "string"
+              },
+              "uri": {
+                "description": "The policy resource to read for the full text.",
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "doc_id",
+              "title",
+              "uri",
+              "snippet",
+              "score"
+            ],
+            "title": "KnowledgeHit",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/$defs/KnowledgeHit"
+            },
+            "maxItems": 5,
+            "title": "Results",
+            "type": "array"
+          }
+        },
+        "required": [
+          "query",
+          "results"
+        ],
+        "title": "SearchResult",
+        "type": "object"
+      }
+    },
+    {
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Get one support ticket of this organization by its ID (for example T-30002): the customer's first name, subject, text, status and the last 3 messages. The text is the customer's words.",
+      "inputSchema": {
+        "properties": {
+          "ticket_id": {
+            "description": "A ticket ID, for example T-30002.",
+            "pattern": "^T-\\d{5}$",
+            "title": "Ticket Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id"
+        ],
+        "title": "get_ticketArguments",
+        "type": "object"
+      },
+      "name": "get_ticket",
+      "outputSchema": {
+        "$defs": {
+          "Message": {
+            "properties": {
+              "author": {
+                "enum": [
+                  "agent",
+                  "customer"
+                ],
+                "title": "Author",
+                "type": "string"
+              },
+              "body": {
+                "title": "Body",
+                "type": "string"
+              },
+              "created_at": {
+                "title": "Created At",
+                "type": "string"
+              }
+            },
+            "required": [
+              "author",
+              "body",
+              "created_at"
+            ],
+            "title": "Message",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "body": {
+            "title": "Body",
+            "type": "string"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "customer_name": {
+            "title": "Customer Name",
+            "type": "string"
+          },
+          "last_messages": {
+            "items": {
+              "$ref": "#/$defs/Message"
+            },
+            "maxItems": 3,
+            "title": "Last Messages",
+            "type": "array"
+          },
+          "priority": {
+            "title": "Priority",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "team": {
+            "title": "Team",
+            "type": "string"
+          },
+          "ticket_id": {
+            "title": "Ticket Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "customer_name",
+          "subject",
+          "body",
+          "team",
+          "priority",
+          "status",
+          "created_at",
+          "last_messages"
+        ],
+        "title": "Ticket",
+        "type": "object"
+      }
+    },
+    {
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Propose a refund for a ticket of this organization. Nothing is refunded now: the tool records a proposal with the exact operation, and an owner of the organization must approve it outside this application. Amounts over 100.00 dollars are refused (they need a team lead).",
+      "inputSchema": {
+        "properties": {
+          "amount": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 10000.0,
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "description": "Amount in dollars, for example 25.00.",
+            "title": "Amount"
+          },
+          "reason": {
+            "description": "Why the customer should get the refund.",
+            "maxLength": 200,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          },
+          "ticket_id": {
+            "pattern": "^T-\\d{5}$",
+            "title": "Ticket Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "amount",
+          "reason"
+        ],
+        "title": "propose_refundArguments",
+        "type": "object"
+      },
+      "name": "propose_refund",
+      "outputSchema": {
+        "properties": {
+          "approver_role": {
+            "default": "owner",
+            "title": "Approver Role",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "operation": {
+            "additionalProperties": true,
+            "title": "Operation",
+            "type": "object"
+          },
+          "operation_id": {
+            "title": "Operation Id",
+            "type": "string"
+          },
+          "proposed_by": {
+            "title": "Proposed By",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "operation_id",
+          "status",
+          "operation",
+          "proposed_by",
+          "message"
+        ],
+        "title": "Proposal",
+        "type": "object"
+      }
+    }
+  ]
+}

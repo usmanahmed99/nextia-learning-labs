@@ -1,0 +1,48 @@
+{
+  "settings": {
+    "HOST_TOOL_TIMEOUT": 2,
+    "SUPPORT_SLOW_SECONDS": 5
+  },
+  "answer": "I could not use search_knowledge: no answer within 2 seconds",
+  "steps": [
+    {
+      "who": "host",
+      "text": "discovered 3 tools: search_knowledge, get_ticket, propose_refund",
+      "data": {
+        "protocol": "2026-07-28",
+        "server": "support-mcp"
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants search_knowledge",
+      "data": {
+        "arguments": {
+          "query": "What is the return window?"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "host",
+      "text": "timeout after 2 s",
+      "data": {
+        "decision": "timeout"
+      }
+    },
+    {
+      "who": "model",
+      "text": "final answer",
+      "data": {
+        "answer": "I could not use search_knowledge: no answer within 2 seconds"
+      }
+    }
+  ],
+  "wall_s": 4.31
+}

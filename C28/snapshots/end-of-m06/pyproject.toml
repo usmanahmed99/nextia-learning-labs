@@ -1,0 +1,21 @@
+[project]
+name = "support-mcp"
+version = "1.0.0"
+description = "The support knowledge of Larkfield and Bramble Books as one MCP server, with a minimal host."
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = ["mcp==2.3.0", "PyJWT[crypto]==2.15.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]  # ruff format keeps lines short; long strings stay whole
+
+[tool.ruff.lint.isort]
+known-first-party = ["support_mcp", "host", "idp", "scripts", "examples", "tests"]
