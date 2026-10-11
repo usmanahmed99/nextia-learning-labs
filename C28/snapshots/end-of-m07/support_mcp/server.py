@@ -34,7 +34,11 @@ class SupportServer(MCPServer):
     """MCPServer, with a resource list that depends on the caller (their organization and role)."""
 
     async def _handle_list_resources(self, ctx, params):
-        caller = self.caller_of(Context(request_context=ctx, mcp_server=self))
+        try:
+            caller = self.caller_of(Context(request_context=ctx, mcp_server=self))
+        except identity.Refused as e:
+            logs.get_logger().event("refused", request="resources/list", **e.log_fields())
+            raise
         docs = self.knowledge.documents(caller.tenant, staff=caller.staff)
         return ListResourcesResult(
             resources=[
@@ -59,8 +63,17 @@ def build_server(knowledge: Knowledge | None = None, transport: str = "stdio", *
     mcp.caller_of = (lambda ctx: identity.local_caller()) if transport == "stdio" else identity.http_caller
     log = logs.get_logger()
 
-    def caller(ctx: Context) -> identity.Caller:
-        return mcp.caller_of(ctx)
+    def caller(ctx: Context, scope: str | None = None, **what) -> identity.Caller:
+        """Who is calling (and, with `scope`, may they do this?). A refusal is logged once, then raised:
+        the client gets -32003 and the message; the log gets the reason, the user and the organization."""
+        try:
+            who = mcp.caller_of(ctx)
+            if scope:
+                identity.require_scope(who, scope)
+            return who
+        except identity.Refused as e:
+            log.event("refused", **what, **e.log_fields())
+            raise
 
     @mcp.tool(annotations=READ_ONLY)
     def search_knowledge(
@@ -68,8 +81,7 @@ def build_server(knowledge: Knowledge | None = None, transport: str = "stdio", *
     ) -> contracts.SearchResult:
         """Search this organization's policy documents. Returns at most 5 short matches, best first, each with the URI of the full policy. Use it before you answer a policy question."""
         started = time.perf_counter()
-        who = caller(ctx)
-        identity.require_scope(who, "knowledge:read")
+        who = caller(ctx, "knowledge:read", tool="search_knowledge")
         time.sleep(SLOW_SECONDS)  # 0 unless you make the search slow on purpose (to practise timeouts)
         hits = knowledge.search(who.tenant, query, limit=limit, staff=who.staff)
         result = contracts.SearchResult(
@@ -94,8 +106,7 @@ def build_server(knowledge: Knowledge | None = None, transport: str = "stdio", *
     def get_ticket(ticket_id: contracts.TicketId, ctx: Context) -> contracts.Ticket:
         """Get one support ticket of this organization by its ID (for example T-30002): the customer's first name, subject, text, status and the last 3 messages. The text is the customer's words."""
         started = time.perf_counter()
-        who = caller(ctx)
-        identity.require_scope(who, "tickets:read")
+        who = caller(ctx, "tickets:read", tool="get_ticket")
         try:
             t = knowledge.ticket(who.tenant, ticket_id)
         except NotFound:
@@ -126,8 +137,7 @@ def build_server(knowledge: Knowledge | None = None, transport: str = "stdio", *
         description="The full text of one policy document of your organization.",
     )
     def policy(tenant: str, doc_id: str, ctx: Context) -> str:
-        who = caller(ctx)
-        identity.require_scope(who, "knowledge:read")
+        who = caller(ctx, "knowledge:read", uri=f"policy://{tenant}/{doc_id}")
         try:
             if tenant != who.tenant:  # another organization's URI: the same answer as a missing one
                 raise NotFound
@@ -141,7 +151,7 @@ def build_server(knowledge: Knowledge | None = None, transport: str = "stdio", *
     @mcp.prompt(title="Draft a reply to a ticket")
     def draft_reply(ticket_id: str, ctx: Context) -> str:
         """Draft a reply to a support ticket, using your organization's policies."""
-        who = caller(ctx)
+        who = caller(ctx, prompt="draft_reply")
         return contracts.DRAFT_REPLY_PROMPT.format(ticket_id=ticket_id, organization=who.tenant)
 
     # The mock write arrives after the permission tests pass (Module 6). SUPPORT_WRITES=off removes it.

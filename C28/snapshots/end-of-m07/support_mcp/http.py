@@ -83,7 +83,18 @@ class JwtVerifier:
     async def verify_token(self, token: str) -> AccessToken | None:
         started = time.perf_counter()
         try:
-            return await anyio.to_thread.run_sync(self.check, token)
+            access = await anyio.to_thread.run_sync(self.check, token)
+            missing = [s for s in READ_SCOPES if s not in access.scopes]
+            if missing:  # the SDK answers HTTP 403 insufficient_scope next (required_scopes): log why
+                self.log.event(
+                    "refused",
+                    user=access.subject,
+                    client=access.client_id,
+                    reason="insufficient_scope",
+                    scope=" ".join(missing),
+                    status=403,
+                )
+            return access
         except (jwt.InvalidTokenError, jwt.PyJWKClientError) as e:
             reason = {
                 jwt.InvalidAudienceError: "wrong_audience",

@@ -95,15 +95,12 @@ def register(mcp, knowledge, caller, log) -> None:
         ticket_id: Annotated[str, Field(pattern=r"^T-\d{5}$")], amount: Amount, reason: Reason, ctx: Context
     ) -> Proposal:
         """Propose a refund for a ticket of this organization. Nothing is refunded now: the tool records a proposal with the exact operation, and an owner of the organization must approve it outside this application. Amounts over 100.00 dollars are refused (they need a team lead)."""
-        who = caller(ctx)
         fields = {"tool": "propose_refund", "ticket_id": ticket_id, "amount": str(amount)}
-        try:
-            identity.require_scope(who, "refunds:propose")
-            if not who.staff:
-                raise identity.forbidden(f"forbidden: the role {who.role} cannot propose a refund")
-        except Exception:
-            log.event("tool_call", caller=who, outcome="forbidden", **fields)
-            raise
+        who = caller(ctx, "refunds:propose", **fields)  # membership and scope; a refusal is logged there
+        if not who.staff:
+            e = identity.forbidden(f"forbidden: the role {who.role} cannot propose a refund", "role", who)
+            log.event("refused", **fields, **e.log_fields())
+            raise e
         try:
             knowledge.ticket(who.tenant, ticket_id)
         except NotFound:

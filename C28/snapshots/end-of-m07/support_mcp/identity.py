@@ -5,7 +5,8 @@ The answer never comes from the model and never from the token alone:
 - the organization comes from the connection (SUPPORT_TENANT, or the X-Support-Tenant header);
 - the role comes from this server's own membership table (data/memberships.csv).
 A user without a membership in the organization gets the same refusal for a real organization
-and for a made-up one.
+and for a made-up one. Every refusal is a Refused error: the client sees only code -32003 and the
+message; the server logs the reason, the user and the organization (server.py, http.py).
 """
 
 import csv
@@ -44,20 +45,39 @@ def load_memberships(data_dir: Path = DATA) -> dict[tuple[str, str], str]:
 MEMBERSHIPS = load_memberships()
 
 
-def forbidden(message: str) -> MCPError:
-    return MCPError(code=FORBIDDEN, message=message)
+class Refused(MCPError):
+    """A refusal (-32003) that also knows why and for whom, so that the server can log it."""
+
+    def __init__(
+        self, message: str, reason: str, user_id: str = "", tenant: str = "", role: str = "", client_id: str = ""
+    ):
+        super().__init__(code=FORBIDDEN, message=message)
+        self.reason, self.user_id, self.tenant, self.role, self.client_id = reason, user_id, tenant, role, client_id
+
+    def log_fields(self) -> dict:
+        """What the log line says: who was refused, where, and why (never a token)."""
+        fields = {"user": self.user_id, "tenant": self.tenant, "role": self.role, "client": self.client_id}
+        return {k: v for k, v in fields.items() if v} | {"reason": self.reason}
+
+
+def forbidden(message: str, reason: str = "forbidden", caller: "Caller | None" = None) -> Refused:
+    if caller is None:
+        return Refused(message, reason)
+    return Refused(message, reason, caller.user_id, caller.tenant, caller.role, caller.client_id)
 
 
 def resolve(user_id: str, tenant: str, scopes, client_id: str = "local") -> Caller:
     role = MEMBERSHIPS.get((user_id, tenant))
     if role is None:  # no membership, or no such organization: the same answer
-        raise forbidden("forbidden: you have no access to this organization")
+        raise Refused(
+            "forbidden: you have no access to this organization", "no_membership", user_id, tenant, client_id=client_id
+        )
     return Caller(user_id, tenant, role, frozenset(scopes), client_id)
 
 
 def require_scope(caller: Caller, scope: str) -> None:
     if scope not in caller.scopes:
-        raise forbidden(f"insufficient_scope: this needs the scope {scope}")
+        raise forbidden(f"insufficient_scope: this needs the scope {scope}", "insufficient_scope", caller)
 
 
 def local_caller() -> Caller:
@@ -75,6 +95,6 @@ def http_caller(ctx) -> Caller:
 
     token = get_access_token()
     if token is None or not token.subject:  # the HTTP app refuses this before; checked again here
-        raise forbidden("forbidden: no signed-in user")
+        raise forbidden("forbidden: no signed-in user", "no_signed_in_user")
     tenant = (ctx.headers or {}).get(TENANT_HEADER, "")
     return resolve(token.subject, tenant, token.scopes, token.client_id)
