@@ -1,0 +1,216 @@
+# Published list prices for the cost model, in US dollars, before tax and without discounts.
+# Prices change: check the current price page before you use them in a real proposal.
+# Checked: 2026-10-10 (Azure Retail Prices API (prices.azure.com/api/retail/prices); region canadacentral for the services,
+# eastus2 for the model deployments). Rebuild: the course team's write_inputs.py.
+
+[chat_small_input]
+value = 0.1
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6-luna ShortCo Inp Std Gl 1M Tokens)"
+note = "chat-small (gpt-6-luna), Global Standard, input tokens"
+
+[chat_small_output]
+value = 0.5
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6-luna ShortCo Opt Std Gl 1M Tokens)"
+note = "chat-small, output tokens"
+
+[chat_small_cached_input]
+value = 0.01
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6-luna ShortCo Cd Inp Std Gl 1M Tokens)"
+note = "chat-small, input tokens the provider reports as cached"
+
+[chat_small_flex_input]
+value = 0.05
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6-luna ShortCo Inp Flex Gl 1M Tokens)"
+note = "chat-small, Flex processing (slower, lower priority; not tested in this course)"
+
+[chat_small_flex_output]
+value = 0.25
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6-luna ShortCo Opt Flex Gl 1M Tokens)"
+note = "chat-small, Flex processing, output tokens"
+
+[chat_strong_input]
+value = 2.0
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6.1-sol ShortCo Inp Std Gl 1M Tokens)"
+note = "chat-strong (gpt-6.1-sol), Global Standard, input tokens"
+
+[chat_strong_output]
+value = 10.0
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6.1-sol ShortCo Opt Std Gl 1M Tokens)"
+note = "chat-strong, output tokens"
+
+[chat_strong_cached_input]
+value = 0.1
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): 6.1-sol ShortCo Cd Inp Std Gl 1M Tokens)"
+note = "chat-strong, cached input tokens"
+
+[embed_small_input]
+value = 0.02
+unit = "US$ per 1M tokens"
+source = "price: https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): text-embedding-3-small-glbl Tokens)"
+note = "embed-small (text-embedding-3-small), global; the API lists it per 1,000 tokens"
+
+[pg_b1ms_hour]
+value = 0.0185
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): B1MS)"
+note = "PostgreSQL flexible server, Burstable B1ms (1 vCore, 2 GiB)"
+
+[pg_b2s_hour]
+value = 0.074
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): B2S)"
+note = "PostgreSQL flexible server, Burstable B2s (2 vCores, 4 GiB)"
+
+[pg_d2ds_v5_hour]
+value = 0.1976
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): vCore)"
+note = "PostgreSQL flexible server, General Purpose D2ds_v5 (2 vCores x the per-vCore price)"
+
+[pg_storage_gb_month]
+value = 0.1265
+unit = "US$ per GB per month"
+source = "price: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Storage Data Stored)"
+note = "provisioned database storage"
+
+[pg_backup_gb_month]
+value = 0.105
+unit = "US$ per GB per month"
+source = "price: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Backup Storage LRS Data Stored)"
+note = "backup storage above the free amount"
+
+[aca_vcpu_active_second]
+value = 3.4e-05
+unit = "US$ per vCPU-second"
+source = "price: https://azure.microsoft.com/pricing/details/container-apps/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Standard vCPU Active Usage)"
+note = "Container Apps consumption plan, vCPU while busy"
+
+[aca_vcpu_idle_second]
+value = 4e-06
+unit = "US$ per vCPU-second"
+source = "price: https://azure.microsoft.com/pricing/details/container-apps/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Standard vCPU Idle Usage)"
+note = "vCPU of a replica that is running but idle"
+
+[aca_memory_gib_second]
+value = 4e-06
+unit = "US$ per GiB-second"
+source = "price: https://azure.microsoft.com/pricing/details/container-apps/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Standard Memory Active Usage)"
+note = "memory (the active and idle prices are the same)"
+
+[aca_requests_million]
+value = 0.4
+unit = "US$ per 1M requests"
+source = "price: https://azure.microsoft.com/pricing/details/container-apps/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Standard Requests)"
+note = "HTTP requests"
+
+[blob_hot_gb_month]
+value = 0.02
+unit = "US$ per GB per month"
+source = "price: https://azure.microsoft.com/pricing/details/storage/blobs/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Hot LRS Data Stored)"
+note = "Blob storage, hot tier, locally redundant, first 50 TB"
+
+[blob_write_10k]
+value = 0.055
+unit = "US$ per 10,000 operations"
+source = "price: https://azure.microsoft.com/pricing/details/storage/blobs/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Hot LRS Write Operations)"
+note = "write operations, hot tier"
+
+[log_ingestion_gb]
+value = 2.76
+unit = "US$ per GB"
+source = "price: https://azure.microsoft.com/pricing/details/monitor/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Analytics Logs Data Ingestion)"
+note = "Log Analytics, Analytics logs, after the free amount"
+
+[log_retention_gb_month]
+value = 0.12
+unit = "US$ per GB per month"
+source = "price: https://azure.microsoft.com/pricing/details/monitor/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Analytics Logs Data Retention)"
+note = "keeping logs longer than the included retention"
+
+[egress_internet_gb]
+value = 0.08
+unit = "US$ per GB"
+source = "price: https://azure.microsoft.com/pricing/details/bandwidth/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): Standard Data Transfer Out)"
+note = "data out to the internet from Canada Central, after the free 100 GB"
+
+[vm_b2s_hour]
+value = 0.0464
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/virtual-machines/linux/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): B2s)"
+note = "Linux virtual machine B2s (2 vCPUs, 4 GiB) for a self-run database"
+
+[vm_d2s_v5_hour]
+value = 0.107
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/virtual-machines/linux/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): D2s v5)"
+note = "Linux virtual machine D2s v5 (2 vCPUs, 8 GiB)"
+
+[disk_p10_month]
+value = 19.712
+unit = "US$ per month"
+source = "price: https://azure.microsoft.com/pricing/details/managed-disks/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): P10 LRS Disk)"
+note = "Premium SSD P10 (128 GiB) for the self-run database"
+
+[gpu_t4_hour]
+value = 0.584
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/virtual-machines/linux/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): NC4as T4 v3)"
+note = "Linux GPU virtual machine NC4as T4 v3 (1 NVIDIA T4, 16 GB) for a self-hosted model"
+
+[gpu_a100_hour]
+value = 4.408
+unit = "US$ per hour"
+source = "price: https://azure.microsoft.com/pricing/details/virtual-machines/linux/ (Azure Retail Prices API (prices.azure.com/api/retail/prices): NC24ads_A100_v4)"
+note = "Linux GPU virtual machine NC24ads A100 v4 (1 NVIDIA A100, 80 GB)"
+
+# Free amounts and limits that the price pages state in words.
+
+[pg_min_storage_gb]
+value = 32
+unit = "GB"
+source = "price page: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/"
+note = "the smallest storage you can provision"
+
+[pg_backup_free_share]
+value = 1.0
+unit = "share of provisioned storage"
+source = "price page: https://azure.microsoft.com/pricing/details/postgresql/flexible-server/"
+note = "backup storage up to 100% of the provisioned storage is free"
+
+[aca_free_vcpu_seconds]
+value = 180000
+unit = "vCPU-seconds per month"
+source = "price page: https://azure.microsoft.com/pricing/details/container-apps/"
+note = "free grant per subscription"
+
+[aca_free_gib_seconds]
+value = 360000
+unit = "GiB-seconds per month"
+source = "price page: https://azure.microsoft.com/pricing/details/container-apps/"
+note = "free grant per subscription"
+
+[aca_free_requests]
+value = 2000000
+unit = "requests per month"
+source = "price page: https://azure.microsoft.com/pricing/details/container-apps/"
+note = "free grant per subscription"
+
+[log_free_gb_month]
+value = 5
+unit = "GB per month"
+source = "price page: https://azure.microsoft.com/pricing/details/monitor/"
+note = "free ingestion per billing account (the price API's first tier)"
+
+[egress_free_gb_month]
+value = 100
+unit = "GB per month"
+source = "price page: https://azure.microsoft.com/pricing/details/bandwidth/"
+note = "free data out per month (the price API's first tier)"

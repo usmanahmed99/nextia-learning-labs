@@ -1,0 +1,18 @@
+[project]
+name = "design-pack"
+version = "1.0.0"
+description = "Design and cost proposal for a multi-tenant document assistant: requirements, diagrams, a cost calculator and decision records."
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = []   # the calculator uses only the Python standard library
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
