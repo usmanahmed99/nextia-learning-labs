@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" font-family="Helvetica, Arial, sans-serif">
+<title>Container diagram of the shared document assistant</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker></defs>
+<rect width="900" height="640" fill="#ffffff"/>
+<line x1="240" y1="75" x2="640" y2="75" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="440" y="71" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">1 sign in</text>
+<line x1="140" y1="110" x2="140" y2="210" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">2 question + token</text>
+<line x1="240" y1="245" x2="640" y2="245" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="440" y="241" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">embed, answer</text>
+<line x1="177" y1="280" x2="443" y2="530" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="310" y="401" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">search, save answer</text>
+<line x1="140" y1="280" x2="140" y2="530" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="140" y="401" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">save upload</text>
+<line x1="214" y1="280" x2="406" y2="370" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="310" y="321" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">job (a queue row)</text>
+<line x1="406" y1="440" x2="214" y2="530" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="310" y="481" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">read upload</text>
+<line x1="537" y1="370" x2="683" y2="280" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="610" y="321" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">embed, summarize</text>
+<line x1="480" y1="440" x2="480" y2="530" stroke="#444" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="480" y="481" font-size="11" text-anchor="middle" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">chunks, vectors</text>
+<rect x="40" y="40" width="200" height="70" rx="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+<text x="140" y="71" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Help-desk tool</text>
+<text x="140" y="90" font-size="11" text-anchor="middle" fill="#333">agents and customers</text>
+<rect x="640" y="40" width="200" height="70" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
+<text x="740" y="71" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Identity provider</text>
+<text x="740" y="90" font-size="11" text-anchor="middle" fill="#333">tokens: tenant, role</text>
+<rect x="40" y="210" width="200" height="70" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="140" y="241" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Assistant API</text>
+<text x="140" y="260" font-size="11" text-anchor="middle" fill="#333">answers questions</text>
+<rect x="640" y="210" width="200" height="70" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
+<text x="740" y="241" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Model provider</text>
+<text x="740" y="260" font-size="11" text-anchor="middle" fill="#333">chat-small, chat-strong, embed-small</text>
+<rect x="380" y="370" width="200" height="70" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="480" y="401" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Ingestion worker</text>
+<text x="480" y="420" font-size="11" text-anchor="middle" fill="#333">chunks, vectors, summaries</text>
+<rect x="380" y="530" width="200" height="70" rx="16" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+<text x="480" y="561" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PostgreSQL</text>
+<text x="480" y="580" font-size="11" text-anchor="middle" fill="#333">records, vectors, jobs, cache</text>
+<rect x="40" y="530" width="200" height="70" rx="16" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+<text x="140" y="561" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">File storage</text>
+<text x="140" y="580" font-size="11" text-anchor="middle" fill="#333">original files</text>
+<rect x="640" y="530" width="200" height="70" rx="16" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+<text x="740" y="561" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">Logs and alerts</text>
+<text x="740" y="580" font-size="11" text-anchor="middle" fill="#333">every part sends logs</text>
+</svg>

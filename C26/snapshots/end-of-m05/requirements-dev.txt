@@ -1,0 +1,3 @@
+# The calculator needs only Python 3.12 or newer (standard library). These are for its tests.
+pytest==9.1.1
+ruff==0.17.0
