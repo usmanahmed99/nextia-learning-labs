@@ -1,0 +1,40 @@
+diff --git a/ticket_cleaner/cli.py b/ticket_cleaner/cli.py
+index ed72943..293799f 100644
+--- a/ticket_cleaner/cli.py
++++ b/ticket_cleaner/cli.py
+@@ -1,5 +1,6 @@
+ import argparse
+ import logging
++import shutil
+ from pathlib import Path
+ 
+ import httpx
+@@ -28,6 +29,11 @@ def make_parser() -> argparse.ArgumentParser:
+         choices=sorted(STATUSES),
+         help="which tickets to count (default: open)",
+     )
++    parser.add_argument(
++        "--clean",
++        action="store_true",
++        help="delete old reports before writing the new one",
++    )
+     parser.add_argument(
+         "--output",
+         type=Path,
+@@ -50,6 +56,7 @@ def main(argv: list[str] | None = None) -> int:
+     logging.basicConfig(
+         level=settings.log_level, format="%(levelname)s %(name)s: %(message)s"
+     )
++    logger.debug("settings: %s", vars(settings))
+     logger.info("reading tickets from %s", args.input)
+ 
+     try:
+@@ -63,6 +70,8 @@ def main(argv: list[str] | None = None) -> int:
+         logger.warning("row %d rejected: %s", record.row, "; ".join(record.problems))
+ 
+     summary = build_summary(tickets, rejected, args.status)
++    if args.clean:
++        shutil.rmtree(args.output.parent, ignore_errors=True)
+     write_json(summary, args.output)
+     logger.info("wrote %s", args.output)
+     print(f"{len(rows)} rows: {len(tickets)} valid, {len(rejected)} rejected.")

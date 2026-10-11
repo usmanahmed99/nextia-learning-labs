@@ -1,0 +1,12 @@
+# Settings for the development tools. The program itself needs only
+# requirements-lock.txt.
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# The default rules, plus import sorting (I) and common bug patterns (B).
+extend-select = ["I", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

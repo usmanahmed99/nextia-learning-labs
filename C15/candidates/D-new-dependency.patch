@@ -1,0 +1,41 @@
+diff --git a/requirements-lock.txt b/requirements-lock.txt
+index 4e39768..e603f24 100644
+--- a/requirements-lock.txt
++++ b/requirements-lock.txt
+@@ -11,3 +11,4 @@ Pygments==2.21.0
+ pytest==9.1.1
+ ruff==0.16.10
+ typing_extensions==4.16.0
++Unidecode==1.4.0
+diff --git a/requirements.txt b/requirements.txt
+index 12911d3..6b9e8cf 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,6 @@
+ # Needed to run the program
+ httpx==0.28.1
++Unidecode==1.4.0
+ 
+ # Needed to work on the program: tests, formatting and linting
+ pytest==9.1.1
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..a5e5595 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -1,3 +1,5 @@
++from unidecode import unidecode
++
+ from ticket_cleaner.records import (
+     CATEGORY_ALIASES,
+     PRIORITIES,
+@@ -17,8 +19,8 @@ def clean_text(value: object) -> str:
+ 
+ def clean_category(value: object) -> str:
+     """Return the category, with the web form's names changed to the report's names."""
+-    text = str(value).strip()
+-    return CATEGORY_ALIASES.get(text.lower(), text)
++    text = unidecode(str(value)).strip().lower()
++    return CATEGORY_ALIASES.get(text, text)
+ 
+ 
+ def find_problems(raw: dict) -> list[str]:

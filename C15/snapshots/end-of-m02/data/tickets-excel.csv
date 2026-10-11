@@ -1,0 +1,16 @@
+﻿id,status,category,priority,subject
+T-1001,open,billing,2,Charged twice for March
+T-1002,closed,login,3,Password reset email is late
+T-1003,open,login,1,Cannot sign in after update
+T-1004,pending,billing,2,Refund not received
+T-1005,Open ,billing,3,Invoice shows the old address
+T-1006,closed,shipping,1,Parcel sent to the wrong city
+T-1007,opne,shipping,2,Tracking number does not work
+,open,account,2,Change the account owner
+T-1009,open,account,high,Delete my old account
+T-1010,pending,LOGIN,1,Two-factor code never arrives
+T-1011,open,billing,5,Discount code rejected
+T-1012,closed,account,3,Change the company name to Müller GmbH
+T-1003,open,login,1,Cannot sign in after update
+T-1014,open,,2,The app is slow
+t-1015,open,shipping,2,Box arrived damaged

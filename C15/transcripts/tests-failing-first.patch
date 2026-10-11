@@ -1,0 +1,16 @@
+diff --git a/tests/test_parsing.py b/tests/test_parsing.py
+index c2237c6..b5ba5ba 100644
+--- a/tests/test_parsing.py
++++ b/tests/test_parsing.py
+@@ -32,6 +32,11 @@ def test_priority_outside_1_to_3_is_a_problem(valid_raw, priority):
+     assert find_problems(valid_raw) == [f"priority must be 1, 2 or 3, not {priority!r}"]
+ 
+ 
++def test_category_case_and_whitespace_are_normalized(valid_raw):
++    valid_raw["category"] = " LOGIN "
++    assert to_ticket(valid_raw).category == "login"
++
++
+ def test_missing_field_is_a_problem(valid_raw):
+     del valid_raw["category"]
+     assert find_problems(valid_raw) == ["missing category"]

@@ -1,0 +1,220 @@
+diff --git a/README.md b/README.md
+index a72c88d..d4d11e9 100644
+--- a/README.md
++++ b/README.md
+@@ -56,10 +56,23 @@ Options:
+ |---|---|---|
+ | `input` | A `.csv` or `.json` file, or `remote` to download the records | (required) |
+ | `--status` | Which tickets to count: `open`, `pending` or `closed` | `open` |
++| `--category NAME` | Count only this category; repeat for more. Case and surrounding spaces do not matter. | All categories |
+ | `--output` | Where to save the report | `reports/summary.json` |
+ 
+ `python -m ticket_cleaner --help` shows the same list.
+ 
++For example, `python -m ticket_cleaner data/tickets.csv --category billing`
++counts only open billing tickets. `--category " Billing "` selects the same
++tickets. Use `--category billing --category login` to select either category
++within the chosen status.
++
++With `--category`, the report includes `categories`: the chosen names,
++lowercased, stripped of surrounding spaces, deduplicated and sorted.
++Only `selected`, `by_category` and `average_priority` are filtered;
++`valid_records` and `rejected` still describe the whole input.
++An unknown category is allowed: `--category unknown` selects zero tickets
++and exits successfully. Without `--category`, the report is unchanged.
++
+ ## Settings
+ 
+ Set these as environment variables. `.env.example` lists them.
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index a8d7562..b7a1377 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -1,5 +1,7 @@
+ import json
+ 
++import pytest
++
+ from ticket_cleaner.cli import main
+ 
+ 
+@@ -16,3 +18,72 @@ def test_report_for_pending_tickets(tmp_path):
+ 
+ def test_missing_file_gives_exit_code_1(tmp_path):
+     assert main([str(tmp_path / "missing.csv")]) == 1
++
++
++@pytest.mark.parametrize(
++    ("categories", "chosen", "selected", "counts", "average"),
++    [
++        (["billing"], ["billing"], 2, {"billing": 2}, 2.5),
++        ([" Billing "], ["billing"], 2, {"billing": 2}, 2.5),
++        (
++            ["login", "billing", " Billing "],
++            ["billing", "login"],
++            3,
++            {"billing": 2, "login": 1},
++            2.0,
++        ),
++        (["unknown"], ["unknown"], 0, {}, None),
++    ],
++)
++def test_category_option(tmp_path, categories, chosen, selected, counts, average):
++    output = tmp_path / "summary.json"
++    argv = ["data/tickets.csv", "--output", str(output)]
++    assert main(argv) == 0
++    baseline = json.loads(output.read_text(encoding="utf-8"))
++    assert "categories" not in baseline
++    assert baseline["valid_records"] == 9
++    assert len(baseline["rejected"]) == 6
++
++    for category in categories:
++        argv.extend(["--category", category])
++    assert main(argv) == 0
++    summary = json.loads(output.read_text(encoding="utf-8"))
++    assert summary == {
++        **baseline,
++        "categories": chosen,
++        "selected": selected,
++        "by_category": counts,
++        "average_priority": average,
++    }
++
++
++def test_category_option_respects_status(tmp_path):
++    output = tmp_path / "closed.json"
++    assert main(
++        [
++            "data/tickets.csv",
++            "--status",
++            "closed",
++            "--category",
++            "billing",
++            "--output",
++            str(output),
++        ]
++    ) == 0
++    summary = json.loads(output.read_text(encoding="utf-8"))
++    assert summary["status"] == "closed"
++    assert summary["categories"] == ["billing"]
++    assert summary["selected"] == 0
++    assert summary["by_category"] == {}
++    assert summary["average_priority"] is None
++    assert summary["valid_records"] == 9
++    assert len(summary["rejected"]) == 6
++
++
++def test_help_describes_category_option(capsys):
++    with pytest.raises(SystemExit) as error:
++        main(["--help"])
++    assert error.value.code == 0
++    help_text = capsys.readouterr().out
++    assert "--category NAME" in help_text
++    assert "repeat for more" in help_text
+diff --git a/tests/test_report.py b/tests/test_report.py
+index 2d329fb..e0fa996 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -30,3 +30,41 @@ def test_summary_for_a_status_with_no_tickets(tickets):
+     assert summary["selected"] == 0
+     assert summary["by_category"] == {}
+     assert summary["average_priority"] is None
++
++
++def test_summary_without_categories_is_unchanged(tickets):
++    assert build_summary(tickets, [], status="open") == {
++        "status": "open",
++        "valid_records": 3,
++        "selected": 2,
++        "by_category": {"billing": 1, "login": 1},
++        "average_priority": 1.0,
++        "rejected": [],
++    }
++
++
++@pytest.mark.parametrize(
++    ("categories", "chosen", "selected", "counts", "average"),
++    [
++        (["billing"], ["billing"], 1, {"billing": 1}, 1.0),
++        ([" Billing "], ["billing"], 1, {"billing": 1}, 1.0),
++        (
++            ["login", " Billing ", "billing"],
++            ["billing", "login"],
++            2,
++            {"billing": 1, "login": 1},
++            1.0,
++        ),
++        (["unknown"], ["unknown"], 0, {}, None),
++    ],
++)
++def test_summary_filters_categories(
++    tickets, categories, chosen, selected, counts, average
++):
++    summary = build_summary(tickets, [], status="open", categories=categories)
++    assert summary["categories"] == chosen
++    assert summary["selected"] == selected
++    assert summary["by_category"] == counts
++    assert summary["average_priority"] == average
++    assert summary["valid_records"] == len(tickets)
++    assert summary["rejected"] == []
+diff --git a/ticket_cleaner/cli.py b/ticket_cleaner/cli.py
+index ed72943..6b37b65 100644
+--- a/ticket_cleaner/cli.py
++++ b/ticket_cleaner/cli.py
+@@ -28,6 +28,12 @@ def make_parser() -> argparse.ArgumentParser:
+         choices=sorted(STATUSES),
+         help="which tickets to count (default: open)",
+     )
++    parser.add_argument(
++        "--category",
++        action="append",
++        metavar="NAME",
++        help="count only this category; repeat for more (case-insensitive)",
++    )
+     parser.add_argument(
+         "--output",
+         type=Path,
+@@ -62,7 +68,7 @@ def main(argv: list[str] | None = None) -> int:
+     for record in rejected:
+         logger.warning("row %d rejected: %s", record.row, "; ".join(record.problems))
+ 
+-    summary = build_summary(tickets, rejected, args.status)
++    summary = build_summary(tickets, rejected, args.status, categories=args.category)
+     write_json(summary, args.output)
+     logger.info("wrote %s", args.output)
+     print(f"{len(rows)} rows: {len(tickets)} valid, {len(rejected)} rejected.")
+diff --git a/ticket_cleaner/report.py b/ticket_cleaner/report.py
+index 72456fa..196eb80 100644
+--- a/ticket_cleaner/report.py
++++ b/ticket_cleaner/report.py
+@@ -21,10 +21,20 @@ def average_priority(tickets: list[Ticket]) -> float | None:
+     return round(sum(ticket.priority for ticket in tickets) / len(tickets), 1)
+ 
+ 
+-def build_summary(tickets: list[Ticket], rejected: list[Rejected], status: str) -> dict:
+-    """Return the report as a dictionary that can be saved as JSON."""
++def build_summary(
++    tickets: list[Ticket],
++    rejected: list[Rejected],
++    status: str,
++    categories: list[str] | None = None,
++) -> dict:
++    """Return the report, optionally selecting normalized category names."""
+     selected = filter_by_status(tickets, status)
+-    return {
++    chosen_categories = None
++    if categories is not None:
++        chosen_categories = sorted({category.strip().lower() for category in categories})
++        category_names = set(chosen_categories)
++        selected = [ticket for ticket in selected if ticket.category in category_names]
++    summary = {
+         "status": status,
+         "valid_records": len(tickets),
+         "selected": len(selected),
+@@ -32,3 +42,6 @@ def build_summary(tickets: list[Ticket], rejected: list[Rejected], status: str)
+         "average_priority": average_priority(selected),
+         "rejected": [{"row": r.row, "problems": r.problems} for r in rejected],
+     }
++    if chosen_categories is not None:
++        summary["categories"] = chosen_categories
++    return summary

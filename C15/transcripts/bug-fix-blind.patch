@@ -1,0 +1,83 @@
+diff --git a/tests/test_parsing.py b/tests/test_parsing.py
+index c2237c6..b6b0c40 100644
+--- a/tests/test_parsing.py
++++ b/tests/test_parsing.py
+@@ -26,6 +26,22 @@ def test_web_form_names_become_report_categories(valid_raw, name):
+     assert to_ticket(valid_raw).category == "login"
+ 
+ 
++@pytest.mark.parametrize(
++    ("name", "expected"),
++    [
++        ("Login", "login"),
++        ("LOGIN", "login"),
++        ("Billing ", "billing"),
++        ("Invoice", "billing"),
++        ("Delivery", "shipping"),
++        (" Account ", "account"),
++    ],
++)
++def test_categories_are_normalized(valid_raw, name, expected):
++    valid_raw["category"] = name
++    assert to_ticket(valid_raw).category == expected
++
++
+ @pytest.mark.parametrize("priority", ["0", "4", "high", "2.5", "-1"])
+ def test_priority_outside_1_to_3_is_a_problem(valid_raw, priority):
+     valid_raw["priority"] = priority
+diff --git a/tests/test_report.py b/tests/test_report.py
+index 2d329fb..27c2950 100644
+--- a/tests/test_report.py
++++ b/tests/test_report.py
+@@ -1,5 +1,9 @@
++from pathlib import Path
++
+ import pytest
+ 
++from ticket_cleaner.files import read_rows
++from ticket_cleaner.parsing import split_records
+ from ticket_cleaner.records import Ticket
+ from ticket_cleaner.report import average_priority, build_summary, count_by_category
+ 
+@@ -30,3 +34,24 @@ def test_summary_for_a_status_with_no_tickets(tickets):
+     assert summary["selected"] == 0
+     assert summary["by_category"] == {}
+     assert summary["average_priority"] is None
++
++
++def test_summary_for_web_form_export():
++    path = Path(__file__).resolve().parents[1] / "data" / "web-form-export.csv"
++    tickets, rejected = split_records(read_rows(path))
++
++    summary = build_summary(tickets, rejected, status="open")
++
++    assert summary == {
++        "status": "open",
++        "valid_records": 12,
++        "selected": 10,
++        "by_category": {
++            "account": 1,
++            "billing": 3,
++            "login": 4,
++            "shipping": 2,
++        },
++        "average_priority": 1.9,
++        "rejected": [],
++    }
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..7a170f5 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -16,9 +16,9 @@ def clean_text(value: object) -> str:
+ 
+ 
+ def clean_category(value: object) -> str:
+-    """Return the category, with the web form's names changed to the report's names."""
+-    text = str(value).strip()
+-    return CATEGORY_ALIASES.get(text.lower(), text)
++    """Normalize the category and map web-form aliases to report names."""
++    text = clean_text(value)
++    return CATEGORY_ALIASES.get(text, text)
+ 
+ 
+ def find_problems(raw: dict) -> list[str]:

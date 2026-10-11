@@ -1,0 +1,48 @@
+diff --git a/tests/test_parsing.py b/tests/test_parsing.py
+index c2237c6..b7dd218 100644
+--- a/tests/test_parsing.py
++++ b/tests/test_parsing.py
+@@ -1,6 +1,11 @@
+ import pytest
+ 
+-from ticket_cleaner.parsing import find_problems, split_records, to_ticket
++from ticket_cleaner.parsing import (
++    clean_category,
++    find_problems,
++    split_records,
++    to_ticket,
++)
+ from ticket_cleaner.records import Ticket
+ 
+ 
+@@ -9,6 +14,30 @@ def valid_raw():
+     return {"id": "T-1001", "status": "open", "category": "billing", "priority": "2"}
+ 
+ 
++@pytest.mark.parametrize("value", ["Sign-in", "log-in", " sign-in ", " LOG-IN "])
++def test_clean_category_normalizes_aliases(value):
++    assert clean_category(value) == "login"
++
++
++@pytest.mark.parametrize(
++    ("value", "expected"),
++    [
++        ("billing", "billing"),
++        (" billing ", "billing"),
++        (" Custom Category ", "Custom Category"),
++        ("", ""),
++        (" \t\n ", ""),
++    ],
++)
++def test_clean_category_trims_text_without_changing_unrecognized_names(value, expected):
++    assert clean_category(value) == expected
++
++
++@pytest.mark.parametrize(("value", "expected"), [(123, "123"), (None, "None")])
++def test_clean_category_converts_non_string_values_to_text(value, expected):
++    assert clean_category(value) == expected
++
++
+ def test_valid_record_has_no_problems(valid_raw):
+     assert find_problems(valid_raw) == []
+ 

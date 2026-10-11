@@ -1,0 +1,45 @@
+diff --git a/tests/test_parsing.py b/tests/test_parsing.py
+index c2237c6..d932ca2 100644
+--- a/tests/test_parsing.py
++++ b/tests/test_parsing.py
+@@ -20,6 +20,23 @@ def test_text_is_cleaned(valid_raw):
+     assert to_ticket(valid_raw) == expected
+ 
+ 
++@pytest.mark.parametrize(
++    ("name", "expected"),
++    [
++        ("login", "login"),
++        ("Login", "login"),
++        ("LOGIN", "login"),
++        (" LOGIN ", "login"),
++        ("Billing ", "billing"),
++        ("SHIPPING", "shipping"),
++        (" Account ", "account"),
++    ],
++)
++def test_category_case_and_spaces_are_normalized(valid_raw, name, expected):
++    valid_raw["category"] = name
++    assert to_ticket(valid_raw).category == expected
++
++
+ @pytest.mark.parametrize("name", ["Sign-in", "log-in", " sign-in "])
+ def test_web_form_names_become_report_categories(valid_raw, name):
+     valid_raw["category"] = name
+diff --git a/ticket_cleaner/parsing.py b/ticket_cleaner/parsing.py
+index 41c18ce..f8f3d35 100644
+--- a/ticket_cleaner/parsing.py
++++ b/ticket_cleaner/parsing.py
+@@ -16,9 +16,9 @@ def clean_text(value: object) -> str:
+ 
+ 
+ def clean_category(value: object) -> str:
+-    """Return the category, with the web form's names changed to the report's names."""
+-    text = str(value).strip()
+-    return CATEGORY_ALIASES.get(text.lower(), text)
++    """Return the normalized category, resolving the web form's aliases."""
++    text = clean_text(value)
++    return CATEGORY_ALIASES.get(text, text)
+ 
+ 
+ def find_problems(raw: dict) -> list[str]:

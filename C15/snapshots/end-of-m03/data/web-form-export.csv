@@ -1,0 +1,13 @@
+id,status,category,priority,subject
+T-3001,open,login,1,Cannot sign in on the new app
+T-3002,open,Sign-in,2,Sign-in link has expired
+T-3003,open,Login,2,Locked out after three tries
+T-3004,open,billing,2,Charged in the wrong currency
+T-3005,open,Invoice,3,Invoice PDF is empty
+T-3006,pending,shipping,2,Parcel stuck at the depot
+T-3007,open,Delivery,1,Delivered to a neighbour
+T-3008,open,LOGIN,1,Two-factor code is not accepted
+T-3009,closed,billing,3,Refund confirmed
+T-3010,open,Billing ,2,Discount missing on the invoice
+T-3011,open,shipping,3,Change the delivery address
+T-3012,open,account,2,Add a second admin
