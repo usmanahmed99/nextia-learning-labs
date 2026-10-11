@@ -18,11 +18,13 @@ def test_redact_removes_tokens_emails_and_secret_fields():
             "header": f"Bearer {tok}",
             "note": f"token {tok} from grace@larkfield.example",
             "api_key": "sk-123",
+            "settings": {"MODEL_API_KEY": "practice-not-a-real-key", "SUPPORT_TENANT": "larkfield"},
             "nested": [{"password": "x"}],
         }
     )
     text = json.dumps(out)
     assert tok not in text and "grace@larkfield.example" not in text and "sk-123" not in text
+    assert out["settings"] == {"MODEL_API_KEY": "[redacted]", "SUPPORT_TENANT": "larkfield"}  # by part of the name
     assert out["header"] == "Bearer [redacted]" and out["note"] == "token [token] from [email]"
 
 

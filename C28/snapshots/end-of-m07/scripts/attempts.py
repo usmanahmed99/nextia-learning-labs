@@ -69,7 +69,7 @@ def which_check(status: str, message: str) -> str:
         ("insufficient_scope", "scope (the token does not allow it)"),
         ("cannot propose", "role (the membership's role)"),
         ("not_found", "organization-scoped lookup (not in this organization)"),
-        ("resource not found", "organization-scoped lookup (not visible to this caller)"),
+        ("resource not found", "role (the membership's role)"),  # the staff-only document: hidden from read_only
         ("over_limit", "business limit (the agent's refund limit)"),
         ("pending_approval", "allowed, but only proposed: a person must approve"),
     ]:

@@ -15,13 +15,15 @@ from datetime import UTC, datetime
 BEARER = re.compile(r"(?i)bearer\s+[A-Za-z0-9._~+/=-]+")
 JWT = re.compile(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*")
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+(\.[\w-]+)+")
-SECRET_KEYS = {"authorization", "token", "access_token", "api_key", "password", "secret"}
+# A field whose name contains one of these words is removed whole: authorization, MODEL_API_KEY,
+# access_token, client_secret ... A list of names is never complete: log chosen fields only.
+SECRET_NAME = re.compile(r"(?i)authorization|token|secret|password|api[_-]?key|credential")
 
 
 def redact(value):
     """A copy of `value` without tokens, secrets or e-mail addresses."""
     if isinstance(value, dict):
-        return {k: "[redacted]" if k.lower() in SECRET_KEYS else redact(v) for k, v in value.items()}
+        return {k: "[redacted]" if SECRET_NAME.search(str(k)) else redact(v) for k, v in value.items()}
     if isinstance(value, list | tuple):
         return [redact(v) for v in value]
     if isinstance(value, str):

@@ -55,7 +55,7 @@ def which_check(status: str, message: str) -> str:
         ("no access to this organization", "membership (no membership here)"),
         ("insufficient_scope", "scope (the token does not allow it)"),
         ("not_found", "organization-scoped lookup (not in this organization)"),
-        ("resource not found", "organization-scoped lookup (not visible to this caller)"),
+        ("resource not found", "role (the membership's role)"),  # the staff-only document: hidden from read_only
     ]:
         if key in m:
             return name
