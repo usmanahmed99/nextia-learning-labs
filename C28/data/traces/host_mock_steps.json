@@ -1,0 +1,69 @@
+{
+  "question": "Draft a reply to ticket T-30002.",
+  "answer": "Ticket T-30002 (open): Charged twice for order LK-182074.\nFrom \"Refunds and payments policy\" (policy://larkfield/refunds-and-payments): … Refunds to a gift card appear at once. ## Double charges If you were charged twice for the same order, we refund the extra charge …",
+  "steps": [
+    {
+      "who": "host",
+      "text": "discovered 3 tools: search_knowledge, get_ticket, propose_refund",
+      "data": {
+        "protocol": "2026-07-28",
+        "server": "support-mcp"
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants get_ticket",
+      "data": {
+        "arguments": {
+          "ticket_id": "T-30002"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 558 characters",
+      "data": {
+        "ms": 18.0,
+        "clipped": false
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants search_knowledge",
+      "data": {
+        "arguments": {
+          "query": "Charged twice for order LK-182074"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 1025 characters",
+      "data": {
+        "ms": 2.3,
+        "clipped": false
+      }
+    },
+    {
+      "who": "model",
+      "text": "final answer",
+      "data": {
+        "answer": "Ticket T-30002 (open): Charged twice for order LK-182074.\nFrom \"Refunds and payments policy\" (policy://larkfield/refunds-and-payments): … Refunds to a gift card appear at once. ## Double charges If you were charged twice for the same order, we refund the extra charge …"
+      }
+    }
+  ]
+}

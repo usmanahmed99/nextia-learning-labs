@@ -1,0 +1,127 @@
+{
+  "model": "chat-small (gpt-6-luna on Azure)",
+  "question": "Draft a reply to ticket T-30002.",
+  "answer": "Hi Hugo,\n\nI’m sorry you may have been charged twice for order LK-182074. Please send the receipt or a screenshot of both charges, as requested, so we can verify them with our payments team. Once confirmed, we’ll advise you on the next steps for refunding the duplicate payment.\n\nBest,  \nSupport\n\nPolicy used: **Manual refunds and goodwill credits**.",
+  "usage": [
+    {
+      "completion_tokens": 61,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "latency_checkpoint": {
+        "engine_tbt_ms": 4,
+        "engine_ttft_ms": 91,
+        "engine_ttlt_ms": 352,
+        "pre_inference_ms": 92,
+        "service_tbt_ms": 4,
+        "service_ttft_ms": 399,
+        "service_ttlt_ms": 655,
+        "user_visible_ttft_ms": 307
+      },
+      "prompt_tokens": 532,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "total_tokens": 593,
+      "ms": 1043
+    },
+    {
+      "completion_tokens": 80,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "latency_checkpoint": {
+        "engine_tbt_ms": 5,
+        "engine_ttft_ms": 101,
+        "engine_ttlt_ms": 535,
+        "pre_inference_ms": 101,
+        "service_tbt_ms": 5,
+        "service_ttft_ms": 435,
+        "service_ttlt_ms": 832,
+        "user_visible_ttft_ms": 334
+      },
+      "prompt_tokens": 1053,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cache_write_tokens": 1050,
+        "cached_tokens": 0
+      },
+      "total_tokens": 1133,
+      "ms": 1385
+    }
+  ],
+  "steps": [
+    {
+      "who": "host",
+      "text": "discovered 3 tools: search_knowledge, get_ticket, propose_refund",
+      "data": {
+        "protocol": "2026-07-28",
+        "server": "support-mcp"
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants get_ticket",
+      "data": {
+        "arguments": {
+          "ticket_id": "T-30002"
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 558 characters",
+      "data": {
+        "ms": 14.0,
+        "clipped": false
+      }
+    },
+    {
+      "who": "model",
+      "text": "wants search_knowledge",
+      "data": {
+        "arguments": {
+          "query": "customer support response policy ticket reply",
+          "limit": 3
+        }
+      }
+    },
+    {
+      "who": "host",
+      "text": "read-only tool on the allow-list: run it",
+      "data": {
+        "decision": "auto"
+      }
+    },
+    {
+      "who": "server",
+      "text": "result: 1109 characters",
+      "data": {
+        "ms": 7.6,
+        "clipped": false
+      }
+    },
+    {
+      "who": "model",
+      "text": "final answer",
+      "data": {
+        "answer": "Hi Hugo,\n\nI’m sorry you may have been charged twice for order LK-182074. Please send the receipt or a screenshot of both charges, as requested, so we can verify them with our payments team. Once confirmed, we’ll advise you on the next steps for refunding the duplicate payment.\n\nBest,  \nSupport\n\nPolicy used: **Manual refunds and goodwill credits**."
+      }
+    }
+  ]
+}
